@@ -21,7 +21,6 @@ BeginPackage[ "ProvaProgetto`"];
 Unprotect["ProvaProgetto` *"] (* toglie temporaneamente la protezione per ridefinire le funzioni *)
 ClearAll["ProvaProgetto` *"];
 Off[Syntax::shdw]; (* warning di definizioni oscurate *)
-SetDirectory[NotebookDirectory[]]; (* imposto la cartella attuale come base in cui cercare i file *)
 
 
 ShowCirc::usage = "linea";
@@ -45,7 +44,7 @@ ShowCirc[]:=
 			],
 			"Quadrante: ", quad, "\n",
 			"Angolo: ", grad, "\[Degree] || ", x,"\n",
-			"Coseno -> ", Cos[Pi/2], " ||| Seno -> ", Sin[x], "\n",
+			"Coseno -> ", Cos[x*Pi/2], " ||| Seno -> ", Sin[x], "\n",
 			
 	 Graphics[{
     Circle[],
