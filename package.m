@@ -63,7 +63,6 @@ ShowCirc[]:=
       },
       ImageSize->Medium,
       Axes->True] (*FINE GRAPHICS*),(*End Graphics*)
-      }],
         (* parametri modificabili: i 3 coefficenti della retta *)
       Column[{
         Show[
@@ -92,6 +91,7 @@ ShowCirc[]:=
             Point[{ x, Cos[x]}]}
           ]
         ]
+      }],
       }],
       {{grad,0,"Angolo"}, 0, 360,1}
       ]
