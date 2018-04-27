@@ -59,7 +59,7 @@ ShowCirc[]:=
   RGBColor[0,255,0],
    Line[{{0,0},{Cos[x],0}}],
      RGBColor[255,0,0],
-    Line[{{Cos[x],0},{Cos[x],Sin[y]}}], 
+    Line[{{Cos[x],0},{Cos[x],Sin[x]}}], 
   {Yellow, PointSize @ .02, Point@{Cos[x], Sin[x]}}
    },
    ImageSize->Medium,
