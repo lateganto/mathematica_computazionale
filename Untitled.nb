@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7839,        192]
-NotebookOptionsPosition[      6693,        157]
-NotebookOutlinePosition[      7632,        188]
-CellTagsIndexPosition[      7589,        185]
+NotebookDataLength[      7796,        190]
+NotebookOptionsPosition[      6650,        155]
+NotebookOutlinePosition[      7589,        186]
+CellTagsIndexPosition[      7546,        183]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -55,18 +55,18 @@ Cell[BoxData[
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{ProvaProgetto`Private`x$$ = 0, Typeset`show$$ = True, 
-    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
-    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
-    "\"untitled\"", Typeset`specs$$ = {{{
-       Hold[ProvaProgetto`Private`x$$], 0, "Angolo"}, 0, 2 Pi, 
-      Rational[1, 180] Pi}}, Typeset`size$$ = {350., {599.5, 179.}}, 
-    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
-    ProvaProgetto`Private`x$8870$$ = 0}, 
+   DynamicModuleBox[{ProvaProgetto`x$$ = Rational[179, 180] Pi, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[ProvaProgetto`x$$], 0, "Angolo"}, 0, 2 Pi, Rational[1, 180] Pi}}, 
+    Typeset`size$$ = {350., {599.5, 179.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    ProvaProgetto`x$36381$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
-     1, StandardForm, "Variables" :> {ProvaProgetto`Private`x$$ = 0}, 
+     1, StandardForm, "Variables" :> {ProvaProgetto`x$$ = 0}, 
       "ControllerVariables" :> {
-        Hold[ProvaProgetto`Private`x$$, ProvaProgetto`Private`x$8870$$, 0]}, 
+        Hold[ProvaProgetto`x$$, ProvaProgetto`x$36381$$, 0]}, 
       "OtherVariables" :> {
        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
@@ -76,32 +76,32 @@ Cell[BoxData[
            Circle[], 
            Point[{0, 0}], 
            PointSize[Large], 
-           Circle[{0, 0}, 0.2, {0, ProvaProgetto`Private`x$$}], {Dashed, 
+           Circle[{0, 0}, 0.2, {0, ProvaProgetto`x$$}], {Dashed, 
             Line[{{0, 0}, {
-               Cos[ProvaProgetto`Private`x$$], 
-               Sin[ProvaProgetto`Private`x$$]}}]}, 
+               Cos[ProvaProgetto`x$$], 
+               Sin[ProvaProgetto`x$$]}}]}, 
            Thickness[0.01], 
            RGBColor[0, 255, 0], 
            Line[{{0, 0}, {
-              Cos[ProvaProgetto`Private`x$$], 0}}], 
+              Cos[ProvaProgetto`x$$], 0}}], 
            RGBColor[255, 0, 0], 
            Line[{{
-              Cos[ProvaProgetto`Private`x$$], 0}, {
-              Cos[ProvaProgetto`Private`x$$], 
-              Sin[ProvaProgetto`Private`x$$]}}], 
-           Text[
-            Style[
-             ProvaProgetto`FromRadToGrad[ProvaProgetto`Private`x$$], Large, 
-             Red], {-0.9, 1}], 
+              Cos[ProvaProgetto`x$$], 0}, {
+              Cos[ProvaProgetto`x$$], 
+              Sin[ProvaProgetto`x$$]}}], 
+           ProvaProgetto`Private`A = IntegerString[
+              ProvaProgetto`FromRadToGrad[ProvaProgetto`x$$]]; Text[
+             Style[
+              StringJoin[ProvaProgetto`Private`A, "\[Degree]"], Large, 
+              Red], {-0.9, 1}], 
            Text[
             Style["Seno", Medium, Red], {0.8, 1}], 
            Text[
             Style["Coseno", Medium, Green], {0.8, 0.9}], {
            Yellow, PointSize -> 0.02, 
             Point[{
-              Cos[ProvaProgetto`Private`x$$], 
-              Sin[ProvaProgetto`Private`x$$]}]}}, ImageSize -> 350, Axes -> 
-          True], 
+              Cos[ProvaProgetto`x$$], 
+              Sin[ProvaProgetto`x$$]}]}}, ImageSize -> 350, Axes -> True], 
          Column[{
            Show[
             Plot[
@@ -110,13 +110,11 @@ Cell[BoxData[
              Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}}, 
              PlotLabel -> "Sine function", PlotStyle -> {Orange}], 
             Graphics[{{Dashed, 
-               
-               Line[{{ProvaProgetto`Private`x$$, 0}, {
-                 ProvaProgetto`Private`x$$, 
-                  Sin[ProvaProgetto`Private`x$$]}}]}, 
+               Line[{{ProvaProgetto`x$$, 0}, {ProvaProgetto`x$$, 
+                  Sin[ProvaProgetto`x$$]}}]}, 
               PointSize[Large], 
-              Point[{ProvaProgetto`Private`x$$, 
-                Sin[ProvaProgetto`Private`x$$]}]}]], 
+              Point[{ProvaProgetto`x$$, 
+                Sin[ProvaProgetto`x$$]}]}]], 
            Show[
             Plot[
              Cos[ProvaProgetto`Private`y], {ProvaProgetto`Private`y, 0, 2 Pi},
@@ -124,15 +122,13 @@ Cell[BoxData[
              Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}}, 
              PlotLabel -> "Cosine function", PlotStyle -> {Blue}], 
             Graphics[{{Dashed, 
-               
-               Line[{{ProvaProgetto`Private`x$$, 0}, {
-                 ProvaProgetto`Private`x$$, 
-                  Cos[ProvaProgetto`Private`x$$]}}]}, 
+               Line[{{ProvaProgetto`x$$, 0}, {ProvaProgetto`x$$, 
+                  Cos[ProvaProgetto`x$$]}}]}, 
               PointSize[Large], 
-              Point[{ProvaProgetto`Private`x$$, 
-                Cos[ProvaProgetto`Private`x$$]}]}]]}]}], 
-      "Specifications" :> {{{ProvaProgetto`Private`x$$, 0, "Angolo"}, 0, 2 Pi,
-          Rational[1, 180] Pi}}, "Options" :> {}, "DefaultOptions" :> {}],
+              Point[{ProvaProgetto`x$$, 
+                Cos[ProvaProgetto`x$$]}]}]]}]}], 
+      "Specifications" :> {{{ProvaProgetto`x$$, 0, "Angolo"}, 0, 2 Pi, 
+         Rational[1, 180] Pi}}, "Options" :> {}, "DefaultOptions" :> {}],
      ImageSizeCache->{401., {434., 440.}},
      SingleEvaluation->True],
     Deinitialization:>None,
@@ -150,15 +146,17 @@ Cell[BoxData[
    3.733823088111168*^9}, 3.7338231259839554`*^9, {3.733823163595745*^9, 
    3.733823174526647*^9}, {3.733823212786318*^9, 3.733823226458613*^9}, {
    3.733823345330575*^9, 3.7338233716771455`*^9}, {3.7338234159162893`*^9, 
-   3.7338234510137663`*^9}},ExpressionUUID->"989e1aa2-a7d4-4d0c-b8d2-\
-a62091c67ed5"]
+   3.7338234510137663`*^9}, 3.733824953474526*^9, 3.733825009082938*^9, 
+   3.73382503916553*^9, {3.7338251529576044`*^9, 
+   3.7338251638925595`*^9}},ExpressionUUID->"46e0eb31-8b52-458b-a0cb-\
+d7ed3055ffa4"]
 }, Open  ]]
 }, Open  ]]
 },
 TransitionEffect->"CrossFade",
 ScreenStyleEnvironment->"Working",
 WindowToolbars->"EditBar",
-WindowSize->{587, 686},
+WindowSize->{677, 686},
 WindowMargins->{{-7, Automatic}, {Automatic, 0}},
 TaggingRules->{
  "SlideShow" -> True, 
@@ -191,7 +189,7 @@ Cell[CellGroupData[{
 Cell[580, 22, 291, 5, 63, "Chapter",ExpressionUUID->"2e6696e5-eaee-4f5c-a693-757f59c73eb4"],
 Cell[CellGroupData[{
 Cell[896, 31, 1240, 21, 67, "Input",ExpressionUUID->"1cf04037-cd02-4675-a15e-19dc07591dfd"],
-Cell[2139, 54, 4526, 99, 926, "Output",ExpressionUUID->"989e1aa2-a7d4-4d0c-b8d2-a62091c67ed5"]
+Cell[2139, 54, 4483, 97, 926, "Output",ExpressionUUID->"46e0eb31-8b52-458b-a0cb-d7ed3055ffa4"]
 }, Open  ]]
 }, Open  ]]
 }

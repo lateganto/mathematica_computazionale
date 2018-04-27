@@ -24,9 +24,6 @@ ClearAll["ProvaProgetto` *"];
 (**)
 
 
-
-
-
 drawCircle::usage = "disegna un grafico";
 Begin["`Private`"]; (* Comincia spazio privato *)
 
@@ -53,8 +50,9 @@ drawCircle[] := Manipulate[
       RGBColor[0,255,0],
       Line[{{0,0},{Cos[x],0}}],
       RGBColor[255,0,0],
-      Line[{{Cos[x],0},{Cos[x],Sin[x]}}], 
-      Text[Style[FromRadToGrad[x],Large,Red],{-0.90,1}],
+      Line[{{Cos[x],0},{Cos[x],Sin[x]}}],
+      A = IntegerString[FromRadToGrad[x]];
+      Text[Style[A <> "\[Degree]",Large,Red],{-0.90,1}],
       Text[Style["Seno",Medium,Red],{0.8,1}],
       Text[Style["Coseno",Medium,Green],{0.8,0.9}],
 
