@@ -18,7 +18,6 @@
 BeginPackage[ "ProvaProgetto`"];
 
 
-<<<<<<< HEAD
 Unprotect["ProvaProgetto` *"] (* toglie temporaneamente la protezione per ridefinire le funzioni *)
 ClearAll["ProvaProgetto` *"];
 Off[Syntax::shdw]; (* warning di definizioni oscurate *)
@@ -75,7 +74,6 @@ ShowCirc[]:=
 
 
 
-=======
 Unprotect["ProvaProgetto`"] (* toglie temporaneamente la protezione per ridefinire le funzioni *)
 ClearAll["ProvaProgetto`"];
 
@@ -135,6 +133,4 @@ drawCircle[] := Manipulate[
 ];
 
 End[]; (* fine sezione privata *)
->>>>>>> master
-
 EndPackage[]; (* Fine del Package *)
