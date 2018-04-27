@@ -24,13 +24,14 @@ ClearAll["ProvaProgetto` *"];
 (**)
 
 
+
+
+
 drawCircle::usage = "disegna un grafico";
 Begin["`Private`"]; (* Comincia spazio privato *)
 
 FromRadToGrad[x_] := Return[x*180/Pi];
 FromGradToRad[x_] := Return[N[Pi*x/180]];
-
-
 getAngle[p1_,p2_] := Mod[ArcTan @@ (p2 - p1), 2 Pi];  
 
 GetQuad[x0_,y0_] := DynamicModule[{x=x0, y=y0, quad},
@@ -39,7 +40,6 @@ GetQuad[x0_,y0_] := DynamicModule[{x=x0, y=y0, quad},
 	If[x<=0&&y<=0, quad=3];
 	If[x>=0&&y<0, quad=4];
 quad];
-
 
 drawCircle[] := Manipulate[
   Row[{
@@ -55,6 +55,9 @@ drawCircle[] := Manipulate[
       RGBColor[255,0,0],
       Line[{{Cos[x],0},{Cos[x],Sin[x]}}], 
       Text[Style[FromRadToGrad[x],Large,Red],{-0.90,1}],
+      Text[Style["Seno",Medium,Red],{0.8,1}],
+      Text[Style["Coseno",Medium,Green],{0.8,0.9}],
+
       {Yellow, PointSize ->.02, Point[{Cos[x], Sin[x]}]}},
       ImageSize->350,
       Axes->True
@@ -99,9 +102,11 @@ drawCircle[] := Manipulate[
 
 
 
+
+
+
 (* ::InheritFromParent:: *)
 (**)
-
 
 
 End[]; (* fine sezione privata *)
