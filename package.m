@@ -49,25 +49,52 @@ ShowCirc[]:=
 			
 	 Graphics[{
     Circle[],
-
- Point[{0,0}],
- PointSize[Large],
- Circle[{0,0},0.1,{start, end}],
- {Dashed,
-  Line[{{0,0},{Cos[x],Sin[x]}}]},(*raggio*)
- Thickness[0.01],
-  RGBColor[0,255,0],
-   Line[{{0,0},{Cos[x],0}}],
-     RGBColor[255,0,0],
-    Line[{{Cos[x],0},{Cos[x],Sin[x]}}], 
-  {Yellow, PointSize @ .02, Point@{Cos[x], Sin[x]}}
-   },
-   ImageSize->Medium,
-   Axes->True] (*FINE GRAPHICS*),(*End Graphics*)
-	}],
-		(* parametri modificabili: i 3 coefficenti della retta *)
-		{{grad,0,"Angolo"}, 0, 360,1}
-	]
+    Point[{0,0}],
+    PointSize[Large],
+    Circle[{0,0},0.1,{start, end}],
+    {Dashed,
+      Line[{{0,0},{Cos[x],Sin[x]}}]},(*raggio*)
+    Thickness[0.01],
+      RGBColor[0,255,0],
+      Line[{{0,0},{Cos[x],0}}],
+        RGBColor[255,0,0],
+        Line[{{Cos[x],0},{Cos[x],Sin[x]}}], 
+      {Yellow, PointSize @ .02, Point@{Cos[x], Sin[x]}}
+      },
+      ImageSize->Medium,
+      Axes->True] (*FINE GRAPHICS*),(*End Graphics*)
+      }],
+        (* parametri modificabili: i 3 coefficenti della retta *)
+      Column[{
+        Show[
+          Plot[Sin[y], {y, 0,  2 Pi}, 
+            ImageSize->300, 
+            Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}},
+            PlotLabel -> "Sine function",
+            PlotStyle -> {Orange}
+          ], 
+          Graphics[{ 
+            {Dashed, Line[{{x,0},{x,Sin[x]}}]},
+            PointSize[Large],
+            Point[{ x, Sin[x] }]}
+          ]
+        ],
+        Show[
+          Plot[Cos[y], {y, 0,  2 Pi}, 
+            ImageSize->300,
+            Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}},
+            PlotLabel -> "Cosine function",
+            PlotStyle -> {Blue}
+          ],
+          Graphics[{
+            {Dashed, Line[{{x,0},{x,Cos[x]}}]},
+            PointSize[Large],
+            Point[{ x, Cos[x]}]}
+          ]
+        ]
+      }],
+      {{grad,0,"Angolo"}, 0, 360,1}
+      ]
   ];
   
   
