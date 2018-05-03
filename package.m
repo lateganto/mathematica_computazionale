@@ -33,14 +33,64 @@ Begin["`Private`"]; (* Comincia spazio privato *)
 FromRadToGrad[x_] := Return[x*180/Pi];
 FromGradToRad[x_] := Return[N[Pi*x/180]];
 getAngle[p1_,p2_] := Mod[ArcTan @@ (p2 - p1), 2 Pi];  
-pointList = List[{3,2},{1,3},{-1,1},
-				{-2,-5},{-3,8},{-1,3},
-				{-2,1},{-7,3},{-10, 1}, {5,2}];
+pointList = List[{3,2},{1,3},{-1,1},{-2,-5},{-3,8},{-1,3},{-2,1},{-7,3}];
+pointListTwo = List[{2,0},{-9,5},{-10,7},{5,2},{-5,4}, {-8,-5},{2,9},{3,-6}];
 
 
 (* ::InheritFromParent:: *)
 (**)
 
+
+computeDistance[x1_,y1_,x2_,y2_] := Return[Sqrt[(x2 - x1)^2+(y2 - y1)^2]];
+
+distanceGame[]:= DynamicModule[{x1,y1,x2,y2},
+	random = RandomInteger[{1,Length[pointList]}];
+	P1 = pointList[[random]];
+	P2 = pointListTwo[[random]];
+	x1 = P1[[1]];
+	x2 = P2[[1]];
+	y1 = P1[[2]];
+	y2 = P2[[2]];
+	Row[{
+		Column[{
+			Graphics[{
+				{Dashed,Line[{{x1,0},{x1,y1}}]},
+				{Dashed,Line[{{0,y1},{x1,y1}}]},
+				{Dashed,Line[{{x2,0},{x2,y2}}]},
+				{Dashed,Line[{{0,y2},{x2,y2}}]},
+				Text[Style["A",20],{x1-0.4,y1-0.4}],
+				Text[Style["B",20],{x2+0.4,y2+0.4}],
+				{PointSize[Large],Red,Point[{x1,y1}]},
+				{PointSize[Large],Red,Point[{x2,y2}]},
+				 Line[{{x1,y1},{x2,y2}}]
+	},	
+	Axes->True,
+	AxesStyle->Thick, PlotRange->10,
+	ImageSize->450,
+	AxesLabel->{"x","y"},
+		Ticks->{
+		Table[i,{i,-10, 10, 1}],
+		Table[i,{i,-10, 10, 1}]
+		}
+	](* Fine Graphics *)
+		}],(*fine colonna grafico*)
+		Column[{
+		If[x1<0, SigX1="-", SigX1=""];
+		If[y1<0, SigY1="-", SigY1=""];
+		If[x2<0, SigX2="-", SigX2=""];
+		If[y2<0, SigY2="-", SigY2=""];
+		A = "("<>SigX1<>IntegerString[x1]<>","<>SigY1<>IntegerString[y1]<>")";
+		B = "("<>SigX2<>IntegerString[x2]<>","<>SigY2<>IntegerString[y2]<>")";
+	
+		Style["Quanto distano tra di loro i punti A"<>A <>" e B"<>B<>":",20],
+	
+		Button[Style[NumberForm[computeDistance[x1,y1,x2,y2]],20]],
+		Button[Style["10",20]],
+		Button[Style["A",20]],
+		Button[Style["A",20]]
+		}] (*fine colonna input*)
+	}]
+];
 
 drawCartesian[x_,y_]:= DynamicModule[{colEsito=Black, esito="",limit = 10, xIn=0, yIn=0},
 Row[{ 
@@ -50,13 +100,10 @@ Row[{
 	q4 = {limit,-limit};
 	Column[{
 	Graphics[{
-		Style[Rectangle[{0,0},q1],White], 
-		Style[Rectangle[{0,0},q2],White],
-		Style[Rectangle[{0,0},q3],White],
-		Style[Rectangle[{0,0},q4],White],
 		{PointSize[Large],Red,Point[{x,y}]}
 	},	
 	Axes->True,
+	AxesStyle->Thick, PlotRange->10,
 	ImageSize->450,
 	AxesLabel->{"x","y"},
 	Ticks->{
@@ -78,11 +125,12 @@ Row[{
 	]}]
 	}](*Fine Row*)
 ];
-
+(*individue le coord del punto*)
 startGame[] := DynamicModule[{},
-	 random = RandomInteger[{1,Length[pointList]}];
+     random = RandomInteger[{1,Length[pointList]}];
 	 P = pointList[[random]];
 	 drawCartesian[P[[1]],P[[2]]]
+	
 ];
 
 GetQuad[x0_,y0_] := DynamicModule[{x=x0, y=y0, quad},
