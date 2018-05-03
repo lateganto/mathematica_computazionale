@@ -16,18 +16,61 @@
 
 
 BeginPackage[ "ProvaProgetto`"];
-
-
 Unprotect["ProvaProgetto` *"] (* toglie temporaneamente la protezione per ridefinire le funzioni *)
 ClearAll["ProvaProgetto` *"];
-Off[Syntax::shdw]; (* warning di definizioni oscurate *)
-SetDirectory[NotebookDirectory[]]; (* imposto la cartella attuale come base in cui cercare i file *)
+
+(* ::InheritFromParent:: *)
+(**)
 
 
-ShowCirc::usage = "circonferenza unitaria";
+drawCircle::usage = "disegna un grafico";
+drawCartesian::usage = "disegna assi"
+startGame::usage = "gioco del quadrante";
+
+Begin["`Private`"]; (* Comincia spazio privato *)
 
 FromRadToGrad[x_] := Return[x*180/Pi];
 FromGradToRad[x_] := Return[N[Pi*x/180]];
+getAngle[p1_,p2_] := Mod[ArcTan @@ (p2 - p1), 2 Pi];  
+pointList = List[{3,2},{1,3},{-1,1},
+				{-2,-5},{-3,8},{-1,3},
+				{-2,1},{-7,3}];
+
+
+drawCartesian[x_,y_]:= DynamicModule[{limit = 10},
+
+	q1 = {limit,limit};
+	q2 = {-limit,limit};
+	q3 = {-limit,-limit};
+	q4 = {limit,-limit};
+	Graphics[{
+		Style[Rectangle[{0,0},q1],White], 
+		Style[Rectangle[{0,0},q2],White],
+		Style[Rectangle[{0,0},q3],White],
+		Style[Rectangle[{0,0},q4],White],
+		{PointSize[Large],Red,Point[{x,y}]}
+	}(* Fine Graphics *),	
+	Axes->True,
+	AxesLabel->{"x","y"},
+	Ticks->{
+		Table[i,{i,-limit, limit, 1}],
+		Table[i,{i,-limit, limit, 1}]
+		}
+	]
+];
+
+startGame[] := DynamicModule[{},
+	 random = RandomInteger[{1,Length[pointList]}];
+	 P = pointList[[random]];
+	 drawCartesian[P[[1]],P[[2]]]
+];
+
+GetQuad[x0_,y0_] := DynamicModule[{x=x0, y=y0, quad},
+	If[x>=0&&y>=0, quad=1];
+	If[x<0&&y>=0, quad=2];
+	If[x<=0&&y<=0, quad=3];
+	If[x>=0&&y<0, quad=4];
+quad];
 
  
 ShowCirc[]:=
@@ -57,14 +100,18 @@ ShowCirc[]:=
     Thickness[0.01],
       RGBColor[0,255,0],
       Line[{{0,0},{Cos[x],0}}],
-        RGBColor[255,0,0],
-        Line[{{Cos[x],0},{Cos[x],Sin[x]}}], 
-      {Yellow, PointSize @ .02, Point@{Cos[x], Sin[x]}}
-      },
-      ImageSize->Medium,
-      Axes->True] (*FINE GRAPHICS*),(*End Graphics*)
-        (* parametri modificabili: i 3 coefficenti della retta *)
-      Column[{
+      RGBColor[255,0,0],
+      Line[{{Cos[x],0},{Cos[x],Sin[x]}}],
+      Text[Style[IntegerString[FromRadToGrad[x]] <> "\[Degree]",Large,Red],{-0.90,1}],
+      Text[Style["Seno",Medium,Red],{0.8,1}],
+      Text[Style["Coseno",Medium,Green],{0.8,0.9}],
+
+      {Yellow, PointSize ->.02, Point[{Cos[x], Sin[x]}]}},
+      ImageSize->350,
+      Axes->True
+    ] (*FINE GRAPHICS*),
+    Column[{
+        (* GRAFICI SENO E COSENO *)
         Show[
           Plot[Sin[y], {y, 0,  2 Pi}, 
             ImageSize->300, 
@@ -91,16 +138,22 @@ ShowCirc[]:=
             Point[{ x, Cos[x]}]}
           ]
         ]
-      }],
-      }],
-      {{grad,0,"Angolo"}, 0, 360,1}
-      ]
-  ];
-  
-  
+    }]
+  }],
+  {{x,0,"Angolo"}, 0, 2 Pi, 2 Pi/360}
+];
+
+(* ::InheritFromParent:: *)
+(**)
 
 
+(* ::InheritFromParent:: *)
+(**)
 
 
+(* ::InheritFromParent:: *)
+(**)
 
+
+End[]; (* fine sezione privata *)
 EndPackage[]; (* Fine del Package *)
