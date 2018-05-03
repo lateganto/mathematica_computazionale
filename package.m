@@ -35,29 +35,48 @@ FromGradToRad[x_] := Return[N[Pi*x/180]];
 getAngle[p1_,p2_] := Mod[ArcTan @@ (p2 - p1), 2 Pi];  
 pointList = List[{3,2},{1,3},{-1,1},
 				{-2,-5},{-3,8},{-1,3},
-				{-2,1},{-7,3}];
+				{-2,1},{-7,3},{-10, 1}, {5,2}];
 
 
-drawCartesian[x_,y_]:= DynamicModule[{limit = 10},
+(* ::InheritFromParent:: *)
+(**)
 
+
+drawCartesian[x_,y_]:= DynamicModule[{colEsito=Black, esito="",limit = 10, xIn=0, yIn=0},
+Row[{ 
 	q1 = {limit,limit};
 	q2 = {-limit,limit};
 	q3 = {-limit,-limit};
 	q4 = {limit,-limit};
+	Column[{
 	Graphics[{
 		Style[Rectangle[{0,0},q1],White], 
 		Style[Rectangle[{0,0},q2],White],
 		Style[Rectangle[{0,0},q3],White],
 		Style[Rectangle[{0,0},q4],White],
 		{PointSize[Large],Red,Point[{x,y}]}
-	}(* Fine Graphics *),	
+	},	
 	Axes->True,
+	ImageSize->450,
 	AxesLabel->{"x","y"},
 	Ticks->{
 		Table[i,{i,-limit, limit, 1}],
 		Table[i,{i,-limit, limit, 1}]
 		}
-	]
+	](* Fine Graphics *),
+	}],(*Fine Column*)
+	Column[{
+	Dynamic[Text[Style[esito,colEsito, 20]]],
+	"   x: "InputField[Dynamic[xIn],Number,FieldSize->5], "\n",
+	"   y: "InputField[Dynamic[yIn],Number,FieldSize->5],
+	Button["Risolvi", 
+		If[xIn == x && yIn ==y,
+			(*IF*)
+		  {esito:="Corretto"; colEsito:=Green}, 
+		   (*ELSE *)
+		  {esito:="Sbagliato"; colEsito:=Red }] 
+	]}]
+	}](*Fine Row*)
 ];
 
 startGame[] := DynamicModule[{},
@@ -90,7 +109,7 @@ drawCircle[] := Manipulate[
       Text[Style["Seno",Medium,Red],{0.8,1}],
       Text[Style["Coseno",Medium,Green],{0.8,0.9}],
 
-      {Yellow, PointSize ->.02, Point[{Cos[x], Sin[x]}]}},
+      {Black,PointSize ->.02, Point[{Cos[x], Sin[x]}]}},
       ImageSize->350,
       Axes->True
     ] (*FINE GRAPHICS*),
@@ -126,14 +145,6 @@ drawCircle[] := Manipulate[
   }],
   {{x,0,"Angolo"}, 0, 2 Pi, 2 Pi/360}
 ];
-
-
-
-
-
-
-
-
 
 
 

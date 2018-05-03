@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      4241,        102]
-NotebookOptionsPosition[      3224,         70]
-NotebookOutlinePosition[      4163,        101]
-CellTagsIndexPosition[      4120,         98]
+NotebookDataLength[      9127,        221]
+NotebookOptionsPosition[      7980,        186]
+NotebookOutlinePosition[      8919,        217]
+CellTagsIndexPosition[      8876,        214]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -27,18 +27,14 @@ Cell[TextData[StyleBox["Teoria",
   3.733462824876072*^9, 3.733462833726611*^9}},
  TextAlignment->Center,ExpressionUUID->"2e6696e5-eaee-4f5c-a693-757f59c73eb4"],
 
-Cell[BoxData[{
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{"SetDirectory", "[", 
-    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
-   RowBox[{"<<", " ", "package.m"}], ";"}], "  "}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Button", "[", 
-   RowBox[{"\"\<Gioca\>\"", ",", " ", 
-    RowBox[{"Print", "[", 
-     RowBox[{"startGame", "[", "]"}], "]"}]}], "]"}], 
-  ";"}], "\[IndentingNewLine]"}], "Input",
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
+  RowBox[{"<<", " ", "package.m"}], ";", "  ", 
+  RowBox[{"startGame", "[", "]"}]}]], "Input",
  CellChangeTimes->{{3.7334638740194283`*^9, 3.733463878092311*^9}, {
    3.733463934200818*^9, 3.733463956286327*^9}, {3.7334653428853245`*^9, 
    3.7334653487538867`*^9}, 3.733718869443074*^9, {3.733719049932871*^9, 
@@ -64,14 +60,134 @@ Cell[BoxData[{
    3.7340705617413764`*^9}, {3.7340706157543836`*^9, 3.73407062009093*^9}, {
    3.734070981947065*^9, 3.734071008362669*^9}, {3.734071055918455*^9, 
    3.7340710660005083`*^9}, {3.7340713943301077`*^9, 
-   3.7340714597087283`*^9}},ExpressionUUID->"1cf04037-cd02-4675-a15e-\
-19dc07591dfd"]
+   3.7340714597087283`*^9}, {3.7343202738041277`*^9, 3.734320306837925*^9}, {
+   3.734321014947359*^9, 3.734321020958388*^9}, 3.7343213470532713`*^9, 
+   3.734321382796115*^9},
+ EmphasizeSyntaxErrors->
+  True,ExpressionUUID->"1cf04037-cd02-4675-a15e-19dc07591dfd"],
+
+Cell[BoxData[
+ DynamicModuleBox[{}, 
+  DynamicModuleBox[{ProvaProgetto`Private`limit$$ = 10, 
+   ProvaProgetto`Private`xIn$$ = 0, ProvaProgetto`Private`yIn$$ = 0}, 
+   TagBox[GridBox[{
+      {
+       TemplateBox[{GraphicsBox[{
+           StyleBox[
+            RectangleBox[{0, 0}, {10, 10}], 
+            GrayLevel[1], StripOnInput -> False], 
+           StyleBox[
+            RectangleBox[{0, 0}, {-10, 10}], 
+            GrayLevel[1], StripOnInput -> False], 
+           StyleBox[
+            RectangleBox[{0, 0}, {-10, -10}], 
+            GrayLevel[1], StripOnInput -> False], 
+           StyleBox[
+            RectangleBox[{0, 0}, {10, -10}], 
+            GrayLevel[1], StripOnInput -> False], {
+            PointSize[Large], 
+            RGBColor[1, 0, 0], 
+            PointBox[{-2, 1}]}}, Axes -> True, ImageSize -> 350, AxesLabel -> {
+            FormBox["\"x\"", TraditionalForm], 
+            FormBox["\"y\"", TraditionalForm]}, Ticks -> {{{-10, 
+              FormBox[
+               RowBox[{"-", "10"}], TraditionalForm]}, {-9, 
+              FormBox[
+               RowBox[{"-", "9"}], TraditionalForm]}, {-8, 
+              FormBox[
+               RowBox[{"-", "8"}], TraditionalForm]}, {-7, 
+              FormBox[
+               RowBox[{"-", "7"}], TraditionalForm]}, {-6, 
+              FormBox[
+               RowBox[{"-", "6"}], TraditionalForm]}, {-5, 
+              FormBox[
+               RowBox[{"-", "5"}], TraditionalForm]}, {-4, 
+              FormBox[
+               RowBox[{"-", "4"}], TraditionalForm]}, {-3, 
+              FormBox[
+               RowBox[{"-", "3"}], TraditionalForm]}, {-2, 
+              FormBox[
+               RowBox[{"-", "2"}], TraditionalForm]}, {-1, 
+              FormBox[
+               RowBox[{"-", "1"}], TraditionalForm]}, {0, 
+              FormBox["0", TraditionalForm]}, {1, 
+              FormBox["1", TraditionalForm]}, {2, 
+              FormBox["2", TraditionalForm]}, {3, 
+              FormBox["3", TraditionalForm]}, {4, 
+              FormBox["4", TraditionalForm]}, {5, 
+              FormBox["5", TraditionalForm]}, {6, 
+              FormBox["6", TraditionalForm]}, {7, 
+              FormBox["7", TraditionalForm]}, {8, 
+              FormBox["8", TraditionalForm]}, {9, 
+              FormBox["9", TraditionalForm]}, {10, 
+              FormBox["10", TraditionalForm]}}, {{-10, 
+              FormBox[
+               RowBox[{"-", "10"}], TraditionalForm]}, {-9, 
+              FormBox[
+               RowBox[{"-", "9"}], TraditionalForm]}, {-8, 
+              FormBox[
+               RowBox[{"-", "8"}], TraditionalForm]}, {-7, 
+              FormBox[
+               RowBox[{"-", "7"}], TraditionalForm]}, {-6, 
+              FormBox[
+               RowBox[{"-", "6"}], TraditionalForm]}, {-5, 
+              FormBox[
+               RowBox[{"-", "5"}], TraditionalForm]}, {-4, 
+              FormBox[
+               RowBox[{"-", "4"}], TraditionalForm]}, {-3, 
+              FormBox[
+               RowBox[{"-", "3"}], TraditionalForm]}, {-2, 
+              FormBox[
+               RowBox[{"-", "2"}], TraditionalForm]}, {-1, 
+              FormBox[
+               RowBox[{"-", "1"}], TraditionalForm]}, {0, 
+              FormBox["0", TraditionalForm]}, {1, 
+              FormBox["1", TraditionalForm]}, {2, 
+              FormBox["2", TraditionalForm]}, {3, 
+              FormBox["3", TraditionalForm]}, {4, 
+              FormBox["4", TraditionalForm]}, {5, 
+              FormBox["5", TraditionalForm]}, {6, 
+              FormBox["6", TraditionalForm]}, {7, 
+              FormBox["7", TraditionalForm]}, {8, 
+              FormBox["8", TraditionalForm]}, {9, 
+              FormBox["9", TraditionalForm]}, {10, 
+              FormBox["10", TraditionalForm]}}}, Null]},
+        "RowDefault"]},
+      {"\<\"Inserisci il valore della x: \"\>"},
+      {
+       TagBox[
+        DynamicModuleBox[{Typeset`i$$ = 0}, 
+         InputFieldBox[Dynamic[Typeset`i$$]],
+         DynamicModuleValues:>{}],
+        InputField[
+         Setting[#]]& ]},
+      {
+       RowBox[{"\<\"Inserisci il valore della y: \"\>", " ", 
+        TagBox[
+         DynamicModuleBox[{Typeset`i$$ = 0}, 
+          InputFieldBox[Dynamic[Typeset`i$$]],
+          DynamicModuleValues:>{}],
+         InputField[
+          Setting[#]]& ]}]},
+      {"\<\"\\n\"\>"}
+     },
+     DefaultBaseStyle->"Column",
+     GridBoxAlignment->{"Columns" -> {{Left}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+    "Column"],
+   DynamicModuleValues:>{}],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{{3.734321347432179*^9, 3.734321416884116*^9}, {
+  3.7343214530658417`*^9, 
+  3.7343216414876795`*^9}},ExpressionUUID->"f958ae3a-8729-4900-a383-\
+d452b0ba047a"]
+}, Open  ]]
 }, Open  ]]
 },
 TransitionEffect->"CrossFade",
 ScreenStyleEnvironment->"Working",
 WindowToolbars->"EditBar",
-WindowSize->{681, 686},
+WindowSize->{674, 686},
 WindowMargins->{{-7, Automatic}, {Automatic, 0}},
 TaggingRules->{
  "SlideShow" -> True, 
@@ -102,7 +218,10 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 291, 5, 63, "Chapter",ExpressionUUID->"2e6696e5-eaee-4f5c-a693-757f59c73eb4"],
-Cell[874, 29, 2334, 38, 67, "Input",ExpressionUUID->"1cf04037-cd02-4675-a15e-19dc07591dfd"]
+Cell[CellGroupData[{
+Cell[896, 31, 2318, 35, 28, "Input",ExpressionUUID->"1cf04037-cd02-4675-a15e-19dc07591dfd"],
+Cell[3217, 68, 4735, 114, 488, "Output",ExpressionUUID->"f958ae3a-8729-4900-a383-d452b0ba047a"]
+}, Open  ]]
 }, Open  ]]
 }
 ]
