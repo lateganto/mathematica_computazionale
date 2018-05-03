@@ -27,7 +27,7 @@ ClearAll["ProvaProgetto` *"];
 drawCircle::usage = "disegna un grafico";
 drawCartesian::usage = "disegna assi"
 startGame::usage = "gioco del quadrante";
-
+distanceGame::usage = "calcola la distanza distanza tra due punti";
 Begin["`Private`"]; (* Comincia spazio privato *)
 
 FromRadToGrad[x_] := Return[x*180/Pi];
