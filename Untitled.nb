@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     32475,        734]
-NotebookOptionsPosition[     28585,        649]
-NotebookOutlinePosition[     30312,        693]
-CellTagsIndexPosition[     30151,        685]
+NotebookDataLength[     34399,        791]
+NotebookOptionsPosition[     29314,        681]
+NotebookOutlinePosition[     31386,        733]
+CellTagsIndexPosition[     31165,        723]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -141,9 +141,10 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"SetDirectory", "[", 
       RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
-     RowBox[{"<<", " ", "package.m"}], ";"}]}], " ", "]"}]}]], "Input",
+     RowBox[{"<<", " ", "package.m"}]}]}], "]"}]}]], "Input",
  CellChangeTimes->{{3.734688277504573*^9, 3.7346882778494267`*^9}, {
-  3.734689363539999*^9, 3.734689391153262*^9}},
+  3.734689363539999*^9, 3.734689391153262*^9}, {3.734691942313075*^9, 
+  3.734691945905235*^9}},
  FontFamily->
   "Helvetica",ExpressionUUID->"ebcdefdf-12cd-4760-b938-a47839f33c61"],
 
@@ -151,12 +152,14 @@ Cell[BoxData[
  ButtonBox["\<\"Carica\"\>",
   Appearance->Automatic,
   ButtonFunction:>(SetDirectory[
-     NotebookDirectory[]]; Get["package.m"]; Null),
+     NotebookDirectory[]]; Get["package.m"]),
   Evaluator->Automatic,
   Method->"Preemptive"]], "Output",
  CellChangeTimes->{
-  3.734689394099146*^9},ExpressionUUID->"37d5b1e8-95ab-4f7d-8565-\
-e29ac3f7da6d"]
+  3.734689394099146*^9, {3.734691922492346*^9, 3.734691946851842*^9}, 
+   3.7346920082580557`*^9, 3.7346921551918516`*^9, 3.7346924047580824`*^9, 
+   3.734692748021637*^9},ExpressionUUID->"8e1d0c59-fa97-4518-a8ec-\
+4206a16f31e8"]
 }, Open  ]]
 }, Open  ]],
 
@@ -427,12 +430,124 @@ Cell["  TEORIA", "Title",
  FontFamily->"Helvetica",
  CellTags->"teoria",ExpressionUUID->"5623c902-2dc5-4df9-9fb1-15da1da0ae54"],
 
+Cell[CellGroupData[{
+
 Cell[TextData[StyleBox["Cos\[CloseCurlyQuote]\[EGrave] la trigonometria?",
  Background->RGBColor[1, 0.9, 0.8]]], "Chapter",
- CellChangeTimes->{{3.7346888788599653`*^9, 3.7346888843961473`*^9}},
+ CellChangeTimes->{{3.7346888788599653`*^9, 3.7346888843961473`*^9}, {
+  3.734692798695547*^9, 3.734692799841873*^9}},
  FontFamily->"Helvetica",
  Background->RGBColor[
-  1, 0.9, 0.8],ExpressionUUID->"955a1f5d-2dd1-4e8d-a435-cefb95598db8"]
+  1, 0.9, 0.8],ExpressionUUID->"955a1f5d-2dd1-4e8d-a435-cefb95598db8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"drawCircle", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.7346928021840496`*^9, 
+  3.734692813246329*^9}},ExpressionUUID->"32f34fd9-866c-46c5-9904-\
+04a762de8542"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{ProvaProgetto`Private`x$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[ProvaProgetto`Private`x$$], 0, "Angolo"}, 0, 2 Pi, 
+      Rational[1, 180] Pi}}, Typeset`size$$ = {650., {194.5, 200.5}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    ProvaProgetto`Private`x$3136$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {ProvaProgetto`Private`x$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[ProvaProgetto`Private`x$$, ProvaProgetto`Private`x$3136$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Row[{
+         Graphics[{
+           Circle[], 
+           Point[{0, 0}], 
+           PointSize[Large], 
+           Circle[{0, 0}, 0.2, {0, ProvaProgetto`Private`x$$}], {Dashed, 
+            Line[{{0, 0}, {
+               Cos[ProvaProgetto`Private`x$$], 
+               Sin[ProvaProgetto`Private`x$$]}}]}, 
+           Thickness[0.01], 
+           RGBColor[0, 255, 0], 
+           Line[{{0, 0}, {
+              Cos[ProvaProgetto`Private`x$$], 0}}], 
+           RGBColor[255, 0, 0], 
+           Line[{{
+              Cos[ProvaProgetto`Private`x$$], 0}, {
+              Cos[ProvaProgetto`Private`x$$], 
+              Sin[ProvaProgetto`Private`x$$]}}], 
+           Text[
+            Style[
+             StringJoin[
+              IntegerString[
+               ProvaProgetto`Private`FromRadToGrad[
+               ProvaProgetto`Private`x$$]], "\[Degree]"], Large, Red], {-0.9, 
+             1}], 
+           Text[
+            Style["Seno", Medium, Red], {0.8, 1}], 
+           Text[
+            Style["Coseno", Medium, Green], {0.8, 0.9}], {
+           Black, PointSize -> 0.02, 
+            Point[{
+              Cos[ProvaProgetto`Private`x$$], 
+              Sin[ProvaProgetto`Private`x$$]}]}}, ImageSize -> 350, Axes -> 
+          True], 
+         Column[{
+           Show[
+            Plot[
+             Sin[ProvaProgetto`Private`y], {ProvaProgetto`Private`y, 0, 2 Pi},
+              ImageSize -> 300, 
+             Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}}, 
+             PlotLabel -> "Sine function", PlotStyle -> {Orange}], 
+            Graphics[{{Dashed, 
+               
+               Line[{{ProvaProgetto`Private`x$$, 0}, {
+                 ProvaProgetto`Private`x$$, 
+                  Sin[ProvaProgetto`Private`x$$]}}]}, 
+              PointSize[Large], 
+              Point[{ProvaProgetto`Private`x$$, 
+                Sin[ProvaProgetto`Private`x$$]}]}]], 
+           Show[
+            Plot[
+             Cos[ProvaProgetto`Private`y], {ProvaProgetto`Private`y, 0, 2 Pi},
+              ImageSize -> 300, 
+             Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}}, 
+             PlotLabel -> "Cosine function", PlotStyle -> {Blue}], 
+            Graphics[{{Dashed, 
+               
+               Line[{{ProvaProgetto`Private`x$$, 0}, {
+                 ProvaProgetto`Private`x$$, 
+                  Cos[ProvaProgetto`Private`x$$]}}]}, 
+              PointSize[Large], 
+              Point[{ProvaProgetto`Private`x$$, 
+                Cos[ProvaProgetto`Private`x$$]}]}]]}]}], 
+      "Specifications" :> {{{ProvaProgetto`Private`x$$, 0, "Angolo"}, 0, 2 Pi,
+          Rational[1, 180] Pi}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{701., {242., 248.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.734692815529438*^9},ExpressionUUID->"54aef678-59bc-4d3f-bcd0-\
+00a6b6a1276a"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -449,11 +564,12 @@ Cell["  ESERCIZI", "Title",
 
 Cell[CellGroupData[{
 
-Cell[TextData[StyleBox["Distanza tra due punti",
+Cell[TextData[StyleBox["Individua le Coordinate",
  FontSize->24,
  Background->RGBColor[1, 0.9, 0.8]]], "Chapter",
  CellChangeTimes->{{3.7346888788599653`*^9, 3.7346888843961473`*^9}, {
-  3.7346891834251766`*^9, 3.734689206003337*^9}},
+  3.7346891834251766`*^9, 3.734689206003337*^9}, {3.7346925212500205`*^9, 
+  3.734692526139948*^9}},
  FontFamily->"Helvetica",
  Background->RGBColor[
   1, 0.9, 0.8],ExpressionUUID->"531004ea-b3b6-43ae-8073-73d19a45eac6"],
@@ -461,175 +577,91 @@ Cell[TextData[StyleBox["Distanza tra due punti",
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"distanceGame", "[", "]"}], ";"}], 
-  "\[IndentingNewLine]"}]], "Input",
+ RowBox[{"Button", "[", 
+  RowBox[{"\"\<Inizia\>\"", ",", 
+   RowBox[{"FrontEndExecute", "[", 
+    RowBox[{"FrontEndToken", "[", 
+     RowBox[{
+      RowBox[{"NotebookLocate", "[", "\"\<esCoordinate\>\"", "]"}], ",", 
+      "\"\<Evaluate\>\""}], "]"}], "]"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.7346892079167633`*^9, 3.734689225854039*^9}, {
-  3.7346894090118127`*^9, 
-  3.7346894156756215`*^9}},ExpressionUUID->"0886467e-8144-42a3-9e71-\
+   3.7346894090118127`*^9, 3.7346894156756215`*^9}, 3.734691932353434*^9, {
+   3.7346920802144594`*^9, 3.73469209211373*^9}, {3.7346922056013765`*^9, 
+   3.7346922091825113`*^9}, 3.7346922630943365`*^9, {3.7346923842230005`*^9, 
+   3.73469238779254*^9}, 
+   3.734692679783229*^9},ExpressionUUID->"0886467e-8144-42a3-9e71-\
 9e5cc57ce727"],
 
 Cell[BoxData[
- DynamicModuleBox[{ProvaProgetto`Private`x1$$ = 3, 
-  ProvaProgetto`Private`y1$$ = 2, ProvaProgetto`Private`x2$$ = 2, 
-  ProvaProgetto`Private`y2$$ = 0, ProvaProgetto`Private`Esito$$ = "", 
-  ProvaProgetto`Private`colEsito$$}, 
-  TemplateBox[{TagBox[
-     GridBox[{{
-        GraphicsBox[{{
-           Dashing[{Small, Small}], 
-           LineBox[{{3, 0}, {3, 2}}]}, {
-           Dashing[{Small, Small}], 
-           LineBox[{{0, 2}, {3, 2}}]}, {
-           Dashing[{Small, Small}], 
-           LineBox[{{2, 0}, {2, 0}}]}, {
-           Dashing[{Small, Small}], 
-           LineBox[{{0, 0}, {2, 0}}]}, 
-          InsetBox[
-           FormBox[
-            StyleBox["\"A\"", 20, StripOnInput -> False], TraditionalForm], {
-           2.6, 1.6}], 
-          InsetBox[
-           FormBox[
-            StyleBox["\"B\"", 20, StripOnInput -> False], TraditionalForm], {
-           2.4, 0.4}], {
-           PointSize[Large], 
-           RGBColor[1, 0, 0], 
-           PointBox[{3, 2}]}, {
-           PointSize[Large], 
-           RGBColor[1, 0, 0], 
-           PointBox[{2, 0}]}, 
-          LineBox[{{3, 2}, {2, 0}}]}, Axes -> True, AxesStyle -> 
-         Thickness[Large], PlotRange -> 10, ImageSize -> 450, AxesLabel -> {
-           FormBox["\"x\"", TraditionalForm], 
-           FormBox["\"y\"", TraditionalForm]}, Ticks -> {{{-10, 
-             FormBox[
-              RowBox[{"-", "10"}], TraditionalForm]}, {-9, 
-             FormBox[
-              RowBox[{"-", "9"}], TraditionalForm]}, {-8, 
-             FormBox[
-              RowBox[{"-", "8"}], TraditionalForm]}, {-7, 
-             FormBox[
-              RowBox[{"-", "7"}], TraditionalForm]}, {-6, 
-             FormBox[
-              RowBox[{"-", "6"}], TraditionalForm]}, {-5, 
-             FormBox[
-              RowBox[{"-", "5"}], TraditionalForm]}, {-4, 
-             FormBox[
-              RowBox[{"-", "4"}], TraditionalForm]}, {-3, 
-             FormBox[
-              RowBox[{"-", "3"}], TraditionalForm]}, {-2, 
-             FormBox[
-              RowBox[{"-", "2"}], TraditionalForm]}, {-1, 
-             FormBox[
-              RowBox[{"-", "1"}], TraditionalForm]}, {0, 
-             FormBox["0", TraditionalForm]}, {1, 
-             FormBox["1", TraditionalForm]}, {2, 
-             FormBox["2", TraditionalForm]}, {3, 
-             FormBox["3", TraditionalForm]}, {4, 
-             FormBox["4", TraditionalForm]}, {5, 
-             FormBox["5", TraditionalForm]}, {6, 
-             FormBox["6", TraditionalForm]}, {7, 
-             FormBox["7", TraditionalForm]}, {8, 
-             FormBox["8", TraditionalForm]}, {9, 
-             FormBox["9", TraditionalForm]}, {10, 
-             FormBox["10", TraditionalForm]}}, {{-10, 
-             FormBox[
-              RowBox[{"-", "10"}], TraditionalForm]}, {-9, 
-             FormBox[
-              RowBox[{"-", "9"}], TraditionalForm]}, {-8, 
-             FormBox[
-              RowBox[{"-", "8"}], TraditionalForm]}, {-7, 
-             FormBox[
-              RowBox[{"-", "7"}], TraditionalForm]}, {-6, 
-             FormBox[
-              RowBox[{"-", "6"}], TraditionalForm]}, {-5, 
-             FormBox[
-              RowBox[{"-", "5"}], TraditionalForm]}, {-4, 
-             FormBox[
-              RowBox[{"-", "4"}], TraditionalForm]}, {-3, 
-             FormBox[
-              RowBox[{"-", "3"}], TraditionalForm]}, {-2, 
-             FormBox[
-              RowBox[{"-", "2"}], TraditionalForm]}, {-1, 
-             FormBox[
-              RowBox[{"-", "1"}], TraditionalForm]}, {0, 
-             FormBox["0", TraditionalForm]}, {1, 
-             FormBox["1", TraditionalForm]}, {2, 
-             FormBox["2", TraditionalForm]}, {3, 
-             FormBox["3", TraditionalForm]}, {4, 
-             FormBox["4", TraditionalForm]}, {5, 
-             FormBox["5", TraditionalForm]}, {6, 
-             FormBox["6", TraditionalForm]}, {7, 
-             FormBox["7", TraditionalForm]}, {8, 
-             FormBox["8", TraditionalForm]}, {9, 
-             FormBox["9", TraditionalForm]}, {10, 
-             FormBox["10", TraditionalForm]}}}]}}, 
-      GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
-      "Column", 
-      GridBoxItemSize -> {
-       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"],TagBox[
-     GridBox[{{
-        StyleBox[
-         DynamicBox[
-          ToBoxes[ProvaProgetto`Private`Esito$$, StandardForm]], StripOnInput -> 
-         False]}, {
-        StyleBox[
-        "\"Quanto distano tra di loro i punti A(3,2) e B(2,0):\"", 20, 
-         StripOnInput -> False]}, {""}, {""}, {""}, {""}, {
-        ButtonBox[
-         StyleBox[
-          TagBox[
-           InterpretationBox["\"2\"", 2, Editable -> False], NumberForm], 20, 
-          StripOnInput -> False], 
-         ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
-          ProvaProgetto`Private`checkRisp[
-            Part[ProvaProgetto`Private`RandomOptions, 1], 
-            ProvaProgetto`Private`giusta]), Appearance -> Automatic, 
-         Evaluator -> Automatic, Method -> "Preemptive"]}, {
-        ButtonBox[
-         StyleBox[
-          TagBox[
-           SqrtBox[
-            InterpretationBox["\"5\"", 5, Editable -> False]], NumberForm], 
-          20, StripOnInput -> False], 
-         ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
-          ProvaProgetto`Private`checkRisp[
-            Part[ProvaProgetto`Private`RandomOptions, 2], 
-            ProvaProgetto`Private`giusta]), Appearance -> Automatic, 
-         Evaluator -> Automatic, Method -> "Preemptive"]}, {
-        ButtonBox[
-         StyleBox[
-          TagBox[
-           InterpretationBox["\"12\"", 12, Editable -> False], NumberForm], 
-          20, StripOnInput -> False], 
-         ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
-          ProvaProgetto`Private`checkRisp[
-            Part[ProvaProgetto`Private`RandomOptions, 3], 
-            ProvaProgetto`Private`giusta]), Appearance -> Automatic, 
-         Evaluator -> Automatic, Method -> "Preemptive"]}, {
-        ButtonBox[
-         StyleBox[
-          TagBox[
-           InterpretationBox["\"27\"", 27, Editable -> False], NumberForm], 
-          20, StripOnInput -> False], 
-         ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
-          ProvaProgetto`Private`checkRisp[
-            Part[ProvaProgetto`Private`RandomOptions, 4], 
-            ProvaProgetto`Private`giusta]), Appearance -> Automatic, 
-         Evaluator -> Automatic, Method -> "Preemptive"]}}, 
-      GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
-      "Column", 
-      GridBoxItemSize -> {
-       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
-   "RowDefault"],
-  DynamicModuleValues:>{}]], "Output",
- CellChangeTimes->{3.7346892278616514`*^9, 
-  3.7346894035759163`*^9},ExpressionUUID->"1a78e299-b18c-4fc4-92d9-\
-de2cd46c2bfe"]
-}, Open  ]]
-}, Open  ]]
+ ButtonBox["\<\"Inizia\"\>",
+  Appearance->Automatic,
+  ButtonFunction:>FrontEndExecute[
+    FrontEndToken[
+     NotebookLocate["esCoordinate"], "Evaluate"]],
+  Evaluator->Automatic,
+  Method->"Preemptive"]], "Output",
+ CellChangeTimes->{
+  3.734692264549657*^9, 3.734692404806491*^9, {3.7346926816865664`*^9, 
+   3.7346926857373424`*^9}, 
+   3.734692748131839*^9},ExpressionUUID->"ddef3a9d-271a-43c1-9cc3-\
+514c621d3e04"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"startGame", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.734692103853016*^9, 3.734692173223565*^9}},
+ CellTags->
+  "esCoordinate",ExpressionUUID->"b08ddae9-adc0-4020-acba-458558969f82"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Distanza tra due punti",
+ FontSize->24,
+ Background->RGBColor[1, 0.9, 0.8]]], "Chapter",
+ CellChangeTimes->{{3.7346888788599653`*^9, 3.7346888843961473`*^9}, {
+  3.7346891834251766`*^9, 3.734689206003337*^9}},
+ FontFamily->"Helvetica",
+ Background->RGBColor[
+  1, 0.9, 0.8],ExpressionUUID->"ab83d3c9-b3ad-4ad6-bc02-4531c064a0de"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Button", "[", 
+  RowBox[{"\"\<Inizia\>\"", ",", 
+   RowBox[{"FrontEndExecute", "[", 
+    RowBox[{"FrontEndToken", "[", 
+     RowBox[{
+      RowBox[{"NotebookLocate", "[", "\"\<esDistanza\>\"", "]"}], ",", 
+      "\"\<Evaluate\>\""}], "]"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7346892079167633`*^9, 3.734689225854039*^9}, {
+   3.7346894090118127`*^9, 3.7346894156756215`*^9}, 3.734691932353434*^9, {
+   3.7346920802144594`*^9, 3.73469209211373*^9}, {3.7346922056013765`*^9, 
+   3.7346922091825113`*^9}, 3.7346922630943365`*^9, {3.7346923842230005`*^9, 
+   3.73469238779254*^9}, {3.7346927136338625`*^9, 
+   3.7346927144806137`*^9}},ExpressionUUID->"efdc3566-4241-4b8e-9172-\
+1d0b9681f056"],
+
+Cell[BoxData[
+ ButtonBox["\<\"Inizia\"\>",
+  Appearance->Automatic,
+  ButtonFunction:>FrontEndExecute[
+    FrontEndToken[
+     NotebookLocate["esDistanza"], "Evaluate"]],
+  Evaluator->Automatic,
+  Method->"Preemptive"]], "Output",
+ CellChangeTimes->{3.734692717641288*^9, 
+  3.734692748159871*^9},ExpressionUUID->"15e72c0f-67a9-43ea-bcbd-\
+241fd19db1f9"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"distanceGame", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.734692567572509*^9, 3.7346925802217836`*^9}},
+ CellTags->
+  "esDistanza",ExpressionUUID->"2fc2807a-c464-46a3-97e6-4e9d315a184d"]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -648,8 +680,8 @@ Cell["This is a text cell.", "Text",ExpressionUUID->"2fb7caff-167e-46c8-9651-639
 }, Open  ]]
 },
 WindowToolbars->"EditBar",
-WindowSize->{1366, 695},
-WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+WindowSize->{1350, 695},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
 TaggingRules->{"NotebookTemplateVersion" -> 1.},
 CellContext->Notebook,
 FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
@@ -663,31 +695,39 @@ CellTagsIndex->{
  "SlideShowHeader"->{
   Cell[580, 22, 4440, 97, 76, "SlideShowNavigationBar",ExpressionUUID->"3575e95d-97a6-4d61-8b55-654bbb244715",
    CellTags->"SlideShowHeader"],
-  Cell[6348, 164, 148, 3, 75, "SlideShowNavigationBar",ExpressionUUID->"f43c50e2-9275-4ff7-ae06-278abba7610f",
+  Cell[6529, 167, 148, 3, 75, "SlideShowNavigationBar",ExpressionUUID->"f43c50e2-9275-4ff7-ae06-278abba7610f",
    CellTags->"SlideShowHeader"],
-  Cell[19203, 410, 148, 3, 75, "SlideShowNavigationBar",ExpressionUUID->"975fd575-11f2-4414-94fa-352cd2e4e18c",
+  Cell[19384, 413, 148, 3, 75, "SlideShowNavigationBar",ExpressionUUID->"975fd575-11f2-4414-94fa-352cd2e4e18c",
    CellTags->"SlideShowHeader"],
-  Cell[20217, 440, 122, 2, 75, "SlideShowNavigationBar",ExpressionUUID->"8ca10bc9-d605-4dfc-8483-2b780863d3c9",
+  Cell[24956, 555, 122, 2, 75, "SlideShowNavigationBar",ExpressionUUID->"8ca10bc9-d605-4dfc-8483-2b780863d3c9",
    CellTags->"SlideShowHeader"],
-  Cell[28139, 636, 122, 2, 75, "SlideShowNavigationBar",ExpressionUUID->"3960c9f2-091c-4f0f-8ae2-b9c02620c79d",
+  Cell[28868, 668, 122, 2, 75, "SlideShowNavigationBar",ExpressionUUID->"3960c9f2-091c-4f0f-8ae2-b9c02620c79d",
    CellTags->"SlideShowHeader"]},
  "teoria"->{
-  Cell[19557, 422, 295, 5, 90, "Title",ExpressionUUID->"5623c902-2dc5-4df9-9fb1-15da1da0ae54",
+  Cell[19738, 425, 295, 5, 90, "Title",ExpressionUUID->"5623c902-2dc5-4df9-9fb1-15da1da0ae54",
    CellTags->"teoria"]},
  "esercizi"->{
-  Cell[20342, 444, 199, 3, 96, "Title",ExpressionUUID->"46640e32-4713-41dc-b548-7f523ca6eee3",
+  Cell[25081, 559, 199, 3, 96, "Title",ExpressionUUID->"46640e32-4713-41dc-b548-7f523ca6eee3",
    CellTags->"esercizi"]},
+ "esCoordinate"->{
+  Cell[26888, 609, 208, 4, 28, "Input",ExpressionUUID->"b08ddae9-adc0-4020-acba-458558969f82",
+   CellTags->"esCoordinate"]},
+ "esDistanza"->{
+  Cell[28608, 658, 211, 4, 28, "Input",ExpressionUUID->"2fc2807a-c464-46a3-97e6-4e9d315a184d",
+   CellTags->"esDistanza"]},
  "applicazioni"->{
-  Cell[28264, 640, 211, 4, 96, "Title",ExpressionUUID->"8e6c0bb7-81be-4ddf-9e77-2f4d8101a8df",
+  Cell[28993, 672, 211, 4, 96, "Title",ExpressionUUID->"8e6c0bb7-81be-4ddf-9e77-2f4d8101a8df",
    CellTags->"applicazioni"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"SlideShowHeader", 28989, 662},
- {"teoria", 29726, 673},
- {"esercizi", 29861, 676},
- {"applicazioni", 30002, 679}
+ {"SlideShowHeader", 29717, 694},
+ {"teoria", 30454, 705},
+ {"esercizi", 30589, 708},
+ {"esCoordinate", 30730, 711},
+ {"esDistanza", 30873, 714},
+ {"applicazioni", 31016, 717}
  }
 *)
 (*NotebookFileOutline
@@ -697,44 +737,61 @@ Cell[580, 22, 4440, 97, 76, "SlideShowNavigationBar",ExpressionUUID->"3575e95d-9
  CellTags->"SlideShowHeader"],
 Cell[5023, 121, 316, 8, 144, "Title",ExpressionUUID->"ccc2ead3-a791-495d-b9ca-97dcd36c6fc9"],
 Cell[CellGroupData[{
-Cell[5364, 133, 618, 14, 70, "Input",ExpressionUUID->"ebcdefdf-12cd-4760-b938-a47839f33c61"],
-Cell[5985, 149, 314, 9, 77, "Output",ExpressionUUID->"37d5b1e8-95ab-4f7d-8565-e29ac3f7da6d"]
+Cell[5364, 133, 657, 15, 70, "Input",ExpressionUUID->"ebcdefdf-12cd-4760-b938-a47839f33c61"],
+Cell[6024, 150, 456, 11, 44, "Output",ExpressionUUID->"8e1d0c59-fa97-4518-a8ec-4206a16f31e8"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6348, 164, 148, 3, 75, "SlideShowNavigationBar",ExpressionUUID->"f43c50e2-9275-4ff7-ae06-278abba7610f",
+Cell[6529, 167, 148, 3, 75, "SlideShowNavigationBar",ExpressionUUID->"f43c50e2-9275-4ff7-ae06-278abba7610f",
  CellTags->"SlideShowHeader"],
-Cell[6499, 169, 12667, 236, 465, "Title",ExpressionUUID->"a47110ad-f31d-4f66-afbf-ec45a76e613e"]
+Cell[6680, 172, 12667, 236, 465, "Title",ExpressionUUID->"a47110ad-f31d-4f66-afbf-ec45a76e613e"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19203, 410, 148, 3, 75, "SlideShowNavigationBar",ExpressionUUID->"975fd575-11f2-4414-94fa-352cd2e4e18c",
+Cell[19384, 413, 148, 3, 75, "SlideShowNavigationBar",ExpressionUUID->"975fd575-11f2-4414-94fa-352cd2e4e18c",
  CellTags->"SlideShowHeader"],
-Cell[19354, 415, 178, 3, 29, "Input",ExpressionUUID->"8c4dcb31-c018-44c1-a6b5-fd615fbb1935"],
+Cell[19535, 418, 178, 3, 29, "Input",ExpressionUUID->"8c4dcb31-c018-44c1-a6b5-fd615fbb1935"],
 Cell[CellGroupData[{
-Cell[19557, 422, 295, 5, 90, "Title",ExpressionUUID->"5623c902-2dc5-4df9-9fb1-15da1da0ae54",
+Cell[19738, 425, 295, 5, 90, "Title",ExpressionUUID->"5623c902-2dc5-4df9-9fb1-15da1da0ae54",
  CellTags->"teoria"],
-Cell[19855, 429, 313, 5, 80, "Chapter",ExpressionUUID->"955a1f5d-2dd1-4e8d-a435-cefb95598db8"]
+Cell[CellGroupData[{
+Cell[20058, 434, 362, 6, 80, "Chapter",ExpressionUUID->"955a1f5d-2dd1-4e8d-a435-cefb95598db8"],
+Cell[CellGroupData[{
+Cell[20445, 444, 186, 4, 28, "Input",ExpressionUUID->"32f34fd9-866c-46c5-9904-04a762de8542"],
+Cell[20634, 450, 4249, 97, 509, "Output",ExpressionUUID->"54aef678-59bc-4d3f-bcd0-00a6b6a1276a"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20217, 440, 122, 2, 75, "SlideShowNavigationBar",ExpressionUUID->"8ca10bc9-d605-4dfc-8483-2b780863d3c9",
+Cell[24956, 555, 122, 2, 75, "SlideShowNavigationBar",ExpressionUUID->"8ca10bc9-d605-4dfc-8483-2b780863d3c9",
  CellTags->"SlideShowHeader"],
-Cell[20342, 444, 199, 3, 96, "Title",ExpressionUUID->"46640e32-4713-41dc-b548-7f523ca6eee3",
+Cell[25081, 559, 199, 3, 96, "Title",ExpressionUUID->"46640e32-4713-41dc-b548-7f523ca6eee3",
  CellTags->"esercizi"],
 Cell[CellGroupData[{
-Cell[20566, 451, 353, 7, 68, "Chapter",ExpressionUUID->"531004ea-b3b6-43ae-8073-73d19a45eac6"],
+Cell[25305, 566, 405, 8, 68, "Chapter",ExpressionUUID->"531004ea-b3b6-43ae-8073-73d19a45eac6"],
 Cell[CellGroupData[{
-Cell[20944, 462, 299, 8, 48, "Input",ExpressionUUID->"0886467e-8144-42a3-9e71-9e5cc57ce727"],
-Cell[21246, 472, 6832, 157, 473, "Output",ExpressionUUID->"1a78e299-b18c-4fc4-92d9-de2cd46c2bfe"]
-}, Open  ]]
-}, Open  ]]
+Cell[25735, 578, 699, 14, 28, "Input",ExpressionUUID->"0886467e-8144-42a3-9e71-9e5cc57ce727"],
+Cell[26437, 594, 436, 12, 44, "Output",ExpressionUUID->"ddef3a9d-271a-43c1-9cc3-514c621d3e04"]
+}, Open  ]],
+Cell[26888, 609, 208, 4, 28, "Input",ExpressionUUID->"b08ddae9-adc0-4020-acba-458558969f82",
+ CellTags->"esCoordinate"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[27133, 618, 353, 7, 57, "Chapter",ExpressionUUID->"ab83d3c9-b3ad-4ad6-bc02-4531c064a0de"],
+Cell[CellGroupData[{
+Cell[27511, 629, 725, 14, 28, "Input",ExpressionUUID->"efdc3566-4241-4b8e-9172-1d0b9681f056"],
+Cell[28239, 645, 354, 10, 44, "Output",ExpressionUUID->"15e72c0f-67a9-43ea-bcbd-241fd19db1f9"]
+}, Open  ]],
+Cell[28608, 658, 211, 4, 28, "Input",ExpressionUUID->"2fc2807a-c464-46a3-97e6-4e9d315a184d",
+ CellTags->"esDistanza"]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[28139, 636, 122, 2, 75, "SlideShowNavigationBar",ExpressionUUID->"3960c9f2-091c-4f0f-8ae2-b9c02620c79d",
+Cell[28868, 668, 122, 2, 75, "SlideShowNavigationBar",ExpressionUUID->"3960c9f2-091c-4f0f-8ae2-b9c02620c79d",
  CellTags->"SlideShowHeader"],
-Cell[28264, 640, 211, 4, 96, "Title",ExpressionUUID->"8e6c0bb7-81be-4ddf-9e77-2f4d8101a8df",
+Cell[28993, 672, 211, 4, 96, "Title",ExpressionUUID->"8e6c0bb7-81be-4ddf-9e77-2f4d8101a8df",
  CellTags->"applicazioni"],
-Cell[28478, 646, 91, 0, 34, "Text",ExpressionUUID->"2fb7caff-167e-46c8-9651-63947705b676"]
+Cell[29207, 678, 91, 0, 34, "Text",ExpressionUUID->"2fb7caff-167e-46c8-9651-63947705b676"]
 }, Open  ]]
 }
 ]
