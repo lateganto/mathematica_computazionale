@@ -10,23 +10,24 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14238,        318]
-NotebookOptionsPosition[     12993,        282]
-NotebookOutlinePosition[     13932,        313]
-CellTagsIndexPosition[     13889,        310]
+NotebookDataLength[     16068,        371]
+NotebookOptionsPosition[     14155,        323]
+NotebookOutlinePosition[     15137,        356]
+CellTagsIndexPosition[     15094,        353]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-
-Cell[CellGroupData[{
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{"SetDirectory", "[", 
-    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
-   RowBox[{"<<", " ", "package.m"}], ";"}], " "}], "\[IndentingNewLine]", 
- RowBox[{"distanceGame", "[", "]"}], "\[IndentingNewLine]"}], "Input",
+  RowBox[{"Button", "[", 
+   RowBox[{"\"\<Load All\>\"", ",", 
+    RowBox[{
+     RowBox[{"SetDirectory", "[", 
+      RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
+     RowBox[{"<<", " ", "package.m"}], ";"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellOpen->False,
  CellChangeTimes->{{3.7334638740194283`*^9, 3.733463878092311*^9}, {
    3.733463934200818*^9, 3.733463956286327*^9}, {3.7334653428853245`*^9, 
    3.7334653487538867`*^9}, 3.733718869443074*^9, {3.733719049932871*^9, 
@@ -66,41 +67,123 @@ Cell[BoxData[{
    3.734327615954372*^9}, {3.7346651462850885`*^9, 3.7346651534044466`*^9}, {
    3.7346652518189154`*^9, 3.7346652657399178`*^9}, {3.7346667073857327`*^9, 
    3.7346667080270786`*^9}, {3.7346670110192122`*^9, 3.734667012224487*^9}, {
-   3.7346679607809772`*^9, 3.734667961465757*^9}},
- EmphasizeSyntaxErrors->
-  True,ExpressionUUID->"1cf04037-cd02-4675-a15e-19dc07591dfd"],
+   3.7346679607809772`*^9, 3.734667961465757*^9}, 3.73466900382178*^9, {
+   3.7346697904122195`*^9, 3.734669819353361*^9}, {3.734669868396531*^9, 
+   3.7346699764185195`*^9}, {3.7346700115778713`*^9, 
+   3.7346700208776493`*^9}, {3.7346702858550453`*^9, 
+   3.7346702871826468`*^9}, {3.734670447448906*^9, 3.7346704713930764`*^9}, {
+   3.7346710707215567`*^9, 3.7346710718719435`*^9}, {3.734673608255158*^9, 
+   3.734673609809865*^9}, 3.734675211407405*^9, {3.734676795949559*^9, 
+   3.734676813870219*^9}, {3.7346769128930235`*^9, 3.7346769136762056`*^9}},
+ FontFamily->
+  "Helvetica",ExpressionUUID->"1cf04037-cd02-4675-a15e-19dc07591dfd"],
 
 Cell[BoxData[
- DynamicModuleBox[{ProvaProgetto`Private`x1$$ = 3, 
-  ProvaProgetto`Private`y1$$ = 2, ProvaProgetto`Private`x2$$ = 2, 
-  ProvaProgetto`Private`y2$$ = 0, ProvaProgetto`Private`Esito$$ = 
+ ButtonBox["\<\"Load All\"\>",
+  Appearance->Automatic,
+  ButtonFunction:>(SetDirectory[
+     NotebookDirectory[]]; Get["package.m"]; Null),
+  Evaluator->Automatic,
+  Method->"Preemptive"]], "Output",
+ CellChangeTimes->{3.7346768151803017`*^9, 3.734676921014639*^9, 
+  3.7346771281561203`*^9},ExpressionUUID->"030fccda-1a7b-4680-a6b0-\
+01395325461e"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["  Teoria", "Title"]], "Title",
+ CellDingbat->"\[GrayCircle]",
+ CellChangeTimes->{{3.7346734549096003`*^9, 3.734673456350604*^9}, {
+   3.7346752074665303`*^9, 3.734675220494421*^9}, 3.734675332192387*^9, 
+   3.7346755666532364`*^9, {3.7346761664427624`*^9, 3.734676166638224*^9}},
+ FontFamily->"Helvetica",
+ Background->RGBColor[
+  0.88, 1, 0.88],ExpressionUUID->"323c2b88-ba62-4585-ac84-3e30519994eb"],
+
+Cell["questo \[EGrave] un testo", "Text",
+ CellChangeTimes->{{3.734675322362302*^9, 3.734675325939254*^9}},
+ FontFamily->
+  "Helvetica",ExpressionUUID->"46a0ba31-9a2e-4fd2-a44c-a61d85508a16"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[" Esercizi", "Title",
+ CellDingbat->"\[GrayCircle]",
+ CellChangeTimes->{{3.7346752520581465`*^9, 3.734675256568796*^9}, 
+   3.7346761678159175`*^9},
+ FontFamily->"Helvetica",
+ Background->RGBColor[
+  0.9, 1, 1],ExpressionUUID->"1d2c638b-45fb-4223-a7ec-107cd820325b"],
+
+Cell["Calcola la distanza:", "Text",
+ CellChangeTimes->{{3.7346761529978824`*^9, 3.734676154519476*^9}, {
+  3.734676186800465*^9, 3.7346762022706714`*^9}, {3.7346763237727327`*^9, 
+  3.7346763325398083`*^9}, {3.7346767637054653`*^9, 3.7346767902504935`*^9}, {
+  3.7346768359053802`*^9, 3.7346768480995407`*^9}, {3.7346769065584497`*^9, 
+  3.734676907597663*^9}},
+ FontFamily->
+  "Helvetica",ExpressionUUID->"d77c8213-cde3-453e-8015-5229fcf36984"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Button", "[", 
+  RowBox[{"\"\<Gioca\>\"", ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{"distanceGame", "[", "]"}], "]"}]}], "]"}]], "Input",
+ CellOpen->False,
+ CellChangeTimes->{{3.7346763361381407`*^9, 3.734676337609022*^9}, {
+  3.734676981981387*^9, 3.734676998537407*^9}},
+ ShowAutoStyles->False,
+ ShowCodeAssist->False,
+ ShowPredictiveInterface->False,
+ ShowSyntaxStyles->
+  False,ExpressionUUID->"11e74409-433b-436b-803f-62ae86561fb1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ ButtonBox["\<\"Gioca\"\>",
+  Appearance->Automatic,
+  ButtonFunction:>Print[
+    ProvaProgetto`distanceGame[]],
+  Evaluator->Automatic,
+  Method->"Preemptive"]], "Output",
+ CellChangeTimes->{3.734676998810336*^9, 
+  3.7346771282332335`*^9},ExpressionUUID->"42ac57ae-8020-4e48-ab68-\
+f7ddd4b97257"],
+
+Cell[BoxData[
+ DynamicModuleBox[{ProvaProgetto`Private`x1$$ = -1, 
+  ProvaProgetto`Private`y1$$ = 3, ProvaProgetto`Private`x2$$ = -8, 
+  ProvaProgetto`Private`y2$$ = -5, ProvaProgetto`Private`Esito$$ = 
   "Risposta Corretta", ProvaProgetto`Private`colEsito$$}, 
   TemplateBox[{TagBox[
      GridBox[{{
         GraphicsBox[{{
            Dashing[{Small, Small}], 
-           LineBox[{{3, 0}, {3, 2}}]}, {
+           LineBox[{{-1, 0}, {-1, 3}}]}, {
            Dashing[{Small, Small}], 
-           LineBox[{{0, 2}, {3, 2}}]}, {
+           LineBox[{{0, 3}, {-1, 3}}]}, {
            Dashing[{Small, Small}], 
-           LineBox[{{2, 0}, {2, 0}}]}, {
+           LineBox[{{-8, 0}, {-8, -5}}]}, {
            Dashing[{Small, Small}], 
-           LineBox[{{0, 0}, {2, 0}}]}, 
+           LineBox[{{0, -5}, {-8, -5}}]}, 
           InsetBox[
            FormBox[
-            StyleBox["\"A\"", 20, StripOnInput -> False], TraditionalForm], {
-           2.6, 1.6}], 
+            StyleBox["\"A\"", 20, StripOnInput -> False], 
+            TraditionalForm], {-1.4, 2.6}], 
           InsetBox[
            FormBox[
-            StyleBox["\"B\"", 20, StripOnInput -> False], TraditionalForm], {
-           2.4, 0.4}], {
+            StyleBox["\"B\"", 20, StripOnInput -> False], 
+            TraditionalForm], {-7.6, -4.6}], {
            PointSize[Large], 
            RGBColor[1, 0, 0], 
-           PointBox[{3, 2}]}, {
+           PointBox[{-1, 3}]}, {
            PointSize[Large], 
            RGBColor[1, 0, 0], 
-           PointBox[{2, 0}]}, 
-          LineBox[{{3, 2}, {2, 0}}]}, Axes -> True, AxesStyle -> 
+           PointBox[{-8, -5}]}, 
+          LineBox[{{-1, 3}, {-8, -5}}]}, Axes -> True, AxesStyle -> 
          Thickness[Large], PlotRange -> 10, ImageSize -> 450, AxesLabel -> {
            FormBox["\"x\"", TraditionalForm], 
            FormBox["\"y\"", TraditionalForm]}, Ticks -> {{{-10, 
@@ -176,14 +259,13 @@ Cell[BoxData[
           ToBoxes[ProvaProgetto`Private`Esito$$, StandardForm]], StripOnInput -> 
          False]}, {
         StyleBox[
-        "\"Quanto distano tra di loro i punti A(3,2) e B(2,0):\"", 20, 
-         StripOnInput -> False]}, {
+        "\"Quanto distano tra di loro i punti A(-1,3) e B(-8,-5):\"", 20, 
+         StripOnInput -> False]}, {""}, {""}, {""}, {""}, {
         ButtonBox[
          StyleBox[
           TagBox[
-           InterpretationBox[
-           "\"2.23607\"", 2.23606797749979, AutoDelete -> True], NumberForm], 
-          20, StripOnInput -> False], 
+           InterpretationBox["\"6\"", 6, Editable -> False], NumberForm], 20, 
+          StripOnInput -> False], 
          ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
           ProvaProgetto`Private`checkRisp[
             Part[ProvaProgetto`Private`RandomOptions, 1], 
@@ -192,8 +274,9 @@ Cell[BoxData[
         ButtonBox[
          StyleBox[
           TagBox[
-           InterpretationBox["\"5\"", 5, Editable -> False], NumberForm], 20, 
-          StripOnInput -> False], 
+           SqrtBox[
+            InterpretationBox["\"113\"", 113, Editable -> False]], 
+           NumberForm], 20, StripOnInput -> False], 
          ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
           ProvaProgetto`Private`checkRisp[
             Part[ProvaProgetto`Private`RandomOptions, 2], 
@@ -202,7 +285,7 @@ Cell[BoxData[
         ButtonBox[
          StyleBox[
           TagBox[
-           InterpretationBox["\"18\"", 18, Editable -> False], NumberForm], 
+           InterpretationBox["\"16\"", 16, Editable -> False], NumberForm], 
           20, StripOnInput -> False], 
          ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
           ProvaProgetto`Private`checkRisp[
@@ -224,67 +307,26 @@ Cell[BoxData[
       GridBoxItemSize -> {
        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
    "RowDefault"],
-  DynamicModuleValues:>{}]], "Output",
+  DynamicModuleValues:>{}]], "Print",
  CellChangeTimes->{
-  3.734665266573433*^9, 3.7346654185611906`*^9, 3.734665452052343*^9, {
-   3.734665503898821*^9, 3.734665580096534*^9}, 3.7346659167465935`*^9, {
-   3.7346659562901106`*^9, 3.7346659950990095`*^9}, 3.734666061494452*^9, {
-   3.7346661517396812`*^9, 3.734666239697465*^9}, {3.734666289719244*^9, 
-   3.7346663078340793`*^9}, 3.734666402840538*^9, {3.7346664992713766`*^9, 
-   3.734666532683942*^9}, 3.734666568976734*^9, 3.7346666711269703`*^9, 
-   3.734666708638939*^9, 3.734666811161836*^9, 3.7346670128217044`*^9, {
-   3.7346679623100004`*^9, 3.7346679725866165`*^9}, {3.7346680384955025`*^9, 
-   3.734668057702532*^9}, 3.7346680893797274`*^9, 3.7346681455709977`*^9, {
-   3.7346684148419113`*^9, 3.7346684365343924`*^9}, {3.7346686853923807`*^9, 
-   3.7346687276348267`*^9}, 3.73466881344683*^9, 
-   3.734668917127574*^9},ExpressionUUID->"ac1d3bac-1753-4061-8b8f-\
-d883a2809f82"]
+  3.7346771307606277`*^9},ExpressionUUID->"5d2ddf58-7a26-4ea6-9366-\
+6439a4cc3830"]
 }, Open  ]],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"Opzioni", " ", "=", " ", 
-   RowBox[{"{", 
-    RowBox[{"1", ",", " ", "52", ",", " ", "3", ",", 
-     RowBox[{"TraditionalForm", "[", 
-      RowBox[{"Sqrt", "[", "42", "]"}], "]"}]}], "}"}]}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"x", " ", "=", " ", 
-   RowBox[{"Sort", "[", "Opzioni", "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{"TraditionalForm", "[", "2.23607", "]"}]}], "Input",
- CellChangeTimes->{{3.734667029794052*^9, 3.7346670812512903`*^9}, {
-  3.7346679675549507`*^9, 3.7346679698823795`*^9}, {3.734668231148552*^9, 
-  3.7346682395950184`*^9}, {3.7346683019191694`*^9, 3.734668309926384*^9}, {
-  3.734668358644179*^9, 3.7346683919176292`*^9}, {3.734668526148531*^9, 
-  3.734668555505482*^9}, {3.734668774658846*^9, 3.734668784838787*^9}, {
-  3.7346688552308455`*^9, 3.7346688949760404`*^9}, {3.7346689433250628`*^9, 
-  3.7346689661354346`*^9}},ExpressionUUID->"527b3ef2-30a0-47b8-9035-\
-28611fc84cc6"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"1", ",", "3", ",", "52", ",", 
-   TagBox[
-    FormBox[
-     SqrtBox["42"],
-     TraditionalForm],
-    TraditionalForm,
-    Editable->True]}], "}"}]], "Output",
- CellChangeTimes->{{3.73466854627944*^9, 3.734668556050909*^9}, {
-   3.734668781444929*^9, 3.734668785552446*^9}, {3.7346688611580243`*^9, 
-   3.734668896609722*^9}, 
-   3.734668951874035*^9},ExpressionUUID->"e4c6081f-05ab-44ef-b9a7-\
-3137d2ce0c11"]
-}, Open  ]]
+Cell[" Applicazioni", "Title",
+ CellDingbat->"\[GrayCircle]",
+ CellChangeTimes->{{3.7346752612163467`*^9, 3.7346752632852764`*^9}, 
+   3.7346761691600227`*^9},
+ FontFamily->"Helvetica",
+ Background->RGBColor[
+  0.9, 1, 1],ExpressionUUID->"9144ec2c-d950-40f8-b2cd-a932237609a1"]
 },
 TransitionEffect->"CrossFade",
 ScreenStyleEnvironment->"Working",
 WindowToolbars->"EditBar",
-WindowSize->{681, 686},
-WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+CellGrouping->Manual,
+WindowSize->{1350, 686},
+WindowMargins->{{-9, Automatic}, {Automatic, 0}},
 TaggingRules->{
  "SlideShow" -> True, 
   "SlideshowSettings" -> {
@@ -292,6 +334,7 @@ TaggingRules->{
     "WindowElements" -> {
      "VerticalScrollBar", "HorizontalScrollBar", "MagnificationPopUp", 
       "StatusArea"}}},
+ShowCellTags->True,
 SpellingDictionaries->{"CorrectWords"->{"Trigonometria", "applicata"}},
 FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
 StyleDefinitions->Notebook[{
@@ -312,14 +355,24 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
+Cell[558, 20, 3860, 58, 19, "Input",ExpressionUUID->"1cf04037-cd02-4675-a15e-19dc07591dfd",
+ CellOpen->False],
+Cell[4421, 80, 364, 9, 44, "Output",ExpressionUUID->"030fccda-1a7b-4680-a6b0-01395325461e"],
 Cell[CellGroupData[{
-Cell[580, 22, 3324, 48, 67, "Input",ExpressionUUID->"1cf04037-cd02-4675-a15e-19dc07591dfd"],
-Cell[3907, 72, 7612, 168, 711, "Output",ExpressionUUID->"ac1d3bac-1753-4061-8b8f-d883a2809f82"]
+Cell[4810, 93, 425, 7, 112, "Title",ExpressionUUID->"323c2b88-ba62-4585-ac84-3e30519994eb"],
+Cell[5238, 102, 191, 3, 32, "Text",ExpressionUUID->"46a0ba31-9a2e-4fd2-a44c-a61d85508a16"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11556, 245, 969, 19, 67, "Input",ExpressionUUID->"527b3ef2-30a0-47b8-9035-28611fc84cc6"],
-Cell[12528, 266, 449, 13, 43, "Output",ExpressionUUID->"e4c6081f-05ab-44ef-b9a7-3137d2ce0c11"]
-}, Open  ]]
+Cell[5466, 110, 271, 6, 106, "Title",ExpressionUUID->"1d2c638b-45fb-4223-a7ec-107cd820325b"],
+Cell[5740, 118, 446, 7, 32, "Text",ExpressionUUID->"d77c8213-cde3-453e-8015-5229fcf36984"]
+}, Open  ]],
+Cell[6201, 128, 463, 12, 19, "Input",ExpressionUUID->"11e74409-433b-436b-803f-62ae86561fb1",
+ CellOpen->False],
+Cell[CellGroupData[{
+Cell[6689, 144, 312, 9, 44, "Output",ExpressionUUID->"42ac57ae-8020-4e48-ab68-f7ddd4b97257"],
+Cell[7004, 155, 6855, 157, 464, "Print",ExpressionUUID->"5d2ddf58-7a26-4ea6-9366-6439a4cc3830"]
+}, Open  ]],
+Cell[13874, 315, 277, 6, 106, "Title",ExpressionUUID->"9144ec2c-d950-40f8-b2cd-a932237609a1"]
 }
 ]
 *)
