@@ -10,29 +10,23 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15842,        366]
-NotebookOptionsPosition[     14556,        329]
-NotebookOutlinePosition[     15527,        361]
-CellTagsIndexPosition[     15484,        358]
+NotebookDataLength[     14238,        318]
+NotebookOptionsPosition[     12993,        282]
+NotebookOutlinePosition[     13932,        313]
+CellTagsIndexPosition[     13889,        310]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell[TextData[StyleBox["Teoria",
- FontFamily->"Times New Roman",
- FontWeight->"Bold"]], "Chapter",
- CellChangeTimes->{{3.733462516000715*^9, 3.73346254593933*^9}, {
-  3.733462824876072*^9, 3.733462833726611*^9}},
- TextAlignment->Center,ExpressionUUID->"2e6696e5-eaee-4f5c-a693-757f59c73eb4"],
-
-Cell[BoxData[
+Cell[BoxData[{
  RowBox[{
-  RowBox[{"SetDirectory", "[", 
-   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
-  RowBox[{"<<", " ", "package.m"}], ";", " ", 
-  RowBox[{"distanceGame", "[", "]"}]}]], "Input",
+  RowBox[{
+   RowBox[{"SetDirectory", "[", 
+    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
+   RowBox[{"<<", " ", "package.m"}], ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{"distanceGame", "[", "]"}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.7334638740194283`*^9, 3.733463878092311*^9}, {
    3.733463934200818*^9, 3.733463956286327*^9}, {3.7334653428853245`*^9, 
    3.7334653487538867`*^9}, 3.733718869443074*^9, {3.733719049932871*^9, 
@@ -69,16 +63,18 @@ Cell[BoxData[
    3.7343266408702416`*^9, 3.7343266422452817`*^9}, {3.7343270725325704`*^9, 
    3.734327074375596*^9}, {3.7343273581740227`*^9, 3.734327358279148*^9}, {
    3.7343273979874115`*^9, 3.734327436036352*^9}, {3.7343276124030924`*^9, 
-   3.734327615954372*^9}},
+   3.734327615954372*^9}, {3.7346651462850885`*^9, 3.7346651534044466`*^9}, {
+   3.7346652518189154`*^9, 3.7346652657399178`*^9}, {3.7346667073857327`*^9, 
+   3.7346667080270786`*^9}, {3.7346670110192122`*^9, 3.734667012224487*^9}, {
+   3.7346679607809772`*^9, 3.734667961465757*^9}},
  EmphasizeSyntaxErrors->
   True,ExpressionUUID->"1cf04037-cd02-4675-a15e-19dc07591dfd"],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  DynamicModuleBox[{ProvaProgetto`Private`x1$$ = 3, 
   ProvaProgetto`Private`y1$$ = 2, ProvaProgetto`Private`x2$$ = 2, 
-  ProvaProgetto`Private`y2$$ = 0}, 
+  ProvaProgetto`Private`y2$$ = 0, ProvaProgetto`Private`Esito$$ = 
+  "Risposta Corretta", ProvaProgetto`Private`colEsito$$}, 
   TemplateBox[{TagBox[
      GridBox[{{
         GraphicsBox[{{
@@ -175,146 +171,54 @@ Cell[BoxData[
       GridBoxItemSize -> {
        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"],TagBox[
      GridBox[{{
-       "\"Dati i punti A(3,2) e B(2,0), selezionare la risposta \
-corretta:\\n\""}, {
+        StyleBox[
+         DynamicBox[
+          ToBoxes[ProvaProgetto`Private`Esito$$, StandardForm]], StripOnInput -> 
+         False]}, {
+        StyleBox[
+        "\"Quanto distano tra di loro i punti A(3,2) e B(2,0):\"", 20, 
+         StripOnInput -> False]}, {
         ButtonBox[
-        "\"1\"", ButtonFunction :> {}, Evaluator -> None, Appearance -> 
-         Automatic, Method -> "Preemptive"]}, {"\"\\n\""}, {
+         StyleBox[
+          TagBox[
+           InterpretationBox[
+           "\"2.23607\"", 2.23606797749979, AutoDelete -> True], NumberForm], 
+          20, StripOnInput -> False], 
+         ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
+          ProvaProgetto`Private`checkRisp[
+            Part[ProvaProgetto`Private`RandomOptions, 1], 
+            ProvaProgetto`Private`giusta]), Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"]}, {
         ButtonBox[
-        "\"1\"", ButtonFunction :> {}, Evaluator -> None, Appearance -> 
-         Automatic, Method -> "Preemptive"]}, {"\"\\n\""}, {
+         StyleBox[
+          TagBox[
+           InterpretationBox["\"5\"", 5, Editable -> False], NumberForm], 20, 
+          StripOnInput -> False], 
+         ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
+          ProvaProgetto`Private`checkRisp[
+            Part[ProvaProgetto`Private`RandomOptions, 2], 
+            ProvaProgetto`Private`giusta]), Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"]}, {
         ButtonBox[
-        "\"1\"", ButtonFunction :> {}, Evaluator -> None, Appearance -> 
-         Automatic, Method -> "Preemptive"]}, {"\"\\n\""}, {
+         StyleBox[
+          TagBox[
+           InterpretationBox["\"18\"", 18, Editable -> False], NumberForm], 
+          20, StripOnInput -> False], 
+         ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
+          ProvaProgetto`Private`checkRisp[
+            Part[ProvaProgetto`Private`RandomOptions, 3], 
+            ProvaProgetto`Private`giusta]), Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"]}, {
         ButtonBox[
-        "\"1\"", ButtonFunction :> {}, Evaluator -> None, Appearance -> 
-         Automatic, Method -> "Preemptive"]}, {""}}, 
-      GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
-      "Column", 
-      GridBoxItemSize -> {
-       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
-   "RowDefault"],
-  DynamicModuleValues:>{}]], "Input",
- CellChangeTimes->{
-  3.7343313750054045`*^9},ExpressionUUID->"3eed2982-9c8d-4a38-8ae4-\
-1383028d3451"],
-
-Cell[BoxData[
- DynamicModuleBox[{ProvaProgetto`Private`x1$$ = 3, 
-  ProvaProgetto`Private`y1$$ = 2, ProvaProgetto`Private`x2$$ = 2, 
-  ProvaProgetto`Private`y2$$ = 0}, 
-  TemplateBox[{TagBox[
-     GridBox[{{
-        GraphicsBox[{{
-           Dashing[{Small, Small}], 
-           LineBox[{{3, 0}, {3, 2}}]}, {
-           Dashing[{Small, Small}], 
-           LineBox[{{0, 2}, {3, 2}}]}, {
-           Dashing[{Small, Small}], 
-           LineBox[{{2, 0}, {2, 0}}]}, {
-           Dashing[{Small, Small}], 
-           LineBox[{{0, 0}, {2, 0}}]}, 
-          InsetBox[
-           BoxData[
-            FormBox[
-             StyleBox["\"A\"", 20, StripOnInput -> False], 
-             TraditionalForm]], {2.6, 1.6}], 
-          InsetBox[
-           BoxData[
-            FormBox[
-             StyleBox["\"B\"", 20, StripOnInput -> False], 
-             TraditionalForm]], {2.4, 0.4}], {
-           PointSize[Large], 
-           RGBColor[1, 0, 0], 
-           PointBox[{3, 2}]}, {
-           PointSize[Large], 
-           RGBColor[1, 0, 0], 
-           PointBox[{2, 0}]}, 
-          LineBox[{{3, 2}, {2, 0}}]}, Axes -> True, AxesStyle -> 
-         Thickness[Large], PlotRange -> 10, ImageSize -> 450, AxesLabel -> {
-           FormBox["\"x\"", TraditionalForm], 
-           FormBox["\"y\"", TraditionalForm]}, Ticks -> {{{-10, 
-             FormBox[
-              RowBox[{"-", "10"}], TraditionalForm]}, {-9, 
-             FormBox[
-              RowBox[{"-", "9"}], TraditionalForm]}, {-8, 
-             FormBox[
-              RowBox[{"-", "8"}], TraditionalForm]}, {-7, 
-             FormBox[
-              RowBox[{"-", "7"}], TraditionalForm]}, {-6, 
-             FormBox[
-              RowBox[{"-", "6"}], TraditionalForm]}, {-5, 
-             FormBox[
-              RowBox[{"-", "5"}], TraditionalForm]}, {-4, 
-             FormBox[
-              RowBox[{"-", "4"}], TraditionalForm]}, {-3, 
-             FormBox[
-              RowBox[{"-", "3"}], TraditionalForm]}, {-2, 
-             FormBox[
-              RowBox[{"-", "2"}], TraditionalForm]}, {-1, 
-             FormBox[
-              RowBox[{"-", "1"}], TraditionalForm]}, {0, 
-             FormBox["0", TraditionalForm]}, {1, 
-             FormBox["1", TraditionalForm]}, {2, 
-             FormBox["2", TraditionalForm]}, {3, 
-             FormBox["3", TraditionalForm]}, {4, 
-             FormBox["4", TraditionalForm]}, {5, 
-             FormBox["5", TraditionalForm]}, {6, 
-             FormBox["6", TraditionalForm]}, {7, 
-             FormBox["7", TraditionalForm]}, {8, 
-             FormBox["8", TraditionalForm]}, {9, 
-             FormBox["9", TraditionalForm]}, {10, 
-             FormBox["10", TraditionalForm]}}, {{-10, 
-             FormBox[
-              RowBox[{"-", "10"}], TraditionalForm]}, {-9, 
-             FormBox[
-              RowBox[{"-", "9"}], TraditionalForm]}, {-8, 
-             FormBox[
-              RowBox[{"-", "8"}], TraditionalForm]}, {-7, 
-             FormBox[
-              RowBox[{"-", "7"}], TraditionalForm]}, {-6, 
-             FormBox[
-              RowBox[{"-", "6"}], TraditionalForm]}, {-5, 
-             FormBox[
-              RowBox[{"-", "5"}], TraditionalForm]}, {-4, 
-             FormBox[
-              RowBox[{"-", "4"}], TraditionalForm]}, {-3, 
-             FormBox[
-              RowBox[{"-", "3"}], TraditionalForm]}, {-2, 
-             FormBox[
-              RowBox[{"-", "2"}], TraditionalForm]}, {-1, 
-             FormBox[
-              RowBox[{"-", "1"}], TraditionalForm]}, {0, 
-             FormBox["0", TraditionalForm]}, {1, 
-             FormBox["1", TraditionalForm]}, {2, 
-             FormBox["2", TraditionalForm]}, {3, 
-             FormBox["3", TraditionalForm]}, {4, 
-             FormBox["4", TraditionalForm]}, {5, 
-             FormBox["5", TraditionalForm]}, {6, 
-             FormBox["6", TraditionalForm]}, {7, 
-             FormBox["7", TraditionalForm]}, {8, 
-             FormBox["8", TraditionalForm]}, {9, 
-             FormBox["9", TraditionalForm]}, {10, 
-             FormBox["10", TraditionalForm]}}}]}}, 
-      GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
-      "Column", 
-      GridBoxItemSize -> {
-       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"],TagBox[
-     GridBox[{{
-       "\"Dati i punti A(3,2) e B(2,0), selezionare la risposta \
-corretta:\\n\""}, {
-        ButtonBox[
-        "\"1\"", ButtonFunction :> {}, Evaluator -> None, Evaluator -> None, 
-         Appearance -> Automatic, Method -> "Preemptive"]}, {"\"\\n\""}, {
-        ButtonBox[
-        "\"1\"", ButtonFunction :> {}, Evaluator -> None, Evaluator -> None, 
-         Appearance -> Automatic, Method -> "Preemptive"]}, {"\"\\n\""}, {
-        ButtonBox[
-        "\"1\"", ButtonFunction :> {}, Evaluator -> None, Evaluator -> None, 
-         Appearance -> Automatic, Method -> "Preemptive"]}, {"\"\\n\""}, {
-        ButtonBox[
-        "\"1\"", ButtonFunction :> {}, Evaluator -> None, Evaluator -> None, 
-         Appearance -> Automatic, Method -> "Preemptive"]}, {""}}, 
+         StyleBox[
+          TagBox[
+           InterpretationBox["\"29\"", 29, Editable -> False], NumberForm], 
+          20, StripOnInput -> False], 
+         ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
+          ProvaProgetto`Private`checkRisp[
+            Part[ProvaProgetto`Private`RandomOptions, 4], 
+            ProvaProgetto`Private`giusta]), Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"]}}, 
       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
       "Column", 
       GridBoxItemSize -> {
@@ -322,16 +226,65 @@ corretta:\\n\""}, {
    "RowDefault"],
   DynamicModuleValues:>{}]], "Output",
  CellChangeTimes->{
-  3.7343313751626186`*^9},ExpressionUUID->"25a52d69-3ae5-4f99-8aa8-\
-bf5f6c12ec25"]
-}, Open  ]]
+  3.734665266573433*^9, 3.7346654185611906`*^9, 3.734665452052343*^9, {
+   3.734665503898821*^9, 3.734665580096534*^9}, 3.7346659167465935`*^9, {
+   3.7346659562901106`*^9, 3.7346659950990095`*^9}, 3.734666061494452*^9, {
+   3.7346661517396812`*^9, 3.734666239697465*^9}, {3.734666289719244*^9, 
+   3.7346663078340793`*^9}, 3.734666402840538*^9, {3.7346664992713766`*^9, 
+   3.734666532683942*^9}, 3.734666568976734*^9, 3.7346666711269703`*^9, 
+   3.734666708638939*^9, 3.734666811161836*^9, 3.7346670128217044`*^9, {
+   3.7346679623100004`*^9, 3.7346679725866165`*^9}, {3.7346680384955025`*^9, 
+   3.734668057702532*^9}, 3.7346680893797274`*^9, 3.7346681455709977`*^9, {
+   3.7346684148419113`*^9, 3.7346684365343924`*^9}, {3.7346686853923807`*^9, 
+   3.7346687276348267`*^9}, 3.73466881344683*^9, 
+   3.734668917127574*^9},ExpressionUUID->"ac1d3bac-1753-4061-8b8f-\
+d883a2809f82"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Opzioni", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", " ", "52", ",", " ", "3", ",", 
+     RowBox[{"TraditionalForm", "[", 
+      RowBox[{"Sqrt", "[", "42", "]"}], "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"x", " ", "=", " ", 
+   RowBox[{"Sort", "[", "Opzioni", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TraditionalForm", "[", "2.23607", "]"}]}], "Input",
+ CellChangeTimes->{{3.734667029794052*^9, 3.7346670812512903`*^9}, {
+  3.7346679675549507`*^9, 3.7346679698823795`*^9}, {3.734668231148552*^9, 
+  3.7346682395950184`*^9}, {3.7346683019191694`*^9, 3.734668309926384*^9}, {
+  3.734668358644179*^9, 3.7346683919176292`*^9}, {3.734668526148531*^9, 
+  3.734668555505482*^9}, {3.734668774658846*^9, 3.734668784838787*^9}, {
+  3.7346688552308455`*^9, 3.7346688949760404`*^9}, {3.7346689433250628`*^9, 
+  3.7346689661354346`*^9}},ExpressionUUID->"527b3ef2-30a0-47b8-9035-\
+28611fc84cc6"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "3", ",", "52", ",", 
+   TagBox[
+    FormBox[
+     SqrtBox["42"],
+     TraditionalForm],
+    TraditionalForm,
+    Editable->True]}], "}"}]], "Output",
+ CellChangeTimes->{{3.73466854627944*^9, 3.734668556050909*^9}, {
+   3.734668781444929*^9, 3.734668785552446*^9}, {3.7346688611580243`*^9, 
+   3.734668896609722*^9}, 
+   3.734668951874035*^9},ExpressionUUID->"e4c6081f-05ab-44ef-b9a7-\
+3137d2ce0c11"]
 }, Open  ]]
 },
 TransitionEffect->"CrossFade",
 ScreenStyleEnvironment->"Working",
 WindowToolbars->"EditBar",
-WindowSize->{1366, 695},
-WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+WindowSize->{681, 686},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
 TaggingRules->{
  "SlideShow" -> True, 
   "SlideshowSettings" -> {
@@ -340,7 +293,6 @@ TaggingRules->{
      "VerticalScrollBar", "HorizontalScrollBar", "MagnificationPopUp", 
       "StatusArea"}}},
 SpellingDictionaries->{"CorrectWords"->{"Trigonometria", "applicata"}},
-Magnification:>0.9 Inherited,
 FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
 StyleDefinitions->Notebook[{
    Cell[
@@ -361,12 +313,12 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 291, 5, 59, "Chapter",ExpressionUUID->"2e6696e5-eaee-4f5c-a693-757f59c73eb4"],
-Cell[874, 29, 3003, 44, 26, "Input",ExpressionUUID->"1cf04037-cd02-4675-a15e-19dc07591dfd"],
+Cell[580, 22, 3324, 48, 67, "Input",ExpressionUUID->"1cf04037-cd02-4675-a15e-19dc07591dfd"],
+Cell[3907, 72, 7612, 168, 711, "Output",ExpressionUUID->"ac1d3bac-1753-4061-8b8f-d883a2809f82"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[3902, 77, 5248, 122, 423, InheritFromParent,ExpressionUUID->"3eed2982-9c8d-4a38-8ae4-1383028d3451"],
-Cell[9153, 201, 5375, 124, 460, "Output",ExpressionUUID->"25a52d69-3ae5-4f99-8aa8-bf5f6c12ec25"]
-}, Open  ]]
+Cell[11556, 245, 969, 19, 67, "Input",ExpressionUUID->"527b3ef2-30a0-47b8-9035-28611fc84cc6"],
+Cell[12528, 266, 449, 13, 43, "Output",ExpressionUUID->"e4c6081f-05ab-44ef-b9a7-3137d2ce0c11"]
 }, Open  ]]
 }
 ]

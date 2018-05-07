@@ -20,6 +20,7 @@ Unprotect["ProvaProgetto` *"] (* toglie temporaneamente la protezione per ridefi
 ClearAll["ProvaProgetto` *"];
 
 
+
 (* ::InheritFromParent:: *)
 (**)
 
@@ -43,7 +44,11 @@ pointListTwo = List[{2,0},{-9,5},{-10,7},{5,2},{-5,4}, {-8,-5},{2,9},{3,-6}];
 
 computeDistance[x1_,y1_,x2_,y2_] := Return[Sqrt[(x2 - x1)^2+(y2 - y1)^2]];
 
-distanceGame[]:= DynamicModule[{x1,y1,x2,y2},
+distanceGame[]:= DynamicModule[{x1,y1,x2,y2,Esito="",colEsito},
+
+	checkRisp[risp_, correct_] := (
+		If[risp == correct, Return["Risposta Corretta"], Return["Risposta Sbagliata"]]
+	);
 	random = RandomInteger[{1,Length[pointList]}];
 	P1 = pointList[[random]];
 	P2 = pointListTwo[[random]];
@@ -75,22 +80,37 @@ distanceGame[]:= DynamicModule[{x1,y1,x2,y2},
 	](* Fine Graphics *)
 		}],(*fine colonna grafico*)
 		Column[{
+	
 		If[x1<0, SigX1="-", SigX1=""];
 		If[y1<0, SigY1="-", SigY1=""];
 		If[x2<0, SigX2="-", SigX2=""];
 		If[y2<0, SigY2="-", SigY2=""];
 		A = "("<>SigX1<>IntegerString[x1]<>","<>SigY1<>IntegerString[y1]<>")";
 		B = "("<>SigX2<>IntegerString[x2]<>","<>SigY2<>IntegerString[y2]<>")";
-	
+		Style[Dynamic[Esito]],
 		Style["Quanto distano tra di loro i punti A"<>A <>" e B"<>B<>":",20],
-	
-		Button[Style[NumberForm[computeDistance[x1,y1,x2,y2]],20]],
-		Button[Style["10",20]],
-		Button[Style["A",20]],
-		Button[Style["A",20]]
+		giusta = computeDistance[x1,y1,x2,y2];
+		risp1 =  RandomInteger[{1,10}];
+		risp2 =  RandomInteger[{11,20}];
+		risp3 =  RandomInteger[{21,30}];
+		risp4 = giusta;
+		Opzioni = {risp1, risp2, risp3, N[risp4]};
+		RandomOptions = Sort[Opzioni];
+		If[N[giusta]==RandomOptions[[1]], RandomOptions[[1]] = giusta;],
+		If[N[giusta]==RandomOptions[[2]], RandomOptions[[2]] = giusta; ],
+		If[N[giusta]==RandomOptions[[3]], RandomOptions[[3]]= giusta;],
+		If[N[giusta]==RandomOptions[[4]], RandomOptions[[4]] = giusta;],		
+		btn1 = Button[Style[NumberForm[RandomOptions[[1]]],20], Esito:=checkRisp[RandomOptions[[1]],giusta]];
+		btn2 = Button[Style[NumberForm[RandomOptions[[2]]],20], Esito:=checkRisp[RandomOptions[[2]],giusta]];
+		btn3 = Button[Style[NumberForm[RandomOptions[[3]]],20], Esito:=checkRisp[RandomOptions[[3]],giusta]];
+		btn4 = Button[Style[NumberForm[RandomOptions[[4]]],20], Esito:=checkRisp[RandomOptions[[4]],giusta]];
+		btn1, btn2, btn3, btn4
 		}] (*fine colonna input*)
 	}]
 ];
+
+
+
 
 drawCartesian[x_,y_]:= DynamicModule[{colEsito=Black, esito="",limit = 10, xIn=0, yIn=0},
 Row[{ 
