@@ -1,0 +1,436 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     18140,        428]
+NotebookOptionsPosition[     17487,        408]
+NotebookOutlinePosition[     17835,        423]
+CellTagsIndexPosition[     17792,        420]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
+  RowBox[{"<<", " ", "package.m"}], ";", " ", 
+  RowBox[{"distanceGame", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.734851720561689*^9, 3.734851721300779*^9}, 
+   3.7348523017858644`*^9, {3.734852618652252*^9, 3.7348526192466936`*^9}, {
+   3.7348526713345904`*^9, 3.734852737127641*^9}, {3.734857481282914*^9, 
+   3.7348574821599283`*^9}, {3.734857946617611*^9, 3.734857949921915*^9}, {
+   3.734858253993695*^9, 3.7348582546311607`*^9}, {3.734858367351495*^9, 
+   3.734858367885936*^9}},ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-\
+fa6f348760a2"],
+
+Cell[BoxData[
+ DynamicModuleBox[{ProvaProgetto`Private`x1$$ = 3, 
+  ProvaProgetto`Private`y1$$ = 2, ProvaProgetto`Private`x2$$ = 2, 
+  ProvaProgetto`Private`y2$$ = 9, ProvaProgetto`Private`Esito$$ = "", 
+  ProvaProgetto`Private`colEsito$$ = GrayLevel[0]}, 
+  TemplateBox[{TagBox[
+     GridBox[{{
+        GraphicsBox[{{
+           Dashing[{Small, Small}], 
+           LineBox[{{3, 0}, {3, 2}}]}, {
+           Dashing[{Small, Small}], 
+           LineBox[{{0, 2}, {3, 2}}]}, {
+           Dashing[{Small, Small}], 
+           LineBox[{{2, 0}, {2, 9}}]}, {
+           Dashing[{Small, Small}], 
+           LineBox[{{0, 9}, {2, 9}}]}, 
+          InsetBox[
+           FormBox[
+            StyleBox["\"A\"", 20, StripOnInput -> False], TraditionalForm], {
+           2.6, 1.6}], 
+          InsetBox[
+           FormBox[
+            StyleBox["\"B\"", 20, StripOnInput -> False], TraditionalForm], {
+           2.4, 9.4}], {
+           PointSize[Large], 
+           RGBColor[1, 0, 0], 
+           PointBox[{3, 2}]}, {
+           PointSize[Large], 
+           RGBColor[1, 0, 0], 
+           PointBox[{2, 9}]}, 
+          LineBox[{{3, 2}, {2, 9}}]}, Axes -> True, AxesStyle -> 
+         Thickness[Large], PlotRange -> 10, ImageSize -> 450, AxesLabel -> {
+           FormBox["\"x\"", TraditionalForm], 
+           FormBox["\"y\"", TraditionalForm]}, Ticks -> {{{-10, 
+             FormBox[
+              RowBox[{"-", "10"}], TraditionalForm]}, {-9, 
+             FormBox[
+              RowBox[{"-", "9"}], TraditionalForm]}, {-8, 
+             FormBox[
+              RowBox[{"-", "8"}], TraditionalForm]}, {-7, 
+             FormBox[
+              RowBox[{"-", "7"}], TraditionalForm]}, {-6, 
+             FormBox[
+              RowBox[{"-", "6"}], TraditionalForm]}, {-5, 
+             FormBox[
+              RowBox[{"-", "5"}], TraditionalForm]}, {-4, 
+             FormBox[
+              RowBox[{"-", "4"}], TraditionalForm]}, {-3, 
+             FormBox[
+              RowBox[{"-", "3"}], TraditionalForm]}, {-2, 
+             FormBox[
+              RowBox[{"-", "2"}], TraditionalForm]}, {-1, 
+             FormBox[
+              RowBox[{"-", "1"}], TraditionalForm]}, {0, 
+             FormBox["0", TraditionalForm]}, {1, 
+             FormBox["1", TraditionalForm]}, {2, 
+             FormBox["2", TraditionalForm]}, {3, 
+             FormBox["3", TraditionalForm]}, {4, 
+             FormBox["4", TraditionalForm]}, {5, 
+             FormBox["5", TraditionalForm]}, {6, 
+             FormBox["6", TraditionalForm]}, {7, 
+             FormBox["7", TraditionalForm]}, {8, 
+             FormBox["8", TraditionalForm]}, {9, 
+             FormBox["9", TraditionalForm]}, {10, 
+             FormBox["10", TraditionalForm]}}, {{-10, 
+             FormBox[
+              RowBox[{"-", "10"}], TraditionalForm]}, {-9, 
+             FormBox[
+              RowBox[{"-", "9"}], TraditionalForm]}, {-8, 
+             FormBox[
+              RowBox[{"-", "8"}], TraditionalForm]}, {-7, 
+             FormBox[
+              RowBox[{"-", "7"}], TraditionalForm]}, {-6, 
+             FormBox[
+              RowBox[{"-", "6"}], TraditionalForm]}, {-5, 
+             FormBox[
+              RowBox[{"-", "5"}], TraditionalForm]}, {-4, 
+             FormBox[
+              RowBox[{"-", "4"}], TraditionalForm]}, {-3, 
+             FormBox[
+              RowBox[{"-", "3"}], TraditionalForm]}, {-2, 
+             FormBox[
+              RowBox[{"-", "2"}], TraditionalForm]}, {-1, 
+             FormBox[
+              RowBox[{"-", "1"}], TraditionalForm]}, {0, 
+             FormBox["0", TraditionalForm]}, {1, 
+             FormBox["1", TraditionalForm]}, {2, 
+             FormBox["2", TraditionalForm]}, {3, 
+             FormBox["3", TraditionalForm]}, {4, 
+             FormBox["4", TraditionalForm]}, {5, 
+             FormBox["5", TraditionalForm]}, {6, 
+             FormBox["6", TraditionalForm]}, {7, 
+             FormBox["7", TraditionalForm]}, {8, 
+             FormBox["8", TraditionalForm]}, {9, 
+             FormBox["9", TraditionalForm]}, {10, 
+             FormBox["10", TraditionalForm]}}}]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+      "Column", 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"],TagBox[
+     GridBox[{{
+        TemplateBox[{
+          ButtonBox["\"Aiuto\"", ButtonFunction :> CreateDialog[{
+              TextCell[
+              "La distanza tra due punti si calcola nel seguente modo: " 
+               HoldForm[
+                 Sqrt[("xA" - "xB")^2 + ("yA" - "yB")^2]]], 
+              DefaultButton[]}], ImageSize -> Medium, 
+           BaseStyle -> {"GenericButton"}, Appearance -> Automatic, Evaluator -> 
+           Automatic, Method -> "Preemptive"], 
+          ButtonBox["\"Nuovo Esercizio\"", ButtonFunction :> FrontEndExecute[
+             FrontEndToken[
+              NotebookLocate["esDistanza"], "Evaluate"]], ImageSize -> Medium,
+            BaseStyle -> {"GenericButton"}, Appearance -> Automatic, 
+           Evaluator -> Automatic, Method -> "Preemptive"]}, "RowDefault"]}, {
+        DynamicBox[
+         ToBoxes[
+          Text[
+           Style[
+           ProvaProgetto`Private`Esito$$, ProvaProgetto`Private`colEsito$$, 
+            20]], StandardForm]]}, {
+        StyleBox[
+        "\"Quanto distano tra di loro i punti A(3,2) e B(2,9):\"", 20, 
+         StripOnInput -> False]}, {""}, {""}, {""}, {""}, {
+        ButtonBox[
+         StyleBox[
+          TagBox[
+           InterpretationBox["\"3\"", 3, Editable -> False], NumberForm], 20, 
+          StripOnInput -> False], ButtonFunction :> 
+         ProvaProgetto`Private`checkRisp[
+           Part[ProvaProgetto`Private`RandomOptions, 1], 
+           ProvaProgetto`Private`giusta], Appearance -> Automatic, Evaluator -> 
+         Automatic, Method -> "Preemptive"]}, {
+        ButtonBox[
+         StyleBox[
+          TagBox[
+           RowBox[{
+             InterpretationBox["\"5\"", 5, Editable -> False], " ", 
+             SqrtBox[
+              InterpretationBox["\"2\"", 2, Editable -> False]]}], 
+           NumberForm], 20, StripOnInput -> False], ButtonFunction :> 
+         ProvaProgetto`Private`checkRisp[
+           Part[ProvaProgetto`Private`RandomOptions, 2], 
+           ProvaProgetto`Private`giusta], Appearance -> Automatic, Evaluator -> 
+         Automatic, Method -> "Preemptive"]}, {
+        ButtonBox[
+         StyleBox[
+          TagBox[
+           InterpretationBox["\"15\"", 15, Editable -> False], NumberForm], 
+          20, StripOnInput -> False], ButtonFunction :> 
+         ProvaProgetto`Private`checkRisp[
+           Part[ProvaProgetto`Private`RandomOptions, 3], 
+           ProvaProgetto`Private`giusta], Appearance -> Automatic, Evaluator -> 
+         Automatic, Method -> "Preemptive"]}, {
+        ButtonBox[
+         StyleBox[
+          TagBox[
+           InterpretationBox["\"28\"", 28, Editable -> False], NumberForm], 
+          20, StripOnInput -> False], ButtonFunction :> 
+         ProvaProgetto`Private`checkRisp[
+           Part[ProvaProgetto`Private`RandomOptions, 4], 
+           ProvaProgetto`Private`giusta], Appearance -> Automatic, Evaluator -> 
+         Automatic, Method -> "Preemptive"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+      "Column", 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+   "RowDefault"],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{
+  3.7348580171583786`*^9, {3.7348580572195907`*^9, 3.7348580854915113`*^9}, {
+   3.7348582514153337`*^9, 3.734858276033228*^9}, {3.734858365642078*^9, 
+   3.7348583686231976`*^9}, 
+   3.734858416602153*^9},ExpressionUUID->"94753c8a-dd0c-4067-8707-\
+b8fc31176cda"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7348580140528126`*^9, 
+  3.734858014634733*^9}},ExpressionUUID->"829e1165-e03e-4573-b89f-\
+c7050453e924"],
+
+Cell[BoxData[
+ DynamicModuleBox[{ProvaProgetto`Private`x1$$ = 3, 
+  ProvaProgetto`Private`y1$$ = 2, ProvaProgetto`Private`x2$$ = -10, 
+  ProvaProgetto`Private`y2$$ = 7, ProvaProgetto`Private`Esito$$ = 
+  "Risposta Corretta", ProvaProgetto`Private`colEsito$$}, 
+  TemplateBox[{TagBox[
+     GridBox[{{
+        GraphicsBox[{{
+           Dashing[{Small, Small}], 
+           LineBox[{{3, 0}, {3, 2}}]}, {
+           Dashing[{Small, Small}], 
+           LineBox[{{0, 2}, {3, 2}}]}, {
+           Dashing[{Small, Small}], 
+           LineBox[{{-10, 0}, {-10, 7}}]}, {
+           Dashing[{Small, Small}], 
+           LineBox[{{0, 7}, {-10, 7}}]}, 
+          InsetBox[
+           FormBox[
+            StyleBox["\"A\"", 20, StripOnInput -> False], TraditionalForm], {
+           2.6, 1.6}], 
+          InsetBox[
+           FormBox[
+            StyleBox["\"B\"", 20, StripOnInput -> False], 
+            TraditionalForm], {-9.6, 7.4}], {
+           PointSize[Large], 
+           RGBColor[1, 0, 0], 
+           PointBox[{3, 2}]}, {
+           PointSize[Large], 
+           RGBColor[1, 0, 0], 
+           PointBox[{-10, 7}]}, 
+          LineBox[{{3, 2}, {-10, 7}}]}, Axes -> True, AxesStyle -> 
+         Thickness[Large], PlotRange -> 10, ImageSize -> 450, AxesLabel -> {
+           FormBox["\"x\"", TraditionalForm], 
+           FormBox["\"y\"", TraditionalForm]}, Ticks -> {{{-10, 
+             FormBox[
+              RowBox[{"-", "10"}], TraditionalForm]}, {-9, 
+             FormBox[
+              RowBox[{"-", "9"}], TraditionalForm]}, {-8, 
+             FormBox[
+              RowBox[{"-", "8"}], TraditionalForm]}, {-7, 
+             FormBox[
+              RowBox[{"-", "7"}], TraditionalForm]}, {-6, 
+             FormBox[
+              RowBox[{"-", "6"}], TraditionalForm]}, {-5, 
+             FormBox[
+              RowBox[{"-", "5"}], TraditionalForm]}, {-4, 
+             FormBox[
+              RowBox[{"-", "4"}], TraditionalForm]}, {-3, 
+             FormBox[
+              RowBox[{"-", "3"}], TraditionalForm]}, {-2, 
+             FormBox[
+              RowBox[{"-", "2"}], TraditionalForm]}, {-1, 
+             FormBox[
+              RowBox[{"-", "1"}], TraditionalForm]}, {0, 
+             FormBox["0", TraditionalForm]}, {1, 
+             FormBox["1", TraditionalForm]}, {2, 
+             FormBox["2", TraditionalForm]}, {3, 
+             FormBox["3", TraditionalForm]}, {4, 
+             FormBox["4", TraditionalForm]}, {5, 
+             FormBox["5", TraditionalForm]}, {6, 
+             FormBox["6", TraditionalForm]}, {7, 
+             FormBox["7", TraditionalForm]}, {8, 
+             FormBox["8", TraditionalForm]}, {9, 
+             FormBox["9", TraditionalForm]}, {10, 
+             FormBox["10", TraditionalForm]}}, {{-10, 
+             FormBox[
+              RowBox[{"-", "10"}], TraditionalForm]}, {-9, 
+             FormBox[
+              RowBox[{"-", "9"}], TraditionalForm]}, {-8, 
+             FormBox[
+              RowBox[{"-", "8"}], TraditionalForm]}, {-7, 
+             FormBox[
+              RowBox[{"-", "7"}], TraditionalForm]}, {-6, 
+             FormBox[
+              RowBox[{"-", "6"}], TraditionalForm]}, {-5, 
+             FormBox[
+              RowBox[{"-", "5"}], TraditionalForm]}, {-4, 
+             FormBox[
+              RowBox[{"-", "4"}], TraditionalForm]}, {-3, 
+             FormBox[
+              RowBox[{"-", "3"}], TraditionalForm]}, {-2, 
+             FormBox[
+              RowBox[{"-", "2"}], TraditionalForm]}, {-1, 
+             FormBox[
+              RowBox[{"-", "1"}], TraditionalForm]}, {0, 
+             FormBox["0", TraditionalForm]}, {1, 
+             FormBox["1", TraditionalForm]}, {2, 
+             FormBox["2", TraditionalForm]}, {3, 
+             FormBox["3", TraditionalForm]}, {4, 
+             FormBox["4", TraditionalForm]}, {5, 
+             FormBox["5", TraditionalForm]}, {6, 
+             FormBox["6", TraditionalForm]}, {7, 
+             FormBox["7", TraditionalForm]}, {8, 
+             FormBox["8", TraditionalForm]}, {9, 
+             FormBox["9", TraditionalForm]}, {10, 
+             FormBox["10", TraditionalForm]}}}]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+      "Column", 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"],TagBox[
+     GridBox[{{
+        TemplateBox[{
+          ButtonBox["\"Aiuto\"", ButtonFunction :> CreateDialog[{
+              TextCell[
+              "La distanza tra due punti si calcola nel seguente modo: " 
+               HoldForm[
+                 Sqrt[("xA" - "xB")^2 + ("yA" - "yB")^2]]], 
+              DefaultButton[]}], ImageSize -> Medium, 
+           BaseStyle -> {"GenericButton"}, Appearance -> Automatic, Evaluator -> 
+           Automatic, Method -> "Preemptive"], 
+          ButtonBox["\"Nuovo Esercizio\"", ButtonFunction :> FrontEndExecute[
+             FrontEndToken[
+              NotebookLocate["esDistanza"], "Evaluate"]], ImageSize -> Medium,
+            BaseStyle -> {"GenericButton"}, Appearance -> Automatic, 
+           Evaluator -> Automatic, Method -> "Preemptive"]}, "RowDefault"]}, {
+        RowBox[{
+          StyleBox[
+          "\"Quanto distano tra di loro i punti A(3,2) e B(-10,7):\"", 20, 
+           StripOnInput -> False], " ", 
+          InterpretationBox[
+           Cell[
+            BoxData[
+             FormBox[
+              RowBox[{"Style", "[", 
+                
+                RowBox[{
+                 "\"\"", ",", "ProvaProgetto`Private`colEsito$$", ",", "20"}],
+                 "]"}], TextForm]], "InlineText"], 
+           Text[
+            Style["", ProvaProgetto`Private`colEsito$$, 20]]]}]}, {""}, {
+       ""}, {""}, {""}, {
+        ButtonBox[
+         StyleBox[
+          TagBox[
+           InterpretationBox["\"4\"", 4, Editable -> False], NumberForm], 20, 
+          StripOnInput -> False], 
+         ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
+          ProvaProgetto`Private`checkRisp[
+            Part[ProvaProgetto`Private`RandomOptions, 1], 
+            ProvaProgetto`Private`giusta]), Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"]}, {
+        ButtonBox[
+         StyleBox[
+          TagBox[
+           InterpretationBox["\"11\"", 11, Editable -> False], NumberForm], 
+          20, StripOnInput -> False], 
+         ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
+          ProvaProgetto`Private`checkRisp[
+            Part[ProvaProgetto`Private`RandomOptions, 2], 
+            ProvaProgetto`Private`giusta]), Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"]}, {
+        ButtonBox[
+         StyleBox[
+          TagBox[
+           SqrtBox[
+            InterpretationBox["\"194\"", 194, Editable -> False]], 
+           NumberForm], 20, StripOnInput -> False], 
+         ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
+          ProvaProgetto`Private`checkRisp[
+            Part[ProvaProgetto`Private`RandomOptions, 3], 
+            ProvaProgetto`Private`giusta]), Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"]}, {
+        ButtonBox[
+         StyleBox[
+          TagBox[
+           InterpretationBox["\"28\"", 28, Editable -> False], NumberForm], 
+          20, StripOnInput -> False], 
+         ButtonFunction :> (ProvaProgetto`Private`Esito$$ := 
+          ProvaProgetto`Private`checkRisp[
+            Part[ProvaProgetto`Private`RandomOptions, 4], 
+            ProvaProgetto`Private`giusta]), Appearance -> Automatic, 
+         Evaluator -> Automatic, Method -> "Preemptive"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+      "Column", 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+   "RowDefault"],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{{3.734857071864095*^9, 3.7348571073951845`*^9}, {
+   3.73485718202995*^9, 3.734857203292991*^9}, {3.734857241438846*^9, 
+   3.734857254833541*^9}, 3.7348572997798758`*^9, 3.734857333029766*^9, {
+   3.7348574787897577`*^9, 3.734857482646479*^9}, 3.734857629161399*^9, 
+   3.7348577099088144`*^9, {3.7348577678941402`*^9, 3.734857777115391*^9}, {
+   3.7348579264609814`*^9, 
+   3.734857950470196*^9}},ExpressionUUID->"a522e5e7-d87c-4e47-aa12-\
+92d8ca6a82d8"]
+}, Open  ]]
+},
+WindowSize->{1366, 695},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 665, 12, 28, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
+Cell[1248, 36, 7743, 174, 506, "Output",ExpressionUUID->"94753c8a-dd0c-4067-8707-b8fc31176cda"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9028, 215, 154, 3, 28, "Input",ExpressionUUID->"829e1165-e03e-4573-b89f-c7050453e924"],
+Cell[9185, 220, 8286, 185, 791, "Output",ExpressionUUID->"a522e5e7-d87c-4e47-aa12-92d8ca6a82d8"]
+}, Open  ]]
+}
+]
+*)
+

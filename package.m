@@ -44,14 +44,14 @@ pointListTwo = List[{2,0},{-9,5},{-10,7},{5,2},{-5,4}, {-8,-5},{2,9},{3,-6}];
 
 computeDistance[x1_,y1_,x2_,y2_] := Return[Sqrt[(x2 - x1)^2+(y2 - y1)^2]];
 
-distanceGame[]:= DynamicModule[{x1,y1,x2,y2,Esito="",colEsito},
-
+distanceGame[]:= DynamicModule[{x1,y1,x2,y2,Esito=""},
 	checkRisp[risp_, correct_] := (
 		If[risp == correct, Return["Risposta Corretta"], Return["Risposta Sbagliata"]]
 	);
 	random = RandomInteger[{1,Length[pointList]}];
+	randomTwo = RandomInteger[{1,Length[pointListTwo]}];
 	P1 = pointList[[random]];
-	P2 = pointListTwo[[random]];
+	P2 = pointListTwo[[randomTwo]];
 	x1 = P1[[1]];
 	x2 = P2[[1]];
 	y1 = P1[[2]];
@@ -80,14 +80,23 @@ distanceGame[]:= DynamicModule[{x1,y1,x2,y2,Esito="",colEsito},
 	](* Fine Graphics *)
 		}],(*fine colonna grafico*)
 		Column[{
-	
+		Row[{
+				Button["Aiuto",
+			CreateDialog[{
+				TextCell["La distanza tra due punti si calcola nel seguente modo: "HoldForm[Sqrt[("xA" - "xB")^2 + ("yA" - "yB")^2]]],
+				DefaultButton[]
+			}],
+			ImageSize->Medium,BaseStyle->{"GenericButton"}
+		],
+
+		Button["Nuovo Esercizio",FrontEndExecute[FrontEndToken[NotebookLocate["esDistanza"],"Evaluate"]],ImageSize->Medium,BaseStyle->{"GenericButton"}]
+		}],	
 		If[x1<0, SigX1="-", SigX1=""];
 		If[y1<0, SigY1="-", SigY1=""];
 		If[x2<0, SigX2="-", SigX2=""];
 		If[y2<0, SigY2="-", SigY2=""];
 		A = "("<>SigX1<>IntegerString[x1]<>","<>SigY1<>IntegerString[y1]<>")";
 		B = "("<>SigX2<>IntegerString[x2]<>","<>SigY2<>IntegerString[y2]<>")";
-		Style[Dynamic[Esito]],
 		Style["Quanto distano tra di loro i punti A"<>A <>" e B"<>B<>":",20],
 		giusta = computeDistance[x1,y1,x2,y2];
 		risp1 =  RandomInteger[{1,10}];
@@ -114,7 +123,7 @@ distanceGame[]:= DynamicModule[{x1,y1,x2,y2,Esito="",colEsito},
 
 drawCartesian[x_,y_]:= DynamicModule[{colEsito=Black, esito="",limit = 10, xIn=0, yIn=0},
 Row[{ 
-	q1 = {limit,limit};
+    q1 = {limit,limit};
 	q2 = {-limit,limit};
 	q3 = {-limit,-limit};
 	q4 = {limit,-limit};
@@ -130,25 +139,43 @@ Row[{
 		Table[i,{i,-limit, limit, 1}],
 		Table[i,{i,-limit, limit, 1}]
 		}
-	](* Fine Graphics *),
+	](* Fine Graphics *)
 	}],(*Fine Column*)
 	Column[{
+	
+	Row[{
+			Button["Aiuto",
+			CreateDialog[{
+				TextCell["L'asse delle X \[EGrave] la retta posta in posizione orizzontale mentre l'asse delle Y \[EGrave] in posizione verticale"],
+				DefaultButton[]
+			}],
+			ImageSize->Medium,BaseStyle->{"GenericButton"}
+		],
+			
+		Button["Nuovo Esercizio",FrontEndExecute[FrontEndToken[NotebookLocate["esCoordinate"],"Evaluate"]],ImageSize->Medium,BaseStyle->{"GenericButton"}]
+	
+	}],
+	
 	Dynamic[Text[Style[esito,colEsito, 20]]],
 	"   x: "InputField[Dynamic[xIn],Number,FieldSize->5], "\n",
 	"   y: "InputField[Dynamic[yIn],Number,FieldSize->5],
+	
+	
 	Button["Risolvi", 
 		If[xIn == x && yIn ==y,
 			(*IF*)
 		  {esito:="Corretto"; colEsito:=Green}, 
 		   (*ELSE *)
-		  {esito:="Sbagliato"; colEsito:=Red }] 
-	]}]
+		  {esito:="Sbagliato"; colEsito:=Red }], BaseStyle->{Green} 
+	]
+	}]
 	}](*Fine Row*)
 ];
 (*individue le coord del punto*)
 startGame[] := DynamicModule[{},
-     random = RandomInteger[{1,Length[pointList]}];
-	 P = pointList[[random]];
+	pointList = List[{3,2},{1,3},{-1,1},{-2,-5},{-3,8},{-1,3},{-2,1},{-7,3},{2,0},{-9,5},{-10,7},{5,2},{-5,4},{-8,-5},{2,9},{3,-6}];
+     randomPoint = RandomInteger[{1,Length[pointList]}];
+	 P = pointList[[randomPoint]];
 	 drawCartesian[P[[1]],P[[2]]]
 	
 ];
@@ -213,6 +240,10 @@ drawCircle[] := Manipulate[
   }],
   {{x,0,"Angolo"}, 0, 2 Pi, 2 Pi/360}
 ];
+
+
+
+
 
 
 
