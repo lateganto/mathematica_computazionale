@@ -80,6 +80,8 @@ distanceGame[]:= DynamicModule[{x1,y1,x2,y2,Esito=""},
 	](* Fine Graphics *)
 		}],(*fine colonna grafico*)
 		Column[{
+		
+		Style[Dynamic[Esito],20],
 		Row[{
 				Button["Aiuto",
 			CreateDialog[{
@@ -88,7 +90,6 @@ distanceGame[]:= DynamicModule[{x1,y1,x2,y2,Esito=""},
 			}],
 			ImageSize->Medium,BaseStyle->{"GenericButton"}
 		],
-
 		Button["Nuovo Esercizio",FrontEndExecute[FrontEndToken[NotebookLocate["esDistanza"],"Evaluate"]],ImageSize->Medium,BaseStyle->{"GenericButton"}]
 		}],	
 		If[x1<0, SigX1="-", SigX1=""];
