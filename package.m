@@ -29,6 +29,7 @@ drawCircle::usage = "disegna un grafico";
 drawCartesian::usage = "disegna assi"
 startGame::usage = "gioco del quadrante";
 distanceGame::usage = "calcola la distanza distanza tra due punti";
+typeAngle::usage = "per la def di angolo";
 Begin["`Private`"]; (* Comincia spazio privato *)
 
 FromRadToGrad[x_] := Return[x*180/Pi];
@@ -43,6 +44,102 @@ pointListTwo = List[{2,0},{-9,5},{-10,7},{5,2},{-5,4}, {-8,-5},{2,9},{3,-6}];
 
 
 computeDistance[x1_,y1_,x2_,y2_] := Return[Sqrt[(x2 - x1)^2+(y2 - y1)^2]];
+
+typeAngle[]:= Manipulate[
+	Graphics[{
+	angle = If[a == 0, "NULLO",
+				If[a == 90, "RETTO",
+					If[a== 180 || a == 179||a== 181, "PIATTO",
+						If[a == 360, "GIRO", ""]
+					]
+				]
+	];,
+	If[a == 179 || a==181, a=180],
+	Circle[],
+	x := N[Cos[a Degree]];,
+	y := N[Sin[a Degree]];,
+	{Green,Thick, Circle[{0,0},0.2,{0,a Pi/180}]},
+	Text[Style[angle,15, Blue], {-0.5,1.2}],
+	Text[Style[a \[Degree],15, Blue], {-0.5,1}],
+    RGBColor[255,0,0],
+
+	Line[{{0,0},{x,y}}],
+	}, Axes->True
+	],
+	{{a,0,"angolo"},0,360,1}];
+		(*
+		
+		Row[{DynamicModule[{},
+    Graphics[{
+          angle = Dynamic[x],
+          Circle[], 
+          RGBColor[255,0,0],
+          Line[{{0,0},{3/2,1/2}}]
+          },
+           Axes\[Rule]True
+        ]
+	]}],
+		*)
+		
+		
+drawCircle[] := Manipulate[
+  Row[{
+    Graphics[{
+      Circle[],
+      Point[{0,0}],
+      PointSize[Large],
+      Circle[{0,0},0.2,{0,x}],
+      {Dashed, Line[{{0,0},{Cos[x],Sin[x]}}]},(*raggio*)
+      Thickness[0.01],
+      RGBColor[0,255,0],
+      Line[{{0,0},{Cos[x],0}}],
+      RGBColor[255,0,0],
+      Line[{{Cos[x],0},{Cos[x],Sin[x]}}],
+      Text[Style[IntegerString[FromRadToGrad[x]] <> "\[Degree]",Large,Red],{-0.90,1}],
+      Text[Style["Seno",Medium,Red],{0.8,1}],
+      Text[Style["Coseno",Medium,Green],{0.8,0.9}],
+
+      {Black,PointSize ->.02, Point[{Cos[x], Sin[x]}]}},
+      ImageSize->350,
+      Axes->True
+    ] (*FINE GRAPHICS*),
+    Column[{
+        (* GRAFICI SENO E COSENO *)
+        Show[
+          Plot[Sin[y], {y, 0,  2 Pi}, 
+            ImageSize->300, 
+            Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}},
+            PlotLabel -> "Sine function",
+            PlotStyle -> {Orange}
+          ], 
+          Graphics[{ 
+            {Dashed, Line[{{x,0},{x,Sin[x]}}]},
+            PointSize[Large],
+            Point[{ x, Sin[x] }]}
+          ]
+        ],
+        Show[
+          Plot[Cos[y], {y, 0,  2 Pi}, 
+            ImageSize->300,
+            Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}},
+            PlotLabel -> "Cosine function",
+            PlotStyle -> {Blue}
+          ],
+          Graphics[{
+            {Dashed, Line[{{x,0},{x,Cos[x]}}]},
+            PointSize[Large],
+            Point[{ x, Cos[x]}]}
+          ]
+        ]
+    }]
+  }],
+  {{x,0,"Angolo"}, 0, 2 Pi, 2 Pi/360}
+];
+
+
+
+
+
 
 distanceGame[]:= DynamicModule[{x1,y1,x2,y2,Esito=""},
 	checkRisp[risp_, correct_] := (
