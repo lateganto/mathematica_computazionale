@@ -30,6 +30,8 @@ drawCartesian::usage = "disegna assi"
 startGame::usage = "gioco del quadrante";
 distanceGame::usage = "calcola la distanza distanza tra due punti";
 typeAngle::usage = "per la def di angolo";
+altezzaTorre::usage = "applicazione altezza torre";
+AngoliNotevoli::usage = "manipulate di angoli notevoli";
 Begin["`Private`"]; (* Comincia spazio privato *)
 
 FromRadToGrad[x_] := Return[x*180/Pi];
@@ -216,6 +218,13 @@ distanceGame[]:= DynamicModule[{x1,y1,x2,y2,Esito=""},
 	}]
 ];
 
+AngoliNotevoli[]:= Manipulate[
+Graphics[{If[n>0,{},{ColorData[10][1],Line[{{0,0},{1,0}}],Text[0,{1.2,0}]}],
+MapIndexed[{ColorData[10][0],Text[If[n==11,2 \[Pi],0],{1.2,0}],ColorData[10][First@#2],
+Text[Last@#,{1.2 Cos[Last[#]],1.2 Sin[Last[#]]}],Disk[{0,0},1,#]}&,
+Take[Partition[{0,\[Pi]/6,\[Pi]/4,\[Pi]/3,\[Pi]/2,2 \[Pi]/3,3 \[Pi]/4,\[Pi],5/4 \[Pi],3 \[Pi]/2,7 \[Pi]/4,2 \[Pi]},2,1],n]]},
+PlotRange->{{-1.3,1.3},{-1.3,1.3}}],{{n,8,"Angolo"},0,11,1}];
+
 
 
 
@@ -337,6 +346,36 @@ drawCircle[] := Manipulate[
     }]
   }],
   {{x,0,"Angolo"}, 0, 2 Pi, 2 Pi/360}
+];
+
+GetAngolo[alt_,bas_] := Return[N[ArcTan[alt/bas] / Degree ]];
+altezzaTorre[] := Manipulate[DynamicModule[{},
+	Graphics[{
+		Text["Torre",{75,-40+altezza+5}],
+		(*Torre*)
+		{EdgeForm[Thick],Brown,Rectangle[{70,-40},{80,-40+altezza}]},
+		(*Punto osservatore*)
+		{Blue,PointSize[Large],Point[{x,-40}]},
+		Line[{{-100,-40},{150,-40}}],
+		Line[{{x,-40},{70,-40+altezza}}],
+		{Green,Thickness[0.01],Line[{{x,-40},{69,-40}}]},
+		dist:=computeDistance[x,0,70,0],
+		angolo:=GetAngolo[altezza,dist],
+
+		Text[Style[StringForm["Angolo \!\(\*
+StyleBox[\"\[Alpha]\", \"TradFormChar\"]\): `` \[Degree]",N[angolo]],Red,15],{-79,85}],
+		Text[Style[StringForm["Distanza: ``",dist],Green,15],{-87,95}],
+		Text[Style[StringForm["Altezza = Distanza x tan(``) = ``",N[angolo],altezza],15],{-50,75}],
+		{Thickness[0.001],Red,Circle[{x,-40},20,{0,angolo Pi/180}]},
+		Text[Style["\!\(\*
+StyleBox[\"\[Alpha]\", \"TradFormChar\"]\)",Red,20],{x+36,-35}]
+	},
+	PlotRange->{{-110,85},{-45,160}},
+	ImageSize->450
+	]
+	],
+	{{altezza,20,"Altezza"},20,150,1},
+	{{x,-10,"Posizione"},-100,65,1}
 ];
 
 
