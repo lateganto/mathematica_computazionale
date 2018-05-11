@@ -6,6 +6,12 @@ ClearAll["ProvaProgetto` *"];
 (* ::InheritFromParent:: *)
 (**)
 
+(*
+
+	RICORDARE DI NOMINARE LA CELLA DEL NOTEBOOK "es4"
+
+*)
+
 es4::usage = "secante/tangente";
 Begin["`Private`"]; (* Comincia spazio privato *)
 
