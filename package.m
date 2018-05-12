@@ -15,7 +15,7 @@
 (**)
 
 
-BeginPackage[ "ProvaProgetto`"];
+BeginPackage[ "ProvaProgetto`"]; 
 Unprotect["ProvaProgetto` *"] (* toglie temporaneamente la protezione per ridefinire le funzioni *)
 ClearAll["ProvaProgetto` *"];
 
