@@ -32,6 +32,7 @@ distanceGame::usage = "calcola la distanza distanza tra due punti";
 typeAngle::usage = "per la def di angolo";
 altezzaTorre::usage = "applicazione altezza torre";
 AngoliNotevoli::usage = "manipulate di angoli notevoli";
+ThGradRad::usage = "maniupulate della conversione radianti gradi";
 Begin["`Private`"]; (* Comincia spazio privato *)
 
 FromRadToGrad[x_] := Return[x*180/Pi];
@@ -69,20 +70,25 @@ typeAngle[]:= Manipulate[
 	}, Axes->True
 	],
 	{{a,0,"angolo"},0,360,1}];
-		(*
 		
-		Row[{DynamicModule[{},
-    Graphics[{
-          angle = Dynamic[x],
-          Circle[], 
-          RGBColor[255,0,0],
-          Line[{{0,0},{3/2,1/2}}]
-          },
-           Axes\[Rule]True
-        ]
-	]}],
-		*)
+ThGradRad[] := Manipulate[
+	Row[{
+	"Angoli notevoli (\[Degree]): ",
+	PopupMenu[Dynamic[gradi],{0,30,45,60,90,120,135,150,180,210,225,240,270,300,315,330,360}],
+		"\n\n",
+		Style[gradi "\[Degree]", 20,Red],
+		"\t:\t",
+		Style[gradi Pi/180, 20,Green],
+		"\t=\t",
+		"360\t:\t",
+		HoldForm[2 Pi],
+		"\n\n\n",
+		Style["Gradi",Red], "\n",
+		Style["Radianti",Green]
 		
+	}],
+{{gradi,0,"Gradi"}, 0,360,1}
+];
 		
 drawCircle[] := Manipulate[
   Row[{
@@ -111,7 +117,7 @@ drawCircle[] := Manipulate[
           Plot[Sin[y], {y, 0,  2 Pi}, 
             ImageSize->300, 
             Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}},
-            PlotLabel -> "Sine function",
+            PlotLabel -> "Funzione Seno",
             PlotStyle -> {Orange}
           ], 
           Graphics[{ 
@@ -124,7 +130,7 @@ drawCircle[] := Manipulate[
           Plot[Cos[y], {y, 0,  2 Pi}, 
             ImageSize->300,
             Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}},
-            PlotLabel -> "Cosine function",
+            PlotLabel -> "Funzione Coseno",
             PlotStyle -> {Blue}
           ],
           Graphics[{
@@ -198,21 +204,27 @@ distanceGame[]:= DynamicModule[{x1,y1,x2,y2,Esito=""},
 		A = "("<>SigX1<>IntegerString[x1]<>","<>SigY1<>IntegerString[y1]<>")";
 		B = "("<>SigX2<>IntegerString[x2]<>","<>SigY2<>IntegerString[y2]<>")";
 		Style["Quanto distano tra di loro i punti A"<>A <>" e B"<>B<>":",20],
+		(*calcolo della risposta corretta*)
 		giusta = computeDistance[x1,y1,x2,y2];
+		(*calcolo casuale delle risposte errate*)
 		risp1 =  RandomInteger[{1,10}];
 		risp2 =  RandomInteger[{11,20}];
 		risp3 =  RandomInteger[{21,30}];
+		(*la risp corretta viene inserita temporan nella var risp4 per poi 
+			inserire le 4 risposte e fare un Sort in base alla crescenza dei valori *)
 		risp4 = giusta;
 		Opzioni = {risp1, risp2, risp3, N[risp4]};
 		RandomOptions = Sort[Opzioni];
 		If[N[giusta]==RandomOptions[[1]], RandomOptions[[1]] = giusta;],
 		If[N[giusta]==RandomOptions[[2]], RandomOptions[[2]] = giusta; ],
 		If[N[giusta]==RandomOptions[[3]], RandomOptions[[3]]= giusta;],
-		If[N[giusta]==RandomOptions[[4]], RandomOptions[[4]] = giusta;],		
+		If[N[giusta]==RandomOptions[[4]], RandomOptions[[4]] = giusta;],
+		(* la risposta corretta \[EGrave] ordinata in base al suo valore *)		
 		btn1 = Button[Style[NumberForm[RandomOptions[[1]]],20], Esito:=checkRisp[RandomOptions[[1]],giusta]];
 		btn2 = Button[Style[NumberForm[RandomOptions[[2]]],20], Esito:=checkRisp[RandomOptions[[2]],giusta]];
 		btn3 = Button[Style[NumberForm[RandomOptions[[3]]],20], Esito:=checkRisp[RandomOptions[[3]],giusta]];
 		btn4 = Button[Style[NumberForm[RandomOptions[[4]]],20], Esito:=checkRisp[RandomOptions[[4]],giusta]];
+		(*Stampa dei bottoni*)
 		btn1, btn2, btn3, btn4
 		}] (*fine colonna input*)
 	}]
