@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8296,        180]
-NotebookOptionsPosition[      7775,        163]
-NotebookOutlinePosition[      8123,        178]
-CellTagsIndexPosition[      8080,        175]
+NotebookDataLength[      7603,        157]
+NotebookOptionsPosition[      7083,        140]
+NotebookOutlinePosition[      7431,        155]
+CellTagsIndexPosition[      7388,        152]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -30,7 +30,7 @@ Cell[BoxData[
   RowBox[{"SetDirectory", "[", 
    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
   RowBox[{"<<", " ", "package.m"}], ";", " ", 
-  RowBox[{"altezzaTorre", "[", "]"}]}]], "Input",
+  RowBox[{"typeAngle", "[", "]"}]}]], "Input",
  CellChangeTimes->{{3.734851720561689*^9, 3.734851721300779*^9}, 
    3.7348523017858644`*^9, {3.734852618652252*^9, 3.7348526192466936`*^9}, {
    3.7348526713345904`*^9, 3.734852737127641*^9}, {3.734857481282914*^9, 
@@ -42,85 +42,61 @@ Cell[BoxData[
    3.7350346751736917`*^9}, {3.7350371638976455`*^9, 
    3.7350372865641556`*^9}, {3.7350376644551806`*^9, 3.735037684518173*^9}, {
    3.735037717569003*^9, 3.735037743072545*^9}, {3.735037787406232*^9, 
-   3.735037788773927*^9}},
+   3.735037788773927*^9}, {3.735131255368415*^9, 3.735131263742033*^9}},
  EmphasizeSyntaxErrors->
   True,ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
 
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{ProvaProgetto`Private`altezza$$ = 150, 
-    ProvaProgetto`Private`x$$ = 6, Typeset`show$$ = True, 
+   DynamicModuleBox[{ProvaProgetto`Private`a$$ = 0, Typeset`show$$ = True, 
     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
     "\"untitled\"", Typeset`specs$$ = {{{
-       Hold[ProvaProgetto`Private`altezza$$], 20, "Altezza"}, 20, 150, 1}, {{
-       Hold[ProvaProgetto`Private`x$$], -10, "Posizione"}, -100, 65, 1}}, 
-    Typeset`size$$ = {450., {234., 239.}}, Typeset`update$$ = 0, 
+       Hold[ProvaProgetto`Private`a$$], 0, "angolo"}, 0, 360, 1}}, 
+    Typeset`size$$ = {400., {463., 17.}}, Typeset`update$$ = 0, 
     Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
-    ProvaProgetto`Private`altezza$116538$$ = 0, 
-    ProvaProgetto`Private`x$116539$$ = 0}, 
+    ProvaProgetto`Private`a$4431$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
-     1, StandardForm, 
-      "Variables" :> {
-       ProvaProgetto`Private`altezza$$ = 20, ProvaProgetto`Private`x$$ = -10},
-       "ControllerVariables" :> {
-        Hold[
-        ProvaProgetto`Private`altezza$$, 
-         ProvaProgetto`Private`altezza$116538$$, 0], 
-        Hold[ProvaProgetto`Private`x$$, ProvaProgetto`Private`x$116539$$, 0]},
-       "OtherVariables" :> {
+     1, StandardForm, "Variables" :> {ProvaProgetto`Private`a$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[ProvaProgetto`Private`a$$, ProvaProgetto`Private`a$4431$$, 0]}, 
+      "OtherVariables" :> {
        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
         Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
-         Typeset`skipInitDone$$}, "Body" :> DynamicModule[{}, 
-        Graphics[{
-          Text["Torre", {75, -40 + ProvaProgetto`Private`altezza$$ + 5}], {
-           EdgeForm[Thick], Brown, 
-           
-           Rectangle[{70, -40}, {
-            80, -40 + ProvaProgetto`Private`altezza$$}]}, {Blue, 
-           PointSize[Large], 
-           Point[{ProvaProgetto`Private`x$$, -40}]}, 
-          Line[{{-100, -40}, {150, -40}}], 
-          
-          Line[{{ProvaProgetto`Private`x$$, -40}, {
-            70, -40 + ProvaProgetto`Private`altezza$$}}], {Green, 
-           Thickness[0.01], 
-           Line[{{ProvaProgetto`Private`x$$, -40}, {69, -40}}]}, 
-          ProvaProgetto`Private`dist := 
-          ProvaProgetto`Private`computeDistance[
-           ProvaProgetto`Private`x$$, 0, 70, 0], ProvaProgetto`Private`angolo := 
-          ProvaProgetto`Private`GetAngolo[
-           ProvaProgetto`Private`altezza$$, ProvaProgetto`Private`dist], 
-          Text[
-           Style[
-            StringForm[
-            "Angolo \!\(\*\nStyleBox[\"\[Alpha]\", \"TradFormChar\"]\): `` \
-\[Degree]", 
-             N[ProvaProgetto`Private`angolo]], Red, 15], {-79, 85}], 
-          Text[
-           Style[
-            StringForm["Distanza: ``", ProvaProgetto`Private`dist], Green, 
-            15], {-87, 95}], 
-          Text[
-           Style[
-            StringForm["Altezza = Distanza x tan(``) = ``", 
-             N[ProvaProgetto`Private`angolo], 
-             ProvaProgetto`Private`altezza$$], 15], {-50, 75}], {
-           Thickness[0.001], Red, 
-           
-           Circle[{ProvaProgetto`Private`x$$, -40}, 20, {
-            0, ProvaProgetto`Private`angolo Pi/180}]}, 
-          Text[
-           Style[
-           "\!\(\*\nStyleBox[\"\[Alpha]\", \"TradFormChar\"]\)", Red, 20], {
-           ProvaProgetto`Private`x$$ + 36, -35}]}, 
-         PlotRange -> {{-110, 85}, {-45, 160}}, ImageSize -> 450]], 
-      "Specifications" :> {{{ProvaProgetto`Private`altezza$$, 20, "Altezza"}, 
-         20, 150, 1}, {{ProvaProgetto`Private`x$$, -10, "Posizione"}, -100, 
-         65, 1}}, "Options" :> {}, "DefaultOptions" :> {}],
-     ImageSizeCache->{501., {295., 301.}},
+         Typeset`skipInitDone$$}, "Body" :> Row[{
+         Button["Nullo", ProvaProgetto`Private`a$$ = 0], "\t", 
+         Button["Piatto", ProvaProgetto`Private`a$$ = 180], "\t", 
+         Button["Giro", ProvaProgetto`Private`a$$ = 360], "\n", 
+         Graphics[{
+          ProvaProgetto`Private`angle = 
+            If[ProvaProgetto`Private`a$$ == 0, "NULLO", 
+              If[ProvaProgetto`Private`a$$ == 90, "RETTO", 
+               If[
+                Or[
+                ProvaProgetto`Private`a$$ == 180, ProvaProgetto`Private`a$$ == 
+                 179, ProvaProgetto`Private`a$$ == 181], "PIATTO", 
+                If[ProvaProgetto`Private`a$$ == 360, "GIRO", ""]]]]; Null, 
+           If[
+            Or[
+            ProvaProgetto`Private`a$$ == 179, ProvaProgetto`Private`a$$ == 
+             181], ProvaProgetto`Private`a$$ = 180], 
+           Circle[], ProvaProgetto`Private`x := N[
+              Cos[ProvaProgetto`Private`a$$ Degree]]; Null, 
+           ProvaProgetto`Private`y := N[
+              Sin[ProvaProgetto`Private`a$$ Degree]]; Null, {Green, Thick, 
+            Circle[{0, 0}, 0.2, {0, ProvaProgetto`Private`a$$ Pi/180}]}, 
+           Text[
+            Style[ProvaProgetto`Private`angle, 15, Blue], {-0.5, 1.2}], 
+           Text[
+            Style[ProvaProgetto`Private`a$$ Degree, 15, Blue], {-0.5, 1}], 
+           RGBColor[255, 0, 0], 
+           Line[{{0, 0}, {ProvaProgetto`Private`x, ProvaProgetto`Private`y}}],
+            Null}, Axes -> True, ImageSize -> 400]}], 
+      "Specifications" :> {{{ProvaProgetto`Private`a$$, 0, "angolo"}, 0, 360, 
+         1}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{451., {284., 290.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -156,9 +132,10 @@ Cell[BoxData[
    3.735038243671432*^9, 3.735038358524229*^9}, {3.735038425418706*^9, 
    3.735038434314348*^9}, 3.7350386876071205`*^9, 3.7350387426676097`*^9, {
    3.7350388119216604`*^9, 3.735038881410321*^9}, {3.7350389170613165`*^9, 
-   3.735038951639934*^9}, {3.735038982354292*^9, 
-   3.735039060942712*^9}},ExpressionUUID->"d7ca67b5-c33d-4254-a1f3-\
-434176533abd"]
+   3.735038951639934*^9}, {3.735038982354292*^9, 3.735039060942712*^9}, {
+   3.735131256873107*^9, 3.7351312644783354`*^9}, {3.7351313069076443`*^9, 
+   3.735131322133952*^9}},ExpressionUUID->"4f99a848-d212-4f77-bd74-\
+c6702dfb819f"]
 }, Open  ]]
 },
 WindowSize->{1366, 695},
@@ -179,8 +156,8 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 151, 3, 28, "Input",ExpressionUUID->"4309e3fd-7fc6-4390-94ce-f922b95886cc"],
 Cell[CellGroupData[{
-Cell[734, 27, 1120, 19, 28, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
-Cell[1857, 48, 5902, 112, 615, "Output",ExpressionUUID->"d7ca67b5-c33d-4254-a1f3-434176533abd"]
+Cell[734, 27, 1163, 19, 28, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
+Cell[1900, 48, 5167, 89, 626, "Output",ExpressionUUID->"4f99a848-d212-4f77-bd74-c6702dfb819f"]
 }, Open  ]]
 }
 ]

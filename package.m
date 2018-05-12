@@ -49,6 +49,10 @@ pointListTwo = List[{2,0},{-9,5},{-10,7},{5,2},{-5,4}, {-8,-5},{2,9},{3,-6}];
 computeDistance[x1_,y1_,x2_,y2_] := Return[Sqrt[(x2 - x1)^2+(y2 - y1)^2]];
 
 typeAngle[]:= Manipulate[
+Row[{
+	Button["Nullo",a=0],"\t",
+	Button["Piatto",a=180],"\t",
+	Button["Giro",a=360],"\n",
 	Graphics[{
 	angle = If[a == 0, "NULLO",
 				If[a == 90, "RETTO",
@@ -65,10 +69,10 @@ typeAngle[]:= Manipulate[
 	Text[Style[angle,15, Blue], {-0.5,1.2}],
 	Text[Style[a \[Degree],15, Blue], {-0.5,1}],
     RGBColor[255,0,0],
-
 	Line[{{0,0},{x,y}}],
-	}, Axes->True
-	],
+	}, Axes->True, ImageSize->400
+	]
+	}],
 	{{a,0,"angolo"},0,360,1}];
 		
 ThGradRad[] := Manipulate[
