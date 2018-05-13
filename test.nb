@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7603,        157]
-NotebookOptionsPosition[      7083,        140]
-NotebookOutlinePosition[      7431,        155]
-CellTagsIndexPosition[      7388,        152]
+NotebookDataLength[      8741,        203]
+NotebookOptionsPosition[      8220,        186]
+NotebookOutlinePosition[      8568,        201]
+CellTagsIndexPosition[      8525,        198]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -29,8 +29,12 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"SetDirectory", "[", 
    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
-  RowBox[{"<<", " ", "package.m"}], ";", " ", 
-  RowBox[{"typeAngle", "[", "]"}]}]], "Input",
+  RowBox[{"<<", " ", "package.m"}], ";", "  ", 
+  RowBox[{"Table", "[", 
+   RowBox[{"point", ",", 
+    RowBox[{"{", 
+     RowBox[{"point", ",", 
+      RowBox[{"-", "10"}], ",", "10", ",", "1"}], "}"}]}], "]"}]}]], "Input",
  CellChangeTimes->{{3.734851720561689*^9, 3.734851721300779*^9}, 
    3.7348523017858644`*^9, {3.734852618652252*^9, 3.7348526192466936`*^9}, {
    3.7348526713345904`*^9, 3.734852737127641*^9}, {3.734857481282914*^9, 
@@ -42,100 +46,142 @@ Cell[BoxData[
    3.7350346751736917`*^9}, {3.7350371638976455`*^9, 
    3.7350372865641556`*^9}, {3.7350376644551806`*^9, 3.735037684518173*^9}, {
    3.735037717569003*^9, 3.735037743072545*^9}, {3.735037787406232*^9, 
-   3.735037788773927*^9}, {3.735131255368415*^9, 3.735131263742033*^9}},
+   3.735037788773927*^9}, {3.735131255368415*^9, 3.735131263742033*^9}, {
+   3.7351890138778796`*^9, 3.735189025936661*^9}, {3.7351892020979123`*^9, 
+   3.7351892029863853`*^9}, {3.7351892889634976`*^9, 3.735189345754902*^9}},
  EmphasizeSyntaxErrors->
   True,ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
 
 Cell[BoxData[
- TagBox[
-  StyleBox[
-   DynamicModuleBox[{ProvaProgetto`Private`a$$ = 0, Typeset`show$$ = True, 
-    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
-    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
-    "\"untitled\"", Typeset`specs$$ = {{{
-       Hold[ProvaProgetto`Private`a$$], 0, "angolo"}, 0, 360, 1}}, 
-    Typeset`size$$ = {400., {463., 17.}}, Typeset`update$$ = 0, 
-    Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
-    ProvaProgetto`Private`a$4431$$ = 0}, 
-    DynamicBox[Manipulate`ManipulateBoxes[
-     1, StandardForm, "Variables" :> {ProvaProgetto`Private`a$$ = 0}, 
-      "ControllerVariables" :> {
-        Hold[ProvaProgetto`Private`a$$, ProvaProgetto`Private`a$4431$$, 0]}, 
-      "OtherVariables" :> {
-       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
-        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
-        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
-         Typeset`skipInitDone$$}, "Body" :> Row[{
-         Button["Nullo", ProvaProgetto`Private`a$$ = 0], "\t", 
-         Button["Piatto", ProvaProgetto`Private`a$$ = 180], "\t", 
-         Button["Giro", ProvaProgetto`Private`a$$ = 360], "\n", 
-         Graphics[{
-          ProvaProgetto`Private`angle = 
-            If[ProvaProgetto`Private`a$$ == 0, "NULLO", 
-              If[ProvaProgetto`Private`a$$ == 90, "RETTO", 
-               If[
-                Or[
-                ProvaProgetto`Private`a$$ == 180, ProvaProgetto`Private`a$$ == 
-                 179, ProvaProgetto`Private`a$$ == 181], "PIATTO", 
-                If[ProvaProgetto`Private`a$$ == 360, "GIRO", ""]]]]; Null, 
-           If[
-            Or[
-            ProvaProgetto`Private`a$$ == 179, ProvaProgetto`Private`a$$ == 
-             181], ProvaProgetto`Private`a$$ = 180], 
-           Circle[], ProvaProgetto`Private`x := N[
-              Cos[ProvaProgetto`Private`a$$ Degree]]; Null, 
-           ProvaProgetto`Private`y := N[
-              Sin[ProvaProgetto`Private`a$$ Degree]]; Null, {Green, Thick, 
-            Circle[{0, 0}, 0.2, {0, ProvaProgetto`Private`a$$ Pi/180}]}, 
+ DynamicModuleBox[{}, 
+  DynamicModuleBox[{ProvaProgetto`Private`colEsito$$ = GrayLevel[0], 
+   ProvaProgetto`Private`esito$$ = "", ProvaProgetto`Private`limit$$ = 10, 
+   ProvaProgetto`Private`xIn$$ = 0, ProvaProgetto`Private`yIn$$ = 0}, 
+   TemplateBox[{TagBox[
+      GridBox[{{
+         GraphicsBox[{{
+            PointSize[Large], 
+            RGBColor[1, 0, 0], 
+            PointBox[{2, 9}]}}, 
+          GridLines -> {{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, {1, 2, 3, 4, 5, 6, 7,
+            8, 9, 10}}, Axes -> True, AxesStyle -> Thickness[Large], 
+          PlotRange -> 10, ImageSize -> 450, AxesLabel -> {
+            FormBox["\"x\"", TraditionalForm], 
+            FormBox["\"y\"", TraditionalForm]}, Ticks -> {{{-10, 
+              FormBox[
+               RowBox[{"-", "10"}], TraditionalForm]}, {-9, 
+              FormBox[
+               RowBox[{"-", "9"}], TraditionalForm]}, {-8, 
+              FormBox[
+               RowBox[{"-", "8"}], TraditionalForm]}, {-7, 
+              FormBox[
+               RowBox[{"-", "7"}], TraditionalForm]}, {-6, 
+              FormBox[
+               RowBox[{"-", "6"}], TraditionalForm]}, {-5, 
+              FormBox[
+               RowBox[{"-", "5"}], TraditionalForm]}, {-4, 
+              FormBox[
+               RowBox[{"-", "4"}], TraditionalForm]}, {-3, 
+              FormBox[
+               RowBox[{"-", "3"}], TraditionalForm]}, {-2, 
+              FormBox[
+               RowBox[{"-", "2"}], TraditionalForm]}, {-1, 
+              FormBox[
+               RowBox[{"-", "1"}], TraditionalForm]}, {0, 
+              FormBox["0", TraditionalForm]}, {1, 
+              FormBox["1", TraditionalForm]}, {2, 
+              FormBox["2", TraditionalForm]}, {3, 
+              FormBox["3", TraditionalForm]}, {4, 
+              FormBox["4", TraditionalForm]}, {5, 
+              FormBox["5", TraditionalForm]}, {6, 
+              FormBox["6", TraditionalForm]}, {7, 
+              FormBox["7", TraditionalForm]}, {8, 
+              FormBox["8", TraditionalForm]}, {9, 
+              FormBox["9", TraditionalForm]}, {10, 
+              FormBox["10", TraditionalForm]}}, {{-10, 
+              FormBox[
+               RowBox[{"-", "10"}], TraditionalForm]}, {-9, 
+              FormBox[
+               RowBox[{"-", "9"}], TraditionalForm]}, {-8, 
+              FormBox[
+               RowBox[{"-", "8"}], TraditionalForm]}, {-7, 
+              FormBox[
+               RowBox[{"-", "7"}], TraditionalForm]}, {-6, 
+              FormBox[
+               RowBox[{"-", "6"}], TraditionalForm]}, {-5, 
+              FormBox[
+               RowBox[{"-", "5"}], TraditionalForm]}, {-4, 
+              FormBox[
+               RowBox[{"-", "4"}], TraditionalForm]}, {-3, 
+              FormBox[
+               RowBox[{"-", "3"}], TraditionalForm]}, {-2, 
+              FormBox[
+               RowBox[{"-", "2"}], TraditionalForm]}, {-1, 
+              FormBox[
+               RowBox[{"-", "1"}], TraditionalForm]}, {0, 
+              FormBox["0", TraditionalForm]}, {1, 
+              FormBox["1", TraditionalForm]}, {2, 
+              FormBox["2", TraditionalForm]}, {3, 
+              FormBox["3", TraditionalForm]}, {4, 
+              FormBox["4", TraditionalForm]}, {5, 
+              FormBox["5", TraditionalForm]}, {6, 
+              FormBox["6", TraditionalForm]}, {7, 
+              FormBox["7", TraditionalForm]}, {8, 
+              FormBox["8", TraditionalForm]}, {9, 
+              FormBox["9", TraditionalForm]}, {10, 
+              FormBox["10", TraditionalForm]}}}]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"],
+     TagBox[
+      GridBox[{{
+         TemplateBox[{
+           ButtonBox["\"Aiuto\"", ButtonFunction :> CreateDialog[{
+               TextCell[
+               "L'asse delle X \[EGrave] la retta posta in posizione \
+orizzontale mentre l'asse delle Y \[EGrave] in posizione verticale"], 
+               DefaultButton[]}], ImageSize -> Medium, 
+            BaseStyle -> {"GenericButton"}, Appearance -> Automatic, 
+            Evaluator -> Automatic, Method -> "Preemptive"], 
+           ButtonBox["\"Nuovo Esercizio\"", ButtonFunction :> FrontEndExecute[
+              FrontEndToken[
+               NotebookLocate["esCoordinate"], "Evaluate"]], ImageSize -> 
+            Medium, BaseStyle -> {"GenericButton"}, Appearance -> Automatic, 
+            Evaluator -> Automatic, Method -> "Preemptive"]}, "RowDefault"]}, {
+         DynamicBox[
+          ToBoxes[
            Text[
-            Style[ProvaProgetto`Private`angle, 15, Blue], {-0.5, 1.2}], 
-           Text[
-            Style[ProvaProgetto`Private`a$$ Degree, 15, Blue], {-0.5, 1}], 
-           RGBColor[255, 0, 0], 
-           Line[{{0, 0}, {ProvaProgetto`Private`x, ProvaProgetto`Private`y}}],
-            Null}, Axes -> True, ImageSize -> 400]}], 
-      "Specifications" :> {{{ProvaProgetto`Private`a$$, 0, "angolo"}, 0, 360, 
-         1}}, "Options" :> {}, "DefaultOptions" :> {}],
-     ImageSizeCache->{451., {284., 290.}},
-     SingleEvaluation->True],
-    Deinitialization:>None,
-    DynamicModuleValues:>{},
-    SynchronousInitialization->True,
-    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
-    UnsavedVariables:>{Typeset`initDone$$},
-    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
-   Deployed->True,
-   StripOnInput->False],
-  Manipulate`InterpretManipulate[1]]], "Output",
- CellChangeTimes->{{3.7350346726415825`*^9, 3.7350346770868607`*^9}, {
-   3.735034766078452*^9, 3.7350347889005356`*^9}, {3.7350348249969797`*^9, 
-   3.7350348521523356`*^9}, {3.735034900176195*^9, 3.7350349476992702`*^9}, 
-   3.7350349838601274`*^9, {3.735035017283272*^9, 3.735035072408223*^9}, {
-   3.735035144407461*^9, 3.735035180283244*^9}, {3.73503523645494*^9, 
-   3.7350353240061264`*^9}, {3.735035368361743*^9, 3.7350353935575323`*^9}, 
-   3.735035452984667*^9, 3.7350354836245813`*^9, {3.7350356513790293`*^9, 
-   3.7350356548509583`*^9}, {3.735035702587883*^9, 3.7350357767236333`*^9}, 
-   3.735035815738637*^9, {3.735035862152619*^9, 3.7350358826638412`*^9}, {
-   3.7350359133006687`*^9, 3.735035945288561*^9}, 3.7350359851475077`*^9, {
-   3.7350360707679214`*^9, 3.735036117603434*^9}, {3.735036213813099*^9, 
-   3.735036267456897*^9}, {3.7350363224931183`*^9, 3.73503636635972*^9}, {
-   3.735036401566062*^9, 3.735036424759756*^9}, {3.7350364678241124`*^9, 
-   3.7350365259986672`*^9}, 3.7350366097098613`*^9, 3.7350366700583467`*^9, 
-   3.735036719346303*^9, 3.735036797484661*^9, {3.7350369613293552`*^9, 
-   3.7350369752678185`*^9}, {3.7350370561827283`*^9, 3.735037097205138*^9}, {
-   3.7350371729078836`*^9, 3.735037345864052*^9}, {3.7350373800856266`*^9, 
-   3.7350374502875814`*^9}, 3.7350374838297825`*^9, {3.7350375296418886`*^9, 
-   3.735037570467143*^9}, {3.7350376028695364`*^9, 3.7350376850374403`*^9}, {
-   3.7350377197202883`*^9, 3.735037734913149*^9}, 3.7350377892302847`*^9, {
-   3.7350378216353693`*^9, 3.7350378418700466`*^9}, {3.735038000736904*^9, 
-   3.735038094860203*^9}, {3.735038141222479*^9, 3.7350381822400246`*^9}, {
-   3.735038243671432*^9, 3.735038358524229*^9}, {3.735038425418706*^9, 
-   3.735038434314348*^9}, 3.7350386876071205`*^9, 3.7350387426676097`*^9, {
-   3.7350388119216604`*^9, 3.735038881410321*^9}, {3.7350389170613165`*^9, 
-   3.735038951639934*^9}, {3.735038982354292*^9, 3.735039060942712*^9}, {
-   3.735131256873107*^9, 3.7351312644783354`*^9}, {3.7351313069076443`*^9, 
-   3.735131322133952*^9}},ExpressionUUID->"4f99a848-d212-4f77-bd74-\
-c6702dfb819f"]
+            Style[
+            ProvaProgetto`Private`esito$$, ProvaProgetto`Private`colEsito$$, 
+             20]], StandardForm]]}, {
+         RowBox[{"\"   x: \"", " ", 
+           InputFieldBox[
+            Dynamic[ProvaProgetto`Private`xIn$$], Number, FieldSize -> 
+            5]}]}, {"\"\\n\""}, {
+         RowBox[{"\"   y: \"", " ", 
+           InputFieldBox[
+            Dynamic[ProvaProgetto`Private`yIn$$], Number, FieldSize -> 5]}]}, {
+         ButtonBox["\"Risolvi\"", ButtonFunction :> If[
+            And[
+            ProvaProgetto`Private`xIn$$ == 2, ProvaProgetto`Private`yIn$$ == 
+             9], {ProvaProgetto`Private`esito$$ := "Corretto"; 
+             ProvaProgetto`Private`colEsito$$ := Green}, {
+            ProvaProgetto`Private`esito$$ := "Sbagliato"; 
+             ProvaProgetto`Private`colEsito$$ := Red}], BaseStyle -> {
+            RGBColor[0, 1, 0]}, Appearance -> Automatic, Evaluator -> 
+          Automatic, Method -> "Preemptive"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+       "Column", 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+    "RowDefault"],
+   DynamicModuleValues:>{}],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{3.7351890269829955`*^9, 3.735189092557104*^9, 
+  3.7351892033889713`*^9, 
+  3.735189272656659*^9},ExpressionUUID->"d031d99d-ab29-4a6a-9d34-\
+5dd1e04bea84"]
 }, Open  ]]
 },
 WindowSize->{1366, 695},
@@ -156,8 +202,8 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 151, 3, 28, "Input",ExpressionUUID->"4309e3fd-7fc6-4390-94ce-f922b95886cc"],
 Cell[CellGroupData[{
-Cell[734, 27, 1163, 19, 28, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
-Cell[1900, 48, 5167, 89, 626, "Output",ExpressionUUID->"4f99a848-d212-4f77-bd74-c6702dfb819f"]
+Cell[734, 27, 1446, 25, 28, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
+Cell[2183, 54, 6021, 129, 473, "Output",ExpressionUUID->"d031d99d-ab29-4a6a-9d34-5dd1e04bea84"]
 }, Open  ]]
 }
 ]

@@ -168,16 +168,17 @@ distanceGame[]:= DynamicModule[{x1,y1,x2,y2,Esito=""},
 	Row[{
 		Column[{
 			Graphics[{
-				{Dashed,Line[{{x1,0},{x1,y1}}]},
-				{Dashed,Line[{{0,y1},{x1,y1}}]},
-				{Dashed,Line[{{x2,0},{x2,y2}}]},
-				{Dashed,Line[{{0,y2},{x2,y2}}]},
+				{Thickness[0.0050],Blue,Dashed,Line[{{x1,0},{x1,y1}}]},
+				{Thickness[0.0050],Blue,Dashed,Line[{{0,y1},{x1,y1}}]},
+				{Thickness[0.0050],Blue,Dashed,Line[{{x2,0},{x2,y2}}]},
+				{Thickness[0.0050],Blue,Dashed,Line[{{0,y2},{x2,y2}}]},
 				Text[Style["A",20],{x1-0.4,y1-0.4}],
 				Text[Style["B",20],{x2+0.4,y2+0.4}],
-				{PointSize[Large],Red,Point[{x1,y1}]},
-				{PointSize[Large],Red,Point[{x2,y2}]},
-				 Line[{{x1,y1},{x2,y2}}]
+				{PointSize[Large], Red, Point[{x1,y1}]},
+				{PointSize[Large], Red, Point[{x2,y2}]},
+				 {Thickness[0.0050],Green,Line[{{x1,y1},{x2,y2}}]}
 	},	
+	GridLines->{Table[point,{point,-10,10,1}],Table[point,{point,-10,10,1}]},
 	Axes->True,
 	AxesStyle->Thick, PlotRange->10,
 	ImageSize->450,
@@ -211,9 +212,10 @@ distanceGame[]:= DynamicModule[{x1,y1,x2,y2,Esito=""},
 		(*calcolo della risposta corretta*)
 		giusta = computeDistance[x1,y1,x2,y2];
 		(*calcolo casuale delle risposte errate*)
-		risp1 =  RandomInteger[{1,10}];
-		risp2 =  RandomInteger[{11,20}];
-		risp3 =  RandomInteger[{21,30}];
+		
+		risp1 =  RandomInteger[{1.,10.}];
+		risp2 =  RandomInteger[{11.,20.}];
+		risp3 =  RandomInteger[{21.,30.}];
 		(*la risp corretta viene inserita temporan nella var risp4 per poi 
 			inserire le 4 risposte e fare un Sort in base alla crescenza dei valori *)
 		risp4 = giusta;
@@ -254,6 +256,7 @@ Row[{
 	Graphics[{
 		{PointSize[Large],Red,Point[{x,y}]}
 	},	
+	GridLines->{Table[point,{point,-10,10,1}],Table[point,{point,-10,10,1}]},
 	Axes->True,
 	AxesStyle->Thick, PlotRange->10,
 	ImageSize->450,
@@ -309,7 +312,7 @@ GetQuad[x0_,y0_] := DynamicModule[{x=x0, y=y0, quad},
 	If[x<=0&&y<=0, quad=3];
 	If[x>=0&&y<0, quad=4];
 quad];
-
+(*
 drawCircle[] := Manipulate[
   Row[{
     Graphics[{
@@ -363,7 +366,7 @@ drawCircle[] := Manipulate[
   }],
   {{x,0,"Angolo"}, 0, 2 Pi, 2 Pi/360}
 ];
-
+*)
 GetAngolo[alt_,bas_] := Return[N[ArcTan[alt/bas] / Degree ]];
 altezzaTorre[] := Manipulate[DynamicModule[{},
 	Graphics[{
