@@ -36,12 +36,16 @@ AngoliNotevoliDue::usage = "manipulate di angoli notevoli 30";
 AngoliNotevoliTre::usage = "manipulate di angoli notevoli 45";
 ThGradRad::usage = "manipulate della conversione radianti gradi";
 
-defGradi = Text["def gradi"];
-defRadianti = Text["def radianti"];
+defGradi = Text["Consideriamo un angolo giro e dividiamolo in 360 parti congruenti tra loro.
+Poniamo 1\[Degree] una di queste parti. Preso dunque un angolo qualsiasi, contiamo quante
+ volte un grado  \[EGrave]  contenuto in esso."];
+defRadianti = Text["Prendiamo una circonferenza di raggio r e un angolo al centro \[Alpha];
+l  \[EGrave]  l'arco sotteso dall'angolo. La misura in radianti  \[EGrave]  data dal rapporto l/r.
+ In particolare, 1 rad  \[EGrave]  un angolo che sottende un arco lungo quanto il raggio."];
 Begin["`Private`"]; (* Comincia spazio privato *)
 
 FromRadToGrad[x_] := Return[x*180/Pi];
-FromGradToRad[x_] := Return[N[Pi*x/180]];
+FromGradToRad[x_] := Pi Rationalize[N[x]] / Pi;
 getAngle[p1_, p2_] := Mod[ArcTan @@ (p2 - p1), 2 Pi];
 pointList = List[{3, 2}, {1, 3}, {-1, 1}, {-2, -5}, {-3, 8}, {-1, 3}, {-2, 1}, {-7, 3}];
 pointListTwo = List[{2, 0}, {-9, 5}, {-10, 7}, {5, 2}, {-5, 4}, {-8, -5}, {2, 9}, {3, -6}];
@@ -80,15 +84,14 @@ typeAngle[] := Manipulate[
       
       Thickness[0.01],
       Line[{{0, 0}, {x, y}}]
-    }, Axes -> True, ImageSize -> 300,Ticks->None
+    }, Axes -> True, ImageSize -> 300,Ticks->None, PlotRange-> {{-1.4,1.4},{-1.4,1.4}}
     ]
     }] (*fine colonna grafico*),
     Column[{"\t"}],
-    
-    ,Column[{
-        Row[{Text[Style["GRADI",Blue,Bold,15]],"\n",Text[defGradi]}],
+    Column[{
+        Row[{Text[Style["GRADI",Blue,Bold,20]],"\n",Text[Style[defGradi,17]]}],
         Row[{"\n"}],   
-         Row[{Text[Style["RADIANTI",RGBColor[0,50,255],Bold,15]],"\n",Text[defRadianti]}]
+         Row[{Text[Style["RADIANTI",RGBColor[0,50,255],Bold,20]],"\n",Text[Style[defRadianti,17]]}]
     }]
   }](*fine row*),
   {{a, 0, "angolo"}, 0, 360, 1}];
@@ -123,9 +126,7 @@ ThGradRad[] := Manipulate[
 
 drawCircle[] := Manipulate[
    Row[{
- 
     Graphics[{
-
       Circle[],
       Point[{0, 0}],
       PointSize[Large],
@@ -136,7 +137,8 @@ drawCircle[] := Manipulate[
       Line[{{0, 0}, {Cos[x], 0}}],
       RGBColor[255, 0, 0],
       Line[{{Cos[x], 0}, {Cos[x], Sin[x]}}],
-      Text[Style[IntegerString[FromRadToGrad[x]] <> "\[Degree]", Large, Red], {-0.90, 1}],
+      Text[Style[IntegerString[FromRadToGrad[x]] <> "\[Degree]", 15, Blue], {-0.90, 1}],
+      Text[Style[x, 15, Blue], {-0.90, 0.8}],
       Text[Style["Seno", Medium, Red], {0.8, 1}],
       Text[Style["Coseno", Medium, Green], {0.8, 0.9}],
 
@@ -144,20 +146,21 @@ drawCircle[] := Manipulate[
       ImageSize -> 350,
       Axes -> True,
       Ticks->None
-    ] (*FINE GRAPHICS*),
-    Column[{
+    ], (*FINE GRAPHICS*)
     (* GRAFICI SENO E COSENO *)
+     Column[{
       Show[
         Plot[Sin[y], {y, 0, 2 Pi},
           ImageSize -> 300,
           Ticks -> {{0, Pi / 2, Pi, 3 Pi / 2, 2 Pi, 5 Pi / 2}, {-1, 0, 1}},
           PlotLabel -> "Funzione Seno",
-          PlotStyle -> {Red}
+          PlotStyle -> {Red},
+          PlotRange -> {{-1, 2 Pi + 1},{-1.8,1.8}}
         ],
         Graphics[{
           {Dashed, Line[{{x, 0}, {x, Sin[x]}}]},
           PointSize[Large],
-          Text[Rationalize[N[Sin[x]]],{x+0.5,Sin[x]}],
+          Text[Style[Rationalize[Sin[x]],20],{x+0.5,0.5+Sin[x]}],
           Point[{ x, Sin[x] }]}
         ]
       ],
@@ -166,18 +169,21 @@ drawCircle[] := Manipulate[
           ImageSize -> 300,
           Ticks -> {{0, Pi / 2, Pi, 3 Pi / 2, 2 Pi, 5 Pi / 2}, {-1, 0, 1}},
           PlotLabel -> "Funzione Coseno",
-          PlotStyle -> {Green}
+          PlotStyle -> {Green},
+          PlotRange -> {{-1, 2 Pi + 1},{-1.8,1.8}}
         ],
         Graphics[{
           {Dashed, Line[{{x, 0}, {x, Cos[x]}}]},
           PointSize[Large],
-          Text[Rationalize[N[Cos[x]]],{x+0.5,Cos[x]}],
+          Text[Style[Cos[x],20],{x+0.5,0.5+Cos[x]}],
           Point[{ x, Cos[x]}]}
         ]
       ]
-    }]
-  }],
-  {{x, 0, "Angolo"}, 0, 2 Pi, 2 Pi / 360}
+     }]
+    }],
+    {{x, 0, "Naviga"}, 0, 2 Pi, Pi / 6},
+    {{x, 0, "Scegli"}, 0, 2 Pi, Pi / 6},
+  ControlType -> {Slider, PopupMenu}
 ];
 
 
@@ -378,61 +384,8 @@ GetQuad[x0_, y0_] := DynamicModule[{x = x0, y = y0, quad},
   If[x <= 0 && y <= 0, quad = 3];
   If[x >= 0 && y < 0, quad = 4];
   quad];
-(*
-drawCircle[] := Manipulate[
-  Row[{
-    Graphics[{
-      Circle[],
-      Point[{0,0}],
-      PointSize[Large],
-      Circle[{0,0},0.2,{0,x}],
-      {Dashed, Line[{{0,0},{Cos[x],Sin[x]}}]},(*raggio*)
-      Thickness[0.01],
-      RGBColor[0,255,0],
-      Line[{{0,0},{Cos[x],0}}],
-      RGBColor[255,0,0],
-      Line[{{Cos[x],0},{Cos[x],Sin[x]}}],
-      Text[Style[IntegerString[FromRadToGrad[x]] <> "\[Degree]",Large,Red],{-0.90,1}],
-      Text[Style["Seno",Medium,Red],{0.8,1}],
-      Text[Style["Coseno",Medium,Green],{0.8,0.9}],
 
-      {Black,PointSize ->.02, Point[{Cos[x], Sin[x]}]}},
-      ImageSize->350,
-      Axes->True
-    ] (*FINE GRAPHICS*),
-    Column[{
-        (* GRAFICI SENO E COSENO *)
-        Show[
-          Plot[Sin[y], {y, 0,  2 Pi}, 
-            ImageSize->300, 
-            Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}},
-            PlotLabel -> "Sine function",
-            PlotStyle -> {Orange}
-          ], 
-          Graphics[{ 
-            {Dashed, Line[{{x,0},{x,Sin[x]}}]},
-            PointSize[Large],
-            Point[{ x, Sin[x] }]}
-          ]
-        ],
-        Show[
-          Plot[Cos[y], {y, 0,  2 Pi}, 
-            ImageSize->300,
-            Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}},
-            PlotLabel -> "Cosine function",
-            PlotStyle -> {Blue}
-          ],
-          Graphics[{
-            {Dashed, Line[{{x,0},{x,Cos[x]}}]},
-            PointSize[Large],
-            Point[{ x, Cos[x]}]}
-          ]
-        ]
-    }]
-  }],
-  {{x,0,"Angolo"}, 0, 2 Pi, 2 Pi/360}
-];
-*)
+
 GetAngolo[alt_, bas_] := Return[N[ArcTan[alt / bas] / Degree ]];
 altezzaTorre[] := Manipulate[DynamicModule[{},
   Graphics[{
