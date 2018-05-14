@@ -31,11 +31,12 @@ startGame::usage = "gioco del quadrante";
 distanceGame::usage = "calcola la distanza distanza tra due punti";
 typeAngle::usage = "per la def di angolo";
 altezzaTorre::usage = "applicazione altezza torre";
-AngoliNotevoliUno::usage = "manipulate di angoli notevoli 60";
-AngoliNotevoliDue::usage = "manipulate di angoli notevoli 30";
-AngoliNotevoliTre::usage = "manipulate di angoli notevoli 45";
+graficoTangente::usage = "manipulate per la funzione tangente";
+AngoliAssociati60::usage = "manipulate di angoli notevoli 60";
+AngoliAssociati30::usage = "manipulate di angoli notevoli 30";
+AngoliAssociati45::usage = "manipulate di angoli notevoli 45";
 ThGradRad::usage = "manipulate della conversione radianti gradi";
-
+GraficoPrimaRelazione::usage = "manipulate della prima relazione fondamentale";
 defGradi = Text["Consideriamo un angolo giro e dividiamolo in 360 parti congruenti tra loro.
 Poniamo 1\[Degree] una di queste parti. Preso dunque un angolo qualsiasi, contiamo quante
  volte un grado  \[EGrave]  contenuto in esso."];
@@ -124,7 +125,44 @@ ThGradRad[] := Manipulate[
   {{gradi, 0, "Gradi"}, 0, 360, 1}
 ];
 
-drawCircle[] := Manipulate[
+GraficoPrimaRelazione[] := Animate[
+  Row[{
+    (*realativo angolo in radianti*)
+    rad := x Pi / 180;
+    P := {Cos[rad], Sin[rad]};
+    proiezioneX := {Cos[rad], 0};
+    proiezioneY :=  {Cos[rad], Sin[rad]};
+    triangolo := {Yellow,Triangle[{{0,0},proiezioneX,P}]},
+    Graphics[{
+      Circle[],
+      triangolo,
+      (*punto centrale alla circonferenza*)
+      Point[{0, 0}],
+      (*dimentsione dei punti*)
+      PointSize[Large],
+      (**arco che identifica l'arco*)
+      (*{Blue, Circle[{0, 0}, 0.2, {0, rad}]},*)
+      {Dashed, Line[{{0, 0}, P}]}, (*raggio*)
+      Thickness[0.01],
+      RGBColor[0, 255, 0],
+      (*proiezione asse x*)
+      Line[{{0, 0}, proiezioneX }],
+      RGBColor[255, 0, 0],
+      (*proiezione asse y*)
+      Line[{{Cos[rad], 0}, proiezioneY}],
+      (*punto sulla circonferenza*)
+      {Black, PointSize -> .02, Point[{Cos[rad], Sin[rad]}]}},
+      ImageSize -> 350,
+      Axes -> True,
+      Ticks -> None
+    ] (*FINE GRAPHICS*)
+  }],
+  {{x, 45,""}, 0, 360, 1},
+  AnimationRate -> 30
+];
+
+
+graficoTangente[] := Manipulate[
    Row[{
     Graphics[{
       Circle[],
@@ -147,8 +185,65 @@ drawCircle[] := Manipulate[
       Axes -> True,
       Ticks->None
     ], (*FINE GRAPHICS*)
-    (* GRAFICI SENO E COSENO *)
      Column[{
+      Show[
+        Plot[Tan[y], {y, 0, 2 Pi},
+          ImageSize -> 400,
+          Ticks -> {{0, Pi / 2, Pi, 3 Pi / 2, 2 Pi, 5 Pi / 2}, {-1, 0, 1}},
+          PlotLabel -> "Funzione Tangente",
+          PlotStyle -> RGBColor[1, 0, 1],
+          PlotRange -> {{-1, 2 Pi + 1},{-4,4}}
+        ],
+        Graphics[{
+          (*Trick per evitare il valore infinito per x = 90 e x = 270 *)
+          PointSize[Large],
+          If[x == Pi /2 || x == 3 Pi / 2,
+            {
+              {Dashed, Line[{{x, -10}, {x, 10}}]},
+              Text[Style["Infinito",20],{x+0.5,0.5+Sin[x]}]
+
+            },
+            {
+              {Dashed, Line[{{x, 0}, {x, Tan[x]}}]},
+              Point[{ x, Tan[x] }],
+              Text[Style[Tan[x],20],{x+0.5,0.5+Sin[x]}]
+
+            }
+          ]
+        }]
+     ]
+     }]
+    }],
+    {{x, 0, "Naviga"}, 0, 2 Pi, Pi / 12},
+    {{x, 0, "Scegli"}, 0, 2 Pi, Pi / 12},
+  ControlType -> {Slider, PopupMenu}
+];
+
+drawCircle[] := Manipulate[
+  Row[{
+    Graphics[{
+      Circle[],
+      Point[{0, 0}],
+      PointSize[Large],
+      {Blue, Circle[{0, 0}, 0.2, {0, x}]},
+      {Dashed, Line[{{0, 0}, {Cos[x], Sin[x]}}]}, (*raggio*)
+      Thickness[0.01],
+      RGBColor[0, 255, 0],
+      Line[{{0, 0}, {Cos[x], 0}}],
+      RGBColor[255, 0, 0],
+      Line[{{Cos[x], 0}, {Cos[x], Sin[x]}}],
+      Text[Style[IntegerString[FromRadToGrad[x]] <> "\[Degree]", 15, Blue], {-0.90, 1}],
+      Text[Style[x, 15, Blue], {-0.90, 0.8}],
+      Text[Style["Seno", Medium, Red], {0.8, 1}],
+      Text[Style["Coseno", Medium, Green], {0.8, 0.9}],
+
+      {Black, PointSize -> .02, Point[{Cos[x], Sin[x]}]}},
+      ImageSize -> 350,
+      Axes -> True,
+      Ticks->None
+    ], (*FINE GRAPHICS*)
+  (* GRAFICI SENO E COSENO *)
+    Column[{
       Show[
         Plot[Sin[y], {y, 0, 2 Pi},
           ImageSize -> 300,
@@ -179,13 +274,12 @@ drawCircle[] := Manipulate[
           Point[{ x, Cos[x]}]}
         ]
       ]
-     }]
-    }],
-    {{x, 0, "Naviga"}, 0, 2 Pi, Pi / 6},
-    {{x, 0, "Scegli"}, 0, 2 Pi, Pi / 6},
+    }]
+  }],
+  {{x, 0, "Naviga"}, 0, 2 Pi, Pi / 12},
+  {{x, 0, "Scegli"}, 0, 2 Pi, Pi / 12},
   ControlType -> {Slider, PopupMenu}
 ];
-
 
 distanceGame[] := DynamicModule[{x1, y1, x2, y2, Esito = ""},
   checkRisp[risp_, correct_] := (
@@ -273,7 +367,7 @@ distanceGame[] := DynamicModule[{x1, y1, x2, y2, Esito = ""},
 
 
 ListaAngoliAssociati60 := {\[Pi] / 3, 2 \[Pi] / 3, 4 \[Pi] / 3, 5 \[Pi] / 3};
-AngoliNotevoliUno[] :=Manipulate[
+AngoliAssociati60[] :=Manipulate[
   Graphics[{
     MapIndexed[{
     ColorData[100][0],
@@ -287,7 +381,7 @@ AngoliNotevoliUno[] :=Manipulate[
       {{n, 0, "Angolo"}, 0, 3, 1 }
   ];
   ListaAngoliAssociati30 := {\[Pi] / 6, 5 \[Pi] / 6, 7 \[Pi] / 6, 11 \[Pi] / 6};
-  AngoliNotevoliDue[] :=Manipulate[
+AngoliAssociati30[] :=Manipulate[
   Graphics[{
     MapIndexed[{
     ColorData[10][0],
@@ -302,7 +396,7 @@ AngoliNotevoliUno[] :=Manipulate[
   ];
 
 ListaAngoliAssociati45 := {\[Pi] / 4, 3 \[Pi] / 4, 5 \[Pi] / 4, 7 \[Pi] / 4};
-  AngoliNotevoliTre[] :=Manipulate[
+AngoliAssociati45[] :=Manipulate[
   Graphics[{
     MapIndexed[{
     ColorData[100][0],
