@@ -276,10 +276,10 @@ ListaAngoliAssociati60 := {\[Pi] / 3, 2 \[Pi] / 3, 4 \[Pi] / 3, 5 \[Pi] / 3};
 AngoliNotevoliUno[] :=Manipulate[
   Graphics[{
     MapIndexed[{
-    ColorData[10][0], 
-    ColorData[10][First@#2],
-    Text[ListaAngoliAssociati60[[1]], {1.2 Cos[ListaAngoliAssociati60[[1]]], 1.2 Sin[ListaAngoliAssociati60[[1]]]}], 
-    Text[Last@#, {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}], 
+    ColorData[100][0],
+    ColorData[100][First@#2+50],
+      Text[Style[ListaAngoliAssociati60[[1]],15,Bold,Black], {1.2 Cos[ListaAngoliAssociati60[[1]]], 1.2 Sin[ListaAngoliAssociati60[[1]]]}],
+      Text[Style[Last@#,15,Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
     Disk[{0, 0}, 1, #]}&,
     Take[Partition[ListaAngoliAssociati60, 2, 1], n]]}, 
     PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
@@ -290,24 +290,25 @@ AngoliNotevoliUno[] :=Manipulate[
   AngoliNotevoliDue[] :=Manipulate[
   Graphics[{
     MapIndexed[{
-    ColorData[10][0], 
+    ColorData[10][0],
     ColorData[10][First@#2],
-    Text[ListaAngoliAssociati30[[1]], {1.2 Cos[ListaAngoliAssociati30[[1]]], 1.2 Sin[ListaAngoliAssociati30[[1]]]}], 
-    Text[Last@#, {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}], 
+      Text[Style[ListaAngoliAssociati30[[1]],15,Bold,Black], {1.2 Cos[ListaAngoliAssociati30[[1]]], 1.2 Sin[ListaAngoliAssociati30[[1]]]}],
+      Text[Style[Last@#,15,Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
     Disk[{0, 0}, 1, #]}&,
     Take[Partition[ListaAngoliAssociati30, 2, 1], n]]}, 
     PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
        ], 
       {{n, 0, "Angolo"}, 0, 3, 1 }
   ];
-  
+
+ListaAngoliAssociati45 := {\[Pi] / 4, 3 \[Pi] / 4, 5 \[Pi] / 4, 7 \[Pi] / 4};
   AngoliNotevoliTre[] :=Manipulate[
   Graphics[{
     MapIndexed[{
-    ColorData[10][0], 
-    ColorData[10][First@#2],
-    Text[ListaAngoliAssociati45[[1]], {1.2 Cos[ListaAngoliAssociati45[[1]]], 1.2 Sin[ListaAngoliAssociati45[[1]]]}], 
-    Text[Last@#, {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}], 
+    ColorData[100][0],
+    ColorData[100 ][First@#2 + 10],
+    Text[Style[ListaAngoliAssociati45[[1]],15,Bold,Black], {1.2 Cos[ListaAngoliAssociati45[[1]]], 1.2 Sin[ListaAngoliAssociati45[[1]]]}],
+    Text[Style[Last@#,15,Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
     Disk[{0, 0}, 1, #]}&,
     Take[Partition[ListaAngoliAssociati45, 2, 1], n]]}, 
     PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}

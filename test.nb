@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8595,        187]
-NotebookOptionsPosition[      7985,        169]
-NotebookOutlinePosition[      8332,        184]
-CellTagsIndexPosition[      8289,        181]
+NotebookDataLength[     12625,        271]
+NotebookOptionsPosition[     12014,        253]
+NotebookOutlinePosition[     12361,        268]
+CellTagsIndexPosition[     12318,        265]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -35,7 +35,10 @@ Cell[BoxData[
   RowBox[{"SetDirectory", "[", 
    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
   RowBox[{"<<", " ", "package.m"}], ";", 
-  RowBox[{"typeAngle", "[", "]"}], " "}]], "Input",
+  RowBox[{
+   RowBox[{"AngoliNotevoliTre", "[", "]"}], " ", 
+   RowBox[{"AngoliNotevoliDue", "[", "]"}], " ", 
+   RowBox[{"AngoliNotevoliUno", "[", "]"}]}]}]], "Input",
  CellChangeTimes->{{3.734851720561689*^9, 3.734851721300779*^9}, 
    3.7348523017858644`*^9, {3.734852618652252*^9, 3.7348526192466936`*^9}, {
    3.7348526713345904`*^9, 3.734852737127641*^9}, {3.734857481282914*^9, 
@@ -64,95 +67,172 @@ Cell[BoxData[
    3.735304455223299*^9, 3.7353045246062236`*^9}, {3.735305172940804*^9, 
    3.7353051778630857`*^9}, {3.7353053871575065`*^9, 3.73530541691861*^9}, {
    3.735305576870549*^9, 3.735305578045928*^9}, {3.7353058706172667`*^9, 
-   3.7353058714797525`*^9}, {3.7353060821690817`*^9, 
-   3.735306103059305*^9}},ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-\
+   3.7353058714797525`*^9}, {3.7353060821690817`*^9, 3.735306103059305*^9}, {
+   3.7353068434264417`*^9, 3.7353068609409046`*^9}, {3.7353069457359514`*^9, 
+   3.7353069686494627`*^9}, {3.7353070015117965`*^9, 
+   3.7353070409945335`*^9}, {3.7353072511678457`*^9, 
+   3.7353072612969093`*^9}},ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-\
 fa6f348760a2"],
 
 Cell[BoxData[
- TagBox[
-  StyleBox[
-   DynamicModuleBox[{ProvaProgetto`Private`a$$ = 126, Typeset`show$$ = True, 
-    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
-    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
-    "\"untitled\"", Typeset`specs$$ = {{{
-       Hold[ProvaProgetto`Private`a$$], 0, "angolo"}, 0, 360, 1}}, 
-    Typeset`size$$ = {943., {172., 178.}}, Typeset`update$$ = 0, 
-    Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
-    ProvaProgetto`Private`a$59536$$ = 0}, 
-    DynamicBox[Manipulate`ManipulateBoxes[
-     1, StandardForm, "Variables" :> {ProvaProgetto`Private`a$$ = 0}, 
-      "ControllerVariables" :> {
-        Hold[ProvaProgetto`Private`a$$, ProvaProgetto`Private`a$59536$$, 0]}, 
-      "OtherVariables" :> {
-       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
-        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
-        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
-         Typeset`skipInitDone$$}, "Body" :> Row[{
-         Column[{
-           Row[{
-             Button["Nullo", ProvaProgetto`Private`a$$ = 0], "\t", 
-             Button["Retto", ProvaProgetto`Private`a$$ = 90], "\t", 
-             Button["Piatto", ProvaProgetto`Private`a$$ = 180], "\t", 
-             Button["Giro", ProvaProgetto`Private`a$$ = 360], "\n"}], 
-           
-           Graphics[{
-            ProvaProgetto`Private`angle = 
-              If[ProvaProgetto`Private`a$$ == 0, "NULLO", 
-                If[ProvaProgetto`Private`a$$ == 90, "RETTO", 
-                 If[
-                  Or[
-                  ProvaProgetto`Private`a$$ == 180, ProvaProgetto`Private`a$$ == 
-                   179, ProvaProgetto`Private`a$$ == 181], "PIATTO", 
-                  If[ProvaProgetto`Private`a$$ == 360, "GIRO", ""]]]]; Null, 
-             If[
-              Or[
-              ProvaProgetto`Private`a$$ == 179, ProvaProgetto`Private`a$$ == 
-               181], ProvaProgetto`Private`a$$ = 180], 
-             Circle[], ProvaProgetto`Private`x := N[
-                Cos[ProvaProgetto`Private`a$$ Degree]]; Null, 
-             ProvaProgetto`Private`y := N[
-                Sin[ProvaProgetto`Private`a$$ Degree]]; Null, {Blue, Thick, 
-              Circle[{0, 0}, 0.2, {0, ProvaProgetto`Private`a$$ Pi/180}]}, 
-             Text[
-              Style[ProvaProgetto`Private`angle, 15, Blue], {-0.7, 1.2}], 
-             Text[
-              Style[ProvaProgetto`Private`a$$ Degree, 15, Blue], {-1, 1}], 
-             Text[
-              Style[ProvaProgetto`Private`a$$ Pi/180, 18, 
-               RGBColor[0, 50, 255]], {-0.7, 1}], 
-             Thickness[0.01], 
-             
-             Line[{{0, 0}, {
-               ProvaProgetto`Private`x, ProvaProgetto`Private`y}}]}, Axes -> 
-            True, ImageSize -> 300, Ticks -> None, 
-            PlotRange -> {{-1.4, 1.4}, {-1.4, 1.4}}]}], 
-         Column[{"\t"}], 
-         Column[{
-           Row[{
-             Text[
-              Style["GRADI", Blue, Bold, 20]], "\n", 
-             Text[
-              Style[ProvaProgetto`defGradi, 17]]}], 
-           Row[{"\n"}], 
-           Row[{
-             Text[
-              Style["RADIANTI", 
-               RGBColor[0, 50, 255], Bold, 20]], "\n", 
-             Text[
-              Style[ProvaProgetto`defRadianti, 17]]}]}]}], 
-      "Specifications" :> {{{ProvaProgetto`Private`a$$, 0, "angolo"}, 0, 360, 
-         1}}, "Options" :> {}, "DefaultOptions" :> {}],
-     ImageSizeCache->{994., {219., 225.}},
-     SingleEvaluation->True],
-    Deinitialization:>None,
-    DynamicModuleValues:>{},
-    SynchronousInitialization->True,
-    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
-    UnsavedVariables:>{Typeset`initDone$$},
-    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
-   Deployed->True,
-   StripOnInput->False],
-  Manipulate`InterpretManipulate[1]]], "Output",
+ RowBox[{
+  TagBox[
+   StyleBox[
+    DynamicModuleBox[{ProvaProgetto`Private`n$$ = 3, Typeset`show$$ = True, 
+     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+     "\"untitled\"", Typeset`specs$$ = {{{
+        Hold[ProvaProgetto`Private`n$$], 0, "Angolo"}, 0, 3, 1}}, 
+     Typeset`size$$ = {360., {177., 183.}}, Typeset`update$$ = 0, 
+     Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+     ProvaProgetto`Private`n$70782$$ = 0}, 
+     DynamicBox[Manipulate`ManipulateBoxes[
+      1, StandardForm, "Variables" :> {ProvaProgetto`Private`n$$ = 0}, 
+       "ControllerVariables" :> {
+         Hold[ProvaProgetto`Private`n$$, ProvaProgetto`Private`n$70782$$, 0]},
+        "OtherVariables" :> {
+        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+         Typeset`specs$$, Typeset`size$$, Typeset`update$$, 
+         Typeset`initDone$$, Typeset`skipInitDone$$}, "Body" :> Graphics[{
+          MapIndexed[{
+            ColorData[10][0], 
+            ColorData[10][
+             First[#2]], 
+            Text[
+             Style[
+              Part[ProvaProgetto`Private`ListaAngoliAssociati30, 1], 15, Bold,
+               Black], {1.2 Cos[
+                Part[ProvaProgetto`Private`ListaAngoliAssociati30, 1]], 1.2 
+              Sin[
+                Part[ProvaProgetto`Private`ListaAngoliAssociati30, 1]]}], 
+            Text[
+             Style[
+              Last[#], 15, Bold], {1.2 Cos[
+                Last[#]], 1.2 Sin[
+                Last[#]]}], 
+            Disk[{0, 0}, 1, #]}& , 
+           Take[
+            Partition[ProvaProgetto`Private`ListaAngoliAssociati30, 2, 1], 
+            ProvaProgetto`Private`n$$]]}, 
+         PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}], 
+       "Specifications" :> {{{ProvaProgetto`Private`n$$, 0, "Angolo"}, 0, 3, 
+          1}}, "Options" :> {}, "DefaultOptions" :> {}],
+      ImageSizeCache->{411., {224., 230.}},
+      SingleEvaluation->True],
+     Deinitialization:>None,
+     DynamicModuleValues:>{},
+     SynchronousInitialization->True,
+     UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+     UnsavedVariables:>{Typeset`initDone$$},
+     UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+    Deployed->True,
+    StripOnInput->False],
+   Manipulate`InterpretManipulate[1]], " ", 
+  TagBox[
+   StyleBox[
+    DynamicModuleBox[{ProvaProgetto`Private`n$$ = 3, Typeset`show$$ = True, 
+     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+     "\"untitled\"", Typeset`specs$$ = {{{
+        Hold[ProvaProgetto`Private`n$$], 0, "Angolo"}, 0, 3, 1}}, 
+     Typeset`size$$ = {360., {177., 183.}}, Typeset`update$$ = 0, 
+     Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+     ProvaProgetto`Private`n$70799$$ = 0}, 
+     DynamicBox[Manipulate`ManipulateBoxes[
+      1, StandardForm, "Variables" :> {ProvaProgetto`Private`n$$ = 0}, 
+       "ControllerVariables" :> {
+         Hold[ProvaProgetto`Private`n$$, ProvaProgetto`Private`n$70799$$, 0]},
+        "OtherVariables" :> {
+        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+         Typeset`specs$$, Typeset`size$$, Typeset`update$$, 
+         Typeset`initDone$$, Typeset`skipInitDone$$}, "Body" :> Graphics[{
+          MapIndexed[{
+            ColorData[100][0], 
+            ColorData[100][First[#2] + 10], 
+            Text[
+             Style[
+              Part[ProvaProgetto`Private`ListaAngoliAssociati45, 1], 15, Bold,
+               Black], {1.2 Cos[
+                Part[ProvaProgetto`Private`ListaAngoliAssociati45, 1]], 1.2 
+              Sin[
+                Part[ProvaProgetto`Private`ListaAngoliAssociati45, 1]]}], 
+            Text[
+             Style[
+              Last[#], 15, Bold], {1.2 Cos[
+                Last[#]], 1.2 Sin[
+                Last[#]]}], 
+            Disk[{0, 0}, 1, #]}& , 
+           Take[
+            Partition[ProvaProgetto`Private`ListaAngoliAssociati45, 2, 1], 
+            ProvaProgetto`Private`n$$]]}, 
+         PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}], 
+       "Specifications" :> {{{ProvaProgetto`Private`n$$, 0, "Angolo"}, 0, 3, 
+          1}}, "Options" :> {}, "DefaultOptions" :> {}],
+      ImageSizeCache->{411., {224., 230.}},
+      SingleEvaluation->True],
+     Deinitialization:>None,
+     DynamicModuleValues:>{},
+     SynchronousInitialization->True,
+     UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+     UnsavedVariables:>{Typeset`initDone$$},
+     UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+    Deployed->True,
+    StripOnInput->False],
+   Manipulate`InterpretManipulate[1]], " ", 
+  TagBox[
+   StyleBox[
+    DynamicModuleBox[{ProvaProgetto`Private`n$$ = 3, Typeset`show$$ = True, 
+     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+     "\"untitled\"", Typeset`specs$$ = {{{
+        Hold[ProvaProgetto`Private`n$$], 0, "Angolo"}, 0, 3, 1}}, 
+     Typeset`size$$ = {360., {177., 183.}}, Typeset`update$$ = 0, 
+     Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+     ProvaProgetto`Private`n$70816$$ = 0}, 
+     DynamicBox[Manipulate`ManipulateBoxes[
+      1, StandardForm, "Variables" :> {ProvaProgetto`Private`n$$ = 0}, 
+       "ControllerVariables" :> {
+         Hold[ProvaProgetto`Private`n$$, ProvaProgetto`Private`n$70816$$, 0]},
+        "OtherVariables" :> {
+        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+         Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+         Typeset`specs$$, Typeset`size$$, Typeset`update$$, 
+         Typeset`initDone$$, Typeset`skipInitDone$$}, "Body" :> Graphics[{
+          MapIndexed[{
+            ColorData[100][0], 
+            ColorData[100][First[#2] + 50], 
+            Text[
+             Style[
+              Part[ProvaProgetto`Private`ListaAngoliAssociati60, 1], 15, Bold,
+               Black], {1.2 Cos[
+                Part[ProvaProgetto`Private`ListaAngoliAssociati60, 1]], 1.2 
+              Sin[
+                Part[ProvaProgetto`Private`ListaAngoliAssociati60, 1]]}], 
+            Text[
+             Style[
+              Last[#], 15, Bold], {1.2 Cos[
+                Last[#]], 1.2 Sin[
+                Last[#]]}], 
+            Disk[{0, 0}, 1, #]}& , 
+           Take[
+            Partition[ProvaProgetto`Private`ListaAngoliAssociati60, 2, 1], 
+            ProvaProgetto`Private`n$$]]}, 
+         PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}], 
+       "Specifications" :> {{{ProvaProgetto`Private`n$$, 0, "Angolo"}, 0, 3, 
+          1}}, "Options" :> {}, "DefaultOptions" :> {}],
+      ImageSizeCache->{411., {224., 230.}},
+      SingleEvaluation->True],
+     Deinitialization:>None,
+     DynamicModuleValues:>{},
+     SynchronousInitialization->True,
+     UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+     UnsavedVariables:>{Typeset`initDone$$},
+     UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+    Deployed->True,
+    StripOnInput->False],
+   Manipulate`InterpretManipulate[1]]}]], "Output",
  CellChangeTimes->{{3.7353051791635046`*^9, 3.735305207373705*^9}, 
    3.735305260574706*^9, 3.735305293657221*^9, {3.7353053363558683`*^9, 
    3.735305403198497*^9}, 3.735305578390849*^9, 3.7353056125869026`*^9, {
@@ -162,9 +242,13 @@ Cell[BoxData[
    3.735306103493842*^9}, {3.735306188620367*^9, 3.735306215742513*^9}, {
    3.7353062493315783`*^9, 3.7353062677861376`*^9}, 3.735306317006734*^9, 
    3.735306356373308*^9, {3.7353064023047295`*^9, 3.7353064241444397`*^9}, {
-   3.7353064702142525`*^9, 
-   3.735306496774842*^9}},ExpressionUUID->"ea18f00d-94f0-48aa-b53f-\
-0ec53a019ca8"]
+   3.7353064702142525`*^9, 3.735306496774842*^9}, {3.7353068526951303`*^9, 
+   3.735306861426651*^9}, {3.7353069001422186`*^9, 3.73530691390707*^9}, {
+   3.735306948153212*^9, 3.7353069690745325`*^9}, {3.7353070032992344`*^9, 
+   3.735307065595914*^9}, 3.7353071066611023`*^9, {3.7353071383346014`*^9, 
+   3.735307193998502*^9}, {3.7353072494735503`*^9, 
+   3.735307262048219*^9}},ExpressionUUID->"17977e40-5454-42f4-a00f-\
+17b10f08efd7"]
 }, Open  ]]
 },
 WindowSize->{1350, 695},
@@ -186,8 +270,8 @@ Notebook[{
 Cell[558, 20, 151, 3, 28, "Input",ExpressionUUID->"4309e3fd-7fc6-4390-94ce-f922b95886cc"],
 Cell[712, 25, 154, 3, 28, "Input",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0"],
 Cell[CellGroupData[{
-Cell[891, 32, 2408, 36, 28, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
-Cell[3302, 70, 4667, 96, 496, "Output",ExpressionUUID->"ea18f00d-94f0-48aa-b53f-0ec53a019ca8"]
+Cell[891, 32, 2737, 42, 28, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
+Cell[3631, 76, 8367, 174, 990, "Output",ExpressionUUID->"17977e40-5454-42f4-a00f-17b10f08efd7"]
 }, Open  ]]
 }
 ]
