@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6024,        123]
-NotebookOptionsPosition[      5414,        105]
-NotebookOutlinePosition[      5762,        120]
-CellTagsIndexPosition[      5719,        117]
+NotebookDataLength[      6025,        139]
+NotebookOptionsPosition[      5414,        121]
+NotebookOutlinePosition[      5762,        136]
+CellTagsIndexPosition[      5719,        133]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -34,10 +34,8 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"SetDirectory", "[", 
    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
-  RowBox[{"<<", " ", "package.m"}], ";", "  ", 
-  RowBox[{"Rationalize", "[", 
-   RowBox[{"Sin", "[", 
-    RowBox[{"Pi", "/", "2"}], "]"}], "]"}]}]], "Input",
+  RowBox[{"<<", " ", "package.m"}], ";", " ", 
+  RowBox[{"AngoliNotevoliTre", "[", "]"}]}]], "Input",
  CellChangeTimes->{{3.734851720561689*^9, 3.734851721300779*^9}, 
    3.7348523017858644`*^9, {3.734852618652252*^9, 3.7348526192466936`*^9}, {
    3.7348526713345904`*^9, 3.734852737127641*^9}, {3.734857481282914*^9, 
@@ -60,47 +58,65 @@ Cell[BoxData[
    3.7352938965307875`*^9, 3.735293914700846*^9}, {3.735294005640997*^9, 
    3.735294010261369*^9}, {3.7352940533674736`*^9, 3.7352941484986477`*^9}, {
    3.735294203929695*^9, 3.735294253615596*^9}, {3.73529436990388*^9, 
-   3.7352944643323755`*^9}},
+   3.7352944643323755`*^9}, {3.7352983800759106`*^9, 3.735298383087204*^9}, {
+   3.7352984590077353`*^9, 3.7352985120363855`*^9}, {3.7352986777724223`*^9, 
+   3.7352987055732255`*^9}},
  EmphasizeSyntaxErrors->
   True,ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
 
 Cell[BoxData[
- FractionBox[
-  SqrtBox["3"], "2"]], "Output",
- CellChangeTimes->{{3.735288562748584*^9, 3.735288589247188*^9}, {
-   3.735288640252431*^9, 3.7352886986140003`*^9}, 3.735289774301673*^9, {
-   3.7352898063821836`*^9, 3.7352898177333307`*^9}, {3.7352900404527826`*^9, 
-   3.7352901004303255`*^9}, {3.735290149385228*^9, 3.7352901577958994`*^9}, {
-   3.735290205686946*^9, 3.7352902375162725`*^9}, {3.7352902722791133`*^9, 
-   3.7352902876756973`*^9}, 3.7352904452448826`*^9, {3.7352904814017487`*^9, 
-   3.735290521041394*^9}, 3.7352906281349673`*^9, 3.7352906907912016`*^9, {
-   3.7352907739104557`*^9, 3.7352907961608453`*^9}, {3.7352908959146986`*^9, 
-   3.735290909838746*^9}, 3.73529094201442*^9, {3.7352909721661034`*^9, 
-   3.7352910671707335`*^9}, 3.7352911368038054`*^9, {3.735291171050561*^9, 
-   3.7352911923118687`*^9}, {3.735291237422285*^9, 3.735291252678985*^9}, 
-   3.7352912831621284`*^9, 3.7352913389978957`*^9, {3.7352913823523126`*^9, 
-   3.7352913927466383`*^9}, 3.7352914298628097`*^9, 3.735291517167368*^9, {
-   3.7352915757787495`*^9, 3.7352916347511845`*^9}, {3.735291697174201*^9, 
-   3.7352917290669746`*^9}, 3.735291773830899*^9, {3.7352918180489683`*^9, 
-   3.735291891540924*^9}, {3.735291980429283*^9, 3.735291991280694*^9}, 
-   3.7352920233767495`*^9, 3.735292080404955*^9, 3.735292113990264*^9, {
-   3.7352921442841735`*^9, 3.735292162050429*^9}, 3.7352921978622503`*^9, 
-   3.735292228424049*^9, {3.7352922830838184`*^9, 3.735292291094799*^9}, {
-   3.735292397438518*^9, 3.735292428326749*^9}, 3.7352924635580015`*^9, {
-   3.7352924942201166`*^9, 3.7352925270864334`*^9}, 3.7352925649010687`*^9, 
-   3.7352926357038345`*^9, {3.73529269371418*^9, 3.7352927196530275`*^9}, {
-   3.7352928204920845`*^9, 3.7352928619385457`*^9}, 3.7352929065613966`*^9, {
-   3.7352929787903757`*^9, 3.7352930214330587`*^9}, {3.7352931630603113`*^9, 
-   3.735293254026826*^9}, {3.735293293201149*^9, 3.7352933121146975`*^9}, {
-   3.735293387898061*^9, 3.735293410587227*^9}, {3.7352935076620045`*^9, 
-   3.735293554930971*^9}, {3.735293610041433*^9, 3.735293671626899*^9}, {
-   3.735293740412245*^9, 3.7352937956570544`*^9}, 3.7352938556785345`*^9, {
-   3.7352939028442955`*^9, 3.73529391571539*^9}, {3.7352940115451717`*^9, 
-   3.735294079220479*^9}, {3.735294141356181*^9, 3.735294148987502*^9}, {
-   3.7352942085346212`*^9, 3.735294254048979*^9}, 3.735294303438989*^9, {
-   3.7352943736081767`*^9, 
-   3.7352944610626698`*^9}},ExpressionUUID->"4ba3f8b9-685e-4ece-8fc6-\
-82c1711a9b2b"]
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{ProvaProgetto`Private`n$$ = 3, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[ProvaProgetto`Private`n$$], 0, "Angolo"}, 0, 3, 1}}, 
+    Typeset`size$$ = {360., {177., 183.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    ProvaProgetto`Private`n$25343$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {ProvaProgetto`Private`n$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[ProvaProgetto`Private`n$$, ProvaProgetto`Private`n$25343$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Graphics[{
+         MapIndexed[{
+           ColorData[10][0], 
+           ColorData[10][
+            First[#2]], 
+           Text[
+            Part[ProvaProgetto`Private`ListaAngoliAssociati45, 1], {1.2 Cos[
+               Part[ProvaProgetto`Private`ListaAngoliAssociati45, 1]], 1.2 Sin[
+               Part[ProvaProgetto`Private`ListaAngoliAssociati45, 1]]}], 
+           Text[
+            Last[#], {1.2 Cos[
+               Last[#]], 1.2 Sin[
+               Last[#]]}], 
+           Disk[{0, 0}, 1, #]}& , 
+          Take[
+           Partition[ProvaProgetto`Private`ListaAngoliAssociati45, 2, 1], 
+           ProvaProgetto`Private`n$$]]}, 
+        PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}], 
+      "Specifications" :> {{{ProvaProgetto`Private`n$$, 0, "Angolo"}, 0, 3, 
+         1}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {224., 230.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.7352986921827497`*^9, 
+  3.7352987073124847`*^9}},ExpressionUUID->"48daecb3-5dbc-49f7-849b-\
+ecb944bd4c15"]
 }, Open  ]]
 },
 WindowSize->{1366, 695},
@@ -122,8 +138,8 @@ Notebook[{
 Cell[558, 20, 151, 3, 28, "Input",ExpressionUUID->"4309e3fd-7fc6-4390-94ce-f922b95886cc"],
 Cell[712, 25, 154, 3, 28, "Input",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0"],
 Cell[CellGroupData[{
-Cell[891, 32, 1994, 32, 28, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
-Cell[2888, 66, 2510, 36, 62, "Output",ExpressionUUID->"4ba3f8b9-685e-4ece-8fc6-82c1711a9b2b"]
+Cell[891, 32, 2093, 32, 28, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
+Cell[2987, 66, 2411, 52, 473, "Output",ExpressionUUID->"48daecb3-5dbc-49f7-849b-ecb944bd4c15"]
 }, Open  ]]
 }
 ]

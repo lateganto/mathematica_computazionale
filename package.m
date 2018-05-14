@@ -31,7 +31,9 @@ startGame::usage = "gioco del quadrante";
 distanceGame::usage = "calcola la distanza distanza tra due punti";
 typeAngle::usage = "per la def di angolo";
 altezzaTorre::usage = "applicazione altezza torre";
-AngoliNotevoli::usage = "manipulate di angoli notevoli";
+AngoliNotevoliUno::usage = "manipulate di angoli notevoli 60";
+AngoliNotevoliDue::usage = "manipulate di angoli notevoli 30";
+AngoliNotevoliTre::usage = "manipulate di angoli notevoli 45";
 ThGradRad::usage = "manipulate della conversione radianti gradi";
 
 defGradi = Text["def gradi"];
@@ -261,13 +263,51 @@ distanceGame[] := DynamicModule[{x1, y1, x2, y2, Esito = ""},
     }] (*fine colonna input*)
   }]
 ];
+ 
 
-AngoliNotevoli[] := Manipulate[
-  Graphics[{If[n > 0, {}, {ColorData[10][1], Line[{{0, 0}, {1, 0}}], Text[0, {1.2, 0}]}],
-    MapIndexed[{ColorData[10][0], Text[If[n == 11, 2 \[Pi], 0], {1.2, 0}], ColorData[10][First@#2],
-      Text[Last@#, {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}], Disk[{0, 0}, 1, #]}&,
-      Take[Partition[{0, \[Pi] / 6, \[Pi] / 4, \[Pi] / 3, \[Pi] / 2, 2 \[Pi] / 3, 3 \[Pi] / 4, \[Pi], 5 / 4 \[Pi], 3 \[Pi] / 2, 7 \[Pi] / 4, 2 \[Pi]}, 2, 1], n]]},
-    PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}], {{n, 8, "Angolo"}, 0, 11, 1}];
+
+ListaAngoliAssociati60 := {\[Pi] / 3, 2 \[Pi] / 3, 4 \[Pi] / 3, 5 \[Pi] / 3};
+AngoliNotevoliUno[] :=Manipulate[
+  Graphics[{
+    MapIndexed[{
+    ColorData[10][0], 
+    ColorData[10][First@#2],
+    Text[ListaAngoliAssociati60[[1]], {1.2 Cos[ListaAngoliAssociati60[[1]]], 1.2 Sin[ListaAngoliAssociati60[[1]]]}], 
+    Text[Last@#, {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}], 
+    Disk[{0, 0}, 1, #]}&,
+    Take[Partition[ListaAngoliAssociati60, 2, 1], n]]}, 
+    PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
+       ], 
+      {{n, 0, "Angolo"}, 0, 3, 1 }
+  ];
+  ListaAngoliAssociati30 := {\[Pi] / 6, 5 \[Pi] / 6, 7 \[Pi] / 6, 11 \[Pi] / 6};
+  AngoliNotevoliDue[] :=Manipulate[
+  Graphics[{
+    MapIndexed[{
+    ColorData[10][0], 
+    ColorData[10][First@#2],
+    Text[ListaAngoliAssociati30[[1]], {1.2 Cos[ListaAngoliAssociati30[[1]]], 1.2 Sin[ListaAngoliAssociati30[[1]]]}], 
+    Text[Last@#, {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}], 
+    Disk[{0, 0}, 1, #]}&,
+    Take[Partition[ListaAngoliAssociati30, 2, 1], n]]}, 
+    PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
+       ], 
+      {{n, 0, "Angolo"}, 0, 3, 1 }
+  ];
+  
+  AngoliNotevoliTre[] :=Manipulate[
+  Graphics[{
+    MapIndexed[{
+    ColorData[10][0], 
+    ColorData[10][First@#2],
+    Text[ListaAngoliAssociati45[[1]], {1.2 Cos[ListaAngoliAssociati45[[1]]], 1.2 Sin[ListaAngoliAssociati45[[1]]]}], 
+    Text[Last@#, {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}], 
+    Disk[{0, 0}, 1, #]}&,
+    Take[Partition[ListaAngoliAssociati45, 2, 1], n]]}, 
+    PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
+       ], 
+      {{n, 0, "Angolo"}, 0, 3, 1 }
+  ];
 
 
 
