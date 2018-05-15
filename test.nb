@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8201,        176]
-NotebookOptionsPosition[      7591,        158]
-NotebookOutlinePosition[      7938,        173]
-CellTagsIndexPosition[      7895,        170]
+NotebookDataLength[      5872,        131]
+NotebookOptionsPosition[      5263,        113]
+NotebookOutlinePosition[      5610,        128]
+CellTagsIndexPosition[      5567,        125]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -30,14 +30,30 @@ Cell[BoxData[""], "Input",
 
 Cell[CellGroupData[{
 
-Cell[BoxData[
+Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"SetDirectory", "[", 
     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
-   RowBox[{"<<", " ", "package.m"}], ";", "  ", 
-   RowBox[{"GraficoPrimaRelazione", "[", "]"}]}], 
-  "\[IndentingNewLine]"}]], "Input",
+   RowBox[{"<<", " ", "package.m"}], ";"}], "  "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"otherRisp", "=", " ", 
+   RowBox[{"RandomSample", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Sqrt", "[", "37", "]"}], ",", 
+       RowBox[{"Sqrt", "[", "76", "]"}], ",", 
+       RowBox[{"8", "/", "9"}], ",", " ", 
+       RowBox[{"5", "/", "8"}], ",", 
+       RowBox[{"8", "/", "5"}], ",", "2", ",", 
+       RowBox[{"15", "/", "4"}], ",", 
+       RowBox[{"Sqrt", "[", "45", "]"}], ",", 
+       RowBox[{"Sqrt", "[", "56", "]"}], ",", 
+       RowBox[{"Sqrt", "[", "34", "]"}], ",", " ", 
+       RowBox[{"4", "/", "80"}], ",", 
+       RowBox[{"20", "/", "7"}]}], "}"}], ",", "3"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "otherRisp"}], "Input",
  CellChangeTimes->{{3.734851720561689*^9, 3.734851721300779*^9}, 
    3.7348523017858644`*^9, {3.734852618652252*^9, 3.7348526192466936`*^9}, {
    3.7348526713345904`*^9, 3.734852737127641*^9}, {3.734857481282914*^9, 
@@ -77,83 +93,22 @@ Cell[BoxData[
    3.735313442112957*^9}, {3.7353135315507965`*^9, 3.735313534827612*^9}, {
    3.7353144936055574`*^9, 3.735314494687747*^9}, 3.735314942268444*^9, {
    3.7353150490497932`*^9, 3.7353152492174263`*^9}, {3.735315282178447*^9, 
-   3.735315289535389*^9}},ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-\
+   3.735315289535389*^9}, {3.7353921443009024`*^9, 3.735392213012721*^9}, {
+   3.7353923046761127`*^9, 3.7353923422212734`*^9}, {3.7353923815441413`*^9, 
+   3.7353925430225143`*^9}},ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-\
 fa6f348760a2"],
 
 Cell[BoxData[
- TagBox[
-  StyleBox[
-   DynamicModuleBox[{ProvaProgetto`Private`x$$ = 332, Typeset`show$$ = True, 
-    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
-    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
-    "\"untitled\"", Typeset`specs$$ = {{{
-       Hold[ProvaProgetto`Private`x$$], 45, ""}, 0, 360, 1}}, 
-    Typeset`size$$ = {354., {172., 177.}}, Typeset`update$$ = 0, 
-    Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
-    ProvaProgetto`Private`x$246281$$ = 0}, 
-    DynamicBox[Manipulate`ManipulateBoxes[
-     1, StandardForm, "Variables" :> {ProvaProgetto`Private`x$$ = 45}, 
-      "ControllerVariables" :> {
-        Hold[ProvaProgetto`Private`x$$, ProvaProgetto`Private`x$246281$$, 0]},
-       "OtherVariables" :> {
-       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
-        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
-        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
-         Typeset`skipInitDone$$}, "Body" :> 
-      Row[{ProvaProgetto`Private`rad := ProvaProgetto`Private`x$$ Pi/180; 
-         ProvaProgetto`Private`P := {
-            Cos[ProvaProgetto`Private`rad], 
-            Sin[ProvaProgetto`Private`rad]}; 
-         ProvaProgetto`Private`proiezioneX := {
-            Cos[ProvaProgetto`Private`rad], 0}; 
-         ProvaProgetto`Private`proiezioneY := {
-            Cos[ProvaProgetto`Private`rad], 
-            Sin[ProvaProgetto`Private`rad]}; 
-         ProvaProgetto`Private`triangolo := {Yellow, 
-            
-            Triangle[{{0, 0}, ProvaProgetto`Private`proiezioneX, 
-              ProvaProgetto`Private`P}]}, 
-         Graphics[{
-           Circle[], ProvaProgetto`Private`triangolo, 
-           Point[{0, 0}], 
-           PointSize[Large], {Dashed, 
-            Line[{{0, 0}, ProvaProgetto`Private`P}]}, 
-           Thickness[0.01], 
-           RGBColor[0, 255, 0], 
-           Line[{{0, 0}, ProvaProgetto`Private`proiezioneX}], 
-           RGBColor[255, 0, 0], 
-           Line[{{
-              Cos[ProvaProgetto`Private`rad], 0}, 
-             ProvaProgetto`Private`proiezioneY}], {Black, PointSize -> 0.02, 
-            Point[{
-              Cos[ProvaProgetto`Private`rad], 
-              Sin[ProvaProgetto`Private`rad]}]}}, ImageSize -> 350, Axes -> 
-          True, Ticks -> None]}], 
-      "Specifications" :> {{{ProvaProgetto`Private`x$$, 45, ""}, 0, 360, 1, 
-         AnimationRate -> 30, 
-         AppearanceElements -> {
-          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
-           "DirectionButton"}}}, 
-      "Options" :> {
-       ControlType -> Animator, AppearanceElements -> None, DefaultBaseStyle -> 
-        "Animate", DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> 
-        True, ShrinkingDelay -> 10.}, "DefaultOptions" :> {}],
-     ImageSizeCache->{405., {211., 217.}},
-     SingleEvaluation->True],
-    Deinitialization:>None,
-    DynamicModuleValues:>{},
-    SynchronousInitialization->True,
-    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
-    UnsavedVariables:>{Typeset`initDone$$},
-    UntrackedVariables:>{Typeset`size$$}], "Animate",
-   Deployed->True,
-   StripOnInput->False],
-  Manipulate`InterpretManipulate[1]]], "Output",
- CellChangeTimes->{
-  3.735315290064253*^9, 3.7353153854793043`*^9, {3.7353154173064175`*^9, 
-   3.7353154515671225`*^9}, 
-   3.735315493431373*^9},ExpressionUUID->"01d1adc4-c6bc-4189-98dd-\
-629eccf5a80a"]
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"3", " ", 
+    SqrtBox["5"]}], ",", 
+   RowBox[{"2", " ", 
+    SqrtBox["14"]}], ",", 
+   FractionBox["15", "4"]}], "}"}]], "Output",
+ CellChangeTimes->{{3.7353923908419037`*^9, 3.7353924773244624`*^9}, 
+   3.735392526124602*^9},ExpressionUUID->"de68522f-339b-41e9-9f60-\
+b7e2d40f60e7"]
 }, Open  ]]
 },
 WindowSize->{1350, 695},
@@ -175,8 +130,8 @@ Notebook[{
 Cell[558, 20, 151, 3, 28, "Input",ExpressionUUID->"4309e3fd-7fc6-4390-94ce-f922b95886cc"],
 Cell[712, 25, 154, 3, 28, "Input",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0"],
 Cell[CellGroupData[{
-Cell[891, 32, 3230, 48, 48, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
-Cell[4124, 82, 3451, 73, 480, "Output",ExpressionUUID->"01d1adc4-c6bc-4189-98dd-629eccf5a80a"]
+Cell[891, 32, 4017, 66, 67, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
+Cell[4911, 100, 336, 10, 55, "Output",ExpressionUUID->"de68522f-339b-41e9-9f60-b7e2d40f60e7"]
 }, Open  ]]
 }
 ]

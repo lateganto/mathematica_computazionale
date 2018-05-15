@@ -24,8 +24,8 @@ ClearAll["ProvaProgetto` *"];
 
 drawCircle::usage = "disegna un grafico";
 drawCartesian::usage = "disegna assi"
-startGame::usage = "gioco del quadrante";
-distanceGame::usage = "calcola la distanza distanza tra due punti";
+EsCoordinate::usage = "esercizio su coordinate";
+EsDistanze::usage = "calcola la distanza distanza tra due punti";
 typeAngle::usage = "per la def di angolo";
 altezzaTorre::usage = "applicazione altezza torre";
 graficoTangente::usage = "manipulate per la funzione tangente";
@@ -354,7 +354,7 @@ drawCircle[] := Manipulate[
   ControlType -> {Slider, PopupMenu}
 ];
 
-distanceGame[] := DynamicModule[{x1, y1, x2, y2, Esito = ""},
+EsDistanze[] := Quiet[DynamicModule[{x1, y1, x2, y2, Esito = ""},
   checkRisp[risp_, correct_] := (
     If[risp == correct, Return["Risposta Corretta"], Return["Risposta Sbagliata"]]
   );
@@ -413,10 +413,11 @@ distanceGame[] := DynamicModule[{x1, y1, x2, y2, Esito = ""},
     (*calcolo della risposta corretta*)
       giusta = computeDistance[x1, y1, x2, y2];
       (*calcolo casuale delle risposte errate*)
-
-      risp1 = RandomInteger[{1., 10.}];
-      risp2 = RandomInteger[{11., 20.}];
-      risp3 = RandomInteger[{21., 30.}];
+      otherRisp =  RandomSample[{Sqrt[37], Sqrt[76], 8/9, 5/8, 8/5, 2, 15/4, Sqrt[45],
+            Sqrt[56], Sqrt[34], 4/80, 20/7}, 3];
+      risp1 =       otherRisp[[1]];
+      risp2 =       otherRisp[[2]];
+      risp3 =       otherRisp[[3]];
       (*la risp corretta viene inserita temporan nella var risp4 per poi
         inserire le 4 risposte e fare un Sort in base alla crescenza dei valori *)
       risp4 = giusta;
@@ -435,7 +436,7 @@ distanceGame[] := DynamicModule[{x1, y1, x2, y2, Esito = ""},
       btn1, btn2, btn3, btn4
     }] (*fine colonna input*)
   }]
-];
+]];
 
 
 
@@ -536,12 +537,13 @@ drawCartesian[x_, y_] := DynamicModule[{colEsito = Black, esito = "", limit = 10
   }](*Fine Row*)
 ];
 (*individue le coord del punto*)
-startGame[] := DynamicModule[{},
+EsCoordinate[] := Quiet[DynamicModule[{},
   pointList = List[{3, 2}, {1, 3}, {-1, 1}, {-2, -5}, {-3, 8}, {-1, 3}, {-2, 1}, {-7, 3}, {2, 0}, {-9, 5}, {-10, 7}, {5, 2}, {-5, 4}, {-8, -5}, {2, 9}, {3, -6}];
   randomPoint = RandomInteger[{1, Length[pointList]}];
   P = pointList[[randomPoint]];
   drawCartesian[P[[1]], P[[2]]]
 
+  ]
 ];
 
 GetQuad[x0_, y0_] := DynamicModule[{x = x0, y = y0, quad},
