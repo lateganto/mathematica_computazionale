@@ -19,11 +19,8 @@ BeginPackage[ "ProvaProgetto`"];
 Unprotect["ProvaProgetto` *"] (* toglie temporaneamente la protezione per ridefinire le funzioni *)
 ClearAll["ProvaProgetto` *"];
 
-
-
 (* ::InheritFromParent:: *)
 (**)
-
 
 drawCircle::usage = "disegna un grafico";
 drawCartesian::usage = "disegna assi"
@@ -43,56 +40,132 @@ Poniamo 1\[Degree] una di queste parti. Preso dunque un angolo qualsiasi, contia
 defRadianti = Text["Prendiamo una circonferenza di raggio r e un angolo al centro \[Alpha];
 l  \[EGrave]  l'arco sotteso dall'angolo. La misura in radianti  \[EGrave]  data dal rapporto l/r.
  In particolare, 1 rad  \[EGrave]  un angolo che sottende un arco lungo quanto il raggio."];
+sinCosExercise::usage = "esercizio sin cos";
+
+
 Begin["`Private`"]; (* Comincia spazio privato *)
 
-FromRadToGrad[x_] := Return[x*180/Pi];
+FromRadToGrad[x_] := Return[x * 180 / Pi];
 FromGradToRad[x_] := Pi Rationalize[N[x]] / Pi;
 getAngle[p1_, p2_] := Mod[ArcTan @@ (p2 - p1), 2 Pi];
 pointList = List[{3, 2}, {1, 3}, {-1, 1}, {-2, -5}, {-3, 8}, {-1, 3}, {-2, 1}, {-7, 3}];
 pointListTwo = List[{2, 0}, {-9, 5}, {-10, 7}, {5, 2}, {-5, 4}, {-8, -5}, {2, 9}, {3, -6}];
-
+angleList = List[0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330, 360];
+sinCosList = List[0, 1, -1, 1 / 2, -1 / 2, Sqrt[2] / 2, -Sqrt[2] / 2, Sqrt[3] / 2, -Sqrt[3] / 2];
 
 (* ::InheritFromParent:: *)
 (**)
+
+sinCosExercise[] := DynamicModule[{esitoSin = "", colorEsitoSin = "", esitoCos = "", colorEsitoCos = ""},
+  checkRisp[risp_, correct_] := (
+    If[risp == correct, Return["Risposta Corretta"], Return["Risposta Sbagliata"]]
+  );
+  Row[{
+    random = RandomSample[angleList, 1];
+    x = random[[1]] Degree;
+    sinCosList2 = DeleteCases[sinCosList, Cos[x]];
+    sinCosList2 = DeleteCases[sinCosList2, Sin[x]];
+
+    sin = Sin[x];
+    cos = Cos[x];
+
+    Graphics[{
+      Circle[],
+      Point[{0, 0}],
+      PointSize[Large],
+      Circle[{0, 0}, 0.2, {0, FromGradToRad[x]}],
+      {Dashed, Line[{{0, 0}, {cos, sin}}]}, (*raggio*)
+      Thickness[0.01],
+      RGBColor[0, 255, 0],
+      Line[{{0, 0}, {cos, 0}}],
+      RGBColor[255, 0, 0],
+      Line[{ {cos, 0}, {cos, sin} }],
+      Text[Style[IntegerString[random[[1]]] <> "\[Degree]", Large, Red], {-0.90, 1}],
+      {Black, PointSize -> .02, Point[{cos, sin}]}},
+      ImageSize -> 350,
+      Axes -> True,
+      Ticks -> None
+    ] (*FINE GRAPHICS*),
+    Row[{
+      Column[{
+        incorrects = RandomSample[sinCosList2, 3];
+
+        btn1 = Button[Style[Rationalize[Sin[x]], 15], {esitoSin := "Corretto!", colorEsitoSin := Green}];
+        btn2 = Button[Style[Rationalize[incorrects[[1]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
+        btn3 = Button[Style[Rationalize[incorrects[[2]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
+        btn4 = Button[Style[Rationalize[incorrects[[3]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
+
+        buttons = List[btn1, btn2, btn3, btn4];
+        randomButtons = RandomSample[buttons];
+
+        Dynamic[Text[Style[esitoSin, colorEsitoSin, 15]]],
+        Style["Seleziona il valore del seno:", 15],
+        randomButtons[[1]],
+        randomButtons[[2]],
+        randomButtons[[3]],
+        randomButtons[[4]]
+      }],
+      Text["\t"],
+      Column[{
+        incorrects = RandomSample[sinCosList2, 3];
+
+        btn5 = Button[Style[Rationalize[Cos[x]], 15], {esitoCos := "Corretto!", colorEsitoCos := Green}];
+        btn6 = Button[Style[Rationalize[incorrects[[1]]], 15], {esitoCos := "Sbagliato!", colorEsitoCos := Red}];
+        btn7 = Button[Style[Rationalize[incorrects[[2]]], 15], {esitoCos := "Sbagliato!", colorEsitoCos := Red}];
+        btn8 = Button[Style[Rationalize[incorrects[[3]]], 15], {esitoCos := "Sbagliato!", colorEsitoCos := Red}];
+
+        buttons = List[btn5, btn6, btn7, btn8];
+        randomButtons = RandomSample[buttons];
+
+        Dynamic[Text[Style[esitoCos, colorEsitoCos, 15]]],
+        Style["Seleziona il valore del coseno:", 15],
+        randomButtons[[1]],
+        randomButtons[[2]],
+        randomButtons[[3]],
+        randomButtons[[4]]
+      }]
+    }]
+  }]
+];
 
 
 computeDistance[x1_, y1_, x2_, y2_] := Return[Sqrt[(x2 - x1)^2 + (y2 - y1)^2]];
 
 typeAngle[] := Manipulate[
   Row[{
-  Column[{
-  Row[{ Button["Nullo", a = 0], "\t",
-    Button["Retto", a = 90], "\t",
-    Button["Piatto", a = 180], "\t",
-    Button["Giro", a = 360], "\n"}],
- 
-    Graphics[{
-      angle = If[a == 0, "NULLO",
-        If[a == 90, "RETTO",
-          If[a == 180 || a == 179 || a == 181, "PIATTO",
-            If[a == 360, "GIRO", ""]
+    Column[{
+      Row[{ Button["Nullo", a = 0], "\t",
+        Button["Retto", a = 90], "\t",
+        Button["Piatto", a = 180], "\t",
+        Button["Giro", a = 360], "\n"}],
+
+      Graphics[{
+        angle = If[a == 0, "NULLO",
+          If[a == 90, "RETTO",
+            If[a == 180 || a == 179 || a == 181, "PIATTO",
+              If[a == 360, "GIRO", ""]
+            ]
           ]
-        ]
-      ];,
-      If[a == 179 || a == 181, a = 180],
-      Circle[],
-      x := N[Cos[a Degree]];,
-      y := N[Sin[a Degree]];,
-      {Blue, Thick, Circle[{0, 0}, 0.2, {0, a Pi / 180}]},
-      Text[Style[angle, 15, Blue], {-0.7, 1.2}],
-      Text[Style[a \[Degree], 15, Blue], {-1, 1}],
-      Text[Style[a Pi / 180, 18, RGBColor[0,50,255]], {-0.7, 1}],
-      
-      Thickness[0.01],
-      Line[{{0, 0}, {x, y}}]
-    }, Axes -> True, ImageSize -> 300,Ticks->None, PlotRange-> {{-1.4,1.4},{-1.4,1.4}}
-    ]
+        ];,
+        If[a == 179 || a == 181, a = 180],
+        Circle[],
+        x := N[Cos[a Degree]];,
+        y := N[Sin[a Degree]];,
+        {Blue, Thick, Circle[{0, 0}, 0.2, {0, a Pi / 180}]},
+        Text[Style[angle, 15, Blue], {-0.7, 1.2}],
+        Text[Style[a \[Degree], 15, Blue], {-1, 1}],
+        Text[Style[a Pi / 180, 18, RGBColor[0, 50, 255]], {-0.7, 1}],
+
+        Thickness[0.01],
+        Line[{{0, 0}, {x, y}}]
+      }, Axes -> True, ImageSize -> 300, Ticks -> None, PlotRange -> {{-1.4, 1.4}, {-1.4, 1.4}}
+      ]
     }] (*fine colonna grafico*),
     Column[{"\t"}],
     Column[{
-        Row[{Text[Style["GRADI",Blue,Bold,20]],"\n",Text[Style[defGradi,17]]}],
-        Row[{"\n"}],   
-         Row[{Text[Style["RADIANTI",RGBColor[0,50,255],Bold,20]],"\n",Text[Style[defRadianti,17]]}]
+      Row[{Text[Style["GRADI", Blue, Bold, 20]], "\n", Text[Style[defGradi, 17]]}],
+      Row[{"\n"}],
+      Row[{Text[Style["RADIANTI", RGBColor[0, 50, 255], Bold, 20]], "\n", Text[Style[defRadianti, 17]]}]
     }]
   }](*fine row*),
   {{a, 0, "angolo"}, 0, 360, 1}];
@@ -100,70 +173,70 @@ typeAngle[] := Manipulate[
 ThGradRad[] := Manipulate[
   Row[{
     Column[{
-    Row[{
-    "Angoli notevoli (\[Degree]): ",
-    PopupMenu[Dynamic[gradi], {0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330, 360}],
-    "\n\n",
-    Style[gradi "\[Degree]", 20, Blue],
-    "\t:\t",
-    Style[gradi Pi / 180, 20,RGBColor[0,50,255]],
-    "\t=\t",
-    "360\t:\t",
-    HoldForm[2 Pi],
-    "\n\n\n",
-    Style["Gradi", Blue], "\n",
-    Style["Radianti",RGBColor[0,50,255]]
+      Row[{
+        "Angoli notevoli (\[Degree]): ",
+        PopupMenu[Dynamic[gradi], {0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330, 360}],
+        "\n\n",
+        Style[gradi "\[Degree]", 20, Blue],
+        "\t:\t",
+        Style[gradi Pi / 180, 20, RGBColor[0, 50, 255]],
+        "\t=\t",
+        "360\t:\t",
+        HoldForm[2 Pi],
+        "\n\n\n",
+        Style["Gradi", Blue], "\n",
+        Style["Radianti", RGBColor[0, 50, 255]]
 
-	}]  }], "\t", 
-	Column[{
-	Style["Se Alpha \[EGrave] l'angolo di cui vogliamo conoscere la misura, vale la seguente formula:",15],
-	"\t\t\t\t\t\t\t" Image[Import["C:\\Users\\anton\\Documents\\GitHub\\mathematica_computazionale\\assets\\proporzioneGradRad.png"],ImageSize->200]
-	}]
-	
-	
-	}](*fine row*),
+      }]  }], "\t",
+    Column[{
+      Style["Se Alpha \[EGrave] l'angolo di cui vogliamo conoscere la misura, vale la seguente formula:", 15],
+      "\t\t\t\t\t\t\t" Image[Import["C:\\Users\\anton\\Documents\\GitHub\\mathematica_computazionale\\assets\\proporzioneGradRad.png"], ImageSize -> 200]
+    }]
+
+
+  }](*fine row*),
   {{gradi, 0, "Gradi"}, 0, 360, 1}
 ];
 
 GraficoPrimaRelazione[] := Animate[
   Row[{
-    (*realativo angolo in radianti*)
+  (*realativo angolo in radianti*)
     rad := x Pi / 180;
     P := {Cos[rad], Sin[rad]};
     proiezioneX := {Cos[rad], 0};
-    proiezioneY :=  {Cos[rad], Sin[rad]};
-    triangolo := {Yellow,Triangle[{{0,0},proiezioneX,P}]},
+    proiezioneY := {Cos[rad], Sin[rad]};
+    triangolo := {Yellow, Triangle[{{0, 0}, proiezioneX, P}]},
     Graphics[{
       Circle[],
       triangolo,
-      (*punto centrale alla circonferenza*)
+    (*punto centrale alla circonferenza*)
       Point[{0, 0}],
-      (*dimentsione dei punti*)
+    (*dimentsione dei punti*)
       PointSize[Large],
-      (**arco che identifica l'arco*)
-      (*{Blue, Circle[{0, 0}, 0.2, {0, rad}]},*)
+    (**arco che identifica l'arco*)
+    (*{Blue, Circle[{0, 0}, 0.2, {0, rad}]},*)
       {Dashed, Line[{{0, 0}, P}]}, (*raggio*)
       Thickness[0.01],
       RGBColor[0, 255, 0],
-      (*proiezione asse x*)
+    (*proiezione asse x*)
       Line[{{0, 0}, proiezioneX }],
       RGBColor[255, 0, 0],
-      (*proiezione asse y*)
+    (*proiezione asse y*)
       Line[{{Cos[rad], 0}, proiezioneY}],
-      (*punto sulla circonferenza*)
+    (*punto sulla circonferenza*)
       {Black, PointSize -> .02, Point[{Cos[rad], Sin[rad]}]}},
       ImageSize -> 350,
       Axes -> True,
       Ticks -> None
     ] (*FINE GRAPHICS*)
   }],
-  {{x, 45,""}, 0, 360, 1},
+  {{x, 45, ""}, 0, 360, 1},
   AnimationRate -> 30
 ];
 
 
 graficoTangente[] := Manipulate[
-   Row[{
+  Row[{
     Graphics[{
       Circle[],
       Point[{0, 0}],
@@ -183,39 +256,39 @@ graficoTangente[] := Manipulate[
       {Black, PointSize -> .02, Point[{Cos[x], Sin[x]}]}},
       ImageSize -> 350,
       Axes -> True,
-      Ticks->None
+      Ticks -> None
     ], (*FINE GRAPHICS*)
-     Column[{
+    Column[{
       Show[
         Plot[Tan[y], {y, 0, 2 Pi},
           ImageSize -> 400,
           Ticks -> {{0, Pi / 2, Pi, 3 Pi / 2, 2 Pi, 5 Pi / 2}, {-1, 0, 1}},
           PlotLabel -> "Funzione Tangente",
           PlotStyle -> RGBColor[1, 0, 1],
-          PlotRange -> {{-1, 2 Pi + 1},{-4,4}}
+          PlotRange -> {{-1, 2 Pi + 1}, {-4, 4}}
         ],
         Graphics[{
-          (*Trick per evitare il valore infinito per x = 90 e x = 270 *)
+        (*Trick per evitare il valore infinito per x = 90 e x = 270 *)
           PointSize[Large],
-          If[x == Pi /2 || x == 3 Pi / 2,
+          If[x == Pi / 2 || x == 3 Pi / 2,
             {
               {Dashed, Line[{{x, -10}, {x, 10}}]},
-              Text[Style["Infinito",20],{x+0.5,0.5+Sin[x]}]
+              Text[Style["Infinito", 20], {x + 0.5, 0.5 + Sin[x]}]
 
             },
             {
               {Dashed, Line[{{x, 0}, {x, Tan[x]}}]},
               Point[{ x, Tan[x] }],
-              Text[Style[Tan[x],20],{x+0.5,0.5+Sin[x]}]
+              Text[Style[Tan[x], 20], {x + 0.5, 0.5 + Sin[x]}]
 
             }
           ]
         }]
-     ]
-     }]
-    }],
-    {{x, 0, "Naviga"}, 0, 2 Pi, Pi / 12},
-    {{x, 0, "Scegli"}, 0, 2 Pi, Pi / 12},
+      ]
+    }]
+  }],
+  {{x, 0, "Naviga"}, 0, 2 Pi, Pi / 12},
+  {{x, 0, "Scegli"}, 0, 2 Pi, Pi / 12},
   ControlType -> {Slider, PopupMenu}
 ];
 
@@ -240,7 +313,7 @@ drawCircle[] := Manipulate[
       {Black, PointSize -> .02, Point[{Cos[x], Sin[x]}]}},
       ImageSize -> 350,
       Axes -> True,
-      Ticks->None
+      Ticks -> None
     ], (*FINE GRAPHICS*)
   (* GRAFICI SENO E COSENO *)
     Column[{
@@ -250,12 +323,12 @@ drawCircle[] := Manipulate[
           Ticks -> {{0, Pi / 2, Pi, 3 Pi / 2, 2 Pi, 5 Pi / 2}, {-1, 0, 1}},
           PlotLabel -> "Funzione Seno",
           PlotStyle -> {Red},
-          PlotRange -> {{-1, 2 Pi + 1},{-1.8,1.8}}
+          PlotRange -> {{-1, 2 Pi + 1}, {-1.8, 1.8}}
         ],
         Graphics[{
           {Dashed, Line[{{x, 0}, {x, Sin[x]}}]},
           PointSize[Large],
-          Text[Style[Rationalize[Sin[x]],20],{x+0.5,0.5+Sin[x]}],
+          Text[Style[Rationalize[Sin[x]], 20], {x + 0.5, 0.5 + Sin[x]}],
           Point[{ x, Sin[x] }]}
         ]
       ],
@@ -265,12 +338,12 @@ drawCircle[] := Manipulate[
           Ticks -> {{0, Pi / 2, Pi, 3 Pi / 2, 2 Pi, 5 Pi / 2}, {-1, 0, 1}},
           PlotLabel -> "Funzione Coseno",
           PlotStyle -> {Green},
-          PlotRange -> {{-1, 2 Pi + 1},{-1.8,1.8}}
+          PlotRange -> {{-1, 2 Pi + 1}, {-1.8, 1.8}}
         ],
         Graphics[{
           {Dashed, Line[{{x, 0}, {x, Cos[x]}}]},
           PointSize[Large],
-          Text[Style[Cos[x],20],{x+0.5,0.5+Cos[x]}],
+          Text[Style[Cos[x], 20], {x + 0.5, 0.5 + Cos[x]}],
           Point[{ x, Cos[x]}]}
         ]
       ]
@@ -363,54 +436,52 @@ distanceGame[] := DynamicModule[{x1, y1, x2, y2, Esito = ""},
     }] (*fine colonna input*)
   }]
 ];
- 
+
 
 
 ListaAngoliAssociati60 := {\[Pi] / 3, 2 \[Pi] / 3, 4 \[Pi] / 3, 5 \[Pi] / 3};
-AngoliAssociati60[] :=Manipulate[
+AngoliAssociati60[] := Manipulate[
   Graphics[{
     MapIndexed[{
-    ColorData[100][0],
-    ColorData[100][First@#2+50],
-      Text[Style[ListaAngoliAssociati60[[1]],15,Bold,Black], {1.2 Cos[ListaAngoliAssociati60[[1]]], 1.2 Sin[ListaAngoliAssociati60[[1]]]}],
-      Text[Style[Last@#,15,Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
-    Disk[{0, 0}, 1, #]}&,
-    Take[Partition[ListaAngoliAssociati60, 2, 1], n]]}, 
+      ColorData[100][0],
+      ColorData[100][First@#2 + 50],
+      Text[Style[ListaAngoliAssociati60[[1]], 15, Bold, Black], {1.2 Cos[ListaAngoliAssociati60[[1]]], 1.2 Sin[ListaAngoliAssociati60[[1]]]}],
+      Text[Style[Last@#, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
+      Disk[{0, 0}, 1, #]}&,
+      Take[Partition[ListaAngoliAssociati60, 2, 1], n]]},
     PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
-       ], 
-      {{n, 0, "Angolo"}, 0, 3, 1 }
-  ];
-  ListaAngoliAssociati30 := {\[Pi] / 6, 5 \[Pi] / 6, 7 \[Pi] / 6, 11 \[Pi] / 6};
-AngoliAssociati30[] :=Manipulate[
+  ],
+  {{n, 0, "Angolo"}, 0, 3, 1 }
+];
+ListaAngoliAssociati30 := {\[Pi] / 6, 5 \[Pi] / 6, 7 \[Pi] / 6, 11 \[Pi] / 6};
+AngoliAssociati30[] := Manipulate[
   Graphics[{
     MapIndexed[{
-    ColorData[10][0],
-    ColorData[10][First@#2],
-      Text[Style[ListaAngoliAssociati30[[1]],15,Bold,Black], {1.2 Cos[ListaAngoliAssociati30[[1]]], 1.2 Sin[ListaAngoliAssociati30[[1]]]}],
-      Text[Style[Last@#,15,Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
-    Disk[{0, 0}, 1, #]}&,
-    Take[Partition[ListaAngoliAssociati30, 2, 1], n]]}, 
+      ColorData[10][0],
+      ColorData[10][First@#2],
+      Text[Style[ListaAngoliAssociati30[[1]], 15, Bold, Black], {1.2 Cos[ListaAngoliAssociati30[[1]]], 1.2 Sin[ListaAngoliAssociati30[[1]]]}],
+      Text[Style[Last@#, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
+      Disk[{0, 0}, 1, #]}&,
+      Take[Partition[ListaAngoliAssociati30, 2, 1], n]]},
     PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
-       ], 
-      {{n, 0, "Angolo"}, 0, 3, 1 }
-  ];
+  ],
+  {{n, 0, "Angolo"}, 0, 3, 1 }
+];
 
 ListaAngoliAssociati45 := {\[Pi] / 4, 3 \[Pi] / 4, 5 \[Pi] / 4, 7 \[Pi] / 4};
-AngoliAssociati45[] :=Manipulate[
+AngoliAssociati45[] := Manipulate[
   Graphics[{
     MapIndexed[{
-    ColorData[100][0],
-    ColorData[100 ][First@#2 + 10],
-    Text[Style[ListaAngoliAssociati45[[1]],15,Bold,Black], {1.2 Cos[ListaAngoliAssociati45[[1]]], 1.2 Sin[ListaAngoliAssociati45[[1]]]}],
-    Text[Style[Last@#,15,Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
-    Disk[{0, 0}, 1, #]}&,
-    Take[Partition[ListaAngoliAssociati45, 2, 1], n]]}, 
+      ColorData[100][0],
+      ColorData[100 ][First@#2 + 10],
+      Text[Style[ListaAngoliAssociati45[[1]], 15, Bold, Black], {1.2 Cos[ListaAngoliAssociati45[[1]]], 1.2 Sin[ListaAngoliAssociati45[[1]]]}],
+      Text[Style[Last@#, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
+      Disk[{0, 0}, 1, #]}&,
+      Take[Partition[ListaAngoliAssociati45, 2, 1], n]]},
     PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
-       ], 
-      {{n, 0, "Angolo"}, 0, 3, 1 }
-  ];
-
-
+  ],
+  {{n, 0, "Angolo"}, 0, 3, 1 }
+];
 
 
 drawCartesian[x_, y_] := DynamicModule[{colEsito = Black, esito = "", limit = 10, xIn = 0, yIn = 0},
