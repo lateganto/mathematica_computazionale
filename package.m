@@ -413,11 +413,10 @@ EsDistanze[] := Quiet[DynamicModule[{x1, y1, x2, y2, Esito = ""},
     (*calcolo della risposta corretta*)
       giusta = computeDistance[x1, y1, x2, y2];
       (*calcolo casuale delle risposte errate*)
-      otherRisp =  RandomSample[{Sqrt[37], Sqrt[76], 8/9, 5/8, 8/5, 2, 15/4, Sqrt[45],
-            Sqrt[56], Sqrt[34], 4/80, 20/7}, 3];
-      risp1 =       otherRisp[[1]];
-      risp2 =       otherRisp[[2]];
-      risp3 =       otherRisp[[3]];
+      otherRisp = RandomSample[{Sqrt[37], Sqrt[76], 8 / 9, 5 / 8, 8 / 5, 2, 15 / 4, Sqrt[45], Sqrt[56], Sqrt[34], 4 / 80, 20 / 7}, 3];
+      risp1 = otherRisp[[1]];
+      risp2 = otherRisp[[2]];
+      risp3 = otherRisp[[3]];
       (*la risp corretta viene inserita temporan nella var risp4 per poi
         inserire le 4 risposte e fare un Sort in base alla crescenza dei valori *)
       risp4 = giusta;
@@ -443,10 +442,10 @@ EsDistanze[] := Quiet[DynamicModule[{x1, y1, x2, y2, Esito = ""},
 ListaAngoliAssociati60 := {\[Pi] / 3, 2 \[Pi] / 3, 4 \[Pi] / 3, 5 \[Pi] / 3};
 AngoliAssociati60[] := Manipulate[
   Graphics[{
+    Text[Style[ListaAngoliAssociati60[[1]], 15, Bold, Black], {1.2 Cos[ListaAngoliAssociati60[[1]]], 1.2 Sin[ListaAngoliAssociati60[[1]]]}],
     MapIndexed[{
       ColorData[100][0],
       ColorData[100][First@#2 + 50],
-      Text[Style[ListaAngoliAssociati60[[1]], 15, Bold, Black], {1.2 Cos[ListaAngoliAssociati60[[1]]], 1.2 Sin[ListaAngoliAssociati60[[1]]]}],
       Text[Style[Last@#, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
       Disk[{0, 0}, 1, #]}&,
       Take[Partition[ListaAngoliAssociati60, 2, 1], n]]},
@@ -454,13 +453,14 @@ AngoliAssociati60[] := Manipulate[
   ],
   {{n, 0, "Angolo"}, 0, 3, 1 }
 ];
+
 ListaAngoliAssociati30 := {\[Pi] / 6, 5 \[Pi] / 6, 7 \[Pi] / 6, 11 \[Pi] / 6};
 AngoliAssociati30[] := Manipulate[
   Graphics[{
+    Text[Style[ListaAngoliAssociati30[[1]], 15, Bold, Black], {1.2 Cos[ListaAngoliAssociati30[[1]]], 1.2 Sin[ListaAngoliAssociati30[[1]]]}],
     MapIndexed[{
       ColorData[10][0],
       ColorData[10][First@#2],
-      Text[Style[ListaAngoliAssociati30[[1]], 15, Bold, Black], {1.2 Cos[ListaAngoliAssociati30[[1]]], 1.2 Sin[ListaAngoliAssociati30[[1]]]}],
       Text[Style[Last@#, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
       Disk[{0, 0}, 1, #]}&,
       Take[Partition[ListaAngoliAssociati30, 2, 1], n]]},
@@ -472,10 +472,10 @@ AngoliAssociati30[] := Manipulate[
 ListaAngoliAssociati45 := {\[Pi] / 4, 3 \[Pi] / 4, 5 \[Pi] / 4, 7 \[Pi] / 4};
 AngoliAssociati45[] := Manipulate[
   Graphics[{
+    Text[Style[ListaAngoliAssociati45[[1]], 15, Bold, Black], {1.2 Cos[ListaAngoliAssociati45[[1]]], 1.2 Sin[ListaAngoliAssociati45[[1]]]}],
     MapIndexed[{
       ColorData[100][0],
       ColorData[100 ][First@#2 + 10],
-      Text[Style[ListaAngoliAssociati45[[1]], 15, Bold, Black], {1.2 Cos[ListaAngoliAssociati45[[1]]], 1.2 Sin[ListaAngoliAssociati45[[1]]]}],
       Text[Style[Last@#, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
       Disk[{0, 0}, 1, #]}&,
       Take[Partition[ListaAngoliAssociati45, 2, 1], n]]},
@@ -543,7 +543,7 @@ EsCoordinate[] := Quiet[DynamicModule[{},
   P = pointList[[randomPoint]];
   drawCartesian[P[[1]], P[[2]]]
 
-  ]
+]
 ];
 
 GetQuad[x0_, y0_] := DynamicModule[{x = x0, y = y0, quad},
