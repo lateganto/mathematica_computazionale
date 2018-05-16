@@ -6,7 +6,15 @@
 (* * Corsi di laurea magistrale in Informatica e Matematica*)
 (* * Anno accademico 2017/2018*)
 (* *)
-(* * Autori:*)
+(* * Autori:
+  Virginia Spaccessi,
+  Federico Cappelli,
+  Antonio Lategano,
+  Salvatore Visaggi,
+  Davide Montanari,
+  Antonio Conteduca
+
+*)
 (* *   *)
 (* **)
 (* * Versione di sviluppo: Wolfram Mathematica 11.1*)
@@ -21,31 +29,38 @@ ClearAll["ProvaProgetto` *"];
 
 (* ::InheritFromParent:: *)
 (**)
-
-drawCircle::usage = "disegna un grafico";
-drawCartesian::usage = "disegna assi"
-EsCoordinate::usage = "esercizio su coordinate";
-EsDistanze::usage = "calcola la distanza distanza tra due punti";
-typeAngle::usage = "per la def di angolo";
-altezzaTorre::usage = "applicazione altezza torre";
-graficoTangente::usage = "manipulate per la funzione tangente";
+(*  TEORIA  *)
+DisegnaCirconferenza::usage = "disegna un grafico";
+DisegnaPianoCartesiano::usage = "disegna assi"
+TipoAngolo::usage = "per la def di angolo";
+GraficoTangente::usage = "manipulate per la funzione tangente";
 AngoliAssociati0::usage = "manipulate di angoli notevoli 0";
 AngoliAssociati60::usage = "manipulate di angoli notevoli 60";
 AngoliAssociati30::usage = "manipulate di angoli notevoli 30";
 AngoliAssociati45::usage = "manipulate di angoli notevoli 45";
 ThGradRad::usage = "manipulate della conversione radianti gradi";
 GraficoPrimaRelazione::usage = "manipulate della prima relazione fondamentale";
+
+(*  ESERCIZI  *)
+EsCoordinate::usage = "esercizio su coordinate";
+EsDistanze::usage = "calcola la distanza distanza tra due punti";
+EsSinCos::usage = "esercizio sin cos";
+
+(* APPLICAZIONI*)
+AltezzaTorre::usage = "applicazione altezza torre";
+
+
+(*DEFINIZIONI di GRADO e RADIANTE*)
 defGradi = Text["Consideriamo un angolo giro e dividiamolo in 360 parti congruenti tra loro.
 Poniamo 1\[Degree] una di queste parti. Preso dunque un angolo qualsiasi, contiamo quante
  volte un grado  \[EGrave]  contenuto in esso."];
 defRadianti = Text["Prendiamo una circonferenza di raggio r e un angolo al centro \[Alpha];
 l  \[EGrave]  l'arco sotteso dall'angolo. La misura in radianti  \[EGrave]  data dal rapporto l/r.
  In particolare, 1 rad  \[EGrave]  un angolo che sottende un arco lungo quanto il raggio."];
-sinCosExercise::usage = "esercizio sin cos";
-
 
 Begin["`Private`"]; (* Comincia spazio privato *)
 
+(*FUNZIONI E STRUTTURE DATI AUX*)
 FromRadToGrad[x_] := Return[x * 180 / Pi];
 FromGradToRad[x_] := Pi Rationalize[N[x]] / Pi;
 getAngle[p1_, p2_] := Mod[ArcTan @@ (p2 - p1), 2 Pi];
@@ -57,7 +72,7 @@ sinCosList = List[0, 1, -1, 1 / 2, -1 / 2, Sqrt[2] / 2, -Sqrt[2] / 2, Sqrt[3] / 
 (* ::InheritFromParent:: *)
 (**)
 
-sinCosExercise[] := DynamicModule[{esitoSin = "", colorEsitoSin = "", esitoCos = "", colorEsitoCos = ""},
+EsSinCos[] := DynamicModule[{esitoSin = "", colorEsitoSin = "", esitoCos = "", colorEsitoCos = ""},
   checkRisp[risp_, correct_] := (
     If[risp == correct, Return["Risposta Corretta"], Return["Risposta Sbagliata"]]
   );
@@ -129,10 +144,10 @@ sinCosExercise[] := DynamicModule[{esitoSin = "", colorEsitoSin = "", esitoCos =
   }]
 ];
 
-
+(*Calcolo della distanza tra due punti attraverso le coordinate*)
 computeDistance[x1_, y1_, x2_, y2_] := Return[Sqrt[(x2 - x1)^2 + (y2 - y1)^2]];
 
-typeAngle[] := Manipulate[
+TipoAngolo[] := Manipulate[
   Row[{
     Column[{
       Row[{ Button["Nullo", a = 0], "\t",
@@ -141,25 +156,17 @@ typeAngle[] := Manipulate[
         Button["Giro", a = 360], "\n"}],
 
       Graphics[{
-        angle = If[a == 0, "NULLO",
-          If[a == 90, "RETTO",
-            If[a == 180 || a == 179 || a == 181, "PIATTO",
-              If[a == 360, "GIRO", ""]
-            ]
-          ]
-        ];,
-        If[a == 179 || a == 181, a = 180],
         Circle[],
         x := N[Cos[a Degree]];,
         y := N[Sin[a Degree]];,
-        {Blue, Thick, Circle[{0, 0}, 0.2, {0, a Pi / 180}]},
-        Text[Style[angle, 15, Blue], {-0.7, 1.2}],
+        {Blue, Thick, Circle[{0, 0}, 0.4, {0, a Pi / 180}]},
+        (*Text[Style[a, 15, Blue], {-0.7, 1.2}],*)
         Text[Style[a \[Degree], 15, Blue], {-1, 1}],
-        Text[Style[a Pi / 180, 18, RGBColor[0, 50, 255]], {-0.7, 1}],
+        Text[Style[a Pi / 180, 18, RGBColor[0, 50, 255]], {+1, 1}],
 
-        Thickness[0.01],
+        Thickness[0.02],
         Line[{{0, 0}, {x, y}}]
-      }, Axes -> True, ImageSize -> 300, Ticks -> None, PlotRange -> {{-1.4, 1.4}, {-1.4, 1.4}}
+      }, Axes -> True, ImageSize -> 350, Ticks -> None, PlotRange -> {{-1.4, 1.4}, {-1.4, 1.4}}
       ]
     }] (*fine colonna grafico*),
     Column[{"\t"}],
@@ -190,8 +197,14 @@ ThGradRad[] := Manipulate[
 
       }]  }], "\t",
     Column[{
-      Style["Se Alpha \[EGrave] l'angolo di cui vogliamo conoscere la misura, vale la seguente formula:", 15],
-      "\t\t\t\t\t\t\t" Image[Import["C:\\Users\\anton\\Documents\\GitHub\\mathematica_computazionale\\assets\\proporzioneGradRad.png"], ImageSize -> 200]
+          Style["Se Alpha \[EGrave] l'angolo di cui vogliamo conoscere la misura, vale la seguente formula:", 15],
+          Panel[
+            Image[Import["C:\\Users\\anton\\Documents\\GitHub\\mathematica_computazionale\\assets\\proporzioneGradRad.png"], ImageSize -> 200],
+            ImageSize-> 600,
+            Alignment->{Center,Center}
+        ]
+
+
     }]
 
 
@@ -199,8 +212,7 @@ ThGradRad[] := Manipulate[
   {{gradi, 0, "Gradi"}, 0, 360, 1}
 ];
 
-GraficoPrimaRelazione[] := Animate[
-  Row[{
+GraficoPrimaRelazione[] := Animate[ Row[{
   (*realativo angolo in radianti*)
     rad := x Pi / 180;
     P := {Cos[rad], Sin[rad]};
@@ -293,7 +305,7 @@ graficoTangente[] := Manipulate[
   ControlType -> {Slider, PopupMenu}
 ];
 
-drawCircle[] := Manipulate[
+DisegnaCirconferenza[] := Manipulate[
   Row[{
     Graphics[{
       Circle[],
@@ -591,7 +603,7 @@ AngoliAssociati45[] :=  Animate[
   {{n, 0, "Angolo"}, 0, 3, 1 }
 ];
 
-drawCartesian[x_, y_] := DynamicModule[{colEsito = Black, esito = "", limit = 10, xIn = 0, yIn = 0},
+DisegnaPianoCartesiano[x_, y_] := DynamicModule[{colEsito = Black, esito = "", limit = 10, xIn = 0, yIn = 0},
   Row[{
     q1 = {limit, limit};
     q2 = {-limit, limit};
@@ -661,7 +673,7 @@ GetQuad[x0_, y0_] := DynamicModule[{x = x0, y = y0, quad},
 
 
 GetAngolo[alt_, bas_] := Return[N[ArcTan[alt / bas] / Degree ]];
-altezzaTorre[] := Manipulate[DynamicModule[{},
+AltezzaTorre[] := Manipulate[DynamicModule[{},
   Graphics[{
     Text["Torre", {75, -40 + altezza + 5}],
   (*Torre*)
@@ -701,8 +713,5 @@ StyleBox[\"\[Alpha]\", \"TradFormChar\"]\)", Red, 20], {x + 36, -35}]
 
 (* ::InheritFromParent:: *)
 (**)
-
-
 End[]; (* fine sezione privata *)
 EndPackage[]; (* Fine del Package *)
-  
