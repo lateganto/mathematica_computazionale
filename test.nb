@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5872,        131]
-NotebookOptionsPosition[      5263,        113]
-NotebookOutlinePosition[      5610,        128]
-CellTagsIndexPosition[      5567,        125]
+NotebookDataLength[      9892,        203]
+NotebookOptionsPosition[      9189,        184]
+NotebookOutlinePosition[      9536,        199]
+CellTagsIndexPosition[      9493,        196]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -36,24 +36,7 @@ Cell[BoxData[{
    RowBox[{"SetDirectory", "[", 
     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
    RowBox[{"<<", " ", "package.m"}], ";"}], "  "}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"otherRisp", "=", " ", 
-   RowBox[{"RandomSample", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"Sqrt", "[", "37", "]"}], ",", 
-       RowBox[{"Sqrt", "[", "76", "]"}], ",", 
-       RowBox[{"8", "/", "9"}], ",", " ", 
-       RowBox[{"5", "/", "8"}], ",", 
-       RowBox[{"8", "/", "5"}], ",", "2", ",", 
-       RowBox[{"15", "/", "4"}], ",", 
-       RowBox[{"Sqrt", "[", "45", "]"}], ",", 
-       RowBox[{"Sqrt", "[", "56", "]"}], ",", 
-       RowBox[{"Sqrt", "[", "34", "]"}], ",", " ", 
-       RowBox[{"4", "/", "80"}], ",", 
-       RowBox[{"20", "/", "7"}]}], "}"}], ",", "3"}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", "otherRisp"}], "Input",
+ RowBox[{"AngoliAssociati30", "[", "]"}]}], "Input",
  CellChangeTimes->{{3.734851720561689*^9, 3.734851721300779*^9}, 
    3.7348523017858644`*^9, {3.734852618652252*^9, 3.7348526192466936`*^9}, {
    3.7348526713345904`*^9, 3.734852737127641*^9}, {3.734857481282914*^9, 
@@ -95,21 +78,109 @@ Cell[BoxData[{
    3.7353150490497932`*^9, 3.7353152492174263`*^9}, {3.735315282178447*^9, 
    3.735315289535389*^9}, {3.7353921443009024`*^9, 3.735392213012721*^9}, {
    3.7353923046761127`*^9, 3.7353923422212734`*^9}, {3.7353923815441413`*^9, 
-   3.7353925430225143`*^9}},ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-\
-fa6f348760a2"],
+   3.7353925430225143`*^9}, {3.735447073925337*^9, 3.7354471006034083`*^9}, {
+   3.7354471749522123`*^9, 3.7354472014714327`*^9}, {3.7354477183991103`*^9, 
+   3.735447721676863*^9}, 3.7354478838699512`*^9, {3.7354484057590365`*^9, 
+   3.7354484062477427`*^9}, 3.735450646959263*^9, {3.7354507533454494`*^9, 
+   3.7354507839218287`*^9}, {3.7354508433834586`*^9, 3.73545084407129*^9}, {
+   3.735450978914585*^9, 3.7354509793797855`*^9}, {3.7354510927816086`*^9, 
+   3.735451133200992*^9}, {3.7354514120009336`*^9, 3.735451467679988*^9}, {
+   3.735451684268011*^9, 3.7354516856621203`*^9}, {3.7354518210800877`*^9, 
+   3.7354518554446826`*^9}, {3.735451933278484*^9, 3.735451947207169*^9}, {
+   3.735452048446594*^9, 3.73545209321323*^9}, 3.73545219580816*^9, {
+   3.7354523482792773`*^9, 3.7354523523852973`*^9}},
+ EmphasizeSyntaxErrors->
+  True,ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
 
 Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"3", " ", 
-    SqrtBox["5"]}], ",", 
-   RowBox[{"2", " ", 
-    SqrtBox["14"]}], ",", 
-   FractionBox["15", "4"]}], "}"}]], "Output",
- CellChangeTimes->{{3.7353923908419037`*^9, 3.7353924773244624`*^9}, 
-   3.735392526124602*^9},ExpressionUUID->"de68522f-339b-41e9-9f60-\
-b7e2d40f60e7"]
-}, Open  ]]
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{ProvaProgetto`Private`n$$ = 1, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[ProvaProgetto`Private`n$$], 0, "Angolo"}, 0, 4, 1}}, 
+    Typeset`size$$ = {707., {228., 234.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    ProvaProgetto`Private`n$9527$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {ProvaProgetto`Private`n$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[ProvaProgetto`Private`n$$, ProvaProgetto`Private`n$9527$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Row[{
+         Column[{
+           Row[{
+             
+             Graphics[{
+              If[ProvaProgetto`Private`n$$ == 5, 
+                 ProvaProgetto`Private`val := 5; Null, 
+                 ProvaProgetto`Private`val := 1; Null]; 
+               ProvaProgetto`Private`angle := 
+                Part[ProvaProgetto`Private`ListaAngoliAssociati0, 
+                  ProvaProgetto`Private`val]; 
+               If[ProvaProgetto`Private`n$$ < 4, 
+                 Text[
+                  Style[
+                  ProvaProgetto`Private`angle Degree, 15, Bold, Black], {
+                  1.2 Cos[ProvaProgetto`Private`angle], 1.2 
+                   Sin[ProvaProgetto`Private`angle]}]], 
+               MapIndexed[{
+                 ColorData[100][0], 
+                 ColorData[100][First[#2] + 50], 
+                 Text[
+                  Style[Last[#] 180/Pi, 15, Bold], {1.2 Cos[
+                    Last[#]], 1.2 Sin[
+                    Last[#]]}], 
+                 Disk[{0, 0}, 1, #]}& , 
+                Take[
+                 Partition[ProvaProgetto`Private`ListaAngoliAssociati0, 2, 1],
+                  ProvaProgetto`Private`n$$]]}, 
+              PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400], 
+             Column[{"\t\t"}], 
+             
+             Column[{ProvaProgetto`Private`AngoloRif = 
+                Part[ProvaProgetto`Private`ListaAngoliAssociati0, 1]; 
+               ProvaProgetto`Private`AngoloGrad = 
+                ProvaProgetto`Private`AngoloRif 180 Pi^(-1) Degree; Text[
+                 Style[
+                  StringForm[
+                  "Cos(``) = ``, Sin(``) = ``", 
+                   ProvaProgetto`Private`AngoloGrad, 
+                   Cos[ProvaProgetto`Private`AngoloRif], 
+                   ProvaProgetto`Private`AngoloGrad, 
+                   Sin[ProvaProgetto`Private`AngoloRif]], 25, Bold]], "\n", 
+               Text[
+                Style["Cos(180) = -Cos(0)\nSen(180) = Sen(0)", 20]], "\n", 
+               Text[
+                Style["Cos(270) = Sen(0)\nSen(270) = -Cos(0)", 20]], "\n", 
+               Text[
+                Style["Cos(360) = Cos(0)\nSen(360) = Cos(0)", 20]]}]}]}]}], 
+      "Specifications" :> {{{ProvaProgetto`Private`n$$, 0, "Angolo"}, 0, 4, 
+         1}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{758., {275., 281.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.7354520706355257`*^9, 3.735452093763857*^9}, {
+   3.7354521689289174`*^9, 3.735452196323904*^9}, 
+   3.735452342335746*^9},ExpressionUUID->"9a617604-df84-40b9-94f9-\
+2a2b49f04c4a"]
+}, Open  ]],
+
+Cell[BoxData[" "], "Input",
+ CellChangeTimes->{
+  3.73544815685616*^9},ExpressionUUID->"d8e84abd-fd9c-4d84-acba-0e60f8700b00"]
 },
 WindowSize->{1350, 695},
 WindowMargins->{{-8, Automatic}, {Automatic, 0}},
@@ -130,9 +201,10 @@ Notebook[{
 Cell[558, 20, 151, 3, 28, "Input",ExpressionUUID->"4309e3fd-7fc6-4390-94ce-f922b95886cc"],
 Cell[712, 25, 154, 3, 28, "Input",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0"],
 Cell[CellGroupData[{
-Cell[891, 32, 4017, 66, 67, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
-Cell[4911, 100, 336, 10, 55, "Output",ExpressionUUID->"de68522f-339b-41e9-9f60-b7e2d40f60e7"]
-}, Open  ]]
+Cell[891, 32, 4193, 60, 48, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
+Cell[5087, 94, 3957, 83, 575, "Output",ExpressionUUID->"9a617604-df84-40b9-94f9-2a2b49f04c4a"]
+}, Open  ]],
+Cell[9059, 180, 126, 2, 28, "Input",ExpressionUUID->"d8e84abd-fd9c-4d84-acba-0e60f8700b00"]
 }
 ]
 *)

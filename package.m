@@ -29,6 +29,7 @@ EsDistanze::usage = "calcola la distanza distanza tra due punti";
 typeAngle::usage = "per la def di angolo";
 altezzaTorre::usage = "applicazione altezza torre";
 graficoTangente::usage = "manipulate per la funzione tangente";
+AngoliAssociati0::usage = "manipulate di angoli notevoli 0";
 AngoliAssociati60::usage = "manipulate di angoli notevoli 60";
 AngoliAssociati30::usage = "manipulate di angoli notevoli 30";
 AngoliAssociati45::usage = "manipulate di angoli notevoli 45";
@@ -440,50 +441,155 @@ EsDistanze[] := Quiet[DynamicModule[{x1, y1, x2, y2, Esito = ""},
 
 
 ListaAngoliAssociati60 := {\[Pi] / 3, 2 \[Pi] / 3, 4 \[Pi] / 3, 5 \[Pi] / 3};
-AngoliAssociati60[] := Manipulate[
-  Graphics[{
-    Text[Style[ListaAngoliAssociati60[[1]], 15, Bold, Black], {1.2 Cos[ListaAngoliAssociati60[[1]]], 1.2 Sin[ListaAngoliAssociati60[[1]]]}],
-    MapIndexed[{
-      ColorData[100][0],
-      ColorData[100][First@#2 + 50],
-      Text[Style[Last@#, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
-      Disk[{0, 0}, 1, #]}&,
-      Take[Partition[ListaAngoliAssociati60, 2, 1], n]]},
-    PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
-  ],
+AngoliAssociati60[] :=  Animate[
+  Row[{
+    Column[{
+      Row[{
+        Graphics[{
+          angle := ListaAngoliAssociati60[[1]];
+          Text[Style[angle 180 / Pi Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}],
+          MapIndexed[{
+            ColorData[100][0],
+            ColorData[100][First@#2 + 50],
+            Text[Style[Last@# 180 / Pi Degree, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
+            Disk[{0, 0}, 1, #]}&,
+            Take[Partition[ListaAngoliAssociati60, 2, 1], n]]},
+          PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400
+        ],
+        Column[{"\t\t"}],
+        Column[{
+          Lista = ListaAngoliAssociati60;
+          AngoloRif = Lista[[1]];
+          AngoloGrad = AngoloRif 180 / Pi Degree;
+          Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
+
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180/Pi Degree, AngoloGrad],20]],
+          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180/Pi Degree, AngoloGrad],20]], "\n",
+
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180/Pi Degree, AngoloGrad],20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180/Pi Degree, AngoloGrad],20]], "\n",
+
+          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180/Pi Degree, AngoloGrad],20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180/Pi Degree, AngoloGrad],20]], "\n"
+        }]
+
+      }]
+    }]
+  }],
   {{n, 0, "Angolo"}, 0, 3, 1 }
 ];
 
+ListaAngoliAssociati0 := {0, \[Pi] / 2, \[Pi], 3 \[Pi] / 2, 2 \[Pi]};
+AngoliAssociati0[] := Animate[
+  Row[{
+    Column[{
+      Row[{
+        Graphics[{
+          If[n == 5, val := 5;, val := 1;];
+          angle := ListaAngoliAssociati0[[val]];
+          If[n < 4, Text[Style[angle Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}]],
+          MapIndexed[{
+            ColorData[100][0],
+            ColorData[100][First@#2 + 50],
+            Text[Style[Last@# 180 / Pi, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
+            Disk[{0, 0}, 1, #]}&,
+            Take[Partition[ListaAngoliAssociati0, 2, 1], n]]},
+          PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400
+        ],
+        Column[{"\t\t"}],
+        Column[{
+          AngoloRif = ListaAngoliAssociati0[[1]];
+          AngoloGrad = AngoloRif 180 / Pi Degree;
+          Text[Style[StringForm["Cos(``) = ``, Sin(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
+          Text[Style["Cos(180) = -Cos(0)\nSen(180) = Sen(0)", 20]], "\n",
+          Text[Style["Cos(270) = Sen(0)\nSen(270) = -Cos(0)", 20]], "\n",
+          Text[Style["Cos(360) = Cos(0)\nSen(360) = Cos(0)", 20]]
+
+        }]
+
+      }]
+    }]
+  }],
+  {{n, 0, "Angolo"}, 0, 4, 1 }
+];
+
 ListaAngoliAssociati30 := {\[Pi] / 6, 5 \[Pi] / 6, 7 \[Pi] / 6, 11 \[Pi] / 6};
-AngoliAssociati30[] := Manipulate[
-  Graphics[{
-    Text[Style[ListaAngoliAssociati30[[1]], 15, Bold, Black], {1.2 Cos[ListaAngoliAssociati30[[1]]], 1.2 Sin[ListaAngoliAssociati30[[1]]]}],
-    MapIndexed[{
-      ColorData[10][0],
-      ColorData[10][First@#2],
-      Text[Style[Last@#, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
-      Disk[{0, 0}, 1, #]}&,
-      Take[Partition[ListaAngoliAssociati30, 2, 1], n]]},
-    PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
-  ],
+AngoliAssociati30[] := Animate[
+  Row[{
+    Column[{
+      Row[{
+        Graphics[{
+          angle := ListaAngoliAssociati30[[1]];
+          Text[Style[angle 180 / Pi Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}],
+          MapIndexed[{
+            ColorData[100][0],
+            ColorData[100][First@#2 + 50],
+            Text[Style[Last@# 180 / Pi Degree, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
+            Disk[{0, 0}, 1, #]}&,
+            Take[Partition[ListaAngoliAssociati30, 2, 1], n]]},
+          PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400
+        ],
+        Column[{"\t\t"}],
+        Column[{
+          Lista = ListaAngoliAssociati30;
+          AngoloRif = Lista[[1]];
+          AngoloGrad = AngoloRif 180 / Pi Degree;
+          Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
+
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180/Pi Degree, AngoloGrad],20]],
+          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180/Pi Degree, AngoloGrad],20]], "\n",
+
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180/Pi Degree, AngoloGrad],20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180/Pi Degree, AngoloGrad],20]], "\n",
+
+          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180/Pi Degree, AngoloGrad],20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180/Pi Degree, AngoloGrad],20]], "\n"
+        }]
+
+      }]
+    }]
+  }],
   {{n, 0, "Angolo"}, 0, 3, 1 }
 ];
 
 ListaAngoliAssociati45 := {\[Pi] / 4, 3 \[Pi] / 4, 5 \[Pi] / 4, 7 \[Pi] / 4};
-AngoliAssociati45[] := Manipulate[
-  Graphics[{
-    Text[Style[ListaAngoliAssociati45[[1]], 15, Bold, Black], {1.2 Cos[ListaAngoliAssociati45[[1]]], 1.2 Sin[ListaAngoliAssociati45[[1]]]}],
-    MapIndexed[{
-      ColorData[100][0],
-      ColorData[100 ][First@#2 + 10],
-      Text[Style[Last@#, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
-      Disk[{0, 0}, 1, #]}&,
-      Take[Partition[ListaAngoliAssociati45, 2, 1], n]]},
-    PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
-  ],
+AngoliAssociati45[] :=  Animate[
+  Row[{
+    Column[{
+      Row[{
+        Graphics[{
+          angle := ListaAngoliAssociati45[[1]];
+          Text[Style[angle 180 / Pi Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}],
+          MapIndexed[{
+            ColorData[100][0],
+            ColorData[100][First@#2 + 50],
+            Text[Style[Last@# 180 / Pi Degree, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
+            Disk[{0, 0}, 1, #]}&,
+            Take[Partition[ListaAngoliAssociati45, 2, 1], n]]},
+          PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400
+        ],
+        Column[{"\t\t"}],
+        Column[{
+          Lista = ListaAngoliAssociati45;
+          AngoloRif = Lista[[1]];
+          AngoloGrad = AngoloRif 180 / Pi Degree;
+          Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
+
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180/Pi Degree, AngoloGrad],20]],
+          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180/Pi Degree, AngoloGrad],20]], "\n",
+
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180/Pi Degree, AngoloGrad],20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180/Pi Degree, AngoloGrad],20]], "\n",
+
+          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180/Pi Degree, AngoloGrad],20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180/Pi Degree, AngoloGrad],20]], "\n"
+        }]
+
+      }]
+    }]
+  }],
   {{n, 0, "Angolo"}, 0, 3, 1 }
 ];
-
 
 drawCartesian[x_, y_] := DynamicModule[{colEsito = Black, esito = "", limit = 10, xIn = 0, yIn = 0},
   Row[{
@@ -585,11 +691,6 @@ StyleBox[\"\[Alpha]\", \"TradFormChar\"]\)", Red, 20], {x + 36, -35}]
 ];
 
 
-
-
-
-
-
 (* ::InheritFromParent:: *)
 (**)
 
@@ -604,3 +705,4 @@ StyleBox[\"\[Alpha]\", \"TradFormChar\"]\)", Red, 20], {x + 36, -35}]
 
 End[]; (* fine sezione privata *)
 EndPackage[]; (* Fine del Package *)
+  
