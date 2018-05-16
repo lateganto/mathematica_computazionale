@@ -41,6 +41,8 @@ AngoliAssociati30::usage = "manipulate di angoli notevoli 30";
 AngoliAssociati45::usage = "manipulate di angoli notevoli 45";
 ThGradRad::usage = "manipulate della conversione radianti gradi";
 GraficoPrimaRelazione::usage = "manipulate della prima relazione fondamentale";
+ThTriangoliUno::usage = "grafici per formule sui triangoli";
+ThTriangoliDue::usage = "grafici per formule sui triangoli";
 
 (*  ESERCIZI  *)
 EsCoordinate::usage = "esercizio su coordinate";
@@ -72,6 +74,60 @@ sinCosList = List[0, 1, -1, 1 / 2, -1 / 2, Sqrt[2] / 2, -Sqrt[2] / 2, Sqrt[3] / 
 
 (* ::InheritFromParent:: *)
 (**)
+
+ThTriangoliUno[] := Row[{
+  Column[{
+    Row[{
+      Graphics[{
+        {LightYellow, EdgeForm[Thick], Triangle[{{-1, 0}, {1, 1}, {1, 0}}]},
+        Red,
+        Thickness[0.009],
+        Line[{{-1, 0}, {1, 1}}],
+        Text[Style["\[Alpha]", 20], {-0.6, 0.07}],
+        Text[Style["\[Beta]", 20], {0.9, 0.8}],
+        Text[Style["c", 20], {0, 0.6}],
+        Text[Style["a", 20, Black], {1.1, 0.5}]
+      },
+        Axes -> False,
+        Ticks -> None,
+        ImageSize -> 350
+      ],
+      "\t\t",
+      Column[{
+        Style["Cateto = Ipotenusa(c) * seno dell'angolo(\[Alpha]) opposto",20,Bold],
+        Style["a = c * Sen(\[Alpha])",Red,25,Bold],
+        "\n",
+        Style["Cateto = Ipotenusa(c) * coseno dell'angolo(\[Beta]) acuto adiacente",20,Bold],
+        Style["a = c * Cos(\[Beta])",Red,25,Bold]
+      }]
+    }]
+  }]
+}];
+ThTriangoliDue  [] := Row[{
+  Column[{
+    Row[{
+      Graphics[{
+        {LightYellow, EdgeForm[Thick], Triangle[{{-1, 0}, {1, 1}, {1, 0}}]},
+        Red,
+        Thickness[0.009],
+        Line[{{-1, 0}, {1, 1}}],
+        Text[Style["\[Alpha]", 20], {-0.6, 0.07}],
+        Text[Style["\[Beta]", 20], {0.9, 0.8}],
+        Text[Style["b", 20], {0, -0.1}],
+        Text[Style["a", 20, Black], {1.1, 0.5}]
+      },
+        Axes -> False,
+        Ticks -> None,
+        ImageSize -> 350
+      ],
+      "\t\t",
+      Column[{
+        Style["Cateto = altroCateto(b) * Tang angolo(\[Alpha])",20,Bold],
+        Style["a = b * Tang(\[Alpha])",Red,25,Bold]
+      }]
+    }]
+  }]
+}];
 
 DisegnaCirconferenzaInit[] := Graphics[{
   Circle[],
@@ -115,7 +171,7 @@ EsSinCos[] := DynamicModule[{esitoSin = "", colorEsitoSin = "", esitoCos = "", c
       Line[{{0, 0}, {cos, 0}}],
       RGBColor[255, 0, 0],
       Line[{ {cos, 0}, {cos, sin} }],
-      Text[Style[IntegerString[random[[1]]] <> "\[Degree]", Large, Red], {-0.90, 1}],
+      Text[Style[IntegerString[random[[1]]] <> "\[Degree]", Large, Blue], {-0.90, 1}],
       {Black, PointSize -> .02, Point[{cos, sin}]}},
       ImageSize -> 350,
       Axes -> True,
@@ -158,7 +214,9 @@ EsSinCos[] := DynamicModule[{esitoSin = "", colorEsitoSin = "", esitoCos = "", c
         randomButtons[[2]],
         randomButtons[[3]],
         randomButtons[[4]]
-      }]
+      }],
+      Button["Nuovo Esercizio", FrontEndExecute[FrontEndToken[NotebookLocate["esSinCos"], "Evaluate"]], ImageSize -> Medium, BaseStyle -> {"GenericButton"}]
+
     }]
   }]
 ];
