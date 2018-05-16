@@ -37,11 +37,10 @@
       <file leaf-file-name="package.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1678">
-              <caret line="715" selection-start-line="715" selection-end-line="715" />
+            <state relative-caret-position="260">
+              <caret line="661" column="24" selection-start-line="661" selection-start-column="24" selection-end-line="661" selection-end-column="24" />
               <folding>
                 <element signature="e#2520#5232#0" />
-                <element signature="e#5393#6435#0" />
                 <element signature="e#6497#7421#0" />
                 <element signature="e#7412#8330#0" />
                 <element signature="e#8409#10118#0" />
@@ -52,7 +51,6 @@
                 <element signature="e#19001#20506#0" />
                 <element signature="e#20661#22166#0" />
                 <element signature="e#22311#23817#0" />
-                <element signature="e#23891#24192#0" />
                 <element signature="e#24218#24397#0" />
                 <element signature="e#24495#25496#0" />
               </folding>
@@ -84,6 +82,7 @@
       <find>type</find>
       <find>typeAng</find>
       <find>ThGr</find>
+      <find>Gradi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,9 +112,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="697" />
-    <option name="height" value="745" />
+    <option name="x" value="679" />
+    <option name="width" value="694" />
+    <option name="height" value="705" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -220,12 +219,12 @@
       <workItem from="1526406994861" duration="154000" />
       <workItem from="1526456502854" duration="1466000" />
       <workItem from="1526458067796" duration="47000" />
-      <workItem from="1526458149597" duration="7901000" />
+      <workItem from="1526458149597" duration="8943000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22259000" />
+    <option name="totallyTimeSpent" value="23301000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -242,7 +241,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="2" />
       <window_info id="TODO" order="10" weight="0.3296131" />
-      <window_info id="Tool Output" order="13" weight="0.3296131" />
+      <window_info id="Tool Output" order="13" sideWeight="0.043405674" type="SLIDING" weight="0.3277439" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -257,7 +256,7 @@
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.11821086" weight="0.1532738" />
       <window_info id="Database" order="8" show_stripe_button="false" weight="0.32980332" />
       <window_info id="ANTLR Preview" order="12" weight="0.3296131" />
-      <window_info active="true" x="593" y="45" width="179" height="648" id="Structure" order="6" sideWeight="0.63580245" side_tool="true" visible="true" weight="0.17113096" />
+      <window_info active="true" x="593" y="45" width="179" height="648" id="Structure" order="6" sideWeight="0.95659435" side_tool="true" visible="true" weight="0.1592262" />
       <window_info id="Ant Build" order="9" show_stripe_button="false" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
@@ -288,7 +287,6 @@
           <caret line="442" column="15" selection-start-line="442" selection-start-column="15" selection-end-line="442" selection-end-column="15" />
           <folding>
             <element signature="e#2520#5232#0" />
-            <element signature="e#5393#6435#0" />
             <element signature="e#6497#7421#0" />
             <element signature="e#7412#8330#0" />
             <element signature="e#8409#10118#0" />
@@ -299,7 +297,6 @@
             <element signature="e#19001#20506#0" />
             <element signature="e#20661#22166#0" />
             <element signature="e#22311#23817#0" />
-            <element signature="e#23891#24192#0" />
             <element signature="e#24218#24397#0" />
             <element signature="e#24495#25496#0" />
           </folding>
@@ -388,11 +385,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1678">
-          <caret line="715" selection-start-line="715" selection-end-line="715" />
+        <state relative-caret-position="260">
+          <caret line="661" column="24" selection-start-line="661" selection-start-column="24" selection-end-line="661" selection-end-column="24" />
           <folding>
             <element signature="e#2520#5232#0" />
-            <element signature="e#5393#6435#0" />
             <element signature="e#6497#7421#0" />
             <element signature="e#7412#8330#0" />
             <element signature="e#8409#10118#0" />
@@ -403,7 +399,6 @@
             <element signature="e#19001#20506#0" />
             <element signature="e#20661#22166#0" />
             <element signature="e#22311#23817#0" />
-            <element signature="e#23891#24192#0" />
             <element signature="e#24218#24397#0" />
             <element signature="e#24495#25496#0" />
           </folding>
