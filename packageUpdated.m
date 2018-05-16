@@ -263,31 +263,5 @@ puntiInaccessibili[] := DynamicModule[{p1={-2,-1}, p2={-0.5,1}, p3={2,1}, p4={0.
     }]
   }]
 ];
-
-(* If[First[p1] <= First[p3],
-            If[Last[p1] <= Last[p3], 
-              Circle[p1, 3, {0 + getAngle[p1, p3, {First[p3], Last[p1]}], getAngle[p1, p2, p3] + getAngle[p1, p3, {First[p3], Last[p1]}]}],
-              Circle[p1, 3, {0 - getAngle[p1, p3, {First[p3], Last[p1]}], getAngle[p1, p2, p3] - getAngle[p1, p3, {First[p3], Last[p1]}]}]],
-
-            If[Last[p1] <= Last[p3], 
-              Circle[p1, 3, {Pi/2 + getAngle[p1, p2, {First[p1], Last[p2]}], Pi/2 + getAngle[p1, p2, p3] + getAngle[p1, p2, {First[p1], Last[p2]}]}],
-              
-              If[Last[p1] <= Last[p2],
-                Circle[p1, 3, {Pi/2 + getAngle[p1, p2, {First[p1], Last[p2]}], Pi/2 + getAngle[p1, p2, p3] + getAngle[p1, p2, {First[p1], Last[p2]}]}],
-                Circle[p1, 3, {Pi + getAngle[p1, p2, {First[p2], Last[p1]}], Pi + getAngle[p1, p2, p3] + getAngle[p1, p2, {First[p2], Last[p1]}]}]]
-            ]
-          ],
-
-          If[Last[p1] >= Last[p3],
-            If[First[p1] < First[p3],
-              Circle[p3, 3, {Pi/2, getAngle[p3, p1, p2] + Pi/2}],
-              Circle[p3, 3, {getAngle[p3, p1, {First[p1], Last[p3]}], getAngle[p3, p1, p2] + getAngle[p3, p1, {First[p1], Last[p3]}]}]],
-
-            If[First[p1] < First[p3],
-              Circle[p3, 3, {Pi/2, getAngle[p3, p1, p2] + Pi/2}],
-              Circle[p3, 3, {2 Pi - getAngle[p3, p1, {First[p1], Last[p3]}], 2 Pi + Pi/2}]],
-          ] *)
-
-
 End[]; (* fine sezione privata *)
 EndPackage[]; (* Fine del Package *)
