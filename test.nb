@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9892,        203]
-NotebookOptionsPosition[      9189,        184]
-NotebookOutlinePosition[      9536,        199]
-CellTagsIndexPosition[      9493,        196]
+NotebookDataLength[     11737,        243]
+NotebookOptionsPosition[     10937,        223]
+NotebookOutlinePosition[     11284,        238]
+CellTagsIndexPosition[     11241,        235]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -36,7 +36,8 @@ Cell[BoxData[{
    RowBox[{"SetDirectory", "[", 
     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
    RowBox[{"<<", " ", "package.m"}], ";"}], "  "}], "\[IndentingNewLine]", 
- RowBox[{"AngoliAssociati30", "[", "]"}]}], "Input",
+ RowBox[{
+  RowBox[{"ThTriangoloProiezione", "[", "]"}], " "}]}], "Input",
  CellChangeTimes->{{3.734851720561689*^9, 3.734851721300779*^9}, 
    3.7348523017858644`*^9, {3.734852618652252*^9, 3.7348526192466936`*^9}, {
    3.7348526713345904`*^9, 3.734852737127641*^9}, {3.734857481282914*^9, 
@@ -88,95 +89,133 @@ Cell[BoxData[{
    3.735451684268011*^9, 3.7354516856621203`*^9}, {3.7354518210800877`*^9, 
    3.7354518554446826`*^9}, {3.735451933278484*^9, 3.735451947207169*^9}, {
    3.735452048446594*^9, 3.73545209321323*^9}, 3.73545219580816*^9, {
-   3.7354523482792773`*^9, 3.7354523523852973`*^9}},
- EmphasizeSyntaxErrors->
-  True,ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
+   3.7354523482792773`*^9, 3.7354523523852973`*^9}, {3.735472200417504*^9, 
+   3.735472202387808*^9}, {3.7354723376006575`*^9, 3.735472338717595*^9}, {
+   3.735472432295759*^9, 3.735472443534231*^9}, {3.7354726562476463`*^9, 
+   3.7354726569264517`*^9}, {3.735472726928814*^9, 3.7354727283927097`*^9}, {
+   3.735472788047025*^9, 3.735472790385249*^9}, {3.7354733284684925`*^9, 
+   3.7354733410880404`*^9}, {3.7354733932167487`*^9, 3.735473399090395*^9}, {
+   3.7354734572037435`*^9, 3.7354734583658357`*^9}, {3.73547353221507*^9, 
+   3.735473535529928*^9}, {3.7354736250461454`*^9, 3.735473629083893*^9}, 
+   3.735473855005189*^9, {3.7354743957404747`*^9, 3.7354743968794737`*^9}, {
+   3.7354759901456985`*^9, 
+   3.7354759910133376`*^9}},ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-\
+fa6f348760a2"],
 
 Cell[BoxData[
- TagBox[
-  StyleBox[
-   DynamicModuleBox[{ProvaProgetto`Private`n$$ = 1, Typeset`show$$ = True, 
-    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
-    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
-    "\"untitled\"", Typeset`specs$$ = {{{
-       Hold[ProvaProgetto`Private`n$$], 0, "Angolo"}, 0, 4, 1}}, 
-    Typeset`size$$ = {707., {228., 234.}}, Typeset`update$$ = 0, 
-    Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
-    ProvaProgetto`Private`n$9527$$ = 0}, 
-    DynamicBox[Manipulate`ManipulateBoxes[
-     1, StandardForm, "Variables" :> {ProvaProgetto`Private`n$$ = 0}, 
-      "ControllerVariables" :> {
-        Hold[ProvaProgetto`Private`n$$, ProvaProgetto`Private`n$9527$$, 0]}, 
-      "OtherVariables" :> {
-       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
-        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
-        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
-         Typeset`skipInitDone$$}, "Body" :> Row[{
-         Column[{
-           Row[{
-             
-             Graphics[{
-              If[ProvaProgetto`Private`n$$ == 5, 
-                 ProvaProgetto`Private`val := 5; Null, 
-                 ProvaProgetto`Private`val := 1; Null]; 
-               ProvaProgetto`Private`angle := 
-                Part[ProvaProgetto`Private`ListaAngoliAssociati0, 
-                  ProvaProgetto`Private`val]; 
-               If[ProvaProgetto`Private`n$$ < 4, 
-                 Text[
-                  Style[
-                  ProvaProgetto`Private`angle Degree, 15, Bold, Black], {
-                  1.2 Cos[ProvaProgetto`Private`angle], 1.2 
-                   Sin[ProvaProgetto`Private`angle]}]], 
-               MapIndexed[{
-                 ColorData[100][0], 
-                 ColorData[100][First[#2] + 50], 
-                 Text[
-                  Style[Last[#] 180/Pi, 15, Bold], {1.2 Cos[
-                    Last[#]], 1.2 Sin[
-                    Last[#]]}], 
-                 Disk[{0, 0}, 1, #]}& , 
-                Take[
-                 Partition[ProvaProgetto`Private`ListaAngoliAssociati0, 2, 1],
-                  ProvaProgetto`Private`n$$]]}, 
-              PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400], 
-             Column[{"\t\t"}], 
-             
-             Column[{ProvaProgetto`Private`AngoloRif = 
-                Part[ProvaProgetto`Private`ListaAngoliAssociati0, 1]; 
-               ProvaProgetto`Private`AngoloGrad = 
-                ProvaProgetto`Private`AngoloRif 180 Pi^(-1) Degree; Text[
-                 Style[
-                  StringForm[
-                  "Cos(``) = ``, Sin(``) = ``", 
-                   ProvaProgetto`Private`AngoloGrad, 
-                   Cos[ProvaProgetto`Private`AngoloRif], 
-                   ProvaProgetto`Private`AngoloGrad, 
-                   Sin[ProvaProgetto`Private`AngoloRif]], 25, Bold]], "\n", 
-               Text[
-                Style["Cos(180) = -Cos(0)\nSen(180) = Sen(0)", 20]], "\n", 
-               Text[
-                Style["Cos(270) = Sen(0)\nSen(270) = -Cos(0)", 20]], "\n", 
-               Text[
-                Style["Cos(360) = Cos(0)\nSen(360) = Cos(0)", 20]]}]}]}]}], 
-      "Specifications" :> {{{ProvaProgetto`Private`n$$, 0, "Angolo"}, 0, 4, 
-         1}}, "Options" :> {}, "DefaultOptions" :> {}],
-     ImageSizeCache->{758., {275., 281.}},
-     SingleEvaluation->True],
-    Deinitialization:>None,
-    DynamicModuleValues:>{},
-    SynchronousInitialization->True,
-    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
-    UnsavedVariables:>{Typeset`initDone$$},
-    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
-   Deployed->True,
-   StripOnInput->False],
-  Manipulate`InterpretManipulate[1]]], "Output",
- CellChangeTimes->{{3.7354520706355257`*^9, 3.735452093763857*^9}, {
-   3.7354521689289174`*^9, 3.735452196323904*^9}, 
-   3.735452342335746*^9},ExpressionUUID->"9a617604-df84-40b9-94f9-\
-2a2b49f04c4a"]
+ TemplateBox[{TagBox[
+    GridBox[{{
+       StyleBox[
+       "\"I triangoli ABC e APH sono simili,\\nperci\[OGrave] il rapporto tra \
+i lati\\n\[EGrave] costante, da cui ricaviamo che:\"", 19, StripOnInput -> 
+        False]}, {
+       StyleBox[
+       "\"\\nBC : AB = PH : AP\"", 20, Bold, StripOnInput -> False]}, {
+       StyleBox["\"AC : AB = AH : AP\"", 20, Bold, StripOnInput -> False]}, {
+       StyleBox[
+       "\"\\ne poich\[EAcute]: AP = 1, PH = Sen(\[Alpha]), AH = Cos(\[Alpha]) \
+vale\\n\"", 19, StripOnInput -> False]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+     "Column", 
+     GridBoxItemSize -> {
+      "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"],TagBox[
+    GridBox[{{
+       GraphicsBox[{{
+          RGBColor[0.88, 1, 0.88], 
+          EdgeForm[
+           Thickness[Large]], 
+          TagBox[
+           PolygonBox[{{0, 0}, {1.5, 0}, {1.5, 1.5}}], "Triangle"]}, 
+         CircleBox[{0, 0}], {
+          RGBColor[1, 0, 0], 
+          Thickness[0.009], 
+          LineBox[
+           
+           NCache[{{2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+             2^Rational[-1, 2], 0}}, {{0.7071067811865475, 
+             0.7071067811865475}, {0.7071067811865475, 0}}]]}, 
+         InsetBox[
+          FormBox[
+           StyleBox["\"Cos(\[Alpha])\"", 
+            RGBColor[0, 1, 0], Bold, 19, StripOnInput -> False], 
+           TraditionalForm], 
+          
+          NCache[{Rational[1, 2] 2^Rational[-1, 2], -0.15}, {
+           0.35355339059327373`, -0.15}]], {
+          RGBColor[0, 1, 0], 
+          Thickness[0.009], 
+          LineBox[
+           
+           NCache[{{0, 0}, {2^Rational[-1, 2], 0}}, {{0, 0}, {
+             0.7071067811865475, 0}}]]}, 
+         InsetBox[
+          FormBox[
+           StyleBox["\"Sen(\[Alpha])\"", 
+            RGBColor[1, 0, 0], Bold, 19, StripOnInput -> False], 
+           TraditionalForm], {0.9899494936611664, 0.35355339059327373`}], {
+          GrayLevel[0], PointSize -> 0.02, 
+          PointBox[
+           
+           NCache[{2^Rational[-1, 2], 2^Rational[-1, 2]}, {0.7071067811865475,
+             0.7071067811865475}]]}, 
+         InsetBox[
+          FormBox[
+           StyleBox["\"P\"", 19, StripOnInput -> False], TraditionalForm], {
+          0.7778174593052023, 0.8485281374238569}], 
+         InsetBox[
+          FormBox[
+           StyleBox["\"H\"", 19, StripOnInput -> False], TraditionalForm], 
+          NCache[{2^Rational[-1, 2], -0.15}, {0.7071067811865475, -0.15}]], 
+         InsetBox[
+          FormBox[
+           StyleBox["\"A\"", 19, StripOnInput -> False], 
+           TraditionalForm], {-0.09, -0.09}], 
+         InsetBox[
+          FormBox[
+           StyleBox["\"B\"", 19, StripOnInput -> False], TraditionalForm], {
+          1.6, 1.6}], 
+         InsetBox[
+          FormBox[
+           StyleBox["\"C\"", 19, StripOnInput -> False], TraditionalForm], {
+          1.6, -0.09}], 
+         CircleBox[{0, 0}, 0.2, 
+          NCache[{0, Rational[1, 4] Pi}, {0, 0.7853981633974483}]], 
+         InsetBox[
+          FormBox[
+           StyleBox["\"\[Alpha]\"", 19, StripOnInput -> False], 
+           TraditionalForm], {0.3, 0.145}]}, ImageSize -> 360, Axes -> True, 
+        Ticks -> None, PlotRange -> {{-1.2, 1.7}, {-1.2, 1.7}}]}}, 
+     GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+     "Column", 
+     GridBoxItemSize -> {
+      "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+  "RowDefault"]], "Output",
+ CellChangeTimes->{{3.735473399577676*^9, 3.735473406731408*^9}, {
+   3.7354734513060865`*^9, 3.735473458996517*^9}, 3.7354735002553267`*^9, 
+   3.7354735360121746`*^9, 3.735473629536093*^9, 3.735473855819357*^9, {
+   3.7354739334379435`*^9, 3.735473970995508*^9}, {3.73547400154731*^9, 
+   3.7354740118546567`*^9}, {3.735474062400395*^9, 3.7354742668515587`*^9}, 
+   3.7354743020249586`*^9, {3.735474369173676*^9, 3.7354744330258474`*^9}, {
+   3.7354744709168153`*^9, 3.7354744805714054`*^9}, {3.735474524238613*^9, 
+   3.7354745619099426`*^9}, 3.7354745919247627`*^9, {3.735474673569066*^9, 
+   3.7354747020619*^9}, {3.735474794195114*^9, 3.735474914053122*^9}, {
+   3.735474944993471*^9, 3.735474962211298*^9}, {3.73547501862344*^9, 
+   3.7354751159665613`*^9}, {3.7354751745915565`*^9, 
+   3.7354752085288944`*^9}, {3.7354752416099296`*^9, 3.735475254028982*^9}, {
+   3.7354753308093376`*^9, 3.7354753452708263`*^9}, {3.7354753881219845`*^9, 
+   3.7354754173611774`*^9}, {3.7354755994202576`*^9, 3.735475620989666*^9}, {
+   3.735475746963952*^9, 3.7354757625253677`*^9}, {3.735475815032126*^9, 
+   3.735475857708704*^9}, 3.7354759090801287`*^9, {3.7354759746584725`*^9, 
+   3.735475992025372*^9}, 3.7354760606453323`*^9, {3.735476128535022*^9, 
+   3.7354761421352196`*^9}, 
+   3.735476182026685*^9},ExpressionUUID->"de1cfa04-748a-495b-81a5-\
+b49387b154e4"]
 }, Open  ]],
+
+Cell[BoxData["PH"], "Input",
+ CellChangeTimes->{{3.7354760936080613`*^9, 
+  3.735476093938943*^9}},ExpressionUUID->"bec59208-f83a-4011-aa1b-\
+4c38c7c5fe22"],
 
 Cell[BoxData[" "], "Input",
  CellChangeTimes->{
@@ -201,10 +240,11 @@ Notebook[{
 Cell[558, 20, 151, 3, 28, "Input",ExpressionUUID->"4309e3fd-7fc6-4390-94ce-f922b95886cc"],
 Cell[712, 25, 154, 3, 28, "Input",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0"],
 Cell[CellGroupData[{
-Cell[891, 32, 4193, 60, 48, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
-Cell[5087, 94, 3957, 83, 575, "Output",ExpressionUUID->"9a617604-df84-40b9-94f9-2a2b49f04c4a"]
+Cell[891, 32, 4871, 70, 48, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
+Cell[5765, 104, 4868, 107, 412, "Output",ExpressionUUID->"de1cfa04-748a-495b-81a5-b49387b154e4"]
 }, Open  ]],
-Cell[9059, 180, 126, 2, 28, "Input",ExpressionUUID->"d8e84abd-fd9c-4d84-acba-0e60f8700b00"]
+Cell[10648, 214, 156, 3, 28, "Input",ExpressionUUID->"bec59208-f83a-4011-aa1b-4c38c7c5fe22"],
+Cell[10807, 219, 126, 2, 28, "Input",ExpressionUUID->"d8e84abd-fd9c-4d84-acba-0e60f8700b00"]
 }
 ]
 *)

@@ -43,11 +43,15 @@ ThGradRad::usage = "manipulate della conversione radianti gradi";
 GraficoPrimaRelazione::usage = "manipulate della prima relazione fondamentale";
 ThTriangoliUno::usage = "grafici per formule sui triangoli";
 ThTriangoliDue::usage = "grafici per formule sui triangoli";
+ThTriangoloProiezione::usage = "proiezione del triangolo";
 
 (*  ESERCIZI  *)
 EsCoordinate::usage = "esercizio su coordinate";
 EsDistanze::usage = "calcola la distanza distanza tra due punti";
-EsSinCos::usage = "esercizio sin cos";
+EsCos::usage = "esercizio cos";
+EsSin::usage = "esercizio cos";
+
+EsProiezioneAsseX::usage = "esercizio proiezione";
 
 (* APPLICAZIONI*)
 AltezzaTorre::usage = "applicazione altezza torre";
@@ -94,23 +98,23 @@ ThTriangoliUno[] := Row[{
       ],
       "\t\t",
       Column[{
-        Style["Cateto = Ipotenusa(c) * seno dell'angolo(\[Alpha]) opposto",20,Bold],
-        Style["a = c * Sen(\[Alpha])",Red,25,Bold],
+        Style["Cateto = Ipotenusa(c) * seno dell'angolo(\[Alpha]) opposto", 20, Bold],
+        Style["a = c * Sen(\[Alpha])", Red, 25, Bold],
         "\n",
-        Style["Cateto = Ipotenusa(c) * coseno dell'angolo(\[Beta]) acuto adiacente",20,Bold],
-        Style["a = c * Cos(\[Beta])",Red,25,Bold]
+        Style["Cateto = Ipotenusa(c) * coseno dell'angolo(\[Beta]) acuto adiacente", 20, Bold],
+        Style["a = c * Cos(\[Beta])", Red, 25, Bold]
       }]
     }]
   }]
 }];
-ThTriangoliDue  [] := Row[{
+ThTriangoliDue[] := Row[{
   Column[{
     Row[{
       Graphics[{
         {LightYellow, EdgeForm[Thick], Triangle[{{-1, 0}, {1, 1}, {1, 0}}]},
         Red,
         Thickness[0.009],
-        Line[{{-1, 0}, {1, 1}}],
+        Line[{{-1, 0}, {1, 0}}],
         Text[Style["\[Alpha]", 20], {-0.6, 0.07}],
         Text[Style["\[Beta]", 20], {0.9, 0.8}],
         Text[Style["b", 20], {0, -0.1}],
@@ -122,12 +126,59 @@ ThTriangoliDue  [] := Row[{
       ],
       "\t\t",
       Column[{
-        Style["Cateto = altroCateto(b) * Tang angolo(\[Alpha])",20,Bold],
-        Style["a = b * Tang(\[Alpha])",Red,25,Bold]
+        Style["Cateto = altroCateto(b) * Tang angolo(\[Alpha])", 20, Bold],
+        Style["a = b * Tang(\[Alpha])", Red, 25, Bold]
       }]
     }]
   }]
 }];
+
+EsProiezioneAsseX[] := DynamicModule[{esito = "", colorEsito = ""},
+  Row[{
+    Graphics[{
+      Circle[],
+      Line[{ {0, 0}, {1 / 2, Sqrt[3] / 2} }],
+      {Dashed, Line[{ {1 / 2, Sqrt[3] / 2}, {1 / 2, 0} }]},
+      {Thickness[0.01],
+        RGBColor[255, 0, 0],
+        Line[{ {0, 0}, {1 / 2, 0} }]},
+      PointSize[Large],
+      Point[{0, 0}],
+      Point[{1 / 2, Sqrt[3] / 2}],
+      Point[{1 / 2, 0}],
+      Text[Style["O", Medium], {0 - 0.05, 0 - 0.05}],
+      Text[Style["A", Medium], {1 / 2 + 0.05, Sqrt[3] / 2 + 0.05}],
+      Text[Style["H", Medium], {1 / 2 + 0.05, 0 - 0.05}]
+    },
+      ImageSize -> 350,
+      Axes -> True,
+      Ticks -> None
+    ],
+    Column[{
+      sinCosList2 = DeleteCases[sinCosList, 1 / 2];
+      incorrects = RandomSample[sinCosList2, 3];
+
+      btn1 = Button[Style[incorrects[[1]], 20],
+        {esito := "Sbagliato!", colorEsito := Red}];
+      btn2 = Button[Style[1 / 2, 20],
+        {esito := "Corretto!", colorEsito := Green}];
+      btn3 = Button[Style[incorrects[[2]], 20],
+        {esito := "Sbagliato!", colorEsito := Red}];
+      btn4 = Button[Style[incorrects[[3]], 20],
+        {esito := "Sbagliato!", colorEsito := Red}];
+
+      buttons = List[btn1, btn2, btn3, btn4];
+      randomButtons = RandomSample[buttons];
+
+      Dynamic[Text[Style[esito, colorEsito, 15]]],
+      Style["Quanto misura la proiezione di OA sulla retta delle ascisse?", 20],
+      randomButtons[[1]],
+      randomButtons[[2]],
+      randomButtons[[3]],
+      randomButtons[[4]]
+    }]
+  }]
+];
 
 DisegnaCirconferenzaInit[] := Graphics[{
   Circle[],
@@ -147,7 +198,69 @@ DisegnaCirconferenzaInit[] := Graphics[{
   PlotRange -> {{-1, 1.4}, {-1, 1.4}}
 ];
 
-EsSinCos[] := DynamicModule[{esitoSin = "", colorEsitoSin = "", esitoCos = "", colorEsitoCos = ""},
+EsSin[] := DynamicModule[{esitoSin = "", colorEsitoSin = ""},
+  checkRisp[risp_, correct_] := (
+    If[risp == correct, Return["Risposta Corretta"], Return["Risposta Sbagliata"]]
+  );
+  Row[{
+    random = RandomSample[angleList, 1];
+    x = random[[1]] Degree;
+    sinCosList2 = DeleteCases[sinCosList, Cos[x]];
+    sinCosList2 = DeleteCases[sinCosList2, Sin[x]];
+    sin = Sin[x];
+    cos = Cos[x];
+    Graphics[{
+      Circle[],
+      Point[{0, 0}],
+      PointSize[Large],
+      Circle[{0, 0}, 0.2, {0, FromGradToRad[x]}],
+      {Dashed, Line[{{0, 0}, {cos, sin}}]}, (*raggio*)
+      Thickness[0.01],
+      RGBColor[0, 255, 0],
+      Line[{{0, 0}, {cos, 0}}],
+      RGBColor[255, 0, 0],
+      Line[{ {cos, 0}, {cos, sin} }],
+      Text[Style[IntegerString[random[[1]]] <> "\[Degree]", Large, Blue], {-0.90, 1}],
+      Text[Style["P",15,Bold,Black],{cos*1.1,sin*1.1}],
+      {Black, PointSize -> .02, Point[{cos, sin}]}},
+      ImageSize -> 350,
+      Axes -> True,
+      Ticks -> None
+    ] (*FINE GRAPHICS*),
+    Row[{
+      Column[{
+
+
+        Button["Aiuto",
+          CreateDialog[{
+            TextCell["l'ordinata del punto P"],
+            DefaultButton[]
+          }],
+          ImageSize -> Medium, BaseStyle -> {"GenericButton"}
+          ],
+
+          Button["Nuovo Esercizio", FrontEndExecute[FrontEndToken[NotebookLocate["EsSin"], "Evaluate"]], ImageSize -> Medium, BaseStyle -> {"GenericButton"}],
+        incorrects = RandomSample[sinCosList2, 3];
+        btn1 = Button[Style[Rationalize[Sin[x]], 15], {esitoSin := "Corretto!", colorEsitoSin := Green}];
+        btn2 = Button[Style[Rationalize[incorrects[[1]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
+        btn3 = Button[Style[Rationalize[incorrects[[2]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
+        btn4 = Button[Style[Rationalize[incorrects[[3]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
+
+        buttons = List[btn1, btn2, btn3, btn4];
+        randomButtons = RandomSample[buttons];
+
+        Dynamic[Text[Style[esitoSin, colorEsitoSin, 15]]],
+        Style["Seleziona il valore del seno:", 15],
+        randomButtons[[1]],
+        randomButtons[[2]],
+        randomButtons[[3]],
+        randomButtons[[4]]
+      }]
+    }]
+  }]
+];
+
+EsCos[] := DynamicModule[{esitoCos = "", colorEsitoCos = ""},
   checkRisp[risp_, correct_] := (
     If[risp == correct, Return["Risposta Corretta"], Return["Risposta Sbagliata"]]
   );
@@ -172,6 +285,7 @@ EsSinCos[] := DynamicModule[{esitoSin = "", colorEsitoSin = "", esitoCos = "", c
       RGBColor[255, 0, 0],
       Line[{ {cos, 0}, {cos, sin} }],
       Text[Style[IntegerString[random[[1]]] <> "\[Degree]", Large, Blue], {-0.90, 1}],
+      Text[Style["P",15,Bold,Black],{cos*1.1,sin*1.1}],
       {Black, PointSize -> .02, Point[{cos, sin}]}},
       ImageSize -> 350,
       Axes -> True,
@@ -179,25 +293,14 @@ EsSinCos[] := DynamicModule[{esitoSin = "", colorEsitoSin = "", esitoCos = "", c
     ] (*FINE GRAPHICS*),
     Row[{
       Column[{
-        incorrects = RandomSample[sinCosList2, 3];
 
-        btn1 = Button[Style[Rationalize[Sin[x]], 15], {esitoSin := "Corretto!", colorEsitoSin := Green}];
-        btn2 = Button[Style[Rationalize[incorrects[[1]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
-        btn3 = Button[Style[Rationalize[incorrects[[2]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
-        btn4 = Button[Style[Rationalize[incorrects[[3]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
-
-        buttons = List[btn1, btn2, btn3, btn4];
-        randomButtons = RandomSample[buttons];
-
-        Dynamic[Text[Style[esitoSin, colorEsitoSin, 15]]],
-        Style["Seleziona il valore del seno:", 15],
-        randomButtons[[1]],
-        randomButtons[[2]],
-        randomButtons[[3]],
-        randomButtons[[4]]
-      }],
-      Text["\t"],
-      Column[{
+        Button["Aiuto",
+          CreateDialog[{
+            TextCell["l'ascissa del punto P"],
+            DefaultButton[]
+          }],
+          ImageSize -> Medium, BaseStyle -> {"GenericButton"}
+        ],
         incorrects = RandomSample[sinCosList2, 3];
 
         btn5 = Button[Style[Rationalize[Cos[x]], 15], {esitoCos := "Corretto!", colorEsitoCos := Green}];
@@ -207,6 +310,7 @@ EsSinCos[] := DynamicModule[{esitoSin = "", colorEsitoSin = "", esitoCos = "", c
 
         buttons = List[btn5, btn6, btn7, btn8];
         randomButtons = RandomSample[buttons];
+        Button["Nuovo Esercizio", FrontEndExecute[FrontEndToken[NotebookLocate["EsCos"], "Evaluate"]], ImageSize -> Medium, BaseStyle -> {"GenericButton"}],
 
         Dynamic[Text[Style[esitoCos, colorEsitoCos, 15]]],
         Style["Seleziona il valore del coseno:", 15],
@@ -214,12 +318,59 @@ EsSinCos[] := DynamicModule[{esitoSin = "", colorEsitoSin = "", esitoCos = "", c
         randomButtons[[2]],
         randomButtons[[3]],
         randomButtons[[4]]
-      }],
-      Button["Nuovo Esercizio", FrontEndExecute[FrontEndToken[NotebookLocate["esSinCos"], "Evaluate"]], ImageSize -> Medium, BaseStyle -> {"GenericButton"}]
-
+      }]
     }]
   }]
 ];
+
+ThTriangoloProiezione[]:= Row[{
+  Column[{
+    Style["I triangoli ABC e APH sono simili,\nperci\[OGrave] il rapporto tra i lati\n\[EGrave] costante, da cui ricaviamo che:",19],
+    Style["\nBC : AB = PH : AP",20,Bold],
+    Style["AC : AB = AH : AP",20,Bold],
+    Style["\ne poich\[EAcute]: AP = 1, PH = Sen(\[Alpha]), AH = Cos(\[Alpha]) vale\n",19]
+  }],
+  Column[{
+    P = {Sqrt[2]/2,Sqrt[2]/2};
+    Graphics[{
+      {LightGreen,EdgeForm[Thick],Triangle[{{0,0},{1.5,0},{1.5,1.5}}]},
+      Circle[],
+
+
+      (*Seno*)
+      {Red,Thickness[0.009],Line[{P,{P[[1]],0}}]},
+      Text[Style["Cos(\[Alpha])",Green,Bold,19],{P[[1]]/2, -0.15}],
+
+       (*Coseno*)
+      {Green,Thickness[0.009],Line[{{0,0},{P[[1]],0}}]},
+      Text[Style["Sen(\[Alpha])",Red,Bold,19],{P[[1]]*1.4, P[[2]]*0.5}],
+
+      (*punto intersezione P*)
+      {Black, PointSize -> .02, Point[P]},
+      Text[Style["P",19],{P[[1]]*1.1,P[[2]]*1.2}],
+
+      (*H*)
+      Text[Style["H",19],{P[[1]],-0.15}],
+      (*A*)
+      Text[Style["A",19],{-0.09,-0.09}],
+      (*B*)
+      Text[Style["B",19],{1.6,1.6}],
+      (*C*)
+      Text[Style["C",19],{1.6,-0.09}],
+
+      (*Arco*)
+      Circle[{0,0},0.2,{0,Pi/4}],
+      Text[Style["\[Alpha]",19],{0.3,0.145}]
+
+
+    },
+      ImageSize->360,
+      Axes->True,
+      Ticks->None,
+      PlotRange->{{-1.2,1.7},{-1.2,1.7}}
+    ]
+  }]
+}];
 
 (*Calcolo della distanza tra due punti attraverso le coordinate*)
 computeDistance[x1_, y1_, x2_, y2_] := Return[Sqrt[(x2 - x1)^2 + (y2 - y1)^2]];
