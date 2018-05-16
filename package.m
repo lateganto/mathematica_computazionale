@@ -30,8 +30,9 @@ ClearAll["ProvaProgetto` *"];
 (* ::InheritFromParent:: *)
 (**)
 (*  TEORIA  *)
-DisegnaCirconferenza::usage = "disegna un grafico";
-DisegnaPianoCartesiano::usage = "disegna assi"
+DisegnaCirconferenza::usage = "disegna circ goniometrica con funzioni di seno e coseno";
+DisegnaCirconferenzaInit::usage = "grafico della circ goniometrica";
+DisegnaPianoCartesiano::usage = "disegna assi";
 TipoAngolo::usage = "per la def di angolo";
 GraficoTangente::usage = "manipulate per la funzione tangente";
 AngoliAssociati0::usage = "manipulate di angoli notevoli 0";
@@ -71,6 +72,24 @@ sinCosList = List[0, 1, -1, 1 / 2, -1 / 2, Sqrt[2] / 2, -Sqrt[2] / 2, Sqrt[3] / 
 
 (* ::InheritFromParent:: *)
 (**)
+
+DisegnaCirconferenzaInit[] := Graphics[{
+  Circle[],
+  Thickness[0.01],
+  Text[Style["Raggio=1 ", 14], {0.6, 0.30}],
+  Line[{{0, 0}, {Sqrt[2] / 2, Sqrt[2] / 2}}],
+
+  Text[Style["A(0,1)", 15, Bold], {0.2, 1.1}],
+  {Red, PointSize -> 0.02, Point[{0, 1}]},
+  {Red, PointSize -> 0.02, Point[{Sqrt[2] / 2, Sqrt[2] / 2}]},
+
+  Text[Style["B(1,0)", 15, Bold], {1.2, 0.1}],
+  {Red, PointSize -> 0.02, Point[{1, 0}]}
+},
+  Axes -> True,
+  Ticks -> False,
+  PlotRange -> {{-1, 1.4}, {-1, 1.4}}
+];
 
 EsSinCos[] := DynamicModule[{esitoSin = "", colorEsitoSin = "", esitoCos = "", colorEsitoCos = ""},
   checkRisp[risp_, correct_] := (
@@ -160,9 +179,9 @@ TipoAngolo[] := Manipulate[
         x := N[Cos[a Degree]];,
         y := N[Sin[a Degree]];,
         {Blue, Thick, Circle[{0, 0}, 0.4, {0, a Pi / 180}]},
-        (*Text[Style[a, 15, Blue], {-0.7, 1.2}],*)
+      (*Text[Style[a, 15, Blue], {-0.7, 1.2}],*)
         Text[Style[a \[Degree], 15, Blue], {-1, 1}],
-        Text[Style[a Pi / 180, 18, RGBColor[0, 50, 255]], {+1, 1}],
+        Text[Style[a Pi / 180, 18, RGBColor[0, 50, 255]], {+ 1, 1}],
 
         Thickness[0.02],
         Line[{{0, 0}, {x, y}}]
@@ -197,12 +216,12 @@ ThGradRad[] := Manipulate[
 
       }]  }], "\t",
     Column[{
-          Style["Se Alpha \[EGrave] l'angolo di cui vogliamo conoscere la misura, vale la seguente formula:", 15],
-          Panel[
-            Image[Import["C:\\Users\\anton\\Documents\\GitHub\\mathematica_computazionale\\assets\\proporzioneGradRad.png"], ImageSize -> 200],
-            ImageSize-> 600,
-            Alignment->{Center,Center}
-        ]
+      Style["Se Alpha \[EGrave] l'angolo di cui vogliamo conoscere la misura, vale la seguente formula:", 15],
+      Panel[
+        Image[Import["C:\\Users\\anton\\Documents\\GitHub\\mathematica_computazionale\\assets\\proporzioneGradRad.png"], ImageSize -> 200],
+        ImageSize -> 600,
+        Alignment -> {Center, Center}
+      ]
 
 
     }]
@@ -213,36 +232,36 @@ ThGradRad[] := Manipulate[
 ];
 
 GraficoPrimaRelazione[] := Animate[ Row[{
-  (*realativo angolo in radianti*)
-    rad := x Pi / 180;
-    P := {Cos[rad], Sin[rad]};
-    proiezioneX := {Cos[rad], 0};
-    proiezioneY := {Cos[rad], Sin[rad]};
-    triangolo := {Yellow, Triangle[{{0, 0}, proiezioneX, P}]},
-    Graphics[{
-      Circle[],
-      triangolo,
-    (*punto centrale alla circonferenza*)
-      Point[{0, 0}],
-    (*dimentsione dei punti*)
-      PointSize[Large],
-    (**arco che identifica l'arco*)
-    (*{Blue, Circle[{0, 0}, 0.2, {0, rad}]},*)
-      {Dashed, Line[{{0, 0}, P}]}, (*raggio*)
-      Thickness[0.01],
-      RGBColor[0, 255, 0],
-    (*proiezione asse x*)
-      Line[{{0, 0}, proiezioneX }],
-      RGBColor[255, 0, 0],
-    (*proiezione asse y*)
-      Line[{{Cos[rad], 0}, proiezioneY}],
-    (*punto sulla circonferenza*)
-      {Black, PointSize -> .02, Point[{Cos[rad], Sin[rad]}]}},
-      ImageSize -> 350,
-      Axes -> True,
-      Ticks -> None
-    ] (*FINE GRAPHICS*)
-  }],
+(*realativo angolo in radianti*)
+  rad := x Pi / 180;
+  P := {Cos[rad], Sin[rad]};
+  proiezioneX := {Cos[rad], 0};
+  proiezioneY := {Cos[rad], Sin[rad]};
+  triangolo := {Yellow, Triangle[{{0, 0}, proiezioneX, P}]},
+  Graphics[{
+    Circle[],
+    triangolo,
+  (*punto centrale alla circonferenza*)
+    Point[{0, 0}],
+  (*dimentsione dei punti*)
+    PointSize[Large],
+  (**arco che identifica l'arco*)
+  (*{Blue, Circle[{0, 0}, 0.2, {0, rad}]},*)
+    {Dashed, Line[{{0, 0}, P}]}, (*raggio*)
+    Thickness[0.01],
+    RGBColor[0, 255, 0],
+  (*proiezione asse x*)
+    Line[{{0, 0}, proiezioneX }],
+    RGBColor[255, 0, 0],
+  (*proiezione asse y*)
+    Line[{{Cos[rad], 0}, proiezioneY}],
+  (*punto sulla circonferenza*)
+    {Black, PointSize -> .02, Point[{Cos[rad], Sin[rad]}]}},
+    ImageSize -> 350,
+    Axes -> True,
+    Ticks -> None
+  ] (*FINE GRAPHICS*)
+}],
   {{x, 45, ""}, 0, 360, 1},
   AnimationRate -> 30
 ];
@@ -453,7 +472,7 @@ EsDistanze[] := Quiet[DynamicModule[{x1, y1, x2, y2, Esito = ""},
 
 
 ListaAngoliAssociati60 := {\[Pi] / 3, 2 \[Pi] / 3, 4 \[Pi] / 3, 5 \[Pi] / 3};
-AngoliAssociati60[] :=  Animate[
+AngoliAssociati60[] := Animate[
   Row[{
     Column[{
       Row[{
@@ -475,14 +494,14 @@ AngoliAssociati60[] :=  Animate[
           AngoloGrad = AngoloRif 180 / Pi Degree;
           Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180/Pi Degree, AngoloGrad],20]],
-          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180/Pi Degree, AngoloGrad],20]], "\n",
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], 20]],
+          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180/Pi Degree, AngoloGrad],20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180/Pi Degree, AngoloGrad],20]], "\n",
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], 20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180/Pi Degree, AngoloGrad],20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180/Pi Degree, AngoloGrad],20]], "\n"
+          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], 20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], 20]], "\n"
         }]
 
       }]
@@ -548,14 +567,14 @@ AngoliAssociati30[] := Animate[
           AngoloGrad = AngoloRif 180 / Pi Degree;
           Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180/Pi Degree, AngoloGrad],20]],
-          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180/Pi Degree, AngoloGrad],20]], "\n",
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], 20]],
+          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180/Pi Degree, AngoloGrad],20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180/Pi Degree, AngoloGrad],20]], "\n",
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], 20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180/Pi Degree, AngoloGrad],20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180/Pi Degree, AngoloGrad],20]], "\n"
+          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], 20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], 20]], "\n"
         }]
 
       }]
@@ -565,7 +584,7 @@ AngoliAssociati30[] := Animate[
 ];
 
 ListaAngoliAssociati45 := {\[Pi] / 4, 3 \[Pi] / 4, 5 \[Pi] / 4, 7 \[Pi] / 4};
-AngoliAssociati45[] :=  Animate[
+AngoliAssociati45[] := Animate[
   Row[{
     Column[{
       Row[{
@@ -587,14 +606,14 @@ AngoliAssociati45[] :=  Animate[
           AngoloGrad = AngoloRif 180 / Pi Degree;
           Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180/Pi Degree, AngoloGrad],20]],
-          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180/Pi Degree, AngoloGrad],20]], "\n",
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], 20]],
+          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180/Pi Degree, AngoloGrad],20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180/Pi Degree, AngoloGrad],20]], "\n",
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], 20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180/Pi Degree, AngoloGrad],20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180/Pi Degree, AngoloGrad],20]], "\n"
+          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], 20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], 20]], "\n"
         }]
 
       }]
@@ -663,6 +682,8 @@ EsCoordinate[] := Quiet[DynamicModule[{},
 
 ]
 ];
+
+
 
 GetQuad[x0_, y0_] := DynamicModule[{x = x0, y = y0, quad},
   If[x >= 0 && y >= 0, quad = 1];
