@@ -60,11 +60,10 @@ DistancePointsApplication::usage = "Distanza fra due punti visibili di cui uno n
 
 (*DEFINIZIONI di GRADO e RADIANTE*)
 defGradi = Text["Consideriamo un angolo giro e dividiamolo in 360 parti congruenti tra loro.
-Poniamo 1\[Degree] una di queste parti. Preso dunque un angolo qualsiasi, contiamo quante
- volte un grado  \[EGrave]  contenuto in esso."];
+Poniamo 1\[Degree] una di queste parti. Preso dunque un angolo qualsiasi,\ncontiamo quante volte un grado \[EGrave] contenuto in esso."];
 defRadianti = Text["Prendiamo una circonferenza di raggio r e un angolo al centro \[Alpha];
-l  \[EGrave]  l'arco sotteso dall'angolo. La misura in radianti  \[EGrave]  data dal rapporto l/r.
- In particolare, 1 rad  \[EGrave]  un angolo che sottende un arco lungo quanto il raggio."];
+l \[EGrave] l'arco sotteso dall'angolo.\nLa misura in radianti  \[EGrave] data dal rapporto l/r.
+In particolare, 1 rad \[EGrave] un angolo\nche sottende un arco lungo quanto il raggio."];
 
 Begin["`Private`"]; (* Comincia spazio privato *)
 
@@ -108,6 +107,7 @@ ThTriangoliUno[] := Row[{
     }]
   }]
 }];
+
 ThTriangoliDue[] := Row[{
   Column[{
     Row[{
@@ -230,8 +230,6 @@ EsSin[] := DynamicModule[{esitoSin = "", colorEsitoSin = ""},
     ] (*FINE GRAPHICS*),
     Row[{
       Column[{
-
-
         Button["Aiuto",
           CreateDialog[{
             TextCell["l'ordinata del punto P"],
@@ -323,12 +321,13 @@ EsCos[] := DynamicModule[{esitoCos = "", colorEsitoCos = ""},
     }]
   }]
 ];
+
 ThTriangoloProiezione[] := Row[{
   Column[{
-    Style["I triangoli ABC e APH sono simili,\nperciò il rapporto tra i lati\nè costante, da cui ricaviamo che:", 19],
+    Style["I triangoli ABC e APH sono simili,\nperci\[OGrave] il rapporto tra i lati\n\[EGrave] costante, da cui ricaviamo che:", 19],
     Style["\nBC : AB = PH : AP", 20, Bold],
     Style["AC : AB = AH : AP", 20, Bold],
-    Style["\ne poiché:", 20],
+    Style["\ne poich\[EGrave]:", 20],
     Style["AP = 1, PH = Sen(\[Alpha]), AH = Cos(\[Alpha])", 20, Bold],
     Style["\nvale\n", 20],
     Style["BC = Sen(\[Alpha]) AB", 20, Bold],
@@ -405,7 +404,7 @@ TipoAngolo[] := Manipulate[
     Column[{
       Row[{Text[Style["GRADI", Blue, Bold, 20]], "\n", Text[Style[defGradi, 17]]}],
       Row[{"\n"}],
-      Row[{Text[Style["RADIANTI", RGBColor[0, 50, 255], Bold, 20]], "\n", Text[Style[defRadianti, 17]]}]
+      Row[{Text[Style["RADIANTI", RGBColor[0, 142, 255], Bold, 20]], "\n", Text[Style[defRadianti, 17]]}]
     }]
   }](*fine row*),
   {{a, 0, "angolo"}, 0, 360, 1}];
@@ -419,13 +418,13 @@ ThGradRad[] := Manipulate[
         "\n\n",
         Style[gradi "\[Degree]", 20, Blue],
         "\t:\t",
-        Style[gradi Pi / 180, 20, RGBColor[0, 50, 255]],
+        Style[gradi Pi / 180, 20, RGBColor[0, 142, 255]],
         "\t=\t",
         "360\t:\t",
         HoldForm[2 Pi],
         "\n\n\n",
         Style["Gradi", Blue], "\n",
-        Style["Radianti", RGBColor[0, 50, 255]]
+        Style["Radianti", RGBColor[0, 142, 255]]
 
       }]  }], "\t",
     Column[{
@@ -693,7 +692,7 @@ EsDistanze[] := Quiet[DynamicModule[{x1, y1, x2, y2, Esito = ""},
 
 
 ListaAngoliAssociati60 := {\[Pi] / 3, 2 \[Pi] / 3, 4 \[Pi] / 3, 5 \[Pi] / 3};
-AngoliAssociati60[] := Animate[
+AngoliAssociati60[] := Manipulate[
   Row[{
     Column[{
       Row[{
@@ -732,7 +731,7 @@ AngoliAssociati60[] := Animate[
 ];
 
 ListaAngoliAssociati0 := {0, \[Pi] / 2, \[Pi], 3 \[Pi] / 2, 2 \[Pi]};
-AngoliAssociati0[] := Animate[
+AngoliAssociati0[] := Manipulate[
   Row[{
     Column[{
       Row[{
@@ -767,7 +766,7 @@ AngoliAssociati0[] := Animate[
 ];
 
 ListaAngoliAssociati30 := {\[Pi] / 6, 5 \[Pi] / 6, 7 \[Pi] / 6, 11 \[Pi] / 6};
-AngoliAssociati30[] := Animate[
+AngoliAssociati30[] := Manipulate[
   Row[{
     Column[{
       Row[{
@@ -806,7 +805,7 @@ AngoliAssociati30[] := Animate[
 ];
 
 ListaAngoliAssociati45 := {\[Pi] / 4, 3 \[Pi] / 4, 5 \[Pi] / 4, 7 \[Pi] / 4};
-AngoliAssociati45[] := Animate[
+AngoliAssociati45[] := Manipulate[
   Row[{
     Column[{
       Row[{
