@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11737,        243]
-NotebookOptionsPosition[     10937,        223]
-NotebookOutlinePosition[     11284,        238]
-CellTagsIndexPosition[     11241,        235]
+NotebookDataLength[      7850,        152]
+NotebookOptionsPosition[      7006,        128]
+NotebookOutlinePosition[      7509,        149]
+CellTagsIndexPosition[      7441,        144]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -24,11 +24,8 @@ Cell[BoxData[""], "Input",
 f922b95886cc"],
 
 Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.735294422967062*^9, 
-  3.7352944235936604`*^9}},ExpressionUUID->"9dd115e9-98b7-4761-8eee-\
-1cddae712fc0"],
-
-Cell[CellGroupData[{
+ CellChangeTimes->{{3.735294422967062*^9, 3.7352944235936604`*^9}},
+ CellTags->"scelta",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0"],
 
 Cell[BoxData[{
  RowBox[{
@@ -36,8 +33,17 @@ Cell[BoxData[{
    RowBox[{"SetDirectory", "[", 
     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
    RowBox[{"<<", " ", "package.m"}], ";"}], "  "}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ThTriangoloProiezione", "[", "]"}], " "}]}], "Input",
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"StringForm", "[", 
+    RowBox[{"\"\< `` = ``.\>\"", ",", 
+     RowBox[{"HoldForm", "[", 
+      RowBox[{"AC", "/", 
+       RowBox[{"Sen", "[", "\[Gamma]", "]"}]}], "]"}], ",", 
+     RowBox[{"HoldForm", "[", 
+      RowBox[{"AB", "/", 
+       RowBox[{"Sen", "[", "\[Beta]", "]"}]}], "]"}]}], "]"}], ",", "20"}], 
+  "]"}]}], "Input",
  CellChangeTimes->{{3.734851720561689*^9, 3.734851721300779*^9}, 
    3.7348523017858644`*^9, {3.734852618652252*^9, 3.7348526192466936`*^9}, {
    3.7348526713345904`*^9, 3.734852737127641*^9}, {3.734857481282914*^9, 
@@ -98,130 +104,29 @@ Cell[BoxData[{
    3.7354734572037435`*^9, 3.7354734583658357`*^9}, {3.73547353221507*^9, 
    3.735473535529928*^9}, {3.7354736250461454`*^9, 3.735473629083893*^9}, 
    3.735473855005189*^9, {3.7354743957404747`*^9, 3.7354743968794737`*^9}, {
-   3.7354759901456985`*^9, 
-   3.7354759910133376`*^9}},ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-\
-fa6f348760a2"],
+   3.7354759901456985`*^9, 3.7354759910133376`*^9}, 3.7355528611712303`*^9, {
+   3.735553536556405*^9, 3.735553562969305*^9}, {3.735553754791226*^9, 
+   3.7355537553637753`*^9}, {3.7355538457271395`*^9, 3.735553850132082*^9}, {
+   3.7355543711752467`*^9, 3.735554373329955*^9}, {3.7355596231036863`*^9, 
+   3.735559649040409*^9}, {3.7355599696668625`*^9, 3.735560136796036*^9}, {
+   3.735560581697214*^9, 3.735560659954343*^9}, {3.7355607902783537`*^9, 
+   3.7355608215086684`*^9}, {3.735563960237297*^9, 3.735564056180324*^9}, {
+   3.7355641133248463`*^9, 3.735564258428807*^9}, {3.7355643319938755`*^9, 
+   3.735564391776563*^9}},
+ EmphasizeSyntaxErrors->
+  True,ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
 
-Cell[BoxData[
- TemplateBox[{TagBox[
-    GridBox[{{
-       StyleBox[
-       "\"I triangoli ABC e APH sono simili,\\nperci\[OGrave] il rapporto tra \
-i lati\\n\[EGrave] costante, da cui ricaviamo che:\"", 19, StripOnInput -> 
-        False]}, {
-       StyleBox[
-       "\"\\nBC : AB = PH : AP\"", 20, Bold, StripOnInput -> False]}, {
-       StyleBox["\"AC : AB = AH : AP\"", 20, Bold, StripOnInput -> False]}, {
-       StyleBox[
-       "\"\\ne poich\[EAcute]: AP = 1, PH = Sen(\[Alpha]), AH = Cos(\[Alpha]) \
-vale\\n\"", 19, StripOnInput -> False]}}, 
-     GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
-     "Column", 
-     GridBoxItemSize -> {
-      "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"],TagBox[
-    GridBox[{{
-       GraphicsBox[{{
-          RGBColor[0.88, 1, 0.88], 
-          EdgeForm[
-           Thickness[Large]], 
-          TagBox[
-           PolygonBox[{{0, 0}, {1.5, 0}, {1.5, 1.5}}], "Triangle"]}, 
-         CircleBox[{0, 0}], {
-          RGBColor[1, 0, 0], 
-          Thickness[0.009], 
-          LineBox[
-           
-           NCache[{{2^Rational[-1, 2], 2^Rational[-1, 2]}, {
-             2^Rational[-1, 2], 0}}, {{0.7071067811865475, 
-             0.7071067811865475}, {0.7071067811865475, 0}}]]}, 
-         InsetBox[
-          FormBox[
-           StyleBox["\"Cos(\[Alpha])\"", 
-            RGBColor[0, 1, 0], Bold, 19, StripOnInput -> False], 
-           TraditionalForm], 
-          
-          NCache[{Rational[1, 2] 2^Rational[-1, 2], -0.15}, {
-           0.35355339059327373`, -0.15}]], {
-          RGBColor[0, 1, 0], 
-          Thickness[0.009], 
-          LineBox[
-           
-           NCache[{{0, 0}, {2^Rational[-1, 2], 0}}, {{0, 0}, {
-             0.7071067811865475, 0}}]]}, 
-         InsetBox[
-          FormBox[
-           StyleBox["\"Sen(\[Alpha])\"", 
-            RGBColor[1, 0, 0], Bold, 19, StripOnInput -> False], 
-           TraditionalForm], {0.9899494936611664, 0.35355339059327373`}], {
-          GrayLevel[0], PointSize -> 0.02, 
-          PointBox[
-           
-           NCache[{2^Rational[-1, 2], 2^Rational[-1, 2]}, {0.7071067811865475,
-             0.7071067811865475}]]}, 
-         InsetBox[
-          FormBox[
-           StyleBox["\"P\"", 19, StripOnInput -> False], TraditionalForm], {
-          0.7778174593052023, 0.8485281374238569}], 
-         InsetBox[
-          FormBox[
-           StyleBox["\"H\"", 19, StripOnInput -> False], TraditionalForm], 
-          NCache[{2^Rational[-1, 2], -0.15}, {0.7071067811865475, -0.15}]], 
-         InsetBox[
-          FormBox[
-           StyleBox["\"A\"", 19, StripOnInput -> False], 
-           TraditionalForm], {-0.09, -0.09}], 
-         InsetBox[
-          FormBox[
-           StyleBox["\"B\"", 19, StripOnInput -> False], TraditionalForm], {
-          1.6, 1.6}], 
-         InsetBox[
-          FormBox[
-           StyleBox["\"C\"", 19, StripOnInput -> False], TraditionalForm], {
-          1.6, -0.09}], 
-         CircleBox[{0, 0}, 0.2, 
-          NCache[{0, Rational[1, 4] Pi}, {0, 0.7853981633974483}]], 
-         InsetBox[
-          FormBox[
-           StyleBox["\"\[Alpha]\"", 19, StripOnInput -> False], 
-           TraditionalForm], {0.3, 0.145}]}, ImageSize -> 360, Axes -> True, 
-        Ticks -> None, PlotRange -> {{-1.2, 1.7}, {-1.2, 1.7}}]}}, 
-     GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
-     "Column", 
-     GridBoxItemSize -> {
-      "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
-  "RowDefault"]], "Output",
- CellChangeTimes->{{3.735473399577676*^9, 3.735473406731408*^9}, {
-   3.7354734513060865`*^9, 3.735473458996517*^9}, 3.7354735002553267`*^9, 
-   3.7354735360121746`*^9, 3.735473629536093*^9, 3.735473855819357*^9, {
-   3.7354739334379435`*^9, 3.735473970995508*^9}, {3.73547400154731*^9, 
-   3.7354740118546567`*^9}, {3.735474062400395*^9, 3.7354742668515587`*^9}, 
-   3.7354743020249586`*^9, {3.735474369173676*^9, 3.7354744330258474`*^9}, {
-   3.7354744709168153`*^9, 3.7354744805714054`*^9}, {3.735474524238613*^9, 
-   3.7354745619099426`*^9}, 3.7354745919247627`*^9, {3.735474673569066*^9, 
-   3.7354747020619*^9}, {3.735474794195114*^9, 3.735474914053122*^9}, {
-   3.735474944993471*^9, 3.735474962211298*^9}, {3.73547501862344*^9, 
-   3.7354751159665613`*^9}, {3.7354751745915565`*^9, 
-   3.7354752085288944`*^9}, {3.7354752416099296`*^9, 3.735475254028982*^9}, {
-   3.7354753308093376`*^9, 3.7354753452708263`*^9}, {3.7354753881219845`*^9, 
-   3.7354754173611774`*^9}, {3.7354755994202576`*^9, 3.735475620989666*^9}, {
-   3.735475746963952*^9, 3.7354757625253677`*^9}, {3.735475815032126*^9, 
-   3.735475857708704*^9}, 3.7354759090801287`*^9, {3.7354759746584725`*^9, 
-   3.735475992025372*^9}, 3.7354760606453323`*^9, {3.735476128535022*^9, 
-   3.7354761421352196`*^9}, 
-   3.735476182026685*^9},ExpressionUUID->"de1cfa04-748a-495b-81a5-\
-b49387b154e4"]
-}, Open  ]],
-
-Cell[BoxData["PH"], "Input",
- CellChangeTimes->{{3.7354760936080613`*^9, 
-  3.735476093938943*^9}},ExpressionUUID->"bec59208-f83a-4011-aa1b-\
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7354760936080613`*^9, 3.735476093938943*^9}, {
+  3.735560065712906*^9, 
+  3.7355600665010633`*^9}},ExpressionUUID->"bec59208-f83a-4011-aa1b-\
 4c38c7c5fe22"],
 
 Cell[BoxData[" "], "Input",
  CellChangeTimes->{
   3.73544815685616*^9},ExpressionUUID->"d8e84abd-fd9c-4d84-acba-0e60f8700b00"]
 },
-WindowSize->{1350, 695},
+WindowSize->{1328, 686},
 WindowMargins->{{-8, Automatic}, {Automatic, 0}},
 FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
 StyleDefinitions->"Default.nb"
@@ -230,21 +135,25 @@ StyleDefinitions->"Default.nb"
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "scelta"->{
+  Cell[712, 25, 170, 2, 28, "Input",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0",
+   CellTags->"scelta"]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"scelta", 7301, 138}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 151, 3, 28, "Input",ExpressionUUID->"4309e3fd-7fc6-4390-94ce-f922b95886cc"],
-Cell[712, 25, 154, 3, 28, "Input",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0"],
-Cell[CellGroupData[{
-Cell[891, 32, 4871, 70, 48, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
-Cell[5765, 104, 4868, 107, 412, "Output",ExpressionUUID->"de1cfa04-748a-495b-81a5-b49387b154e4"]
-}, Open  ]],
-Cell[10648, 214, 156, 3, 28, "Input",ExpressionUUID->"bec59208-f83a-4011-aa1b-4c38c7c5fe22"],
-Cell[10807, 219, 126, 2, 28, "Input",ExpressionUUID->"d8e84abd-fd9c-4d84-acba-0e60f8700b00"]
+Cell[712, 25, 170, 2, 28, "Input",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0",
+ CellTags->"scelta"],
+Cell[885, 29, 5780, 87, 48, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
+Cell[6668, 118, 205, 4, 28, "Input",ExpressionUUID->"bec59208-f83a-4011-aa1b-4c38c7c5fe22"],
+Cell[6876, 124, 126, 2, 28, "Input",ExpressionUUID->"d8e84abd-fd9c-4d84-acba-0e60f8700b00"]
 }
 ]
 *)
