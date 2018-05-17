@@ -1,0 +1,121 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3776,        113]
+NotebookOptionsPosition[      3187,         93]
+NotebookOutlinePosition[      3572,        109]
+CellTagsIndexPosition[      3529,        106]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["ALTEZZA DI UNA TORRE", "Title",
+ CellChangeTimes->{{3.7354707732328706`*^9, 3.7354708015461397`*^9}},
+ Background->RGBColor[
+  1, 0.9, 0.8],ExpressionUUID->"3efdab81-e343-471f-b5ad-9d7af4638426"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
+  RowBox[{"<<", " ", "package.m"}], ";", " ", 
+  RowBox[{"ThTriangoliDue", "[", "]"}]}]], "Input",
+ CellChangeTimes->{{3.7354708420870476`*^9, 
+  3.735470876410913*^9}},ExpressionUUID->"cc959b4f-a7c8-4d4f-a4c9-\
+a90d6865d27a"],
+
+Cell[BoxData[
+ TemplateBox[{TagBox[
+    GridBox[{{
+       TemplateBox[{
+         GraphicsBox[{{
+            RGBColor[1, 1, 0.85], 
+            EdgeForm[
+             Thickness[Large]], 
+            TagBox[
+             PolygonBox[{{-1, 0}, {1, 1}, {1, 0}}], "Triangle"]}, 
+           RGBColor[1, 0, 0], 
+           Thickness[0.009], 
+           LineBox[{{-1, 0}, {1, 0}}], 
+           InsetBox[
+            FormBox[
+             StyleBox["\"\[Alpha]\"", 20, StripOnInput -> False], 
+             TraditionalForm], {-0.6, 0.07}], 
+           InsetBox[
+            FormBox[
+             StyleBox["\"\[Beta]\"", 20, StripOnInput -> False], 
+             TraditionalForm], {0.9, 0.8}], 
+           InsetBox[
+            FormBox[
+             StyleBox["\"b\"", 20, StripOnInput -> False], TraditionalForm], {
+            0, -0.1}], 
+           InsetBox[
+            FormBox[
+             StyleBox["\"a\"", 20, 
+              GrayLevel[0], StripOnInput -> False], TraditionalForm], {1.1, 
+            0.5}]}, Axes -> False, Ticks -> None, ImageSize -> 350], 
+         "\"\\t\\t\"", 
+         TagBox[
+          GridBox[{{
+             StyleBox[
+             "\"Cateto = altroCateto(b) * Tang angolo(\[Alpha])\"", 20, Bold, 
+              StripOnInput -> False]}, {
+             StyleBox["\"a = b * Tang(\[Alpha])\"", 
+              RGBColor[1, 0, 0], 25, Bold, StripOnInput -> False]}}, 
+           GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
+           "Column", 
+           GridBoxItemSize -> {
+            "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+         "RowDefault"]}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+     DefaultBaseStyle -> "Column", 
+     GridBoxItemSize -> {
+      "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+  "RowDefault"]], "Output",
+ CellChangeTimes->{{3.7354708770506153`*^9, 3.7354709001044455`*^9}, {
+  3.735470934417774*^9, 
+  3.7354709508715653`*^9}},ExpressionUUID->"6a346114-5104-4e65-b548-\
+aec64fa572aa"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1366, 695},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+TaggingRules->{"SlideShow" -> True},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 201, 3, 112, "Title",ExpressionUUID->"3efdab81-e343-471f-b5ad-9d7af4638426"],
+Cell[CellGroupData[{
+Cell[806, 29, 344, 8, 28, "Input",ExpressionUUID->"cc959b4f-a7c8-4d4f-a4c9-a90d6865d27a"],
+Cell[1153, 39, 2006, 50, 214, "Output",ExpressionUUID->"6a346114-5104-4e65-b548-aec64fa572aa"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
