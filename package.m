@@ -99,10 +99,10 @@ ThTriangoliUno[] := Row[{
       ],
       "\t\t",
       Column[{
-        Style["Cateto = Ipotenusa(c) * seno dell'angolo(\[Alpha]) opposto", 20, Bold],
+        Style["Cateto = Ipotenusa * seno dell'angolo opposto", 20, Bold],
         Style["a = c * Sen(\[Alpha])", Red, 25, Bold],
         "\n",
-        Style["Cateto = Ipotenusa(c) * coseno dell'angolo(\[Beta]) acuto adiacente", 20, Bold],
+        Style["Cateto = Ipotenusa * coseno dell'angolo acuto adiacente", 20, Bold],
         Style["a = c * Cos(\[Beta])", Red, 25, Bold]
       }]
     }]
@@ -127,8 +127,8 @@ ThTriangoliDue[] := Row[{
       ],
       "\t\t",
       Column[{
-        Style["Cateto = altroCateto(b) * Tang angolo(\[Alpha])", 20, Bold],
-        Style["a = b * Tang(\[Alpha])", Red, 25, Bold]
+        Style["Cateto = altroCateto * Tangente angolo", 20, Bold],
+        Style["a = b * Tan(\[Alpha])", Red, 25, Bold]
       }]
     }]
   }]
@@ -323,13 +323,16 @@ EsCos[] := DynamicModule[{esitoCos = "", colorEsitoCos = ""},
     }]
   }]
 ];
-
 ThTriangoloProiezione[] := Row[{
   Column[{
-    Style["I triangoli ABC e APH sono simili,\nperci\[OGrave] il rapporto tra i lati\n\[EGrave] costante, da cui ricaviamo che:", 19],
+    Style["I triangoli ABC e APH sono simili,\nperciò il rapporto tra i lati\nè costante, da cui ricaviamo che:", 19],
     Style["\nBC : AB = PH : AP", 20, Bold],
     Style["AC : AB = AH : AP", 20, Bold],
-    Style["\ne poich\[EAcute]: AP = 1, PH = Sen(\[Alpha]), AH = Cos(\[Alpha]) vale\n", 19]
+    Style["\ne poiché:", 20],
+    Style["AP = 1, PH = Sen(\[Alpha]), AH = Cos(\[Alpha])", 20, Bold],
+    Style["\nvale\n", 20],
+    Style["BC = Sen(\[Alpha]) AB", 20, Bold],
+    Style["AC = Cos(\[Alpha]) AB", 20, Bold]
   }],
   Column[{
     P = {Sqrt[2] / 2, Sqrt[2] / 2};
@@ -426,7 +429,7 @@ ThGradRad[] := Manipulate[
 
       }]  }], "\t",
     Column[{
-      Style["Se Alpha \[EGrave] l'angolo di cui vogliamo conoscere la misura, vale la seguente formula:", 15],
+      Style["Se \[Alpha] \[EGrave] l'angolo di cui vogliamo conoscere la misura, vale la seguente formula:", 15],
       Panel[
         Image[Import["C:\\Users\\anton\\Documents\\GitHub\\mathematica_computazionale\\assets\\proporzioneGradRad.png"], ImageSize -> 200],
         ImageSize -> 600,
@@ -441,40 +444,50 @@ ThGradRad[] := Manipulate[
   {{gradi, 0, "Gradi"}, 0, 360, 1}
 ];
 
-GraficoPrimaRelazione[] := Animate[ Row[{
-(*realativo angolo in radianti*)
-  rad := x Pi / 180;
-  P := {Cos[rad], Sin[rad]};
-  proiezioneX := {Cos[rad], 0};
-  proiezioneY := {Cos[rad], Sin[rad]};
-  triangolo := {Yellow, Triangle[{{0, 0}, proiezioneX, P}]},
-  Graphics[{
-    Circle[],
-    triangolo,
-  (*punto centrale alla circonferenza*)
-    Point[{0, 0}],
-  (*dimentsione dei punti*)
-    PointSize[Large],
-  (**arco che identifica l'arco*)
-  (*{Blue, Circle[{0, 0}, 0.2, {0, rad}]},*)
-    {Dashed, Line[{{0, 0}, P}]}, (*raggio*)
-    Thickness[0.01],
-    RGBColor[0, 255, 0],
-  (*proiezione asse x*)
-    Line[{{0, 0}, proiezioneX }],
-    RGBColor[255, 0, 0],
-  (*proiezione asse y*)
-    Line[{{Cos[rad], 0}, proiezioneY}],
-  (*punto sulla circonferenza*)
-    {Black, PointSize -> .02, Point[{Cos[rad], Sin[rad]}]}},
-    ImageSize -> 350,
-    Axes -> True,
-    Ticks -> None
-  ] (*FINE GRAPHICS*)
-}],
-  {{x, 45, ""}, 0, 360, 1},
-  AnimationRate -> 30
-];
+GraficoPrimaRelazione[] :=
+    Manipulate[
+      Row[{
+        Column[{
+        (*realativo angolo in radianti*)
+          rad := x Pi / 180;
+          P := {Cos[rad], Sin[rad]};
+          proiezioneX := {Cos[rad], 0};
+          proiezioneY := {Cos[rad], Sin[rad]};
+          triangolo := {Yellow, Triangle[{{0, 0}, proiezioneX, P}]},
+          Graphics[{
+            Circle[],
+            triangolo,
+          (*punto centrale alla circonferenza*)
+            Point[{0, 0}],
+          (*dimentsione dei punti*)
+            PointSize[Large],
+          (**arco che identifica l'arco*)
+          (*{Blue, Circle[{0, 0}, 0.2, {0, rad}]},*)
+            {Dashed, Line[{{0, 0}, P}]}, (*raggio*)
+            Thickness[0.01],
+            RGBColor[0, 255, 0],
+          (*proiezione asse x*)
+            Line[{{0, 0}, proiezioneX }],
+            RGBColor[255, 0, 0],
+          (*proiezione asse y*)
+            Line[{{Cos[rad], 0}, proiezioneY}],
+          (*punto sulla circonferenza*)
+            {Black, PointSize -> .02, Point[{Cos[rad], Sin[rad]}]}},
+            ImageSize -> 350,
+            Axes -> True,
+            Ticks -> None
+          ] (*FINE GRAPHICS*)
+        }],
+        Column[{
+          "\t\t\t"
+        }],
+        Column[{
+          Style["Il triangolo evidenziato \[EGrave] rettangolo,\nper cui possiamo utilizzare:\nil Teorema di Pitagora", 20]
+        }]
+
+      }],
+      {{x, 45, ""}, 0, 360, 1}
+    ];
 
 
 GraficoTangente[] := Manipulate[
@@ -514,7 +527,7 @@ GraficoTangente[] := Manipulate[
           If[x == Pi / 2 || x == 3 Pi / 2,
             {
               {Dashed, Line[{{x, -10}, {x, 10}}]},
-              Text[Style["Infinito", 20], {x + 0.5, 0.5 + Sin[x]}]
+              Text[Style["Non Definito", 20], {x + 0.5, 0.5 + Sin[x]}]
 
             },
             {
@@ -840,8 +853,8 @@ AngoloOrientato[] := Row[{
       Line[{{0,0},{1,0}}],
       {Red,Circle[{0, 0}, 0.5, {0, Pi/4}]},
       {Blue,Circle[{0, 0}, 0.5, {0, -Pi/4}]},
-      Text[Style["\[Alpha] Angolo Positivo",15,Red],{0.9,0.25}],
-      Text[Style["\[Beta] Angolo Negativo",15,Blue],{0.9,-0.25}]
+      Text[Style["\[Alpha] Angolo Positivo",17,Red,Bold],{0.9,0.25}],
+      Text[Style["\[Beta] Angolo Negativo",17,Blue,Bold],{0.9,-0.25}]
 
     }, ImageSize -> 300]
   }],
@@ -849,9 +862,9 @@ AngoloOrientato[] := Row[{
     "\t"
   }]
   ,Column[{
-    Style["Conviene collegare l'idea di angolo a quella di rotazione di uno dei due lati.\nQuesta rotazione può avvenire in verso:\n",17],
-    Style["* Antiorario, e diciamo che \[EGrave] positivo;",17],
-    Style["* Orario, e diciamo che \[EGrave] negativo.",17]
+    Style["Conviene collegare l'idea di angolo \na quella di rotazione di uno dei due lati.\nQuesta rotazione pu\[OGrave] avvenire in verso:\n",17],
+    Style["- Antiorario, e diciamo che \[EGrave] positivo;",17],
+    Style["- Orario, e diciamo che \[EGrave] negativo.",17]
 
 
   }]
@@ -934,35 +947,46 @@ getAngle[p1_, p2_, p3_] :=
           (2 * EuclideanDistance[p1, p2] * EuclideanDistance[p1, p3]) ]];
 
 GetAngolo[alt_, bas_] := Return[N[ArcTan[alt / bas] / Degree ]];
-AltezzaTorre[] := Manipulate[DynamicModule[{},
-  Graphics[{
-    Text["Torre", {75, -40 + altezza + 5}],
-  (*Torre*)
-    {EdgeForm[Thick], Brown, Rectangle[{70, -40}, {80, -40 + altezza}]},
-  (*Punto osservatore*)
-    {Blue, PointSize[Large], Point[{x, -40}]},
-    Line[{{-100, -40}, {150, -40}}],
-    Line[{{x, -40}, {70, -40 + altezza}}],
-    {Green, Thickness[0.01], Line[{{x, -40}, {69, -40}}]},
-    dist := computeDistance[x, 0, 70, 0],
-    angolo := GetAngolo[altezza, dist],
+AltezzaTorre[] :=
+    Row[{
+      Column[{
+        Manipulate[DynamicModule[{},
+          Graphics[{
+            Text["Torre", {75, -40 + altezza + 5}],
+          (*Torre*)
+            {EdgeForm[Thick], Brown, Rectangle[{70, -40}, {80, -40 + altezza}]},
+          (*Punto osservatore*)
+            {Blue, PointSize[Large], Point[{x, -40}]},
+            Line[{{-100, -40}, {150, -40}}],
+            Line[{{x, -40}, {70, -40 + altezza}}],
+            {Green, Thickness[0.01], Line[{{x, -40}, {69, -40}}]},
+            dist := computeDistance[x, 0, 70, 0],
+            angolo := GetAngolo[altezza, dist],
 
-    Text[Style[StringForm["Angolo \!\(\*
+            Text[Style[StringForm["Angolo \!\(\*
 StyleBox[\"\[Alpha]\", \"TradFormChar\"]\): `` \[Degree]", N[angolo]], Red, 15], {-79, 85}],
-    Text[Style[StringForm["Distanza: ``", dist], Green, 15], {-87, 95}],
-    Text[Style[StringForm["Altezza = Distanza x tan(``) = ``", N[angolo], altezza], 15], {-50, 75}],
-    {Thickness[0.001], Red, Circle[{x, -40}, 20, {0, angolo Pi / 180}]},
-    Text[Style["\!\(\*
+            Text[Style[StringForm["Distanza: ``", dist], Green, 15], {-87, 95}],
+            Text[Style[StringForm["Altezza = Distanza x tan(``) = ``", N[angolo], altezza], 15], {-50, 75}],
+            {Thickness[0.001], Red, Circle[{x, -40}, 20, {0, angolo Pi / 180}]},
+            Text[Style["\!\(\*
 StyleBox[\"\[Alpha]\", \"TradFormChar\"]\)", Red, 20], {x + 36, -35}]
-  },
-    PlotRange -> {{-110, 85}, {-45, 160}},
-    ImageSize -> 450
-  ]
-],
-  {{altezza, 20, "Altezza"}, 20, 150, 1},
-  {{x, -10, "Posizione"}, -100, 65, 1}
-];
+          },
+            PlotRange -> {{-110, 85}, {-45, 160}},
+            ImageSize -> 450
+          ]
+        ],
+          {{altezza, 20, "Altezza"}, 20, 150, 1},
+          {{x, -10, "Posizione"}, -100, 65, 1}
+        ]
+      }],
+      Column[{
+        "\t\t"
+      }],
+      Column[{
+        Style["Lorenzo, dopo questa lettura, ha avuto un'idea\nsu come calcolare facilmente l'altezza della tour Eiffel.\nProcede in questo modo: \nmisura la sua distanza dalla base della torre\ne approssima l'angolo \[Alpha] (con un ottante).\nOsserva che si forma un triangolo rettangolo\ne può quindi usare la proprietà della tangente.",17]
+      }]
 
+    }];
 DistancePointsApplication[] := Row[{
   Column[{
     Row[{
