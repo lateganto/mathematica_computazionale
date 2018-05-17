@@ -4,7 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="602879d3-69c7-4977-a6cb-4c9a546d9c7c" name="Default" comment="">
+    <list default="true" id="602879d3-69c7-4977-a6cb-4c9a546d9c7c" name="Default" comment="nb sistemato">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.m" beforeDir="false" afterPath="$PROJECT_DIR$/package.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trigonometria.nb" beforeDir="false" afterPath="$PROJECT_DIR$/trigonometria.nb" afterDir="false" />
@@ -38,8 +38,18 @@
       <file leaf-file-name="package.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="76" selection-start-line="76" selection-end-line="76" />
+            <state relative-caret-position="428">
+              <caret line="993" column="372" selection-start-line="993" selection-start-column="372" selection-end-line="993" selection-end-column="372" />
+              <folding>
+                <element signature="e#2280#2289#0" expanded="true" />
+                <element signature="e#2989#2998#1" expanded="true" />
+                <element signature="e#3054#3063#1" expanded="true" />
+                <element signature="e#13825#13834#0" expanded="true" />
+                <element signature="e#41190#41198#0" expanded="true" />
+                <element signature="e#41232#41239#0" expanded="true" />
+                <element signature="e#41434#41441#0" expanded="true" />
+                <element signature="e#41454#41462#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,11 +58,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>TYPE</find>
-      <find>PlotRa</find>
-      <find>PlotRange</find>
-      <find>draw</find>
-      <find>typeAn</find>
       <find>Gra</find>
       <find>def</find>
       <find>ListaAngoliAssociati45</find>
@@ -69,10 +74,30 @@
       <find>typeAng</find>
       <find>ThGr</find>
       <find>Gradi</find>
+      <find>GraficoT</find>
+      <find>GraficoPr</find>
+      <find>Hold</find>
+      <find>ThGra</find>
+      <find>RGB</find>
+      <find>Tipo</find>
+      <find>Grafi</find>
+      <find>ThTri</find>
+      <find>font</find>
+      <find>Style</find>
+      <find>Distanza</find>
+      <find>EsD</find>
+      <find>Coord</find>
+      <find>Altezza</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="antonio_c" />
+      </map>
+    </option>
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -97,10 +122,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="679" />
-    <option name="width" value="694" />
-    <option name="height" value="705" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="697" />
+    <option name="height" value="745" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -175,7 +201,7 @@
     </configuration>
   </component>
   <component name="StructureViewFactory">
-    <option name="ACTIVE_ACTIONS" value=",CODE_PLACE_COMPARATOR,ASSIGNMENT_TYPE_GROUPER,ALPHA_COMPARATOR" />
+    <option name="ACTIVE_ACTIONS" value=",ASSIGNMENT_TYPE_GROUPER,ALPHA_COMPARATOR,CODE_PLACE_COMPARATOR" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -207,11 +233,21 @@
       <workItem from="1526458067796" duration="47000" />
       <workItem from="1526458149597" duration="8943000" />
       <workItem from="1526475383912" duration="1523000" />
+      <workItem from="1526570475628" duration="1606000" />
+      <workItem from="1526574721607" duration="5506000" />
     </task>
+    <task id="LOCAL-00001" summary="nb sistemato">
+      <created>1526567782246</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1526567782247</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24824000" />
+    <option name="totallyTimeSpent" value="35540000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -228,22 +264,22 @@
     <layout>
       <window_info anchor="right" id="Palette" order="2" />
       <window_info id="TODO" order="10" weight="0.3296131" />
-      <window_info id="Tool Output" order="13" sideWeight="0.043405674" type="SLIDING" weight="0.3277439" />
+      <window_info id="Tool Output" order="12" sideWeight="0.043405674" type="SLIDING" weight="0.3277439" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50074404" side_tool="true" weight="0.3287037" />
       <window_info id="Maven Projects" order="7" show_stripe_button="false" type="SLIDING" weight="0.32980332" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info id="Version Control" order="11" weight="0.32981315" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49839228" weight="0.22829582" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49925596" weight="0.3287037" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.11821086" weight="0.1532738" />
       <window_info id="Database" order="8" show_stripe_button="false" weight="0.32980332" />
-      <window_info id="ANTLR Preview" order="12" weight="0.3296131" />
-      <window_info active="true" x="593" y="45" width="179" height="648" id="Structure" order="6" sideWeight="0.95659435" side_tool="true" visible="true" weight="0.1592262" />
+      <window_info id="ANTLR Preview" order="11" weight="0.3296131" />
+      <window_info active="true" x="593" y="45" width="179" height="648" id="Structure" order="6" sideWeight="0.5016077" side_tool="true" visible="true" weight="0.19419643" />
       <window_info id="Ant Build" order="9" show_stripe_button="false" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
@@ -260,14 +296,288 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="antonio_caz" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="nb sistemato" />
+    <option name="LAST_COMMIT_MESSAGE" value="nb sistemato" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17584">
+          <caret line="1099" column="56" selection-start-line="1099" selection-start-column="56" selection-end-line="1099" selection-end-column="56" />
+          <folding>
+            <element signature="e#2280#2289#0" expanded="true" />
+            <element signature="e#2989#2998#1" expanded="true" />
+            <element signature="e#3054#3063#1" expanded="true" />
+            <element signature="e#13825#13834#0" expanded="true" />
+            <element signature="e#41190#41198#0" expanded="true" />
+            <element signature="e#41232#41239#0" expanded="true" />
+            <element signature="e#41434#41441#0" expanded="true" />
+            <element signature="e#41454#41462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6352">
+          <caret line="397" column="24" lean-forward="true" selection-start-line="397" selection-start-column="24" selection-end-line="397" selection-end-column="24" />
+          <folding>
+            <element signature="e#2280#2289#0" expanded="true" />
+            <element signature="e#2989#2998#1" expanded="true" />
+            <element signature="e#3054#3063#1" expanded="true" />
+            <element signature="e#13825#13834#0" expanded="true" />
+            <element signature="e#41190#41198#0" expanded="true" />
+            <element signature="e#41232#41239#0" expanded="true" />
+            <element signature="e#41434#41441#0" expanded="true" />
+            <element signature="e#41454#41462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8688">
+          <caret line="543" column="34" selection-start-line="543" selection-start-column="34" selection-end-line="543" selection-end-column="34" />
+          <folding>
+            <element signature="e#2280#2289#0" expanded="true" />
+            <element signature="e#2989#2998#1" expanded="true" />
+            <element signature="e#3054#3063#1" expanded="true" />
+            <element signature="e#13825#13834#0" expanded="true" />
+            <element signature="e#41190#41198#0" expanded="true" />
+            <element signature="e#41232#41239#0" expanded="true" />
+            <element signature="e#41434#41441#0" expanded="true" />
+            <element signature="e#41454#41462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8688">
+          <caret line="543" column="34" lean-forward="true" selection-start-line="543" selection-start-column="34" selection-end-line="543" selection-end-column="34" />
+          <folding>
+            <element signature="e#2280#2289#0" expanded="true" />
+            <element signature="e#2989#2998#1" expanded="true" />
+            <element signature="e#3054#3063#1" expanded="true" />
+            <element signature="e#13825#13834#0" expanded="true" />
+            <element signature="e#41190#41198#0" expanded="true" />
+            <element signature="e#41232#41239#0" expanded="true" />
+            <element signature="e#41434#41441#0" expanded="true" />
+            <element signature="e#41454#41462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16400">
+          <caret line="1025" column="172" selection-start-line="1025" selection-start-column="172" selection-end-line="1025" selection-end-column="172" />
+          <folding>
+            <element signature="e#2280#2289#0" expanded="true" />
+            <element signature="e#2989#2998#1" expanded="true" />
+            <element signature="e#3054#3063#1" expanded="true" />
+            <element signature="e#13825#13834#0" expanded="true" />
+            <element signature="e#41190#41198#0" expanded="true" />
+            <element signature="e#41232#41239#0" expanded="true" />
+            <element signature="e#41434#41441#0" expanded="true" />
+            <element signature="e#41454#41462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5280">
+          <caret line="330" column="84" selection-start-line="330" selection-start-column="84" selection-end-line="330" selection-end-column="84" />
+          <folding>
+            <element signature="e#2280#2289#0" expanded="true" />
+            <element signature="e#2989#2998#1" expanded="true" />
+            <element signature="e#3054#3063#1" expanded="true" />
+            <element signature="e#13825#13834#0" expanded="true" />
+            <element signature="e#41190#41198#0" expanded="true" />
+            <element signature="e#41232#41239#0" expanded="true" />
+            <element signature="e#41434#41441#0" expanded="true" />
+            <element signature="e#41454#41462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10576">
+          <caret line="661" column="24" selection-start-line="661" selection-start-column="24" selection-end-line="661" selection-end-column="24" />
+          <folding>
+            <element signature="e#2280#2289#0" expanded="true" />
+            <element signature="e#2989#2998#1" expanded="true" />
+            <element signature="e#3054#3063#1" expanded="true" />
+            <element signature="e#13825#13834#0" expanded="true" />
+            <element signature="e#41190#41198#0" expanded="true" />
+            <element signature="e#41232#41239#0" expanded="true" />
+            <element signature="e#41434#41441#0" expanded="true" />
+            <element signature="e#41454#41462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7072">
+          <caret line="442" column="15" selection-start-line="442" selection-start-column="15" selection-end-line="442" selection-end-column="15" />
+          <folding>
+            <element signature="e#2280#2289#0" expanded="true" />
+            <element signature="e#2989#2998#1" expanded="true" />
+            <element signature="e#3054#3063#1" expanded="true" />
+            <element signature="e#13825#13834#0" expanded="true" />
+            <element signature="e#41190#41198#0" expanded="true" />
+            <element signature="e#41232#41239#0" expanded="true" />
+            <element signature="e#41434#41441#0" expanded="true" />
+            <element signature="e#41454#41462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7120">
+          <caret line="445" column="16" lean-forward="true" selection-start-line="445" selection-start-column="16" selection-end-line="445" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3328">
+          <caret line="208" column="14" lean-forward="true" selection-start-line="208" selection-start-column="14" selection-end-line="208" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2752">
+          <caret line="172" column="26" selection-start-line="172" selection-start-column="26" selection-end-line="172" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2752">
+          <caret line="172" column="26" lean-forward="true" selection-start-line="172" selection-start-column="26" selection-end-line="172" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6647">
+          <caret line="391" column="24" selection-start-line="391" selection-start-column="24" selection-end-line="391" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6562">
+          <caret line="386" column="18" selection-start-line="386" selection-start-column="18" selection-end-line="386" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.nb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1530" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="543" column="34" selection-start-line="543" selection-start-column="34" selection-end-line="543" selection-end-column="34" />
+          <folding>
+            <element signature="e#2280#2289#0" expanded="true" />
+            <element signature="e#2989#2998#1" expanded="true" />
+            <element signature="e#3054#3063#1" expanded="true" />
+            <element signature="e#13825#13834#0" expanded="true" />
+            <element signature="e#41190#41198#0" expanded="true" />
+            <element signature="e#41232#41239#0" expanded="true" />
+            <element signature="e#41434#41441#0" expanded="true" />
+            <element signature="e#41454#41462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/package.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10576">
@@ -362,10 +672,23 @@
         <state relative-caret-position="-1530" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/trigonometria.nb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/package.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
+        <state relative-caret-position="428">
+          <caret line="993" column="372" selection-start-line="993" selection-start-column="372" selection-end-line="993" selection-end-column="372" />
+          <folding>
+            <element signature="e#2280#2289#0" expanded="true" />
+            <element signature="e#2989#2998#1" expanded="true" />
+            <element signature="e#3054#3063#1" expanded="true" />
+            <element signature="e#13825#13834#0" expanded="true" />
+            <element signature="e#41190#41198#0" expanded="true" />
+            <element signature="e#41232#41239#0" expanded="true" />
+            <element signature="e#41434#41441#0" expanded="true" />
+            <element signature="e#41454#41462#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

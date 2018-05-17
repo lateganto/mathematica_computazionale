@@ -50,6 +50,7 @@ EsCoordinate::usage = "esercizio su coordinate";
 EsDistanze::usage = "calcola la distanza distanza tra due punti";
 EsCos::usage = "esercizio cos";
 EsSin::usage = "esercizio cos";
+EsRadiantDegree::usage = "Esercizio conversione da radianti a Gradi e viceversa";
 
 EsProiezioneAsseX::usage = "esercizio proiezione";
 
@@ -70,6 +71,9 @@ Begin["`Private`"]; (* Comincia spazio privato *)
 (*FUNZIONI E STRUTTURE DATI AUX*)
 FromRadToGrad[x_] := Return[x * 180 / Pi];
 FromGradToRad[x_] := Pi Rationalize[N[x]] / Pi;
+fromDegreeToPi[x_] := Pi Rationalize[N[x \[Degree]] / Pi];
+fromPiToDegree[x_] := With[{d = N[x]}, Defer[d \[Degree]]];
+
 getAngle[p1_, p2_] := Mod[ArcTan @@ (p2 - p1), 2 Pi];
 pointList = List[{3, 2}, {1, 3}, {-1, 1}, {-2, -5}, {-3, 8}, {-1, 3}, {-2, 1}, {-7, 3}];
 pointListTwo = List[{2, 0}, {-9, 5}, {-10, 7}, {5, 2}, {-5, 4}, {-8, -5}, {2, 9}, {3, -6}];
@@ -78,6 +82,7 @@ sinCosList = List[0, 1, -1, 1 / 2, -1 / 2, Sqrt[2] / 2, -Sqrt[2] / 2, Sqrt[3] / 
 
 (* ::InheritFromParent:: *)
 (**)
+font = FontFamily -> "Helvetica";
 
 ThTriangoliUno[] := Row[{
   Column[{
@@ -98,10 +103,10 @@ ThTriangoliUno[] := Row[{
       ],
       "\t\t",
       Column[{
-        Style["Cateto = Ipotenusa * seno dell'angolo opposto", 20, Bold],
+        Style["Cateto = Ipotenusa * seno dell'angolo opposto", 20, font, Bold],
         Style["a = c * Sen(\[Alpha])", Red, 25, Bold],
         "\n",
-        Style["Cateto = Ipotenusa * coseno dell'angolo acuto adiacente", 20, Bold],
+        Style["Cateto = Ipotenusa * coseno dell'angolo acuto adiacente", font, 20, Bold],
         Style["a = c * Cos(\[Beta])", Red, 25, Bold]
       }]
     }]
@@ -118,8 +123,8 @@ ThTriangoliDue[] := Row[{
         Line[{{-1, 0}, {1, 0}}],
         Text[Style["\[Alpha]", 20], {-0.6, 0.07}],
         Text[Style["\[Beta]", 20], {0.9, 0.8}],
-        Text[Style["b", 20], {0, -0.1}],
-        Text[Style["a", 20, Black], {1.1, 0.5}]
+        Text[Style["b", font, 20], {0, -0.1}],
+        Text[Style["a", font, 20, Black], {1.1, 0.5}]
       },
         Axes -> False,
         Ticks -> None,
@@ -127,8 +132,8 @@ ThTriangoliDue[] := Row[{
       ],
       "\t\t",
       Column[{
-        Style["Cateto = altroCateto * Tangente angolo", 20, Bold],
-        Style["a = b * Tan(\[Alpha])", Red, 25, Bold]
+        Style["Cateto = altroCateto * Tangente angolo", font, 20, Bold],
+        Style["a = b * Tan(\[Alpha])", Red, font, 25, Bold]
       }]
     }]
   }]
@@ -172,7 +177,7 @@ EsProiezioneAsseX[] := DynamicModule[{esito = "", colorEsito = ""},
       randomButtons = RandomSample[buttons];
 
       Dynamic[Text[Style[esito, colorEsito, 15]]],
-      Style["Quanto misura la proiezione di OA sulla retta delle ascisse?", 20],
+      Style["Quanto misura la proiezione di OA sulla retta delle ascisse?", font, 20],
       randomButtons[[1]],
       randomButtons[[2]],
       randomButtons[[3]],
@@ -249,7 +254,7 @@ EsSin[] := DynamicModule[{esitoSin = "", colorEsitoSin = ""},
         randomButtons = RandomSample[buttons];
 
         Dynamic[Text[Style[esitoSin, colorEsitoSin, 15]]],
-        Style["Seleziona il valore del seno:", 15],
+        Style["Seleziona il valore del seno:", font, 15],
         randomButtons[[1]],
         randomButtons[[2]],
         randomButtons[[3]],
@@ -312,7 +317,7 @@ EsCos[] := DynamicModule[{esitoCos = "", colorEsitoCos = ""},
         Button["Nuovo Esercizio", FrontEndExecute[FrontEndToken[NotebookLocate["EsCos"], "Evaluate"]], ImageSize -> Medium, BaseStyle -> {"GenericButton"}],
 
         Dynamic[Text[Style[esitoCos, colorEsitoCos, 15]]],
-        Style["Seleziona il valore del coseno:", 15],
+        Style["Seleziona il valore del coseno:", font, 15],
         randomButtons[[1]],
         randomButtons[[2]],
         randomButtons[[3]],
@@ -324,22 +329,21 @@ EsCos[] := DynamicModule[{esitoCos = "", colorEsitoCos = ""},
 
 ThTriangoloProiezione[] := Row[{
   Column[{
-    Style["I triangoli ABC e APH sono simili,\nperci\[OGrave] il rapporto tra i lati\n\[EGrave] costante, da cui ricaviamo che:", 19],
-    Style["\nBC : AB = PH : AP", 20, Bold],
-    Style["AC : AB = AH : AP", 20, Bold],
-    Style["\ne poich\[EGrave]:", 20],
-    Style["AP = 1, PH = Sen(\[Alpha]), AH = Cos(\[Alpha])", 20, Bold],
-    Style["\nvale\n", 20],
-    Style["BC = Sen(\[Alpha]) AB", 20, Bold],
-    Style["AC = Cos(\[Alpha]) AB", 20, Bold]
+    Style["I triangoli ABC e APH sono simili,\nperci\[OGrave] il rapporto tra i lati\n\[EGrave] costante, da cui ricaviamo che:", font, 19],
+    Panel[Style["BC : AB = PH : AP\nAC : AB = AH : AP", font, 20, Bold]],
+    Style["e poich\[EGrave]:", font, 20],
+    Panel[Style["AP = 1\nPH = Sen(\[Alpha])\nAH = Cos(\[Alpha])", font, 20, Bold]],
+    Style["vale", font, 20],
+    Panel[Style["BC = Sen(\[Alpha]) AB   AC = Cos(\[Alpha]) AB", font, 20, Bold]]
+  }],
+  Column[{
+    "\t\t"
   }],
   Column[{
     P = {Sqrt[2] / 2, Sqrt[2] / 2};
     Graphics[{
       {LightGreen, EdgeForm[Thick], Triangle[{{0, 0}, {1.5, 0}, {1.5, 1.5}}]},
       Circle[],
-
-
     (*Seno*)
       {Red, Thickness[0.009], Line[{P, {P[[1]], 0}}]},
       Text[Style["Cos(\[Alpha])", Green, Bold, 19], {P[[1]] / 2, -0.15}],
@@ -393,7 +397,7 @@ TipoAngolo[] := Manipulate[
         {Blue, Thick, Circle[{0, 0}, 0.4, {0, a Pi / 180}]},
         Text[Style[a \[Degree], 15, Blue], {-1, 1}],
         Text[Style[a Pi / 180, 18, Orange], {+ 1, 1}],
-        (*RAGGIO*)
+      (*RAGGIO*)
         Thickness[0.012],
         Line[{{0, 0}, {x, y}}]
       }, Axes -> True, ImageSize -> 350, Ticks -> None, PlotRange -> {{-1.4, 1.4}, {-1.4, 1.4}}
@@ -401,9 +405,9 @@ TipoAngolo[] := Manipulate[
     }] (*fine colonna grafico*),
     Column[{"\t"}],
     Column[{
-      Row[{Text[Style["GRADI", Blue, Bold, 20]], "\n", Text[Style[defGradi, 17]]}],
+      Row[{Text[Style["GRADI (\[Degree])", Blue, Bold, 20]], "\n", Text[Style[defGradi, 17]]}],
       Row[{"\n"}],
-      Row[{Text[Style["RADIANTI", Orange, Bold, 20]], "\n", Text[Style[defRadianti, 17]]}]
+      Row[{Text[Style["RADIANTI (rad)", Orange, Bold, 20]], "\n", Text[Style[defRadianti, 17]]}]
     }]
   }](*fine row*),
   {{a, 0, "angolo"}, 0, 360, 1}];
@@ -427,7 +431,7 @@ ThGradRad[] := Manipulate[
 
       }]  }], "\t",
     Column[{
-      Style["Se \[Alpha] \[EGrave] l'angolo di cui vogliamo conoscere la misura, vale la seguente formula:", 15],
+      Style["Se \[Alpha] \[EGrave] l'angolo di cui vogliamo conoscere la misura, vale la seguente formula:", font, 15],
       Panel[
         Image[Import["C:\\Users\\anton\\Documents\\GitHub\\mathematica_computazionale\\assets\\proporzioneGradRad.png"], ImageSize -> 200],
         ImageSize -> 600,
@@ -477,10 +481,16 @@ GraficoPrimaRelazione[] :=
           ] (*FINE GRAPHICS*)
         }],
         Column[{
-          "\t\t\t"
+          "\t\t"
         }],
         Column[{
-          Style["Il triangolo evidenziato \[EGrave] rettangolo,\nper cui possiamo utilizzare:\nil Teorema di Pitagora", 20]
+          Row[{
+            Style["Il triangolo evidenziato \[EGrave] rettangolo,\nper cui possiamo utilizzare il:", font, 20]
+          }],
+          Row[{
+            t = Style["Teorema di Pitagora", 24, Bold, font, Red];,
+            Hyperlink[t, "https://it.wikipedia.org/wiki/Teorema_di_Pitagora"]
+          }]
         }]
 
       }],
@@ -713,14 +723,14 @@ AngoliAssociati60[] := Manipulate[
           AngoloGrad = AngoloRif 180 / Pi Degree;
           Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], 20]],
-          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], 20]], "\n",
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]],
+          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], 20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], 20]], "\n",
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], 20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], 20]], "\n"
+          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n"
         }]
 
       }]
@@ -751,10 +761,10 @@ AngoliAssociati0[] := Manipulate[
           AngoloRif = ListaAngoliAssociati0[[1]];
           AngoloGrad = AngoloRif 180 / Pi Degree;
           Text[Style[StringForm["Cos(``) = ``, Sin(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
-          Text[Style["Cos(90) = Sen(0)\nSen(90) = Cos(0)", 20]], "\n",
-          Text[Style["Cos(180) = -Cos(0)\nSen(180) = Sen(0)", 20]], "\n",
-          Text[Style["Cos(270) = Sen(0)\nSen(270) = -Cos(0)", 20]], "\n",
-          Text[Style["Cos(360) = Cos(0)\nSen(360) = Cos(0)", 20]]
+          Text[Style["Cos(90) = Sen(0)\nSen(90) = Cos(0)", font, 20]], "\n",
+          Text[Style["Cos(180) = -Cos(0)\nSen(180) = Sen(0)", font, 20]], "\n",
+          Text[Style["Cos(270) = Sen(0)\nSen(270) = -Cos(0)", font, 20]], "\n",
+          Text[Style["Cos(360) = Cos(0)\nSen(360) = Cos(0)", font, 20]]
 
         }]
 
@@ -787,14 +797,14 @@ AngoliAssociati30[] := Manipulate[
           AngoloGrad = AngoloRif 180 / Pi Degree;
           Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], 20]],
-          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], 20]], "\n",
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]],
+          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], 20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], 20]], "\n",
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], 20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], 20]], "\n"
+          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n"
         }]
 
       }]
@@ -826,14 +836,14 @@ AngoliAssociati45[] := Manipulate[
           AngoloGrad = AngoloRif 180 / Pi Degree;
           Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], 20]],
-          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], 20]], "\n",
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]],
+          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], 20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], 20]], "\n",
+          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], 20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], 20]], "\n"
+          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]],
+          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n"
         }]
 
       }]
@@ -845,24 +855,24 @@ AngoliAssociati45[] := Manipulate[
 AngoloOrientato[] := Row[{
   Column[{
     Graphics[{
-      Text[Style["O",15],{-0.1,0}],
-      Line[{{0,0},{1,1}}],
-      Line[{{0,0},{1,-1}}],
-      Line[{{0,0},{1,0}}],
-      {Red,Circle[{0, 0}, 0.5, {0, Pi/4}]},
-      {Blue,Circle[{0, 0}, 0.5, {0, -Pi/4}]},
-      Text[Style["\[Alpha] Angolo Positivo",17,Red,Bold],{0.9,0.25}],
-      Text[Style["\[Beta] Angolo Negativo",17,Blue,Bold],{0.9,-0.25}]
+      Text[Style["O", 15], {-0.1, 0}],
+      Line[{{0, 0}, {1, 1}}],
+      Line[{{0, 0}, {1, -1}}],
+      Line[{{0, 0}, {1, 0}}],
+      {Red, Circle[{0, 0}, 0.5, {0, Pi / 4}]},
+      {Blue, Circle[{0, 0}, 0.5, {0, -Pi / 4}]},
+      Text[Style["\[Alpha] Angolo Positivo", 17, Red, Bold], {0.9, 0.25}],
+      Text[Style["\[Beta] Angolo Negativo", 17, Blue, Bold], {0.9, -0.25}]
 
     }, ImageSize -> 300]
   }],
   Column[{
     "\t"
   }]
-  ,Column[{
-    Style["Conviene collegare l'idea di angolo \na quella di rotazione di uno dei due lati.\nQuesta rotazione pu\[OGrave] avvenire in verso:\n",17],
-    Style["- Antiorario, e diciamo che \[EGrave] positivo;",17],
-    Style["- Orario, e diciamo che \[EGrave] negativo.",17]
+  , Column[{
+    Style["Conviene collegare l'idea di angolo \na quella di rotazione di uno dei due lati.\nQuesta rotazione pu\[OGrave] avvenire in verso:\n", font, 17],
+    Style["- Antiorario, e diciamo che \[EGrave] positivo;", font, 17],
+    Style["- Orario, e diciamo che \[EGrave] negativo.", font, 17]
 
 
   }]
@@ -978,10 +988,10 @@ StyleBox[\"\[Alpha]\", \"TradFormChar\"]\)", Red, 20], {x + 36, -35}]
         ]
       }],
       Column[{
-        "\t\t"
+        "\t"
       }],
       Column[{
-        Style["Lorenzo, dopo questa lettura, ha avuto un'idea\nsu come calcolare facilmente l'altezza della tour Eiffel.\nProcede in questo modo: \nmisura la sua distanza dalla base della torre\ne approssima l'angolo \[Alpha] (con un ottante).\nOsserva che si forma un triangolo rettangolo\ne pu\[OGrave] quindi usare la propriet\[AGrave] della tangente.",17]
+        Text[Style["Lorenzo, dopo questa lettura, ha avuto un'idea\nsu come calcolare facilmente l'altezza della tour Eiffel.\nProcede in questo modo: \nmisura la sua distanza dalla base della torre\ne approssima l'angolo \[Alpha] (con un ottante).\nOsserva che si forma un triangolo rettangolo\ne pu\[OGrave] quindi usare la propriet\[AGrave] della tangente.", font, 20]]
       }]
 
     }];
@@ -1042,7 +1052,7 @@ DistancePointsApplication[] := Row[{
                     {LightGray, Disk[p2, 2.5, {Pi + Pi / 2, Pi + Pi / 2 + getAngle[p2, p1, p3]}]}]
                 ],
 
-                Style[Text["Prova a spostare il punto A nel piano", {0, 18}], FontSize -> 16, Blue],
+                Style[Text["Prova a spostare il punto A nel piano", {0, 18}], FontSize -> 16, font, Blue],
                 Style[Text["A", {First[p1] - 1, Last[p1] - 1}], FontSize -> 18],
                 Style[Text["C", {First[p3] + 1, Last[p3] - 1}], FontSize -> 18],
                 Style[Text["B", {First[p2] + 1, Last[p2] + 1}], FontSize -> 18],
@@ -1071,48 +1081,94 @@ DistancePointsApplication[] := Row[{
   Text["\t"],
   Column[{
     Row[{
-      Style[Text["Supponiamo di voler calcolare la distanza fra due punti A e B:\nio mi trovo in A ma non posso raggiungere B perch\[EAcute] \[EGrave] al di l\[AGrave] del fiume."], FontSize -> 16]
+      Style[Text["Supponiamo di voler calcolare la distanza fra due punti A e B:\nio mi trovo in A ma non posso raggiungere B perch\[EAcute] \[EGrave] al di l\[AGrave] del fiume."], font, FontSize -> 16]
     }],
     Row[{
-      Style[Text["Possiamo spostarci in un punto C e calcolare la distanza AC\ned inoltre gli angoli CAB=\[Alpha] e ACB=\[Beta]."], FontSize -> 16]
+      Style[Text["Possiamo spostarci in un punto C e calcolare la distanza AC\ned inoltre gli angoli CAB=\[Alpha] e ACB=\[Beta]."], font, FontSize -> 16]
     }],
     Text["\n"],
     Row[{
-      Style[Text["Abbiamo quindi il triangolo ABC in cui conosciamo due angoli ed il lato compreso,\nquindi per risolvere il triangolo possiamo calcolare il terzo angolo ricordando che\nla somma degli angoli interni di un triangolo e' un angolo piatto."], FontSize -> 16]
+      Style[Text["Abbiamo quindi il triangolo ABC in cui conosciamo due angoli ed il lato compreso,\nquindi per risolvere il triangolo possiamo calcolare il terzo angolo ricordando che\nla somma degli angoli interni di un triangolo e' un angolo piatto."], font, FontSize -> 16]
     }],
     Row[{
       Style[Text["\[Gamma] = 180\[Degree] - \[Alpha] - \[Beta]"], FontSize -> 20, Blue]
     }],
     Text["\n"],
     Row[{
-      Style[Text["E poi applicare il teorema dei seni:  "], FontSize -> 16],
+      Style[Text["E poi applicare il teorema dei seni:  "], font, FontSize -> 16],
       Button["Teorema Dei Seni",
         CreateDialog[{
           TextCell["In ogni triangolo \[EGrave] costante il rapporto fra ogni lato\ned il seno dell'angolo opposto\ne tale costante equivale al doppio del raggio\ndel cerchio circoscritto al triangolo."],
           DefaultButton[]
         }],
-        ImageSize -> Large, BaseStyle -> {"GenericButton"}
+        ImageSize -> Large, font, BaseStyle -> {"GenericButton"}
       ]
     }],
     Row[{
       Style[
         StringForm["\n `` = ``",
-          HoldForm["AC"/"Sen(\[Gamma])"],
-          HoldForm["AB"/"Sen(\[Beta])"]
-        ], 25,Bold, Blue]
+          HoldForm["AC" / "Sen(\[Gamma])"],
+          HoldForm["AB" / "Sen(\[Beta])"]
+        ], font, 25, Bold, Blue]
     }],
     Row[{
-      Style[Text["Ottenendo quindi:\n"], FontSize -> 16]
+      Style[Text["Ottenendo quindi:\n"], font, FontSize -> 16, font]
     }],
     Row[{
 
       Style[
         StringForm[" AB = ``",
           HoldForm["( AC Sen(\[Beta]) )" / "Sen(\[Gamma])" ]
-        ], 25,Bold, Blue]
+        ], 25, Bold, font, Blue]
     }]
   }]
 }];
+
+angleList = List[0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330, 360];
+EsRadiantDegree :=DynamicModule[{esito = "", colorEsito = Black},Row[{
+      Column[{
+        randomAngleType = RandomInteger[{0, 1}];
+
+        random = RandomSample[angleList, 4];
+        incorrects = random[[2 ;; 4]];
+        correct = First[random];
+
+        If[randomAngleType == 0,
+          btn5 = Button[Style[Rationalize[fromDegreeToPi[correct]], 15], {esito := "Corretto!", colorEsito := Green}];
+          btn6 = Button[Style[Rationalize[fromDegreeToPi[incorrects[[1]]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
+          btn7 = Button[Style[Rationalize[fromDegreeToPi[incorrects[[2]]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
+          btn8 = Button[Style[Rationalize[fromDegreeToPi[incorrects[[3]]]], 15], {esito := "Sbagliato!", colorEsito := Red}],
+
+          btn5 = Button[Style[Rationalize[correct], 15], {esito := "Corretto!", colorEsito := Green}];
+          btn6 = Button[Style[Rationalize[incorrects[[1]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
+          btn7 = Button[Style[Rationalize[incorrects[[2]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
+          btn8 = Button[Style[Rationalize[incorrects[[3]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
+        ];
+
+        buttons = List[btn5, btn6, btn7, btn8];
+        randomButtons = RandomSample[buttons];
+        Button["Nuovo Esercizio", FrontEndExecute[FrontEndToken[NotebookLocate["EsRadGrad "], "Evaluate"]], ImageSize -> Medium, BaseStyle -> {"GenericButton"}],
+
+        Dynamic[Text[Style[esito, colorEsito, 20]]],
+
+
+      (*Dynamic[Text[Style[esito, colorEsito, 15]]],*)
+        (*Style[Dynamic[Esito]],*)
+        If[randomAngleType == 0,
+          Style[StringForm["Seleziona il valore dell'angolo: ``", correct], 15, font],
+          Style[StringForm["Seleziona il valore dell'angolo: ``", fromDegreeToPi[correct]], 15, font]
+        ],
+
+        randomButtons[[1]],
+        randomButtons[[2]],
+        randomButtons[[3]],
+        randomButtons[[4]]
+      }]
+    }]
+];
+
+
+
 
 
 (* ::InheritFromParent:: *)
