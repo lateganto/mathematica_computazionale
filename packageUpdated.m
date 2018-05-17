@@ -161,8 +161,8 @@ puntiInaccessibili[] := DynamicModule[{p1={-2,-1}, p2={-0.5,1}, p3={2,1}, p4={0.
                   
                   upperGrass = FilledCurve[{Line[{{-3,0.1},{-3,3}}], Line[{{3,3},{3,0.6}}] }];
                   lowerGrass = FilledCurve[{Line[{{-3,-0.1},{-3,-3}}], Line[{{3,-3}, {3,0.1}}]}];
-                  {Opacity[.7], LightGreen, upperGrass},
-                  {Opacity[.7], LightGreen, lowerGrass},
+                  {Opacity[.3], Green, upperGrass},
+                  {Opacity[.3], Green, lowerGrass},
                   
                   (* Fiume *)
                   {Thickness[0.005], Darker[LightBlue], BezierCurve[{ {-3,0.3}, {-0.8,-0.1}, {0.5,0.8}, {3,0.6}}]},
@@ -180,19 +180,28 @@ puntiInaccessibili[] := DynamicModule[{p1={-2,-1}, p2={-0.5,1}, p3={2,1}, p4={0.
                   d2={Thickness[0.003], Red, Line[{p2,p4}]},
                   
                   {PointSize[0.010], Point[p1], Locator[Dynamic[p1], None]},
+                  {PointSize[0.010], Point[p4], Locator[Dynamic[p4], None]},
+                  With[{x = Last[p1]}, If[x >= -0.4, {p1 = {First[p1], -0.5}}]],
+                  With[{y = Last[p4]}, If[y >= -0.4, {p4 = {First[p4], -0.5}}]],
+                  Style[Text["A", {First[p4], Last[p4]-0.2}], 15],
+                  Style[Text[Subscript["\[Alpha]", 1], {First[p4]-0.5, Last[p4]+0.3}], 15],
+                  Style[Text[Subscript["\[Alpha]", 2], {First[p4]-0.2, Last[p4]+0.1}], 15],
                   Style[Text["C", {First[p1], Last[p1]-0.2}], 15],
                   Style[Text[Subscript["\[Gamma]", 1], {First[p1]+0.5, Last[p1]+0.1}], 15],
-                  Style[Text[StringForm["`` = ``", Subscript["\[Gamma]", 2], getAngle[p1,p2,p4]], {First[p1]+0.6, Last[p1]+0.5}], 15],
+                  Style[Text[StringForm["``", Subscript["\[Gamma]", 2]], {First[p1]+0.6, Last[p1]+0.5}], 15],
                   {PointSize[0.010], Point[p2], Locator[Dynamic[p2], None, Enabled->False]},
                   Style[Text["\[Beta]", {First[p2]-0.03, Last[p2]-0.3}], 15],
                   Style[Text["B", {First[p2], Last[p2]+0.2}], 15],
                   {PointSize[0.010], Point[p3], Locator[Dynamic[p3], None, Enabled->False]},
                   Style[Text["D", {First[p3], Last[p3]+0.2}], 15],
                   Style[Text["\[Delta]", {First[p3]-0.35, Last[p3]-0.3}], 15],
-                  {PointSize[0.010], Point[p4], Locator[Dynamic[p4], None]},
-                  Style[Text["A", {First[p4], Last[p4]-0.2}], 15],
-                  Style[Text[Subscript["\[Alpha]", 1], {First[p4]-0.5, Last[p4]+0.3}], 15],
-                  Style[Text[Subscript["\[Alpha]", 2], {First[p4]-0.2, Last[p4]+0.1}], 15],
+                  
+                  (* Visualizzazione ampiezza degli angoli *)
+                  Style[Text[StringForm["`` = ``", Subscript["\[Gamma]", 1], Round[N[getAngle[p1,p3,p4]]*180/Pi]], {0.5, -2}], FontFamily->Roboto, FontSize->18],
+                  Style[Text[StringForm["`` = ``", Subscript["\[Gamma]", 2], Round[N[getAngle[p1,p2,p4]]*180/Pi]], {0.5, -2.25}], FontFamily->Roboto, FontSize->18],
+
+                  Style[Text[StringForm["`` = ``", Subscript["\[Alpha]", 1], Round[N[getAngle[p4,p3,p1]]*180/Pi]], {-0.5, -2}], FontFamily->Roboto, FontSize->18],
+                  Style[Text[StringForm["`` = ``", Subscript["\[Alpha]", 2], Round[N[getAngle[p4,p1,p2]]*180/Pi]], {-0.55, -2.25}], FontFamily->Roboto, FontSize->18],
 
                   If[First[p1] <= First[p3],
                     If[Last[p1] <= Last[p3], 
@@ -252,7 +261,7 @@ puntiInaccessibili[] := DynamicModule[{p1={-2,-1}, p2={-0.5,1}, p3={2,1}, p4={0.
           }],
           ImageSize->Medium,BaseStyle->{"GenericButton"}
         ],
-        Text["\n"],
+        Text["\n"]
 	    }],
       Row[{
         Column[{
@@ -311,10 +320,10 @@ puntiInaccessibili[] := DynamicModule[{p1={-2,-1}, p2={-0.5,1}, p3={2,1}, p4={0.
           Row[{
             Style[Text[""], FontFamily->Roboto, 15]
           }],
+          Style[Dynamic[Esito],20],
           Row[{
             Style[Text[""], FontFamily->Roboto, 15]
           }]
-          Style[Dynamic[Esito],20]
           Button["Ricarica",FrontEndExecute[FrontEndToken[NotebookLocate["punti"],"Evaluate"]],ImageSize->Medium,BaseStyle->{"GenericButton"}]
         }]
       }]
