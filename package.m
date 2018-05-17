@@ -391,11 +391,10 @@ TipoAngolo[] := Manipulate[
         x := N[Cos[a Degree]];,
         y := N[Sin[a Degree]];,
         {Blue, Thick, Circle[{0, 0}, 0.4, {0, a Pi / 180}]},
-      (*Text[Style[a, 15, Blue], {-0.7, 1.2}],*)
         Text[Style[a \[Degree], 15, Blue], {-1, 1}],
-        Text[Style[a Pi / 180, 18, RGBColor[0, 50, 255]], {+ 1, 1}],
-
-        Thickness[0.02],
+        Text[Style[a Pi / 180, 18, Orange], {+ 1, 1}],
+        (*RAGGIO*)
+        Thickness[0.012],
         Line[{{0, 0}, {x, y}}]
       }, Axes -> True, ImageSize -> 350, Ticks -> None, PlotRange -> {{-1.4, 1.4}, {-1.4, 1.4}}
       ]
@@ -404,7 +403,7 @@ TipoAngolo[] := Manipulate[
     Column[{
       Row[{Text[Style["GRADI", Blue, Bold, 20]], "\n", Text[Style[defGradi, 17]]}],
       Row[{"\n"}],
-      Row[{Text[Style["RADIANTI", RGBColor[0, 142, 255], Bold, 20]], "\n", Text[Style[defRadianti, 17]]}]
+      Row[{Text[Style["RADIANTI", Orange, Bold, 20]], "\n", Text[Style[defRadianti, 17]]}]
     }]
   }](*fine row*),
   {{a, 0, "angolo"}, 0, 360, 1}];
@@ -418,13 +417,13 @@ ThGradRad[] := Manipulate[
         "\n\n",
         Style[gradi "\[Degree]", 20, Blue],
         "\t:\t",
-        Style[gradi Pi / 180, 20, RGBColor[0, 142, 255]],
+        Style[gradi Pi / 180, 20, Orange],
         "\t=\t",
         "360\t:\t",
         HoldForm[2 Pi],
         "\n\n\n",
         Style["Gradi", Blue], "\n",
-        Style["Radianti", RGBColor[0, 142, 255]]
+        Style["Radianti", Orange]
 
       }]  }], "\t",
     Column[{
@@ -1072,7 +1071,7 @@ DistancePointsApplication[] := Row[{
   Text["\t"],
   Column[{
     Row[{
-      Style[Text["Supponiamo di voler calcolare la distanza fra due punti A e B:\nio mi trovo in A ma non posso raggiungere B perche' e' al di la' del fiume."], FontSize -> 16]
+      Style[Text["Supponiamo di voler calcolare la distanza fra due punti A e B:\nio mi trovo in A ma non posso raggiungere B perch\[EAcute] \[EGrave] al di l\[AGrave] del fiume."], FontSize -> 16]
     }],
     Row[{
       Style[Text["Possiamo spostarci in un punto C e calcolare la distanza AC\ned inoltre gli angoli CAB=\[Alpha] e ACB=\[Beta]."], FontSize -> 16]
@@ -1089,21 +1088,28 @@ DistancePointsApplication[] := Row[{
       Style[Text["E poi applicare il teorema dei seni:  "], FontSize -> 16],
       Button["Teorema Dei Seni",
         CreateDialog[{
-          TextCell["In ogni triangolo e' costante il rapporto fra ogni lato\ned il seno dell'angolo opposto\ne tale costante equivale al doppio del raggio\ndel cerchio circoscritto al triangolo."],
+          TextCell["In ogni triangolo \[EGrave] costante il rapporto fra ogni lato\ned il seno dell'angolo opposto\ne tale costante equivale al doppio del raggio\ndel cerchio circoscritto al triangolo."],
           DefaultButton[]
         }],
         ImageSize -> Large, BaseStyle -> {"GenericButton"}
       ]
     }],
     Row[{
-      (*HoldForm[AC/Sen[\[Gamma]] = AB / Sen[\[Gamma]] ]*)
-      Style[Text["AC / sin\[Gamma] = AB / sin\[Beta]"], FontSize -> 20, Blue]
+      Style[
+        StringForm["\n `` = ``",
+          HoldForm["AC"/"Sen(\[Gamma])"],
+          HoldForm["AB"/"Sen(\[Beta])"]
+        ], 25,Bold, Blue]
     }],
     Row[{
-      Style[Text["Ottenendo quindi:"], FontSize -> 16]
+      Style[Text["Ottenendo quindi:\n"], FontSize -> 16]
     }],
     Row[{
-      Style[Text["AB = (AC * sin\[Beta]) / sin\[Gamma]"], FontSize -> 20, Blue]
+
+      Style[
+        StringForm[" AB = ``",
+          HoldForm["( AC Sen(\[Beta]) )" / "Sen(\[Gamma])" ]
+        ], 25,Bold, Blue]
     }]
   }]
 }];

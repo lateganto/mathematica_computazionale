@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12128,        250]
-NotebookOptionsPosition[     11328,        230]
-NotebookOutlinePosition[     11675,        245]
-CellTagsIndexPosition[     11632,        242]
+NotebookDataLength[      7850,        152]
+NotebookOptionsPosition[      7006,        128]
+NotebookOutlinePosition[      7509,        149]
+CellTagsIndexPosition[      7441,        144]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -24,11 +24,8 @@ Cell[BoxData[""], "Input",
 f922b95886cc"],
 
 Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.735294422967062*^9, 
-  3.7352944235936604`*^9}},ExpressionUUID->"9dd115e9-98b7-4761-8eee-\
-1cddae712fc0"],
-
-Cell[CellGroupData[{
+ CellChangeTimes->{{3.735294422967062*^9, 3.7352944235936604`*^9}},
+ CellTags->"scelta",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0"],
 
 Cell[BoxData[{
  RowBox[{
@@ -36,7 +33,17 @@ Cell[BoxData[{
    RowBox[{"SetDirectory", "[", 
     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
    RowBox[{"<<", " ", "package.m"}], ";"}], "  "}], "\[IndentingNewLine]", 
- RowBox[{"GraficoTangente", "[", "]"}]}], "Input",
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"StringForm", "[", 
+    RowBox[{"\"\< `` = ``.\>\"", ",", 
+     RowBox[{"HoldForm", "[", 
+      RowBox[{"AC", "/", 
+       RowBox[{"Sen", "[", "\[Gamma]", "]"}]}], "]"}], ",", 
+     RowBox[{"HoldForm", "[", 
+      RowBox[{"AB", "/", 
+       RowBox[{"Sen", "[", "\[Beta]", "]"}]}], "]"}]}], "]"}], ",", "20"}], 
+  "]"}]}], "Input",
  CellChangeTimes->{{3.734851720561689*^9, 3.734851721300779*^9}, 
    3.7348523017858644`*^9, {3.734852618652252*^9, 3.7348526192466936`*^9}, {
    3.7348526713345904`*^9, 3.734852737127641*^9}, {3.734857481282914*^9, 
@@ -100,128 +107,19 @@ Cell[BoxData[{
    3.7354759901456985`*^9, 3.7354759910133376`*^9}, 3.7355528611712303`*^9, {
    3.735553536556405*^9, 3.735553562969305*^9}, {3.735553754791226*^9, 
    3.7355537553637753`*^9}, {3.7355538457271395`*^9, 3.735553850132082*^9}, {
-   3.7355543711752467`*^9, 
-   3.735554373329955*^9}},ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-\
-fa6f348760a2"],
+   3.7355543711752467`*^9, 3.735554373329955*^9}, {3.7355596231036863`*^9, 
+   3.735559649040409*^9}, {3.7355599696668625`*^9, 3.735560136796036*^9}, {
+   3.735560581697214*^9, 3.735560659954343*^9}, {3.7355607902783537`*^9, 
+   3.7355608215086684`*^9}, {3.735563960237297*^9, 3.735564056180324*^9}, {
+   3.7355641133248463`*^9, 3.735564258428807*^9}, {3.7355643319938755`*^9, 
+   3.735564391776563*^9}},
+ EmphasizeSyntaxErrors->
+  True,ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
 
-Cell[BoxData[
- TagBox[
-  StyleBox[
-   DynamicModuleBox[{ProvaProgetto`Private`x$$ = Rational[3, 2] Pi, 
-    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
-    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
-    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
-       Hold[ProvaProgetto`Private`x$$], 0, "Naviga"}, 0, 2 Pi, 
-      Rational[1, 12] Pi}, {{
-       Hold[ProvaProgetto`Private`x$$], 0, "Scegli"}, 0, 2 Pi, 
-      Rational[1, 12] Pi}}, Typeset`size$$ = {750., {173., 178.}}, 
-    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
-    ProvaProgetto`Private`x$23542$$ = 0}, 
-    DynamicBox[Manipulate`ManipulateBoxes[
-     1, StandardForm, "Variables" :> {ProvaProgetto`Private`x$$ = 0}, 
-      "ControllerVariables" :> {
-        Hold[ProvaProgetto`Private`x$$, ProvaProgetto`Private`x$23542$$, 0]}, 
-      "OtherVariables" :> {
-       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
-        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
-        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
-         Typeset`skipInitDone$$}, "Body" :> Row[{
-         Graphics[{
-           Circle[], 
-           Point[{0, 0}], 
-           PointSize[Large], {Blue, 
-            Circle[{0, 0}, 0.2, {0, ProvaProgetto`Private`x$$}]}, {Dashed, 
-            Line[{{0, 0}, {
-               Cos[ProvaProgetto`Private`x$$], 
-               Sin[ProvaProgetto`Private`x$$]}}]}, 
-           Thickness[0.01], 
-           RGBColor[0, 255, 0], 
-           Line[{{0, 0}, {
-              Cos[ProvaProgetto`Private`x$$], 0}}], 
-           RGBColor[255, 0, 0], 
-           Line[{{
-              Cos[ProvaProgetto`Private`x$$], 0}, {
-              Cos[ProvaProgetto`Private`x$$], 
-              Sin[ProvaProgetto`Private`x$$]}}], 
-           Text[
-            Style[
-             StringJoin[
-              IntegerString[
-               ProvaProgetto`Private`FromRadToGrad[
-               ProvaProgetto`Private`x$$]], "\[Degree]"], 15, Blue], {-0.9, 
-             1}], 
-           Text[
-            Style[ProvaProgetto`Private`x$$, 15, Blue], {-0.9, 0.8}], 
-           Text[
-            Style["Seno", Medium, Red], {0.8, 1}], 
-           Text[
-            Style["Coseno", Medium, Green], {0.8, 0.9}], {
-           Black, PointSize -> 0.02, 
-            Point[{
-              Cos[ProvaProgetto`Private`x$$], 
-              Sin[ProvaProgetto`Private`x$$]}]}}, ImageSize -> 350, Axes -> 
-          True, Ticks -> None], 
-         Column[{
-           Show[
-            Plot[
-             Tan[ProvaProgetto`Private`y], {ProvaProgetto`Private`y, 0, 2 Pi},
-              ImageSize -> 400, 
-             Ticks -> {{0, Pi/2, Pi, 3 Pi/2, 2 Pi, 5 Pi/2}, {-1, 0, 1}}, 
-             PlotLabel -> "Funzione Tangente", PlotStyle -> RGBColor[1, 0, 1],
-              PlotRange -> {{-1, 2 Pi + 1}, {-4, 4}}], 
-            Graphics[{
-              PointSize[Large], 
-              If[
-               Or[
-               ProvaProgetto`Private`x$$ == Pi/2, ProvaProgetto`Private`x$$ == 
-                3 Pi/2], {{Dashed, 
-                 
-                 Line[{{ProvaProgetto`Private`x$$, -10}, {
-                   ProvaProgetto`Private`x$$, 10}}]}, 
-                Text[
-                 Style["Non Definito", 20], {
-                 ProvaProgetto`Private`x$$ + 0.5, 0.5 + 
-                  Sin[ProvaProgetto`Private`x$$]}]}, {{Dashed, 
-                 
-                 Line[{{ProvaProgetto`Private`x$$, 0}, {
-                   ProvaProgetto`Private`x$$, 
-                    Tan[ProvaProgetto`Private`x$$]}}]}, 
-                Point[{ProvaProgetto`Private`x$$, 
-                  Tan[ProvaProgetto`Private`x$$]}], 
-                Text[
-                 Style[
-                  Tan[ProvaProgetto`Private`x$$], 20], {
-                 ProvaProgetto`Private`x$$ + 0.5, 0.5 + 
-                  Sin[ProvaProgetto`Private`x$$]}]}]}]]}]}], 
-      "Specifications" :> {{{ProvaProgetto`Private`x$$, 0, "Naviga"}, 0, 2 Pi,
-          Rational[1, 12] Pi}, {{ProvaProgetto`Private`x$$, 0, "Scegli"}, 0, 
-         2 Pi, Rational[1, 12] Pi}}, 
-      "Options" :> {ControlType -> {Slider, PopupMenu}}, 
-      "DefaultOptions" :> {}],
-     ImageSizeCache->{801., {240., 246.}},
-     SingleEvaluation->True],
-    Deinitialization:>None,
-    DynamicModuleValues:>{},
-    SynchronousInitialization->True,
-    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
-    UnsavedVariables:>{Typeset`initDone$$},
-    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
-   Deployed->True,
-   StripOnInput->False],
-  Manipulate`InterpretManipulate[1]]], "Output",
- CellChangeTimes->{
-  3.7355535634086547`*^9, {3.7355536538830566`*^9, 3.735553681365984*^9}, {
-   3.735553755771307*^9, 3.735553772280377*^9}, 3.7355538506654177`*^9, 
-   3.7355538959314127`*^9, 3.735554099274892*^9, {3.7355541390648975`*^9, 
-   3.7355541769980555`*^9}, 3.7355542419149165`*^9, {3.735554274938786*^9, 
-   3.735554314516424*^9}, 
-   3.735554373755086*^9},ExpressionUUID->"5defc47f-588a-490a-956a-\
-1d4c7b33137c"]
-}, Open  ]],
-
-Cell[BoxData["PH"], "Input",
- CellChangeTimes->{{3.7354760936080613`*^9, 
-  3.735476093938943*^9}},ExpressionUUID->"bec59208-f83a-4011-aa1b-\
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7354760936080613`*^9, 3.735476093938943*^9}, {
+  3.735560065712906*^9, 
+  3.7355600665010633`*^9}},ExpressionUUID->"bec59208-f83a-4011-aa1b-\
 4c38c7c5fe22"],
 
 Cell[BoxData[" "], "Input",
@@ -237,21 +135,25 @@ StyleDefinitions->"Default.nb"
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "scelta"->{
+  Cell[712, 25, 170, 2, 28, "Input",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0",
+   CellTags->"scelta"]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"scelta", 7301, 138}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 151, 3, 28, "Input",ExpressionUUID->"4309e3fd-7fc6-4390-94ce-f922b95886cc"],
-Cell[712, 25, 154, 3, 28, "Input",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0"],
-Cell[CellGroupData[{
-Cell[891, 32, 5073, 72, 48, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
-Cell[5967, 106, 5057, 112, 505, "Output",ExpressionUUID->"5defc47f-588a-490a-956a-1d4c7b33137c"]
-}, Open  ]],
-Cell[11039, 221, 156, 3, 28, "Input",ExpressionUUID->"bec59208-f83a-4011-aa1b-4c38c7c5fe22"],
-Cell[11198, 226, 126, 2, 28, "Input",ExpressionUUID->"d8e84abd-fd9c-4d84-acba-0e60f8700b00"]
+Cell[712, 25, 170, 2, 28, "Input",ExpressionUUID->"9dd115e9-98b7-4761-8eee-1cddae712fc0",
+ CellTags->"scelta"],
+Cell[885, 29, 5780, 87, 48, "Input",ExpressionUUID->"ca5fc6cc-d0e7-4896-860d-fa6f348760a2"],
+Cell[6668, 118, 205, 4, 28, "Input",ExpressionUUID->"bec59208-f83a-4011-aa1b-4c38c7c5fe22"],
+Cell[6876, 124, 126, 2, 28, "Input",ExpressionUUID->"d8e84abd-fd9c-4d84-acba-0e60f8700b00"]
 }
 ]
 *)
