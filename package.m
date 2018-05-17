@@ -982,7 +982,7 @@ StyleBox[\"\[Alpha]\", \"TradFormChar\"]\)", Red, 20], {x + 36, -35}]
         "\t\t"
       }],
       Column[{
-        Style["Lorenzo, dopo questa lettura, ha avuto un'idea\nsu come calcolare facilmente l'altezza della tour Eiffel.\nProcede in questo modo: \nmisura la sua distanza dalla base della torre\ne approssima l'angolo \[Alpha] (con un ottante).\nOsserva che si forma un triangolo rettangolo\ne può quindi usare la proprietà della tangente.",17]
+        Style["Lorenzo, dopo questa lettura, ha avuto un'idea\nsu come calcolare facilmente l'altezza della tour Eiffel.\nProcede in questo modo: \nmisura la sua distanza dalla base della torre\ne approssima l'angolo \[Alpha] (con un ottante).\nOsserva che si forma un triangolo rettangolo\ne pu\[OGrave] quindi usare la propriet\[AGrave] della tangente.",17]
       }]
 
     }];
@@ -1096,6 +1096,7 @@ DistancePointsApplication[] := Row[{
       ]
     }],
     Row[{
+      (*HoldForm[AC/Sen[\[Gamma]] = AB / Sen[\[Gamma]] ]*)
       Style[Text["AC / sin\[Gamma] = AB / sin\[Beta]"], FontSize -> 20, Blue]
     }],
     Row[{
