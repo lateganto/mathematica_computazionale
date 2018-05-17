@@ -44,7 +44,7 @@ GraficoPrimaRelazione::usage = "manipulate della prima relazione fondamentale";
 ThTriangoliUno::usage = "grafici per formule sui triangoli";
 ThTriangoliDue::usage = "grafici per formule sui triangoli";
 ThTriangoloProiezione::usage = "proiezione del triangolo";
-
+AngoloOrientato::usage = "grafico angolo orientato";
 (*  ESERCIZI  *)
 EsCoordinate::usage = "esercizio su coordinate";
 EsDistanze::usage = "calcola la distanza distanza tra due punti";
@@ -490,8 +490,7 @@ GraficoTangente[] := Manipulate[
       Line[{{0, 0}, {Cos[x], 0}}],
       RGBColor[255, 0, 0],
       Line[{{Cos[x], 0}, {Cos[x], Sin[x]}}],
-      Text[Style[IntegerString[FromRadToGrad[x]] <> "\[Degree]", 15, Blue], {-0.90, 1}],
-      Text[Style[x, 15, Blue], {-0.90, 0.8}],
+      Text[Style[StringForm["`` ~ ``", IntegerString[FromRadToGrad[x]] <> "\[Degree]", x], 15, Blue], {-0.90, 1}],
       Text[Style["Seno", Medium, Red], {0.8, 1}],
       Text[Style["Coseno", Medium, Green], {0.8, 0.9}],
 
@@ -547,8 +546,7 @@ DisegnaCirconferenza[] := Manipulate[
       Line[{{0, 0}, {Cos[x], 0}}],
       RGBColor[255, 0, 0],
       Line[{{Cos[x], 0}, {Cos[x], Sin[x]}}],
-      Text[Style[IntegerString[FromRadToGrad[x]] <> "\[Degree]", 15, Blue], {-0.90, 1}],
-      Text[Style[x, 15, Blue], {-0.90, 0.8}],
+      Text[Style[StringForm["`` ~ ``", IntegerString[FromRadToGrad[x]] <> "\[Degree]", x], 15, Blue], {-0.90, 1}],
       Text[Style["Seno", Medium, Red], {0.8, 1}],
       Text[Style["Coseno", Medium, Green], {0.8, 0.9}],
 
@@ -570,7 +568,7 @@ DisegnaCirconferenza[] := Manipulate[
         Graphics[{
           {Dashed, Line[{{x, 0}, {x, Sin[x]}}]},
           PointSize[Large],
-          Text[Style[Rationalize[Sin[x]], 20], {x + 0.5, 0.5 + Sin[x]}],
+          Text[Style[Rationalize[Sin[x]], 20], {x + 0.5, Sin[x] - 0.5 }],
           Point[{ x, Sin[x] }]}
         ]
       ],
@@ -585,7 +583,7 @@ DisegnaCirconferenza[] := Manipulate[
         Graphics[{
           {Dashed, Line[{{x, 0}, {x, Cos[x]}}]},
           PointSize[Large],
-          Text[Style[Cos[x], 20], {x + 0.5, 0.5 + Cos[x]}],
+          Text[Style[Cos[x], 20], {x + 0.5, Cos[x] - 0.5}],
           Point[{ x, Cos[x]}]}
         ]
       ]
@@ -742,6 +740,7 @@ AngoliAssociati0[] := Animate[
           AngoloRif = ListaAngoliAssociati0[[1]];
           AngoloGrad = AngoloRif 180 / Pi Degree;
           Text[Style[StringForm["Cos(``) = ``, Sin(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
+          Text[Style["Cos(90) = Sen(0)\nSen(90) = Cos(0)", 20]], "\n",
           Text[Style["Cos(180) = -Cos(0)\nSen(180) = Sen(0)", 20]], "\n",
           Text[Style["Cos(270) = Sen(0)\nSen(270) = -Cos(0)", 20]], "\n",
           Text[Style["Cos(360) = Cos(0)\nSen(360) = Cos(0)", 20]]
@@ -831,6 +830,33 @@ AngoliAssociati45[] := Animate[
   }],
   {{n, 0, "Angolo"}, 0, 3, 1 }
 ];
+
+AngoloOrientato[] := Row[{
+  Column[{
+    Graphics[{
+      Text[Style["O",15],{-0.1,0}],
+      Line[{{0,0},{1,1}}],
+      Line[{{0,0},{1,-1}}],
+      Line[{{0,0},{1,0}}],
+      {Red,Circle[{0, 0}, 0.5, {0, Pi/4}]},
+      {Blue,Circle[{0, 0}, 0.5, {0, -Pi/4}]},
+      Text[Style["\[Alpha] Angolo Positivo",15,Red],{0.9,0.25}],
+      Text[Style["\[Beta] Angolo Negativo",15,Blue],{0.9,-0.25}]
+
+    }, ImageSize -> 300]
+  }],
+  Column[{
+    "\t"
+  }]
+  ,Column[{
+    Style["Conviene collegare l'idea di angolo a quella di rotazione di uno dei due lati.\nQuesta rotazione può avvenire in verso:\n",17],
+    Style["* Antiorario, e diciamo che \[EGrave] positivo;",17],
+    Style["* Orario, e diciamo che \[EGrave] negativo.",17]
+
+
+  }]
+
+}];
 
 DisegnaPianoCartesiano[x_, y_] := DynamicModule[{colEsito = Black, esito = "", limit = 10, xIn = 0, yIn = 0},
   Row[{
@@ -938,125 +964,125 @@ StyleBox[\"\[Alpha]\", \"TradFormChar\"]\)", Red, 20], {x + 36, -35}]
 ];
 
 DistancePointsApplication[] := Row[{
-      Column[{
-        Row[{
-          Manipulate[
-            Deploy[
-              DynamicModule[
-                { p1 = {-10, -10},
-                  p2 = {10, 10},
-                  p3 = {10, -10}
-                },
+  Column[{
+    Row[{
+      Manipulate[
+        Deploy[
+          DynamicModule[
+            { p1 = {-10, -10},
+              p2 = {10, 10},
+              p3 = {10, -10}
+            },
 
-                Dynamic@Graphics[
-                  {
-                    pts := {{-20, 0}, {-6, -7}, {10, 4}, {23, -5}},
-                    {Thickness[0.13], LightCyan, BezierCurve[pts]},
-                    PointSize[0.02],
+            Dynamic@Graphics[
+              {
+                pts := {{-20, 0}, {-6, -7}, {10, 4}, {23, -5}},
+                {Thickness[0.13], LightCyan, BezierCurve[pts]},
+                PointSize[0.02],
 
-                    Point[p1],
-                    Locator[Dynamic[p1], None],
+                Point[p1],
+                Locator[Dynamic[p1], None],
 
-                    {Red, Point[p2]},
-                    {Red, Point[p3]},
+                {Red, Point[p2]},
+                {Red, Point[p3]},
 
-                    If[First[p1] <= First[p3],
-                      If[Last[p1] <= Last[p3],
-                        {LightBlue, Disk[p1, 3, {0 + getAngle[p1, p3, {First[p3], Last[p1]}], getAngle[p1, p2, p3] + getAngle[p1, p3, {First[p3], Last[p1]}]}]},
-                        {LightBlue, Disk[p1, 3, {0 - getAngle[p1, p3, {First[p3], Last[p1]}], getAngle[p1, p2, p3] - getAngle[p1, p3, {First[p3], Last[p1]}]}]}],
+                If[First[p1] <= First[p3],
+                  If[Last[p1] <= Last[p3],
+                    {LightBlue, Disk[p1, 3, {0 + getAngle[p1, p3, {First[p3], Last[p1]}], getAngle[p1, p2, p3] + getAngle[p1, p3, {First[p3], Last[p1]}]}]},
+                    {LightBlue, Disk[p1, 3, {0 - getAngle[p1, p3, {First[p3], Last[p1]}], getAngle[p1, p2, p3] - getAngle[p1, p3, {First[p3], Last[p1]}]}]}],
 
-                      If[Last[p1] <= Last[p3],
-                        {LightBlue, Disk[p1, 3, {Pi / 2 + getAngle[p1, p2, {First[p1], Last[p2]}], Pi / 2 + getAngle[p1, p2, p3] + getAngle[p1, p2, {First[p1], Last[p2]}]}]},
+                  If[Last[p1] <= Last[p3],
+                    {LightBlue, Disk[p1, 3, {Pi / 2 + getAngle[p1, p2, {First[p1], Last[p2]}], Pi / 2 + getAngle[p1, p2, p3] + getAngle[p1, p2, {First[p1], Last[p2]}]}]},
 
-                        If[Last[p1] <= Last[p2],
-                          {LightBlue, Disk[p1, 3, {Pi / 2 + getAngle[p1, p2, {First[p1], Last[p2]}], Pi / 2 + getAngle[p1, p2, p3] + getAngle[p1, p2, {First[p1], Last[p2]}]}]},
-                          {LightBlue, Disk[p1, 3, {Pi + getAngle[p1, p2, {First[p2], Last[p1]}], Pi + getAngle[p1, p2, p3] + getAngle[p1, p2, {First[p2], Last[p1]}]}]}]
-                      ]
-                    ],
+                    If[Last[p1] <= Last[p2],
+                      {LightBlue, Disk[p1, 3, {Pi / 2 + getAngle[p1, p2, {First[p1], Last[p2]}], Pi / 2 + getAngle[p1, p2, p3] + getAngle[p1, p2, {First[p1], Last[p2]}]}]},
+                      {LightBlue, Disk[p1, 3, {Pi + getAngle[p1, p2, {First[p2], Last[p1]}], Pi + getAngle[p1, p2, p3] + getAngle[p1, p2, {First[p2], Last[p1]}]}]}]
+                  ]
+                ],
 
-                    If[Last[p1] >= Last[p3],
-                      If[First[p1] < First[p3],
-                        {LightRed, Disk[p3, 2.5, {Pi / 2, getAngle[p3, p1, p2] + Pi / 2}]},
-                        {LightRed, Disk[p3, 2.5, {getAngle[p3, p1, {First[p1], Last[p3]}], getAngle[p3, p1, p2] + getAngle[p3, p1, {First[p1], Last[p3]}]}]}],
+                If[Last[p1] >= Last[p3],
+                  If[First[p1] < First[p3],
+                    {LightRed, Disk[p3, 2.5, {Pi / 2, getAngle[p3, p1, p2] + Pi / 2}]},
+                    {LightRed, Disk[p3, 2.5, {getAngle[p3, p1, {First[p1], Last[p3]}], getAngle[p3, p1, p2] + getAngle[p3, p1, {First[p1], Last[p3]}]}]}],
 
-                      If[First[p1] < First[p3],
-                        {LightRed, Disk[p3, 2.5, {Pi / 2, getAngle[p3, p1, p2] + Pi / 2}]},
-                        {LightRed, Disk[p3, 2.5, {2 Pi - getAngle[p3, p1, {First[p1], Last[p3]}], 2 Pi + Pi / 2}]}]
-                    ],
+                  If[First[p1] < First[p3],
+                    {LightRed, Disk[p3, 2.5, {Pi / 2, getAngle[p3, p1, p2] + Pi / 2}]},
+                    {LightRed, Disk[p3, 2.5, {2 Pi - getAngle[p3, p1, {First[p1], Last[p3]}], 2 Pi + Pi / 2}]}]
+                ],
 
-                    If[Last[p1] >= Last[p2],
-                      If[First[p1] < First[p2],
-                        {LightGray, Disk[p2, 2.5, {Pi / 2 + getAngle[p2, p1, {First[p2], Last[p1]}], Pi / 2 + getAngle[p2, p1, {First[p2], Last[p1]}] + getAngle[p2, p1, p3]}]},
-                        {LightGray, Disk[p2, 2.5, {Pi + Pi / 2, Pi + Pi / 2 + getAngle[p2, p1, p3]}]}],
+                If[Last[p1] >= Last[p2],
+                  If[First[p1] < First[p2],
+                    {LightGray, Disk[p2, 2.5, {Pi / 2 + getAngle[p2, p1, {First[p2], Last[p1]}], Pi / 2 + getAngle[p2, p1, {First[p2], Last[p1]}] + getAngle[p2, p1, p3]}]},
+                    {LightGray, Disk[p2, 2.5, {Pi + Pi / 2, Pi + Pi / 2 + getAngle[p2, p1, p3]}]}],
 
-                      If[First[p1] < First[p2],
-                        {LightGray, Disk[p2, 2.5, {Pi + getAngle[p2, p1, {First[p1], Last[p2]}], Pi + getAngle[p2, p1, {First[p1], Last[p2]}] + getAngle[p2, p1, p3]}]},
-                        {LightGray, Disk[p2, 2.5, {Pi + Pi / 2, Pi + Pi / 2 + getAngle[p2, p1, p3]}]}]
-                    ],
+                  If[First[p1] < First[p2],
+                    {LightGray, Disk[p2, 2.5, {Pi + getAngle[p2, p1, {First[p1], Last[p2]}], Pi + getAngle[p2, p1, {First[p1], Last[p2]}] + getAngle[p2, p1, p3]}]},
+                    {LightGray, Disk[p2, 2.5, {Pi + Pi / 2, Pi + Pi / 2 + getAngle[p2, p1, p3]}]}]
+                ],
 
-                    Style[Text["Prova a spostare il punto A nel piano", {0, 18}], FontSize -> 16, Blue],
-                    Style[Text["A", {First[p1] - 1, Last[p1] - 1}], FontSize -> 18],
-                    Style[Text["C", {First[p3] + 1, Last[p3] - 1}], FontSize -> 18],
-                    Style[Text["B", {First[p2] + 1, Last[p2] + 1}], FontSize -> 18],
-                    Style[Text["\[Alpha]", {First[p1] + 3.5, Last[p1] + 1.5}], FontSize -> 18, Blue],
-                    Style[Text["\[Beta]", {First[p3] - 3, Last[p3] + 1.5}], FontSize -> 18, Red],
-                    Style[Text["\[Gamma]", {First[p2] - 1.5, Last[p2] - 3}], FontSize -> 18, Gray],
-                    Style[Text[StringForm["AC =  ``", SetPrecision[EuclideanDistance[p1, p3], 4]], {-10, -16}], FontSize -> 14],
-                    Style[Text[StringForm["AB =  ``", SetPrecision[EuclideanDistance[p1, p2], 4]], {-10, -18}], FontSize -> 14],
-                    Style[Text[StringForm["CAB = \[Alpha] =  ``", SetPrecision[N[getAngle[p1, p2, p3] 180 / Pi], 4]], {4, -16}], FontSize -> 14],
-                    Style[Text[StringForm["BCA = \[Beta] = ``", SetPrecision[N[getAngle[p3, p1, p2] 180 / Pi], 4]], {4, -18}], FontSize -> 14],
+                Style[Text["Prova a spostare il punto A nel piano", {0, 18}], FontSize -> 16, Blue],
+                Style[Text["A", {First[p1] - 1, Last[p1] - 1}], FontSize -> 18],
+                Style[Text["C", {First[p3] + 1, Last[p3] - 1}], FontSize -> 18],
+                Style[Text["B", {First[p2] + 1, Last[p2] + 1}], FontSize -> 18],
+                Style[Text["\[Alpha]", {First[p1] + 3.5, Last[p1] + 1.5}], FontSize -> 18, Blue],
+                Style[Text["\[Beta]", {First[p3] - 3, Last[p3] + 1.5}], FontSize -> 18, Red],
+                Style[Text["\[Gamma]", {First[p2] - 1.5, Last[p2] - 3}], FontSize -> 18, Gray],
+                Style[Text[StringForm["AC =  ``", SetPrecision[EuclideanDistance[p1, p3], 4]], {-10, -16}], FontSize -> 14],
+                Style[Text[StringForm["AB =  ``", SetPrecision[EuclideanDistance[p1, p2], 4]], {-10, -18}], FontSize -> 14],
+                Style[Text[StringForm["CAB = \[Alpha] =  ``", SetPrecision[N[getAngle[p1, p2, p3] 180 / Pi], 4]], {4, -16}], FontSize -> 14],
+                Style[Text[StringForm["BCA = \[Beta] = ``", SetPrecision[N[getAngle[p3, p1, p2] 180 / Pi], 4]], {4, -18}], FontSize -> 14],
 
-                    {Thickness[0.005], Line[{p1, p2}]},
-                    {Thickness[0.005], Blue, Line[{p1, p3}]},
-                    {Thickness[0.005], Red, Line[{p2, p3}]},
+                {Thickness[0.005], Line[{p1, p2}]},
+                {Thickness[0.005], Blue, Line[{p1, p3}]},
+                {Thickness[0.005], Red, Line[{p2, p3}]},
 
-                    {Red, Point[p2]},
-                    {Red, Point[p3]}
-                  },
-                  PlotRange -> {{-16, 20}, {-20, 20}}
-                ]
-              ]
+                {Red, Point[p2]},
+                {Red, Point[p3]}
+              },
+              PlotRange -> {{-16, 20}, {-20, 20}}
             ]
           ]
-        }]
-      }],
-      Text["\t"],
-      Column[{
-        Row[{
-          Style[Text["Supponiamo di voler calcolare la distanza fra due punti A e B:\nio mi trovo in A ma non posso raggiungere B perche' e' al di la' del fiume."], FontSize -> 16]
+        ]
+      ]
+    }]
+  }],
+  Text["\t"],
+  Column[{
+    Row[{
+      Style[Text["Supponiamo di voler calcolare la distanza fra due punti A e B:\nio mi trovo in A ma non posso raggiungere B perche' e' al di la' del fiume."], FontSize -> 16]
+    }],
+    Row[{
+      Style[Text["Possiamo spostarci in un punto C e calcolare la distanza AC\ned inoltre gli angoli CAB=\[Alpha] e ACB=\[Beta]."], FontSize -> 16]
+    }],
+    Text["\n"],
+    Row[{
+      Style[Text["Abbiamo quindi il triangolo ABC in cui conosciamo due angoli ed il lato compreso,\nquindi per risolvere il triangolo possiamo calcolare il terzo angolo ricordando che\nla somma degli angoli interni di un triangolo e' un angolo piatto."], FontSize -> 16]
+    }],
+    Row[{
+      Style[Text["\[Gamma] = 180\[Degree] - \[Alpha] - \[Beta]"], FontSize -> 20, Blue]
+    }],
+    Text["\n"],
+    Row[{
+      Style[Text["E poi applicare il teorema dei seni:  "], FontSize -> 16],
+      Button["Teorema Dei Seni",
+        CreateDialog[{
+          TextCell["In ogni triangolo e' costante il rapporto fra ogni lato\ned il seno dell'angolo opposto\ne tale costante equivale al doppio del raggio\ndel cerchio circoscritto al triangolo."],
+          DefaultButton[]
         }],
-        Row[{
-          Style[Text["Possiamo spostarci in un punto C e calcolare la distanza AC\ned inoltre gli angoli CAB=\[Alpha] e ACB=\[Beta]."], FontSize -> 16]
-        }],
-        Text["\n"],
-        Row[{
-          Style[Text["Abbiamo quindi il triangolo ABC in cui conosciamo due angoli ed il lato compreso,\nquindi per risolvere il triangolo possiamo calcolare il terzo angolo ricordando che\nla somma degli angoli interni di un triangolo e' un angolo piatto."], FontSize -> 16]
-        }],
-        Row[{
-          Style[Text["\[Gamma] = 180\[Degree] - \[Alpha] - \[Beta]"], FontSize -> 20, Blue]
-        }],
-        Text["\n"],
-        Row[{
-          Style[Text["E poi applicare il teorema dei seni:  "], FontSize -> 16],
-          Button["Teorema Dei Seni",
-            CreateDialog[{
-              TextCell["In ogni triangolo e' costante il rapporto fra ogni lato\ned il seno dell'angolo opposto\ne tale costante equivale al doppio del raggio\ndel cerchio circoscritto al triangolo."],
-              DefaultButton[]
-            }],
-            ImageSize -> Large, BaseStyle -> {"GenericButton"}
-          ]
-        }],
-        Row[{
-          Style[Text["AC / sin\[Gamma] = AB / sin\[Beta]"], FontSize -> 20, Blue]
-        }],
-        Row[{
-          Style[Text["Ottenendo quindi:"], FontSize -> 16]
-        }],
-        Row[{
-          Style[Text["AB = (AC * sin\[Beta]) / sin\[Gamma]"], FontSize -> 20, Blue]
-        }]
-      }]
-    }];
+        ImageSize -> Large, BaseStyle -> {"GenericButton"}
+      ]
+    }],
+    Row[{
+      Style[Text["AC / sin\[Gamma] = AB / sin\[Beta]"], FontSize -> 20, Blue]
+    }],
+    Row[{
+      Style[Text["Ottenendo quindi:"], FontSize -> 16]
+    }],
+    Row[{
+      Style[Text["AB = (AC * sin\[Beta]) / sin\[Gamma]"], FontSize -> 20, Blue]
+    }]
+  }]
+}];
 
 
 (* ::InheritFromParent:: *)
