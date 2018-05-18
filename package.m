@@ -431,9 +431,18 @@ ThGradRad[] := Manipulate[
 
       }]  }], "\t",
     Column[{
+
       Style["Se \[Alpha] \[EGrave] l'angolo di cui vogliamo conoscere la misura, vale la seguente formula:", font, 15],
       Panel[
-        Image[Import["C:\\Users\\anton\\Documents\\GitHub\\mathematica_computazionale\\assets\\proporzioneGradRad.png"], ImageSize -> 200],
+        Style[StringForm["`` : ``= 360\[Degree] : `` \n``= `` \n ``= ``",
+          HoldForm[Subscript["\[Alpha]", "grad"]],
+          HoldForm[Subscript["\[Alpha]", "rad"]],
+          2 Pi,
+          HoldForm[Subscript["\[Alpha]", "grad"]],
+          HoldForm[Subscript["\[Alpha]", "rad"] "360\[Degree]" / (2 Pi)],
+          HoldForm[Subscript["\[Alpha]", "rad"]],
+          HoldForm[Subscript["\[Alpha]", "grad"] 2 Pi / "360\[Degree]"]
+        ], 24, Bold, font],
         ImageSize -> 600,
         Alignment -> {Center, Center}
       ]
@@ -518,7 +527,8 @@ GraficoTangente[] := Manipulate[
       {Black, PointSize -> .02, Point[{Cos[x], Sin[x]}]}},
       ImageSize -> 350,
       Axes -> True,
-      Ticks -> None
+      Ticks -> None,
+      PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
     ], (*FINE GRAPHICS*)
     Column[{
       Show[
@@ -574,7 +584,8 @@ DisegnaCirconferenza[] := Manipulate[
       {Black, PointSize -> .02, Point[{Cos[x], Sin[x]}]}},
       ImageSize -> 350,
       Axes -> True,
-      Ticks -> None
+      Ticks -> None,
+      PlotRange -> {{-1.3, 1.3}, {-1.3, 1.3}}
     ], (*FINE GRAPHICS*)
   (* GRAFICI SENO E COSENO *)
     Column[{
@@ -771,7 +782,7 @@ AngoliAssociati0[] := Manipulate[
       }]
     }]
   }],
-  {{n, 0, "Angolo"}, 0, 4, 1 }
+  {{n, 4, "Angolo"}, 0, 4, 1 }
 ];
 
 ListaAngoliAssociati30 := {\[Pi] / 6, 5 \[Pi] / 6, 7 \[Pi] / 6, 11 \[Pi] / 6};
@@ -810,7 +821,7 @@ AngoliAssociati30[] := Manipulate[
       }]
     }]
   }],
-  {{n, 0, "Angolo"}, 0, 3, 1 }
+  {{n, 3, "Angolo"}, 0, 3, 1 }
 ];
 
 ListaAngoliAssociati45 := {\[Pi] / 4, 3 \[Pi] / 4, 5 \[Pi] / 4, 7 \[Pi] / 4};
@@ -849,7 +860,7 @@ AngoliAssociati45[] := Manipulate[
       }]
     }]
   }],
-  {{n, 0, "Angolo"}, 0, 3, 1 }
+  {{n, 3, "Angolo"}, 0, 3, 1 }
 ];
 
 AngoloOrientato[] := Row[{
@@ -1125,46 +1136,46 @@ DistancePointsApplication[] := Row[{
 }];
 
 angleList = List[0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330, 360];
-EsRadiantDegree :=DynamicModule[{esito = "", colorEsito = Black},Row[{
-      Column[{
-        randomAngleType = RandomInteger[{0, 1}];
+EsRadiantDegree := DynamicModule[{esito = "", colorEsito = Black}, Row[{
+  Column[{
+    randomAngleType = RandomInteger[{0, 1}];
 
-        random = RandomSample[angleList, 4];
-        incorrects = random[[2 ;; 4]];
-        correct = First[random];
+    random = RandomSample[angleList, 4];
+    incorrects = random[[2 ;; 4]];
+    correct = First[random];
 
-        If[randomAngleType == 0,
-          btn5 = Button[Style[Rationalize[fromDegreeToPi[correct]], 15], {esito := "Corretto!", colorEsito := Green}];
-          btn6 = Button[Style[Rationalize[fromDegreeToPi[incorrects[[1]]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
-          btn7 = Button[Style[Rationalize[fromDegreeToPi[incorrects[[2]]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
-          btn8 = Button[Style[Rationalize[fromDegreeToPi[incorrects[[3]]]], 15], {esito := "Sbagliato!", colorEsito := Red}],
+    If[randomAngleType == 0,
+      btn5 = Button[Style[Rationalize[fromDegreeToPi[correct]], 15], {esito := "Corretto!", colorEsito := Green}];
+      btn6 = Button[Style[Rationalize[fromDegreeToPi[incorrects[[1]]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
+      btn7 = Button[Style[Rationalize[fromDegreeToPi[incorrects[[2]]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
+      btn8 = Button[Style[Rationalize[fromDegreeToPi[incorrects[[3]]]], 15], {esito := "Sbagliato!", colorEsito := Red}],
 
-          btn5 = Button[Style[Rationalize[correct], 15], {esito := "Corretto!", colorEsito := Green}];
-          btn6 = Button[Style[Rationalize[incorrects[[1]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
-          btn7 = Button[Style[Rationalize[incorrects[[2]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
-          btn8 = Button[Style[Rationalize[incorrects[[3]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
-        ];
+      btn5 = Button[Style[Rationalize[correct], 15], {esito := "Corretto!", colorEsito := Green}];
+      btn6 = Button[Style[Rationalize[incorrects[[1]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
+      btn7 = Button[Style[Rationalize[incorrects[[2]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
+      btn8 = Button[Style[Rationalize[incorrects[[3]]], 15], {esito := "Sbagliato!", colorEsito := Red}];
+    ];
 
-        buttons = List[btn5, btn6, btn7, btn8];
-        randomButtons = RandomSample[buttons];
-        Button["Nuovo Esercizio", FrontEndExecute[FrontEndToken[NotebookLocate["EsRadGrad "], "Evaluate"]], ImageSize -> Medium, BaseStyle -> {"GenericButton"}],
+    buttons = List[btn5, btn6, btn7, btn8];
+    randomButtons = RandomSample[buttons];
+    Button["Nuovo Esercizio", FrontEndExecute[FrontEndToken[NotebookLocate["EsRadGrad "], "Evaluate"]], ImageSize -> Medium, BaseStyle -> {"GenericButton"}],
 
-        Dynamic[Text[Style[esito, colorEsito, 20]]],
+    Dynamic[Text[Style[esito, colorEsito, 20]]],
 
 
-      (*Dynamic[Text[Style[esito, colorEsito, 15]]],*)
-        (*Style[Dynamic[Esito]],*)
-        If[randomAngleType == 0,
-          Style[StringForm["Seleziona il valore dell'angolo: ``", correct], 15, font],
-          Style[StringForm["Seleziona il valore dell'angolo: ``", fromDegreeToPi[correct]], 15, font]
-        ],
+  (*Dynamic[Text[Style[esito, colorEsito, 15]]],*)
+  (*Style[Dynamic[Esito]],*)
+    If[randomAngleType == 0,
+      Style[StringForm["Seleziona il valore dell'angolo: ``", correct], 15, font],
+      Style[StringForm["Seleziona il valore dell'angolo: ``", fromDegreeToPi[correct]], 15, font]
+    ],
 
-        randomButtons[[1]],
-        randomButtons[[2]],
-        randomButtons[[3]],
-        randomButtons[[4]]
-      }]
-    }]
+    randomButtons[[1]],
+    randomButtons[[2]],
+    randomButtons[[3]],
+    randomButtons[[4]]
+  }]
+}]
 ];
 
 
