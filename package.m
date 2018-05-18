@@ -747,7 +747,7 @@ AngoliAssociati60[] := Manipulate[
       }]
     }]
   }],
-  {{n, 0, "Angolo"}, 0, 3, 1 }
+  {{n, 3, "Angolo"}, 0, 3, 1 }
 ];
 
 ListaAngoliAssociati0 := {0, \[Pi] / 2, \[Pi], 3 \[Pi] / 2, 2 \[Pi]};
