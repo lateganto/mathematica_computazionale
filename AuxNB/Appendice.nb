@@ -1,0 +1,242 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9316,        234]
+NotebookOptionsPosition[      7674,        199]
+NotebookOutlinePosition[      8047,        215]
+CellTagsIndexPosition[      8004,        212]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[StyleBox["APPENDICE",
+ FontSize->72]], "Text",
+ CellChangeTimes->{{3.735734287352107*^9, 3.7357343203386855`*^9}},
+ TextAlignment->Center,
+ FontFamily->"Helvetica",
+ Background->RGBColor[
+  1, 0.9, 0.8],ExpressionUUID->"bd943548-36fe-40f4-85b6-482d433ea7a5"],
+
+Cell[TextData[StyleBox["L' ambiente utilizzato per lo sviluppo di questo \
+software didattico \[EGrave] stato Wolfram Mathematica, versione 11.1. \nIl \
+sistema \[EGrave] stato testato, inoltre, sulle versioni 10.2 (Debian) e 11.0 \
+(Windows e MacOS).\nL' interfaccia grafica \[EGrave] ottimale per schermi di \
+15 pollici.",
+ FontFamily->"Helvetica",
+ FontSize->24]], "Text",
+ CellChangeTimes->{{3.735734347791954*^9, 3.735734401276695*^9}},
+ FontFamily->
+  "Helvetica",ExpressionUUID->"ccb8344d-1c08-4b4c-be87-e63876ecc465"],
+
+Cell[BoxData[
+ StyleBox[
+  ButtonBox[
+   RowBox[{
+   "Problemi", " ", "riscontrati", " ", "e", " ", "relative", " ", 
+    "soluzioni"}],
+   BaseStyle->"Hyperlink",
+   ButtonData->"1"],
+  FontSize->36,
+  FontWeight->"Bold",
+  FontColor->GrayLevel[0]]], "Text",
+ CellChangeTimes->{{3.7357344579849873`*^9, 3.735734484320315*^9}},
+ FontFamily->"Helvetica",
+ Background->RGBColor[
+  1, 0.85, 0.85],ExpressionUUID->"3035c177-0e1b-418e-b099-b09dc91632c0"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Il CTRL + Z",
+ FontSize->30,
+ FontWeight->"Bold",
+ FontVariations->{"Underline"->False},
+ FontColor->GrayLevel[0]]], "ItemNumbered",
+ CellDingbat->None,
+ CellChangeTimes->{{3.7047041873582153`*^9, 3.704704233706458*^9}, {
+   3.70470440019973*^9, 3.704704401497119*^9}, 3.704717740063772*^9, {
+   3.7047189041603355`*^9, 3.7047189117393007`*^9}, {3.704719618336996*^9, 
+   3.7047196318201838`*^9}, {3.704720083471238*^9, 3.7047200945742607`*^9}},
+ FontFamily->"Helvetica",
+ FontVariations->{
+ "Underline"->True},ExpressionUUID->"1d571da1-406d-4b52-a851-233f55ef7a3c"],
+
+Cell[TextData[StyleBox["Numerose difficolt\[AGrave] in fase di scrittura del \
+codice sono state date dalla funzionalit\[AGrave] \[OpenCurlyDoubleQuote]undo\
+\[CloseCurlyDoubleQuote](ovvero, operazione per annullare le ultime \
+modifiche), presente da parecchi anni in tutti gli editor di testo, che \
+spesso non funzionava o funzionava solo per un numero limitato di passi.",
+ FontSize->24,
+ FontVariations->{"Underline"->False}]], "SubitemNumbered",
+ CellDingbat->None,
+ CellChangeTimes->{{3.7047041873582153`*^9, 3.70470419959678*^9}, {
+   3.704704324996982*^9, 3.7047043354760647`*^9}, 3.7047189372662196`*^9, 
+   3.7047196407100534`*^9, 3.704720103582467*^9, {3.7048668099266768`*^9, 
+   3.7048668656466146`*^9}},
+ FontFamily->"Helvetica",
+ FontVariations->{
+ "Underline"->True},ExpressionUUID->"ccc332bb-d2cd-4be8-8c45-931317684c8a"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7357345179922333`*^9, 3.7357345321025643`*^9}},
+ FontFamily->
+  "Helvetica",ExpressionUUID->"de87011d-3e83-4d2e-af80-c322095d7933"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Le indentazioni",
+ FontSize->36,
+ FontWeight->"Bold",
+ FontVariations->{"Underline"->False},
+ FontColor->GrayLevel[0]]], "ItemNumbered",
+ CellDingbat->None,
+ CellChangeTimes->{{3.7047041873582153`*^9, 3.704704233706458*^9}, {
+   3.70470440019973*^9, 3.704704401497119*^9}, 3.704717740063772*^9, {
+   3.7047189041603355`*^9, 3.7047189117393007`*^9}, {3.704719618336996*^9, 
+   3.7047196318201838`*^9}, {3.704720083471238*^9, 3.7047200945742607`*^9}, {
+   3.704720201916382*^9, 3.704720212891756*^9}},
+ FontFamily->"Helvetica",
+ FontVariations->{
+ "Underline"->True},ExpressionUUID->"51d19d60-5095-4a72-9a0f-895b19ec914f"],
+
+Cell[TextData[StyleBox["Un\[CloseCurlyQuote]ulteriore difficolt\[AGrave] e \
+stata data dal diverso modo in cui Mathematica gestisce \
+l\[CloseCurlyQuote]indentazione del codice dei file \
+\[OpenCurlyDoubleQuote].nb\[CloseCurlyDoubleQuote] e \
+\[OpenCurlyDoubleQuote].m\[CloseCurlyDoubleQuote].",
+ FontSize->24,
+ FontVariations->{"Underline"->False}]], "SubitemNumbered",
+ CellDingbat->None,
+ CellChangeTimes->{{3.7047041873582153`*^9, 3.70470419959678*^9}, {
+   3.704704324996982*^9, 3.7047043354760647`*^9}, 3.7047189372662196`*^9, 
+   3.7047196407100534`*^9, 3.704720103582467*^9, 3.7047202221411734`*^9, {
+   3.7048669117565737`*^9, 3.7048669333505964`*^9}},
+ FontFamily->"Helvetica",
+ FontVariations->{
+ "Underline"->True},ExpressionUUID->"be3aebc1-5734-4636-8257-f71a61e99abe"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7357346405234075`*^9, 3.735734643867516*^9}},
+ FontFamily->
+  "Helvetica",ExpressionUUID->"a808f624-6675-4903-bd42-97b289b70fc8"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Consiglio",
+ FontSize->36,
+ FontWeight->"Bold",
+ FontVariations->{"Underline"->False},
+ FontColor->GrayLevel[0]]], "ItemNumbered",
+ CellDingbat->None,
+ CellChangeTimes->{{3.7047041873582153`*^9, 3.704704233706458*^9}, {
+   3.70470440019973*^9, 3.704704401497119*^9}, 3.704717740063772*^9, {
+   3.7047189041603355`*^9, 3.7047189117393007`*^9}, {3.704719618336996*^9, 
+   3.7047196318201838`*^9}, {3.704720083471238*^9, 3.7047200945742607`*^9}, {
+   3.704720201916382*^9, 3.704720212891756*^9}, {3.7357340699137955`*^9, 
+   3.735734074914324*^9}},
+ FontFamily->"Helvetica",
+ FontVariations->{
+ "Underline"->True},ExpressionUUID->"948ed4d3-7f88-460f-a124-c9978f4eb95d"],
+
+Cell[TextData[StyleBox["Per lo sviluppo \[EGrave] stato utilizzato l\
+\[CloseCurlyQuote]IDE Intellj che permette di annullare le ultime modifiche \
+(CTRL + Z), le Indentazioni automatiche, bilanciamento delle parentesi e \
+Snippet (suggerimenti per il codice)",
+ FontSize->24,
+ FontVariations->{"Underline"->False}]], "SubitemNumbered",
+ CellDingbat->None,
+ CellChangeTimes->{{3.7047041873582153`*^9, 3.70470419959678*^9}, {
+   3.704704324996982*^9, 3.7047043354760647`*^9}, 3.7047189372662196`*^9, 
+   3.7047196407100534`*^9, 3.704720103582467*^9, 3.7047202221411734`*^9, {
+   3.7048669117565737`*^9, 3.7048669333505964`*^9}, {3.735734081227461*^9, 
+   3.7357341725870547`*^9}},
+ FontFamily->"Helvetica",
+ FontVariations->{
+ "Underline"->True},ExpressionUUID->"73583d09-de21-44b6-922c-f4bfd169c1b2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Button", "[", 
+  RowBox[{"\"\<TORNA INDIETRO!\>\"", ",", 
+   RowBox[{"NotebookClose", "[", "]"}], ",", 
+   RowBox[{"Background", "\[Rule]", "LightOrange"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"200", ",", "40"}], "}"}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Black", ",", "20", ",", "Bold"}], "}"}]}]}], "]"}]], "Input",
+ CellOpen->False,
+ CellChangeTimes->{{3.7357347355450563`*^9, 
+  3.7357347912595186`*^9}},ExpressionUUID->"936a2d18-9098-4317-b072-\
+a75441ca1f92"],
+
+Cell[BoxData[
+ ButtonBox["\<\"TORNA INDIETRO!\"\>",
+  Appearance->Automatic,
+  Background->RGBColor[1, 0.9, 0.8],
+  BaseStyle->{
+    GrayLevel[0], 20, Bold},
+  ButtonFunction:>NotebookClose[],
+  Evaluator->Automatic,
+  ImageSize->{200, 40},
+  Method->"Preemptive"]], "Output",
+ CellChangeTimes->{{3.7357347782111845`*^9, 3.735734800166695*^9}},
+ TextAlignment->Center,ExpressionUUID->"689e3645-e4bb-4b1b-a3ad-2bc32b78f2d4"]
+}, Open  ]]
+},
+WindowToolbars->"EditBar",
+WindowSize->{1350, 695},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 272, 6, 112, "Text",ExpressionUUID->"bd943548-36fe-40f4-85b6-482d433ea7a5"],
+Cell[833, 28, 526, 9, 102, "Text",ExpressionUUID->"ccb8344d-1c08-4b4c-be87-e63876ecc465"],
+Cell[1362, 39, 449, 14, 76, "Text",ExpressionUUID->"3035c177-0e1b-418e-b099-b09dc91632c0"],
+Cell[CellGroupData[{
+Cell[1836, 57, 590, 12, 47, "ItemNumbered",ExpressionUUID->"1d571da1-406d-4b52-a851-233f55ef7a3c"],
+Cell[2429, 71, 839, 14, 91, "SubitemNumbered",ExpressionUUID->"ccc332bb-d2cd-4be8-8c45-931317684c8a"]
+}, Open  ]],
+Cell[3283, 88, 180, 3, 29, "Input",ExpressionUUID->"de87011d-3e83-4d2e-af80-c322095d7933"],
+Cell[CellGroupData[{
+Cell[3488, 95, 644, 13, 55, "ItemNumbered",ExpressionUUID->"51d19d60-5095-4a72-9a0f-895b19ec914f"],
+Cell[4135, 110, 783, 14, 63, "SubitemNumbered",ExpressionUUID->"be3aebc1-5734-4636-8257-f71a61e99abe"]
+}, Open  ]],
+Cell[4933, 127, 178, 3, 29, "Input",ExpressionUUID->"a808f624-6675-4903-bd42-97b289b70fc8"],
+Cell[CellGroupData[{
+Cell[5136, 134, 690, 14, 55, "ItemNumbered",ExpressionUUID->"948ed4d3-7f88-460f-a124-c9978f4eb95d"],
+Cell[5829, 150, 800, 14, 63, "SubitemNumbered",ExpressionUUID->"73583d09-de21-44b6-922c-f4bfd169c1b2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6666, 169, 566, 14, 19, "Input",ExpressionUUID->"936a2d18-9098-4317-b072-a75441ca1f92",
+ CellOpen->False],
+Cell[7235, 185, 423, 11, 59, "Output",ExpressionUUID->"689e3645-e4bb-4b1b-a3ad-2bc32b78f2d4"]
+}, Open  ]]
+}
+]
+*)
+
