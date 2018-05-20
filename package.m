@@ -57,7 +57,7 @@ EsProiezioneAsseX::usage = "esercizio proiezione";
 (* APPLICAZIONI*)
 AltezzaTorre::usage = "applicazione altezza torre";
 DistancePointsApplication::usage = "Distanza fra due punti visibili di cui uno non accessibile";
-puntiInaccessibili::usage ="Distanza fra due punti inaccessibili";
+puntiInaccessibili::usage = "Distanza fra due punti inaccessibili";
 
 (*DEFINIZIONI di GRADO e RADIANTE*)
 defGradi = Text["Consideriamo un angolo giro e dividiamolo in 360 parti congruenti tra loro.
@@ -973,7 +973,7 @@ AltezzaTorre[] :=
           Graphics[{
             img = Import["./assets/torre.png"];
             {LightOrange, Thickness[0.01], Line[{{74, 0}, {74, -40}}]},
-            {LightRed,Triangle[{{x, -40},{74,50},{74,-40}}]},
+            {LightRed, Triangle[{{x, -40}, {74, 50}, {74, -40}}]},
             Inset[img, {75, 7}],
           (*Punto osservatore*)
             {Blue, PointSize[Large], Point[{x, -40}]},
@@ -981,7 +981,7 @@ AltezzaTorre[] :=
             {Green, Thickness[0.01], Line[{{x, -40}, {74, -40}}]},
             dist := computeDistance[x, 0, 70, 0],
             angolo := GetAngolo[90, dist],
-          Line[{{x, -40},{74,50}}],
+            Line[{{x, -40}, {74, 50}}],
             Text[Style[StringForm["Altezza = Distanza x tan(``\[Degree]) = ``m", N[angolo], 300], 15], {-35, 35}],
             Text[Style[StringForm["\!\(\*
 StyleBox[\"\[Alpha]\", \"TradFormChar\"]\): `` \[Degree]", N[angolo]], Red, 15], {-87, 25}],
@@ -1135,7 +1135,7 @@ DistancePointsApplication[] :=
             Text[Style["\n\nSupponiamo di voler calcolare la distanza fra due punti A e B:\nio mi trovo in A ma non posso raggiungere B perch\[EAcute] \[EGrave] al di l\[AAcute]  del fiume.", font, 20]]
           }],
           Row[{
-            Text[Style["Possiamo spostarci in un punto C e calcolare la distanza AC\ned inoltre gli angoli CAB=\[Alpha] e ACB=\[Beta].", font,20]]
+            Text[Style["Possiamo spostarci in un punto C e calcolare la distanza AC\ned inoltre gli angoli CAB=\[Alpha] e ACB=\[Beta].", font, 20]]
           }],
           Text["\n"],
           Row[{
@@ -1258,10 +1258,10 @@ EsRadiantDegree := DynamicModule[{esito = "", colorEsito = Black}, Row[{
 }]
 ];
 
-puntiInaccessibili[] := DynamicModule[{p1={-2,-1}, p2={-0.5,1}, p3={2,1}, p4={0.5,-1}, Esito=""},
+puntiInaccessibili[] := DynamicModule[{p1 = {-2, -1}, p2 = {-0.5, 1}, p3 = {2, 1}, p4 = {0.5, -1}, Esito = ""},
 
   checkRisp[risp_, correct_] := (
-    If[risp == correct, Return[Style["Risposta Corretta", Green, FontFamily->Roboto]], Return[Style["Risposta Errata", Red, FontFamily->Roboto]]]
+    If[risp == correct, Return[Style["Risposta Corretta", Green, FontFamily -> Roboto]], Return[Style["Risposta Errata", Red, FontFamily -> Roboto]]]
   );
 
   esatta = 15;
@@ -1274,127 +1274,127 @@ puntiInaccessibili[] := DynamicModule[{p1={-2,-1}, p2={-0.5,1}, p3={2,1}, p4={0.
             DynamicModule[{},
               Dynamic@Graphics[{
 
-                upperGrass = FilledCurve[{Line[{{-3,0.1},{-3,3}}], Line[{{3,3},{3,0.6}}] }];
-                lowerGrass = FilledCurve[{Line[{{-3,-0.1},{-3,-3}}], Line[{{3,-3}, {3,0.1}}]}];
+                upperGrass = FilledCurve[{Line[{{-3, 0.1}, {-3, 3}}], Line[{{3, 3}, {3, 0.6}}] }];
+                lowerGrass = FilledCurve[{Line[{{-3, -0.1}, {-3, -3}}], Line[{{3, -3}, {3, 0.1}}]}];
                 {Opacity[.3], Green, upperGrass},
                 {Opacity[.3], Green, lowerGrass},
 
               (* Fiume *)
-                {Thickness[0.005], Darker[LightBlue], BezierCurve[{ {-3,0.3}, {-0.8,-0.1}, {0.5,0.8}, {3,0.6}}]},
-                {Thickness[0.005], Darker[LightBlue], BezierCurve[{ {-3,-0.3}, {-0.8,-0.7}, {0.5,0.2}, {3,0}}]},
-                river = BezierCurve[{ {-3,0}, {-0.8,-0.4}, {0.5,0.5}, {3,0.3}}];
+                {Thickness[0.005], Darker[LightBlue], BezierCurve[{ {-3, 0.3}, {-0.8, -0.1}, {0.5, 0.8}, {3, 0.6}}]},
+                {Thickness[0.005], Darker[LightBlue], BezierCurve[{ {-3, -0.3}, {-0.8, -0.7}, {0.5, 0.2}, {3, 0}}]},
+                river = BezierCurve[{ {-3, 0}, {-0.8, -0.4}, {0.5, 0.5}, {3, 0.3}}];
                 {Thickness[0.1], LightBlue, river},
 
               (* Parallelogramma *)
-                l1={Thickness[0.004], Red, Line[{p1,p2}]},
-                l2={Thickness[0.004], Blue, Line[{p2,p3}]},
-                l3={Thickness[0.004], Orange, Line[{p3,p4}]},
-                l4={Thickness[0.004], Line[{p4,p1}]}, (* AC *)
+                l1 = {Thickness[0.004], Red, Line[{p1, p2}]},
+                l2 = {Thickness[0.004], Blue, Line[{p2, p3}]},
+                l3 = {Thickness[0.004], Orange, Line[{p3, p4}]},
+                l4 = {Thickness[0.004], Line[{p4, p1}]}, (* AC *)
               (* Diagonali *)
-                d1={Thickness[0.004], Orange, Line[{p1,p3}]},
-                d2={Thickness[0.004], Red, Line[{p2,p4}]},
+                d1 = {Thickness[0.004], Orange, Line[{p1, p3}]},
+                d2 = {Thickness[0.004], Red, Line[{p2, p4}]},
 
                 {PointSize[0.012], Point[p1], Locator[Dynamic[p1], None]},
                 {PointSize[0.012], Point[p4], Locator[Dynamic[p4], None]},
                 Inset[
                   {With[{x = Last[p1]}, If[x >= -0.4, {p1 = {First[p1], -0.5}}]],
-                    With[{y = First[p1]}, If[y >= First[p4], {p1 = {First[p4]-0.3, Last[p1]}}]],
+                    With[{y = First[p1]}, If[y >= First[p4], {p1 = {First[p4] - 0.3, Last[p1]}}]],
                     With[{w = Last[p4]}, If[w >= -0.4, {p4 = {First[p4], -0.5}}]],
-                    With[{z = First[p4]}, If[z <= First[p1], {p4 = {First[p1]-0.3, Last[p4]}}]]},
-                  {-5,-5}
+                    With[{z = First[p4]}, If[z <= First[p1], {p4 = {First[p1] - 0.3, Last[p4]}}]]},
+                  {-5, -5}
                 ],
-                Style[Text["A", {First[p4], Last[p4]-0.2}], 15],
-                Style[Text[Subscript["\[Alpha]", 1], {First[p4], Last[p4]+0.4}], 15],
-                Style[Text[Subscript["\[Alpha]", 2], {First[p4]-0.2, Last[p4]+0.12}], 12],
-                Style[Text["C", {First[p1], Last[p1]-0.2}], 15],
-                Style[Text[Subscript["\[Gamma]", 1], {First[p1]+0.4, Last[p1]+0.1}], 12],
-                Style[Text[StringForm["``", Subscript["\[Gamma]", 2]], {First[p1]+0.6, Last[p1]+0.5}], 15],
-                {PointSize[0.012], Point[p2], Locator[Dynamic[p2], None, Enabled->False]},
-                Style[Text["\[Beta]", {First[p2]-0.03, Last[p2]-0.3}], 15],
-                Style[Text["B", {First[p2], Last[p2]+0.2}], 15],
-                {PointSize[0.012], Point[p3], Locator[Dynamic[p3], None, Enabled->False]},
-                Style[Text["D", {First[p3], Last[p3]+0.2}], 15],
-                Style[Text["\[Delta]", {First[p3]-0.35, Last[p3]-0.3}], 15],
+                Style[Text["A", {First[p4], Last[p4] - 0.2}], 15],
+                Style[Text[Subscript["\[Alpha]", 1], {First[p4], Last[p4] + 0.4}], 15],
+                Style[Text[Subscript["\[Alpha]", 2], {First[p4] - 0.2, Last[p4] + 0.12}], 12],
+                Style[Text["C", {First[p1], Last[p1] - 0.2}], 15],
+                Style[Text[Subscript["\[Gamma]", 1], {First[p1] + 0.4, Last[p1] + 0.1}], 12],
+                Style[Text[StringForm["``", Subscript["\[Gamma]", 2]], {First[p1] + 0.6, Last[p1] + 0.5}], 15],
+                {PointSize[0.012], Point[p2], Locator[Dynamic[p2], None, Enabled -> False]},
+                Style[Text["\[Beta]", {First[p2] - 0.03, Last[p2] - 0.3}], 15],
+                Style[Text["B", {First[p2], Last[p2] + 0.2}], 15],
+                {PointSize[0.012], Point[p3], Locator[Dynamic[p3], None, Enabled -> False]},
+                Style[Text["D", {First[p3], Last[p3] + 0.2}], 15],
+                Style[Text["\[Delta]", {First[p3] - 0.35, Last[p3] - 0.3}], 15],
 
               (* Visualizzazione ampiezza degli angoli *)
-                Style[Text[StringForm["DCA = `` = ``", Subscript["\[Gamma]", 1], Round[N[getAngle[p1,p3,p4]]*180/Pi]], {1, -2.5}], FontFamily->Roboto, FontSize->18],
-                Style[Text[StringForm["BCA = `` = ``", Subscript["\[Gamma]", 2], Round[N[getAngle[p1,p2,p4]]*180/Pi]], {1, -2.75}], FontFamily->Roboto, FontSize->18],
+                Style[Text[StringForm["DCA = `` = ``", Subscript["\[Gamma]", 1], Round[N[getAngle[p1, p3, p4]] * 180 / Pi]], {1, -2.5}], FontFamily -> Roboto, FontSize -> 18],
+                Style[Text[StringForm["BCA = `` = ``", Subscript["\[Gamma]", 2], Round[N[getAngle[p1, p2, p4]] * 180 / Pi]], {1, -2.75}], FontFamily -> Roboto, FontSize -> 18],
 
-                Style[Text[StringForm["CAD = `` = ``", Subscript["\[Alpha]", 1], Round[N[getAngle[p4,p3,p1]]*180/Pi]], {-1, -2.5}], FontFamily->Roboto, FontSize->18],
-                Style[Text[StringForm["BAC = `` = ``", Subscript["\[Alpha]", 2], Round[N[getAngle[p4,p1,p2]]*180/Pi]], {-1.025, -2.75}], FontFamily->Roboto, FontSize->18],
+                Style[Text[StringForm["CAD = `` = ``", Subscript["\[Alpha]", 1], Round[N[getAngle[p4, p3, p1]] * 180 / Pi]], {-1, -2.5}], FontFamily -> Roboto, FontSize -> 18],
+                Style[Text[StringForm["BAC = `` = ``", Subscript["\[Alpha]", 2], Round[N[getAngle[p4, p1, p2]] * 180 / Pi]], {-1.025, -2.75}], FontFamily -> Roboto, FontSize -> 18],
 
               (* Alpha 1 *)
-                If[First[p4]<=First[p3],
+                If[First[p4] <= First[p3],
                   Circle[p4, 0.5,
                     {
-                      0 + getAngle[p4,p3,{First[p3],Last[p4]}],
-                      0 + getAngle[p4,p3,{First[p3],Last[p4]}] + getAngle[p4,p2,p3] + getAngle[p4,p1,p2]
+                      0 + getAngle[p4, p3, {First[p3], Last[p4]}],
+                      0 + getAngle[p4, p3, {First[p3], Last[p4]}] + getAngle[p4, p2, p3] + getAngle[p4, p1, p2]
                     }
                   ],
                   Circle[p4, 0.5,
                     {
-                      0 + getAngle[p4,p3,{3,Last[p4]}],
-                      0 + getAngle[p4,p3,{3,Last[p4]}] + getAngle[p4,p2,p3] + getAngle[p4,p1,p2]
+                      0 + getAngle[p4, p3, {3, Last[p4]}],
+                      0 + getAngle[p4, p3, {3, Last[p4]}] + getAngle[p4, p2, p3] + getAngle[p4, p1, p2]
                     }
                   ]
                 ],
 
               (* Alpha 2 *)
-                If[First[p4]<=First[p3],
+                If[First[p4] <= First[p3],
                   Circle[p4, 0.35, {
-                    0 + getAngle[p4,p3,{First[p3],Last[p4]}] + getAngle[p4,p2,p3],
-                    0 + getAngle[p4,p3,{First[p3],Last[p4]}] + getAngle[p4,p2,p3] + getAngle[p4,p1,p2]
+                    0 + getAngle[p4, p3, {First[p3], Last[p4]}] + getAngle[p4, p2, p3],
+                    0 + getAngle[p4, p3, {First[p3], Last[p4]}] + getAngle[p4, p2, p3] + getAngle[p4, p1, p2]
                   }
                   ],
                   Circle[p4, 0.35, {
-                    0 + getAngle[p4,p3,{3,Last[p4]}] + getAngle[p4,p2,p3],
-                    0 + getAngle[p4,p3,{3,Last[p4]}] + getAngle[p4,p2,p3] + getAngle[p4,p1,p2]
+                    0 + getAngle[p4, p3, {3, Last[p4]}] + getAngle[p4, p2, p3],
+                    0 + getAngle[p4, p3, {3, Last[p4]}] + getAngle[p4, p2, p3] + getAngle[p4, p1, p2]
                   }
                   ]
 
                 ],
 
               (* Gamma 1 *)
-                If[Last[p1]<=Last[p4],
-                  If[First[p1]<=First[p2],
+                If[Last[p1] <= Last[p4],
+                  If[First[p1] <= First[p2],
                     Circle[p1, 0.35, {
                       0 + getAngle[p1, p4, {First[p2], Last[p1]}],
-                      0 + getAngle[p1, p4, {First[p2], Last[p1]}] + getAngle[p1,p4,p3]
+                      0 + getAngle[p1, p4, {First[p2], Last[p1]}] + getAngle[p1, p4, p3]
                     }
                     ],
                     Circle[p1, 0.35, {
                       0 + getAngle[p1, p4, {3, Last[p1]}],
-                      0 + getAngle[p1, p4, {3, Last[p1]}] + getAngle[p1,p4,p3]
+                      0 + getAngle[p1, p4, {3, Last[p1]}] + getAngle[p1, p4, p3]
                     }
                     ]
                   ],
                   Circle[p1, 0.35,
                     {
-                      3/2*Pi + getAngle[p1, p4, {First[p1], -3}],
-                      3/2*Pi + getAngle[p1, p4, {First[p1], -3}] + getAngle[p1, p3, p4]
+                      3 / 2 * Pi + getAngle[p1, p4, {First[p1], -3}],
+                      3 / 2 * Pi + getAngle[p1, p4, {First[p1], -3}] + getAngle[p1, p3, p4]
                     }
                   ]
                 ],
 
               (* Gamma 2 *)
 
-                If[Last[p1]<=Last[p4],
-                  If[First[p1]<=First[p2],
+                If[Last[p1] <= Last[p4],
+                  If[First[p1] <= First[p2],
                     Circle[p1, 0.5, {
                       0 + getAngle[p1, p4, {First[p2], Last[p1]}],
-                      0 + getAngle[p1, p4, {First[p2], Last[p1]}] + getAngle[p1,p4,p2]
+                      0 + getAngle[p1, p4, {First[p2], Last[p1]}] + getAngle[p1, p4, p2]
                     }
                     ],
                     Circle[p1, 0.5, {
                       0 + getAngle[p1, p4, {3, Last[p1]}],
-                      0 + getAngle[p1, p4, {3, Last[p1]}] + getAngle[p1,p4,p2]
+                      0 + getAngle[p1, p4, {3, Last[p1]}] + getAngle[p1, p4, p2]
                     }
                     ]
                   ],
                   Circle[p1, 0.5,
                     {
-                      3/2*Pi + getAngle[p1, p4, {First[p1], -3}],
-                      3/2*Pi + getAngle[p1, p4, {First[p1], -3}] + getAngle[p1, p2, p4]
+                      3 / 2 * Pi + getAngle[p1, p4, {First[p1], -3}],
+                      3 / 2 * Pi + getAngle[p1, p4, {First[p1], -3}] + getAngle[p1, p2, p4]
                     }
                   ]
                 ]
@@ -1409,16 +1409,16 @@ puntiInaccessibili[] := DynamicModule[{p1={-2,-1}, p2={-0.5,1}, p3={2,1}, p4={0.
     Text["\t"],
     Column[{
       Row[{
-        Style[Text["Determinare la distanza tra due punti B e D entrambi inaccessibili.\nSpostandoci da A a B possiamo considerare ADC ed ABC."], FontFamily->Roboto, FontSize->20]
+        Style[Text["Determinare la distanza tra due punti B e D entrambi inaccessibili.\nSpostandoci da A a B possiamo considerare ADC ed ABC."], FontFamily -> Roboto, FontSize -> 20]
       }],
       Text["\n"],
       Row[{
         Column[{
-          Style[Text["Di ADC conosciamo:\n- la misura di AC\n- l'angolo DAC = \[Alpha]1\n- l'angolo DCA = \[Gamma]1\n"], FontFamily->Roboto, FontSize->20]
+          Style[Text["Di ADC conosciamo:\n- la misura di AC\n- l'angolo DAC = \[Alpha]1\n- l'angolo DCA = \[Gamma]1\n"], FontFamily -> Roboto, FontSize -> 20]
         }],
         Text["\t\t"],
         Column[{
-          Style[Text["Di ABC conosciamo:\n- la misura di AC\n- l'angolo BAC = \[Alpha]2\n- l'angolo BCA = \[Gamma]2\n"], FontFamily->Roboto, FontSize->20]
+          Style[Text["Di ABC conosciamo:\n- la misura di AC\n- l'angolo BAC = \[Alpha]2\n- l'angolo BCA = \[Gamma]2\n"], FontFamily -> Roboto, FontSize -> 20]
         }]
       }],
       Row[{
@@ -1427,7 +1427,7 @@ puntiInaccessibili[] := DynamicModule[{p1={-2,-1}, p2={-0.5,1}, p3={2,1}, p4={0.
             TextCell["L'angolo \[Delta]=CDA si ricava dalla differenza \ntra la somma totale degli angoli interni \ne i due angoli dati \n(stessa cosa vale per \[Beta]=CBA)"],
             DefaultButton[]
           }],
-          ImageSize->Medium,BaseStyle->{"GenericButton"}
+          ImageSize -> Medium, BaseStyle -> {"GenericButton"}
         ],
         Text["   "],
         Button["Calcolare AD e AB",
@@ -1435,7 +1435,7 @@ puntiInaccessibili[] := DynamicModule[{p1={-2,-1}, p2={-0.5,1}, p3={2,1}, p4={0.
             TextCell["AD e AB si ricavano applicando il teorema dei seni:\n\tAD = (AC sin\[Gamma]1)/sin\[Delta]\n\tAB = (AC sin\[Gamma])/sin\[Beta]"],
             DefaultButton[]
           }],
-          ImageSize->Medium,BaseStyle->{"GenericButton"}
+          ImageSize -> Medium, BaseStyle -> {"GenericButton"}
         ],
         Text["   "],
         Button["Calcolare BD",
@@ -1443,70 +1443,70 @@ puntiInaccessibili[] := DynamicModule[{p1={-2,-1}, p2={-0.5,1}, p3={2,1}, p4={0.
             TextCell["È possibile calcolare la lunghezza di BD applicando Carnot:\n\n\tBD = \[Sqrt]AB+AD-2*AB*AD*cos(α1-α2)"],
             DefaultButton[]
           }],
-          ImageSize->Medium,BaseStyle->{"GenericButton"}
+          ImageSize -> Medium, BaseStyle -> {"GenericButton"}
         ],
         Text["\n"]
       }],
       Row[{
         Column[{
           Row[{
-            Style[Text["Esempio"], FontFamily->Roboto, 20]
+            Style[Text["Esempio"], FontFamily -> Roboto, 20]
           }],
           Row[{
-            Style[Text["- AC = 20m"], FontFamily->Roboto, 15]
+            Style[Text["- AC = 20m"], FontFamily -> Roboto, 15]
           }],
           Row[{
-            Style[Text[StringForm["- CAD = `` = 100\[Degree]", Subscript["\[Alpha]", 1]]], FontFamily->Roboto, 15]
+            Style[Text[StringForm["- CAD = `` = 100\[Degree]", Subscript["\[Alpha]", 1]]], FontFamily -> Roboto, 15]
           }],
           Row[{
-            Style[Text[StringForm["- DCA = `` = 50\[Degree]", Subscript["\[Gamma]", 1]]], FontFamily->Roboto, 15]
+            Style[Text[StringForm["- DCA = `` = 50\[Degree]", Subscript["\[Gamma]", 1]]], FontFamily -> Roboto, 15]
           }],
           Row[{
-            Style[Text[StringForm["- BAC = `` = 60\[Degree]", Subscript["\[Alpha]", 2]]], FontFamily->Roboto, 15]
+            Style[Text[StringForm["- BAC = `` = 60\[Degree]", Subscript["\[Alpha]", 2]]], FontFamily -> Roboto, 15]
           }],
           Row[{
-            Style[Text[StringForm["- BCA = `` = 70\[Degree]", Subscript["\[Gamma]", 2]]], FontFamily->Roboto, 15]
+            Style[Text[StringForm["- BCA = `` = 70\[Degree]", Subscript["\[Gamma]", 2]]], FontFamily -> Roboto, 15]
           }]
         }],
         Text["\t\t"],
         Column[{
           Row[{
-            Style[Text[""], FontFamily->Roboto, 15]
+            Style[Text[""], FontFamily -> Roboto, 15]
           }],
           Row[{
-            Style[Text["Quanto misura BD?"], FontFamily->Roboto, 15]
+            Style[Text["Quanto misura BD?"], FontFamily -> Roboto, 15]
           }],
           Row[{
-            Style[Text[" "], FontFamily->Roboto, 15]
+            Style[Text[" "], FontFamily -> Roboto, 15]
           }],
           Row[{
             Column[{
               Row[{
-                Button["10m", Esito:=checkRisp[10, esatta]]
+                Button["10m", Esito := checkRisp[10, esatta]]
               }]
             }],
             Column[{
               Row[{
-                Button["15m", Esito:=checkRisp[15, esatta]]
+                Button["15m", Esito := checkRisp[15, esatta]]
               }]
             }],
             Column[{
               Row[{
-                Button["25m", Esito:=checkRisp[25, esatta]]
+                Button["25m", Esito := checkRisp[25, esatta]]
               }]
             }],
             Column[{
               Row[{
-                Button["40m", Esito:=checkRisp[40, esatta]]
+                Button["40m", Esito := checkRisp[40, esatta]]
               }]
             }]
           }],
           Row[{
-            Style[Text[""], FontFamily->Roboto, 15]
+            Style[Text[""], FontFamily -> Roboto, 15]
           }],
-          Style[Dynamic[Esito],20],
+          Style[Dynamic[Esito], 20],
           Row[{
-            Style[Text[""], FontFamily->Roboto, 15]
+            Style[Text[""], FontFamily -> Roboto, 15]
           }]
         }]
       }]
