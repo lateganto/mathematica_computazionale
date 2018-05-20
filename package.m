@@ -204,17 +204,19 @@ DisegnaCirconferenzaInit[] := Graphics[{
   PlotRange -> {{-1, 1.4}, {-1, 1.4}}
 ];
 
+
 EsSin[] := DynamicModule[{esitoSin = "", colorEsitoSin = ""},
-  checkRisp[risp_, correct_] := (
-    If[risp == correct, Return["Risposta Corretta"], Return["Risposta Sbagliata"]]
-  );
+(* Viene usata la Dynamic per mostrare l'esito (CORRETTO o SBAGLIATO) del valore inserito dall'utente con un colore diverso (VERDE o ROSSO)*)
   Row[{
-    random = RandomSample[angleList, 1];
+    random = RandomSample[angleList, 1]; (*Prende un valore a caso dalla lista degli angoli, di tale angolo verrà mostrato seno e coseno*)
     x = random[[1]] Degree;
-    sinCosList2 = DeleteCases[sinCosList, Cos[x]];
-    sinCosList2 = DeleteCases[sinCosList2, Sin[x]];
+    sinCosList2 = DeleteCases[sinCosList2, Sin[x]]; (*Cancella dalla lista dei risultati il valore del seno*)
+
+    (*Calcola valore del seno e del coseno per mostrare il grafico della circonferenza goniometrica*)
     sin = Sin[x];
     cos = Cos[x];
+
+    (*Mostra la circonferenza unitaria con valore di seno e coseno*)
     Graphics[{
       Circle[],
       Point[{0, 0}],
@@ -235,26 +237,34 @@ EsSin[] := DynamicModule[{esitoSin = "", colorEsitoSin = ""},
     ] (*FINE GRAPHICS*),
     Row[{
       Column[{
+      (*Mostra un alert con un'indicazione se si preme il pulsante Aiuto*)
         Button["Aiuto",
           CreateDialog[{
-            TextCell["l'ordinata del punto P"],
+            TextCell["L'ordinata del punto P"],
             DefaultButton[]
           }],
           ImageSize -> Medium, BaseStyle -> {"GenericButton"}
         ],
 
+      (*Pulsante aggiorna con un nuovo esercizio*)
         Button["Nuovo Esercizio", FrontEndExecute[FrontEndToken[NotebookLocate["EsSin"], "Evaluate"]], ImageSize -> Medium, BaseStyle -> {"GenericButton"}],
+
+      (*Vengono scelte dalla lista tre soluzioni errate in maniera randomica*)
         incorrects = RandomSample[sinCosList2, 3];
         btn1 = Button[Style[Rationalize[Sin[x]], 15], {esitoSin := "Corretto!", colorEsitoSin := Green}];
         btn2 = Button[Style[Rationalize[incorrects[[1]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
         btn3 = Button[Style[Rationalize[incorrects[[2]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
         btn4 = Button[Style[Rationalize[incorrects[[3]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
 
+        (*I pulsanti creati prima vengono rimescolati per rendere l'esercizio ancora più casuale*)
         buttons = List[btn1, btn2, btn3, btn4];
         randomButtons = RandomSample[buttons];
 
+        (*Qui viene mostrato l'esito, diverso ogni volta in base a quale pulsante si preme*)
         Dynamic[Text[Style[esitoSin, colorEsitoSin, 15]]],
         Style["Seleziona il valore del seno:", font, 15],
+
+      (*Vengono richiamati i pulsanti creati precedentemente*)
         randomButtons[[1]],
         randomButtons[[2]],
         randomButtons[[3]],
@@ -265,18 +275,17 @@ EsSin[] := DynamicModule[{esitoSin = "", colorEsitoSin = ""},
 ];
 
 EsCos[] := DynamicModule[{esitoCos = "", colorEsitoCos = ""},
-  checkRisp[risp_, correct_] := (
-    If[risp == correct, Return["Risposta Corretta"], Return["Risposta Sbagliata"]]
-  );
+(* Viene usata la Dynamic per mostrare l'esito (CORRETTO o SBAGLIATO) del valore inserito dall'utente con un colore diverso (VERDE o ROSSO)*)
   Row[{
-    random = RandomSample[angleList, 1];
+    random = RandomSample[angleList, 1]; (*Prende un valore a caso dalla lista degli angoli, di tale angolo verrà mostrato seno e coseno*)
     x = random[[1]] Degree;
-    sinCosList2 = DeleteCases[sinCosList, Cos[x]];
-    sinCosList2 = DeleteCases[sinCosList2, Sin[x]];
+    sinCosList2 = DeleteCases[sinCosList, Cos[x]]; (*Cancella dalla lista dei risultati il valore del seno*)
 
+    (*Calcola valore del seno e del coseno per mostrare il grafico della circonferenza goniometrica*)
     sin = Sin[x];
     cos = Cos[x];
 
+    (*Mostra la circonferenza unitaria con valore di seno e coseno*)
     Graphics[{
       Circle[],
       Point[{0, 0}],
@@ -297,7 +306,7 @@ EsCos[] := DynamicModule[{esitoCos = "", colorEsitoCos = ""},
     ] (*FINE GRAPHICS*),
     Row[{
       Column[{
-
+      (*Mostra un alert con un'indicazione se si preme il pulsante Aiuto*)
         Button["Aiuto",
           CreateDialog[{
             TextCell["l'ascissa del punto P"],
@@ -305,19 +314,26 @@ EsCos[] := DynamicModule[{esitoCos = "", colorEsitoCos = ""},
           }],
           ImageSize -> Medium, BaseStyle -> {"GenericButton"}
         ],
-        incorrects = RandomSample[sinCosList2, 3];
 
+      (*Vengono scelte dalla lista tre soluzioni errate in maniera randomica*)
+        incorrects = RandomSample[sinCosList2, 3];
         btn5 = Button[Style[Rationalize[Cos[x]], 15], {esitoCos := "Corretto!", colorEsitoCos := Green}];
         btn6 = Button[Style[Rationalize[incorrects[[1]]], 15], {esitoCos := "Sbagliato!", colorEsitoCos := Red}];
         btn7 = Button[Style[Rationalize[incorrects[[2]]], 15], {esitoCos := "Sbagliato!", colorEsitoCos := Red}];
         btn8 = Button[Style[Rationalize[incorrects[[3]]], 15], {esitoCos := "Sbagliato!", colorEsitoCos := Red}];
 
+        (*I pulsanti creati prima vengono rimescolati per rendere l'esercizio ancora più casuale*)
         buttons = List[btn5, btn6, btn7, btn8];
         randomButtons = RandomSample[buttons];
+
+        (*Pulsante aggiorna con un nuovo esercizio*)
         Button["Nuovo Esercizio", FrontEndExecute[FrontEndToken[NotebookLocate["EsCos"], "Evaluate"]], ImageSize -> Medium, BaseStyle -> {"GenericButton"}],
 
+      (*Qui viene mostrato l'esito, diverso ogni volta in base a quale pulsante si preme*)
         Dynamic[Text[Style[esitoCos, colorEsitoCos, 15]]],
         Style["Seleziona il valore del coseno:", font, 15],
+
+      (*Vengono richiamati i pulsanti creati precedentemente*)
         randomButtons[[1]],
         randomButtons[[2]],
         randomButtons[[3]],
@@ -714,75 +730,88 @@ EsDistanze[] := Quiet[DynamicModule[{x1, y1, x2, y2, Esito = ""},
 ListaAngoliAssociati60 := {\[Pi] / 3, 2 \[Pi] / 3, 4 \[Pi] / 3, 5 \[Pi] / 3};
 AngoliAssociati60[] := Manipulate[
   Row[{
+  (*Grafico che mostra la circonferenza con i valori degli angoli associati*)
+    Graphics[{
+    (*Prende il valore dell'angolo 60°*)
+      angle := ListaAngoliAssociati60[[1]];
+      (*Mostra il valore in gradi dell'angolo 60° vicino al punto in cui si trova sulla circonferenza unitaria*)
+      Text[Style[angle 180 / Pi Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}],
+
+    (*Associa la funzione definita tra parentesi graffe alla lista di coppie definita sotto (dove ogni coppia rappresenta l'intervallo che definisce uno spicchio nella circonferenza)*)
+      MapIndexed[
+      (*la funzione permette di vedere i vari spicchi con un colore diverso e con il relativo valore in gradi dell'angolo di partenza e di arrivo.
+      Vengono utilizzati dei parametri per indicare ogni coppia*)
+        {ColorData[100][0],
+          ColorData[100][First@#2 + 50], (*Permette di prendere ogni volta un colore diverso per ogni spicchio della circonferenza; tale colore viene applicato anche al valore testuale dell'angolo*)
+          Text[Style[Last@# 180 / Pi Degree, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}], (*Mostra un testo con il valore dell'angolo*)
+          Disk[{0, 0}, 1, #]}&, (*Mostra uno spicchio (fetta) della circonferenza basato sulle coppie definite nella lista sotto*)
+
+      (*Crea una lista con tutte le coppie di due elementi con offset 1 dalla lista degli angoli, ossia l'ampiezza degli spicchi, e poi prende i primi n elementi*)
+        Take[Partition[ListaAngoliAssociati60, 2, 1], n]]},
+      PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400 (*Definisce il range di coordinate da includere nel plot*)
+    ],
+    Column[{"\t\t"}], (*Crea lo spazio tra il disegno e la parte testuale*)
+
+  (*Qui vengono mostrati i valori degli angoli associati.
+  Vengono presi tutti gli angoli presenti in "ListaAngoliAssociati60" e vengono mostrate le realzioni nei valori di seno e coseno.*)
     Column[{
-      Row[{
-        Graphics[{
-          angle := ListaAngoliAssociati60[[1]];
-          Text[Style[angle 180 / Pi Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}],
-          MapIndexed[{
-            ColorData[100][0],
-            ColorData[100][First@#2 + 50],
-            Text[Style[Last@# 180 / Pi Degree, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
-            Disk[{0, 0}, 1, #]}&,
-            Take[Partition[ListaAngoliAssociati60, 2, 1], n]]},
-          PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400
-        ],
-        Column[{"\t\t"}],
-        Column[{
-          Lista = ListaAngoliAssociati60;
-          AngoloRif = Lista[[1]];
-          AngoloGrad = AngoloRif 180 / Pi Degree;
-          Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
+      Lista = ListaAngoliAssociati60;
+      AngoloRif = Lista[[1]];
+      AngoloGrad = AngoloRif 180 / Pi Degree;
+      Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]],
-          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
+      Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]],
+      Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
+      Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]],
+      Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n"
-        }]
-
-      }]
+      Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]],
+      Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n"
     }]
   }],
-  {{n, 3, "Angolo"}, 0, 3, 1 }
+  {{n, 3, "Angolo"}, 0, Length[ListaAngoliAssociati60] - 1, 1 }
 ];
 
 ListaAngoliAssociati0 := {0, \[Pi] / 2, \[Pi], 3 \[Pi] / 2, 2 \[Pi]};
 AngoliAssociati0[] := Manipulate[
   Row[{
+    (*Grafico che mostra la circonferenza con i valori degli angoli associati*)
+    Graphics[{
+      (*Prende il valore dell'angolo 0°*)
+      angle := ListaAngoliAssociati0[[1]];
+      (*Mostra il valore in gradi dell'angolo 0° vicino al punto in cui si trova sulla circonferenza unitaria solo se non si è arrivati a quello di 360°*)
+      If[n < 4, Text[Style[angle Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}]],
+
+      (*Associa la funzione definita tra parentesi graffe alla lista di coppie definita sotto*)
+      MapIndexed[
+        (*la funzione permette di vedere i vari spicchi con un colore diverso e con il relativo valore in gradi dell'angolo di partenza e di arrivo.
+        Vengono utilizzati dei parametri per indicare ogni coppia*)
+        {ColorData[100][0],
+        ColorData[100][First@#2 + 50], (*Permette di prendere ogni volta un colore diverso per ogni spicchio della circonferenza; tale colore viene applicato anche al valore testuale dell'angolo*)
+        Text[Style[Last@# 180 / Pi, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}], (*Mostra un testo con il valore dell'angolo*)
+        Disk[{0, 0}, 1, #]}&, (*Mostra uno spicchio (fetta) della circonferenza basato sulle coppie definite nella lista sotto*)
+
+        (*Crea una lista con tutte le coppie di due elementi con offset 1 dalla lista degli angoli, ossia l'ampiezza degli spicchi, e poi prende i primi n elementi*)
+        Take[Partition[ListaAngoliAssociati0, 2, 1], n]]},
+      PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400
+    ],
+    Column[{"\t\t"}], (*Crea lo spazio tra il disegno e la parte testuale*)
+
+    (*Qui vengono mostrati i valori degli angoli associati.
+    Vengono presi tutti gli angoli presenti in "ListaAngoliAssociati60" e vengono mostrate le realzioni nei valori di seno e coseno.*)
     Column[{
-      Row[{
-        Graphics[{
-          If[n == 5, val := 5;, val := 1;];
-          angle := ListaAngoliAssociati0[[val]];
-          If[n < 4, Text[Style[angle Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}]],
-          MapIndexed[{
-            ColorData[100][0],
-            ColorData[100][First@#2 + 50],
-            Text[Style[Last@# 180 / Pi, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
-            Disk[{0, 0}, 1, #]}&,
-            Take[Partition[ListaAngoliAssociati0, 2, 1], n]]},
-          PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400
-        ],
-        Column[{"\t\t"}],
-        Column[{
-          AngoloRif = ListaAngoliAssociati0[[1]];
-          AngoloGrad = AngoloRif 180 / Pi Degree;
-          Text[Style[StringForm["Cos(``) = ``, Sin(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
-          Text[Style["Cos(90) = Sen(0)\nSen(90) = Cos(0)", font, 20]], "\n",
-          Text[Style["Cos(180) = -Cos(0)\nSen(180) = Sen(0)", font, 20]], "\n",
-          Text[Style["Cos(270) = Sen(0)\nSen(270) = -Cos(0)", font, 20]], "\n",
-          Text[Style["Cos(360) = Cos(0)\nSen(360) = Cos(0)", font, 20]]
+      AngoloRif = ListaAngoliAssociati0[[1]];
+      AngoloGrad = AngoloRif 180 / Pi Degree;
+      Text[Style[StringForm["Cos(``) = ``, Sin(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
+      Text[Style["Cos(90) = Sen(0)\nSen(90) = Cos(0)", font, 20]], "\n",
+      Text[Style["Cos(180) = -Cos(0)\nSen(180) = Sen(0)", font, 20]], "\n",
+      Text[Style["Cos(270) = Sen(0)\nSen(270) = -Cos(0)", font, 20]], "\n",
+      Text[Style["Cos(360) = Cos(0)\nSen(360) = Cos(0)", font, 20]]
 
-        }]
-
-      }]
     }]
   }],
-  {{n, 4, "Angolo"}, 0, 4, 1 }
+  {{n, 4, "Angolo"}, 0, Length[ListaAngoliAssociati0] - 1, 1 }
 ];
 
 ListaAngoliAssociati30 := {\[Pi] / 6, 5 \[Pi] / 6, 7 \[Pi] / 6, 11 \[Pi] / 6};
@@ -791,17 +820,28 @@ AngoliAssociati30[] := Manipulate[
     Column[{
       Row[{
         Graphics[{
+        (*Prende il valore dell'angolo 30°*)
           angle := ListaAngoliAssociati30[[1]];
+          (*Mostra il valore in gradi dell'angolo 30° vicino al punto in cui si trova sulla circonferenza unitaria*)
           Text[Style[angle 180 / Pi Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}],
-          MapIndexed[{
-            ColorData[100][0],
-            ColorData[100][First@#2 + 50],
-            Text[Style[Last@# 180 / Pi Degree, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
-            Disk[{0, 0}, 1, #]}&,
+
+        (*Associa la funzione definita tra parentesi graffe alla lista di coppie definita sotto (dove ogni coppia rappresenta l'intervallo che definisce uno spicchio nella circonferenza)*)
+          MapIndexed[
+          (*la funzione permette di vedere i vari spicchi con un colore diverso e con il relativo valore in gradi dell'angolo di partenza e di arrivo.
+    Vengono utilizzati dei parametri per indicare ogni coppia*)
+            {ColorData[100][0],
+              ColorData[100][First@#2 + 50], (*Permette di prendere ogni volta un colore diverso per ogni spicchio della circonferenza; tale colore viene applicato anche al valore testuale dell'angolo*)
+              Text[Style[Last@# 180 / Pi Degree, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}], (*Mostra un testo con il valore dell'angolo*)
+              Disk[{0, 0}, 1, #]}&, (*Mostra uno spicchio (fetta) della circonferenza basato sulle coppie definite nella lista sotto*)
+
+          (*Crea una lista con tutte le coppie di due elementi con offset 1 dalla lista degli angoli, ossia l'ampiezza degli spicchi, e poi prende i primi n elementi*)
             Take[Partition[ListaAngoliAssociati30, 2, 1], n]]},
-          PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400
+          PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400 (*Definisce il range di coordinate da includere nel plot*)
         ],
-        Column[{"\t\t"}],
+        Column[{"\t\t"}], (*Crea lo spazio tra il disegno e la parte testuale*)
+
+        (*Qui vengono mostrati i valori degli angoli associati.
+        Vengono presi tutti gli angoli presenti in "ListaAngoliAssociati60" e vengono mostrate le realzioni nei valori di seno e coseno.*)
         Column[{
           Lista = ListaAngoliAssociati30;
           AngoloRif = Lista[[1]];
@@ -827,37 +867,46 @@ AngoliAssociati30[] := Manipulate[
 ListaAngoliAssociati45 := {\[Pi] / 4, 3 \[Pi] / 4, 5 \[Pi] / 4, 7 \[Pi] / 4};
 AngoliAssociati45[] := Manipulate[
   Row[{
+
+    (*Grafico che mostra la circonferenza con i valori degli angoli associati*)
+    Graphics[{
+
+      (*Prende il valore dell'angolo 45°*)
+      angle := ListaAngoliAssociati45[[1]];
+      (*Mostra il valore in gradi dell'angolo 60° vicino al punto in cui si trova sulla circonferenza unitaria*)
+      Text[Style[angle 180 / Pi Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}],
+
+      (*Associa la funzione definita tra parentesi graffe alla lista di coppie definita sotto (dove ogni coppia rappresenta l'intervallo che definisce uno spicchio nella circonferenza)*)
+      MapIndexed[
+        (*la funzione permette di vedere i vari spicchi con un colore diverso e con il relativo valore in gradi dell'angolo di partenza e di arrivo.
+        Vengono utilizzati dei parametri per indicare ogni coppia*)
+        {ColorData[100][0],
+        ColorData[100][First@#2 + 50], (*Permette di prendere ogni volta un colore diverso per ogni spicchio della circonferenza; tale colore viene applicato anche al valore testuale dell'angolo*)
+        Text[Style[Last@# 180 / Pi Degree, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}], (*Mostra un testo con il valore dell'angolo*)
+        Disk[{0, 0}, 1, #]}&,  (*Mostra uno spicchio (fetta) della circonferenza basato sulle coppie definite nella lista sotto*)
+
+        (*Crea una lista con tutte le coppie di due elementi con offset 1 dalla lista degli angoli, ossia l'ampiezza degli spicchi, e poi prende i primi n elementi*)
+        Take[Partition[ListaAngoliAssociati45, 2, 1], n]]},
+      PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400  (*Definisce il range di coordinate da includere nel plot*)
+    ],
+    Column[{"\t\t"}],  (*Crea lo spazio tra il disegno e la parte testuale*)
+
+    (*Qui vengono mostrati i valori degli angoli associati.
+    Vengono presi tutti gli angoli presenti in "ListaAngoliAssociati60" e vengono mostrate le realzioni nei valori di seno e coseno.*)
     Column[{
-      Row[{
-        Graphics[{
-          angle := ListaAngoliAssociati45[[1]];
-          Text[Style[angle 180 / Pi Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}],
-          MapIndexed[{
-            ColorData[100][0],
-            ColorData[100][First@#2 + 50],
-            Text[Style[Last@# 180 / Pi Degree, 15, Bold], {1.2 Cos[Last[#]], 1.2 Sin[Last[#]]}],
-            Disk[{0, 0}, 1, #]}&,
-            Take[Partition[ListaAngoliAssociati45, 2, 1], n]]},
-          PlotRange -> {{-1.3, 1.3}, {-1.5, 1.5}}, ImageSize -> 400
-        ],
-        Column[{"\t\t"}],
-        Column[{
-          Lista = ListaAngoliAssociati45;
-          AngoloRif = Lista[[1]];
-          AngoloGrad = AngoloRif 180 / Pi Degree;
-          Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
+      Lista = ListaAngoliAssociati45;
+      AngoloRif = Lista[[1]];
+      AngoloGrad = AngoloRif 180 / Pi Degree;
+      Text[Style[StringForm["Cos(``) = ``, Sen(``) = ``", AngoloGrad, Cos[AngoloRif], AngoloGrad, Sin[AngoloRif]], 25, Bold]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]],
-          Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
+      Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]],
+      Text[Style[StringForm["Sen(``) = Sen(``)", Lista[[2]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
+      Text[Style[StringForm["Cos(``) = -Cos(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]],
+      Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[3]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n",
 
-          Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]],
-          Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n"
-        }]
-
-      }]
+      Text[Style[StringForm["Cos(``) = Cos(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]],
+      Text[Style[StringForm["Sen(``) = -Sen(``)", Lista[[4]] 180 / Pi Degree, AngoloGrad], font, 20]], "\n"
     }]
   }],
   {{n, 3, "Angolo"}, 0, 3, 1 }
