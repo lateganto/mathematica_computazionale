@@ -1,35 +1,32 @@
 (* ::Package:: *)
 
-(* ::Input:: *)
-(*(* PACKAGE.M*)
-(* * Progetto d'esame di Matematica Computazionale + Calcolo Numerico e Software Didattico*)
-(* * Corsi di laurea magistrale in Informatica e Matematica*)
-(* * Anno accademico 2017/2018*)
-(* *)
-(* * Autori:
-  Virginia Spaccessi,
-  Federico Cappelli,
-  Antonio Lategano,
-  Salvatore Visaggi,
-  Davide Montanari,
-  Antonio Conteduca
-
-*)
-(* *   *)
-(* **)
-(* * Versione di sviluppo: Wolfram Mathematica 11.1*)
-(* * Versione di testing: Wolfram Mathematica 11.1 (Windows), 11.0 (Windows) e 10.2 (Debian)*)
-(* *)*)
-(**)
+(* PACKAGE.M
+ * Progetto d'esame di Matematica Computazionale + Calcolo Numerico e Software Didattico
+ * Corsi di laurea magistrale in Informatica e Matematica
+ * Anno accademico 2017/2018
+ * 
+ * Autori:
+ *  Virginia Spaccessi,
+ *  Federico Cappelli,
+ *  Antonio Lategano,
+ *  Salvatore Visaggi,
+ *  Davide Montanari,
+ *  Antonio Conteduca
+ * Versione di sviluppo: Wolfram Mathematica 11.1
+ * Versione di testing: Wolfram Mathematica 11.1 (Windows), 11.0 (MacOs) 
+ *)
 
 
 BeginPackage[ "ProvaProgetto`"];
 Unprotect["ProvaProgetto` *"] (* toglie temporaneamente la protezione per ridefinire le funzioni *)
 ClearAll["ProvaProgetto` *"];
 
+
+
 (* ::InheritFromParent:: *)
-(**)
 (*  TEORIA  *)
+
+
 DisegnaCirconferenza::usage = "disegna circ goniometrica con funzioni di seno e coseno";
 DisegnaCirconferenzaInit::usage = "grafico della circ goniometrica";
 DisegnaPianoCartesiano::usage = "disegna assi";
@@ -80,8 +77,12 @@ pointListTwo = List[{2, 0}, {-9, 5}, {-10, 7}, {5, 2}, {-5, 4}, {-8, -5}, {2, 9}
 angleList = List[0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330, 360];
 sinCosList = List[0, 1, -1, 1 / 2, -1 / 2, Sqrt[2] / 2, -Sqrt[2] / 2, Sqrt[3] / 2, -Sqrt[3] / 2];
 
+
+
 (* ::InheritFromParent:: *)
 (**)
+
+
 font = FontFamily -> "Helvetica";
 
 ThTriangoliUno[] := Row[{
@@ -208,7 +209,7 @@ DisegnaCirconferenzaInit[] := Graphics[{
 EsSin[] := DynamicModule[{esitoSin = "", colorEsitoSin = ""},
 (* Viene usata la Dynamic per mostrare l'esito (CORRETTO o SBAGLIATO) del valore inserito dall'utente con un colore diverso (VERDE o ROSSO)*)
   Row[{
-    random = RandomSample[angleList, 1]; (*Prende un valore a caso dalla lista degli angoli, di tale angolo verrà mostrato seno e coseno*)
+    random = RandomSample[angleList, 1]; (*Prende un valore a caso dalla lista degli angoli, di tale angolo verr\[AGrave] mostrato seno e coseno*)
     x = random[[1]] Degree;
     sinCosList2 = DeleteCases[sinCosList2, Sin[x]]; (*Cancella dalla lista dei risultati il valore del seno*)
 
@@ -256,7 +257,7 @@ EsSin[] := DynamicModule[{esitoSin = "", colorEsitoSin = ""},
         btn3 = Button[Style[Rationalize[incorrects[[2]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
         btn4 = Button[Style[Rationalize[incorrects[[3]]], 15], {esitoSin := "Sbagliato!", colorEsitoSin := Red}];
 
-        (*I pulsanti creati prima vengono rimescolati per rendere l'esercizio ancora più casuale*)
+        (*I pulsanti creati prima vengono rimescolati per rendere l'esercizio ancora pi\[UGrave] casuale*)
         buttons = List[btn1, btn2, btn3, btn4];
         randomButtons = RandomSample[buttons];
 
@@ -277,7 +278,7 @@ EsSin[] := DynamicModule[{esitoSin = "", colorEsitoSin = ""},
 EsCos[] := DynamicModule[{esitoCos = "", colorEsitoCos = ""},
 (* Viene usata la Dynamic per mostrare l'esito (CORRETTO o SBAGLIATO) del valore inserito dall'utente con un colore diverso (VERDE o ROSSO)*)
   Row[{
-    random = RandomSample[angleList, 1]; (*Prende un valore a caso dalla lista degli angoli, di tale angolo verrà mostrato seno e coseno*)
+    random = RandomSample[angleList, 1]; (*Prende un valore a caso dalla lista degli angoli, di tale angolo verr\[AGrave] mostrato seno e coseno*)
     x = random[[1]] Degree;
     sinCosList2 = DeleteCases[sinCosList, Cos[x]]; (*Cancella dalla lista dei risultati il valore del seno*)
 
@@ -322,7 +323,7 @@ EsCos[] := DynamicModule[{esitoCos = "", colorEsitoCos = ""},
         btn7 = Button[Style[Rationalize[incorrects[[2]]], 15], {esitoCos := "Sbagliato!", colorEsitoCos := Red}];
         btn8 = Button[Style[Rationalize[incorrects[[3]]], 15], {esitoCos := "Sbagliato!", colorEsitoCos := Red}];
 
-        (*I pulsanti creati prima vengono rimescolati per rendere l'esercizio ancora più casuale*)
+        (*I pulsanti creati prima vengono rimescolati per rendere l'esercizio ancora pi\[UGrave] casuale*)
         buttons = List[btn5, btn6, btn7, btn8];
         randomButtons = RandomSample[buttons];
 
@@ -732,9 +733,9 @@ AngoliAssociati60[] := Manipulate[
   Row[{
   (*Grafico che mostra la circonferenza con i valori degli angoli associati*)
     Graphics[{
-    (*Prende il valore dell'angolo 60°*)
+    (*Prende il valore dell'angolo 60\[Degree]*)
       angle := ListaAngoliAssociati60[[1]];
-      (*Mostra il valore in gradi dell'angolo 60° vicino al punto in cui si trova sulla circonferenza unitaria*)
+      (*Mostra il valore in gradi dell'angolo 60\[Degree] vicino al punto in cui si trova sulla circonferenza unitaria*)
       Text[Style[angle 180 / Pi Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}],
 
     (*Associa la funzione definita tra parentesi graffe alla lista di coppie definita sotto (dove ogni coppia rappresenta l'intervallo che definisce uno spicchio nella circonferenza)*)
@@ -778,9 +779,9 @@ AngoliAssociati0[] := Manipulate[
   Row[{
     (*Grafico che mostra la circonferenza con i valori degli angoli associati*)
     Graphics[{
-      (*Prende il valore dell'angolo 0°*)
+      (*Prende il valore dell'angolo 0\[Degree]*)
       angle := ListaAngoliAssociati0[[1]];
-      (*Mostra il valore in gradi dell'angolo 0° vicino al punto in cui si trova sulla circonferenza unitaria solo se non si è arrivati a quello di 360°*)
+      (*Mostra il valore in gradi dell'angolo 0\[Degree] vicino al punto in cui si trova sulla circonferenza unitaria solo se non si \[EGrave] arrivati a quello di 360\[Degree]*)
       If[n < 4, Text[Style[angle Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}]],
 
       (*Associa la funzione definita tra parentesi graffe alla lista di coppie definita sotto*)
@@ -820,9 +821,9 @@ AngoliAssociati30[] := Manipulate[
     Column[{
       Row[{
         Graphics[{
-        (*Prende il valore dell'angolo 30°*)
+        (*Prende il valore dell'angolo 30\[Degree]*)
           angle := ListaAngoliAssociati30[[1]];
-          (*Mostra il valore in gradi dell'angolo 30° vicino al punto in cui si trova sulla circonferenza unitaria*)
+          (*Mostra il valore in gradi dell'angolo 30\[Degree] vicino al punto in cui si trova sulla circonferenza unitaria*)
           Text[Style[angle 180 / Pi Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}],
 
         (*Associa la funzione definita tra parentesi graffe alla lista di coppie definita sotto (dove ogni coppia rappresenta l'intervallo che definisce uno spicchio nella circonferenza)*)
@@ -871,9 +872,9 @@ AngoliAssociati45[] := Manipulate[
     (*Grafico che mostra la circonferenza con i valori degli angoli associati*)
     Graphics[{
 
-      (*Prende il valore dell'angolo 45°*)
+      (*Prende il valore dell'angolo 45\[Degree]*)
       angle := ListaAngoliAssociati45[[1]];
-      (*Mostra il valore in gradi dell'angolo 60° vicino al punto in cui si trova sulla circonferenza unitaria*)
+      (*Mostra il valore in gradi dell'angolo 60\[Degree] vicino al punto in cui si trova sulla circonferenza unitaria*)
       Text[Style[angle 180 / Pi Degree, 15, Bold, Black], {1.2 Cos[angle], 1.2 Sin[angle]}],
 
       (*Associa la funzione definita tra parentesi graffe alla lista di coppie definita sotto (dove ogni coppia rappresenta l'intervallo che definisce uno spicchio nella circonferenza)*)
@@ -1063,7 +1064,7 @@ DistancePointsApplication[] :=
         (* Manipulate permette la manipolazione controllata degli elementi dinamici attraverso l'uso di appositi controlli *)
           Manipulate[
           (* Deploy consente di ottenere una versione dell'espressione valutata in cui elementi quali slider, locator,
-            e button sono attivi ma in cui in genere non è consentito selezionare elementi o modificarli *)
+            e button sono attivi ma in cui in genere non \[EGrave] consentito selezionare elementi o modificarli *)
             Deploy[
             (* DynamicMoudule rappresenta un oggetto che mantiene le istanze locali passate come argomenti durante
               la valutazione di tutti gli elementi dinamici presenti *)
@@ -1089,16 +1090,16 @@ DistancePointsApplication[] :=
                   (* rappresentazione grafica del fiume ottenuto calcolando la funzione interpolante *)
                     {Thickness[0.13], LightCyan, Line[riverPoints]},
 
-                  (* definizione del vertice A del triangolo: attraverso l'uso di locator, tale punto è l'unico
+                  (* definizione del vertice A del triangolo: attraverso l'uso di locator, tale punto \[EGrave] l'unico
                     libero di essere spostato all'interno dell'area del grafico *)
                     Point[p1],
                     Locator[Dynamic[p1], None],
 
                   (* Inset ci permette di inserire un oggetto in un Graphocs
-                    In questo caso lo si è scelto per effettuare la valutazione dell'espressione che determina i
+                    In questo caso lo si \[EGrave] scelto per effettuare la valutazione dell'espressione che determina i
                     limiti di movimento del punto A: si vuole che il punto A rimanga al di sotto della riva del
                     fiume, dunque, ad ogni suo spostamento si valuta la funzione interpolata del fiume sull'ascissa
-                    del punto A, se il valore ottenuto è oltre la riva del fiume, si blocca il punto nella posizone
+                    del punto A, se il valore ottenuto \[EGrave] oltre la riva del fiume, si blocca il punto nella posizone
                     non consentendone la variazione dell'ordinata *)
                     Inset[
                       With[
@@ -1306,45 +1307,68 @@ EsRadiantDegree := DynamicModule[{esito = "", colorEsito = Black}, Row[{
   }]
 }]
 ];
-
 puntiInaccessibili[] := DynamicModule[{p1 = {-2, -1}, p2 = {-0.5, 1}, p3 = {2, 1}, p4 = {0.5, -1}, Esito = ""},
-
+(* Funzione per controllare se la risposta all'esercizietto è corretta *)
   checkRisp[risp_, correct_] := (
+  (* Ritorna la stringa "Risposta Corretta" di colore verde, altrimenti "Risposta Errata" di colore rosso *)
     If[risp == correct, Return[Style["Risposta Corretta", Green, FontFamily -> Roboto]], Return[Style["Risposta Errata", Red, FontFamily -> Roboto]]]
   );
-
+  (* Variabile che contiene la risposta esatta all'esercizietto *)
   esatta = 15;
   (* dynamic; *)
   Row[{
     Column[{
       Row[{
+      (* Manipulate permette la manipolazione controllata degli elementi dinamici attraverso l'uso di appositi controlli *)
         Manipulate[
+        (* Deploy consente di ottenere una versione dell'espressione valutata in cui elementi quali slider, locator,
+          e button sono attivi ma in cui in genere non è consentito selezionare elementi o modificarli *)
           Deploy[
+          (* DynamicMoudule rappresenta un oggetto che mantiene le istanze locali passate come argomenti durante
+            la valutazione di tutti gli elementi dinamici presenti *)
             DynamicModule[{},
               Dynamic@Graphics[{
-
+              (* Prato *)
+              (* Parte di prato al di sopra del fiume delimitata da due rette *)
                 upperGrass = FilledCurve[{Line[{{-3, 0.1}, {-3, 3}}], Line[{{3, 3}, {3, 0.6}}] }];
+                (* Parte di prato al di sotto del fiume delimitata da due rette *)
                 lowerGrass = FilledCurve[{Line[{{-3, -0.1}, {-3, -3}}], Line[{{3, -3}, {3, 0.1}}]}];
+                (* Setto colore e opacità del prato *)
                 {Opacity[.3], Green, upperGrass},
                 {Opacity[.3], Green, lowerGrass},
 
               (* Fiume *)
+              (* Riva superiore del fiume disegnata con una curva di Bezier definita su 4 punti *)
                 {Thickness[0.005], Darker[LightBlue], BezierCurve[{ {-3, 0.3}, {-0.8, -0.1}, {0.5, 0.8}, {3, 0.6}}]},
+              (* Riva inferiore del fiume disegnata con una curva di Bezier definita su 4 punti *)
                 {Thickness[0.005], Darker[LightBlue], BezierCurve[{ {-3, -0.3}, {-0.8, -0.7}, {0.5, 0.2}, {3, 0}}]},
+              (* Fiume disegnato con una curva di Bezier definita su 4 punti *)
                 river = BezierCurve[{ {-3, 0}, {-0.8, -0.4}, {0.5, 0.5}, {3, 0.3}}];
+                (* Setto colore e spessore del fiume *)
                 {Thickness[0.1], LightBlue, river},
 
               (* Parallelogramma *)
+              (* Lato CB *)
                 l1 = {Thickness[0.004], Red, Line[{p1, p2}]},
+              (* Lato BD *)
                 l2 = {Thickness[0.004], Blue, Line[{p2, p3}]},
+              (* Lato DA *)
                 l3 = {Thickness[0.004], Orange, Line[{p3, p4}]},
-                l4 = {Thickness[0.004], Line[{p4, p1}]}, (* AC *)
-              (* Diagonali *)
+              (* Lato AC *)
+                l4 = {Thickness[0.004], Line[{p4, p1}]},
+              (* Diagonale CD *)
                 d1 = {Thickness[0.004], Orange, Line[{p1, p3}]},
+              (* Diagonale AB *)
                 d2 = {Thickness[0.004], Red, Line[{p2, p4}]},
 
+              (* Vertice C *)
                 {PointSize[0.012], Point[p1], Locator[Dynamic[p1], None]},
+              (* Vertice A *)
                 {PointSize[0.012], Point[p4], Locator[Dynamic[p4], None]},
+              (* With che evitano che i vertici C e A possano essere spostati al di sopra del fiume
+              e che il vertice C non possa assumere ascissa maggiore di quella del vertice A, e viceversa
+              che il vertice A non possa assumere ascissa inferiore a quella di C.
+              Questi sono contenuti in una inset perché si evita un fastidioso errore *)
                 Inset[
                   {With[{x = Last[p1]}, If[x >= -0.4, {p1 = {First[p1], -0.5}}]],
                     With[{y = First[p1]}, If[y >= First[p4], {p1 = {First[p4] - 0.3, Last[p1]}}]],
@@ -1352,100 +1376,80 @@ puntiInaccessibili[] := DynamicModule[{p1 = {-2, -1}, p2 = {-0.5, 1}, p3 = {2, 1
                     With[{z = First[p4]}, If[z <= First[p1], {p4 = {First[p1] - 0.3, Last[p4]}}]]},
                   {-5, -5}
                 ],
+              (* Style del vertice A che si muove in base allo spostamento del relativo locator *)
                 Style[Text["A", {First[p4], Last[p4] - 0.2}], 15],
+              (* Style dell'angolo α₁ che si muove in base allo spostamento del locator relativo a A *)
                 Style[Text[Subscript["\[Alpha]", 1], {First[p4], Last[p4] + 0.4}], 15],
+              (* Style dell'angolo α₂ che si muove in base allo spostamento del locator relativo a A *)
                 Style[Text[Subscript["\[Alpha]", 2], {First[p4] - 0.2, Last[p4] + 0.12}], 12],
+              (* Style del vertice C che si muove in base allo spostamento del relativo locator *)
                 Style[Text["C", {First[p1], Last[p1] - 0.2}], 15],
+              (* Style dell'angolo γ₁ che si muove in base allo spostamento del locator relativo a C *)
                 Style[Text[Subscript["\[Gamma]", 1], {First[p1] + 0.4, Last[p1] + 0.1}], 12],
+              (* Style dell'angolo γ₂ che si muove in base allo spostamento del locator relativo a C *)
                 Style[Text[StringForm["``", Subscript["\[Gamma]", 2]], {First[p1] + 0.6, Last[p1] + 0.5}], 15],
+              (* Vertice B *)
                 {PointSize[0.012], Point[p2], Locator[Dynamic[p2], None, Enabled -> False]},
+              (* Style dell'angolo 𝝱 che si muove in base allo spostamento del locator relativo a B *)
                 Style[Text["\[Beta]", {First[p2] - 0.03, Last[p2] - 0.3}], 15],
+              (* Style del vertice B che si muove in base allo spostamento del relativo locator *)
                 Style[Text["B", {First[p2], Last[p2] + 0.2}], 15],
+              (* Vertice D *)
                 {PointSize[0.012], Point[p3], Locator[Dynamic[p3], None, Enabled -> False]},
+              (* Style del vertice D che si muove in base allo spostamento del relativo locator *)
                 Style[Text["D", {First[p3], Last[p3] + 0.2}], 15],
+              (* Style dell'angolo δ che si muove in base allo spostamento del locator relativo a D *)
                 Style[Text["\[Delta]", {First[p3] - 0.35, Last[p3] - 0.3}], 15],
 
-              (* Visualizzazione ampiezza degli angoli *)
+              (* Visualizzazione ampiezza degli angoli: α₁, α₂, γ₁, γ₂
+              Valori ottenuti con la funzione getAngle e convertiti da radianti a gradi, tenendo solo la parte intera *)
                 Style[Text[StringForm["DCA = `` = ``", Subscript["\[Gamma]", 1], Round[N[getAngle[p1, p3, p4]] * 180 / Pi]], {1, -2.5}], FontFamily -> Roboto, FontSize -> 18],
                 Style[Text[StringForm["BCA = `` = ``", Subscript["\[Gamma]", 2], Round[N[getAngle[p1, p2, p4]] * 180 / Pi]], {1, -2.75}], FontFamily -> Roboto, FontSize -> 18],
 
                 Style[Text[StringForm["CAD = `` = ``", Subscript["\[Alpha]", 1], Round[N[getAngle[p4, p3, p1]] * 180 / Pi]], {-1, -2.5}], FontFamily -> Roboto, FontSize -> 18],
                 Style[Text[StringForm["BAC = `` = ``", Subscript["\[Alpha]", 2], Round[N[getAngle[p4, p1, p2]] * 180 / Pi]], {-1.025, -2.75}], FontFamily -> Roboto, FontSize -> 18],
 
+              (* Archetti che delimitano gli angoli α₁, α₂, γ₁, γ₂, ottenuti usando la primitiva Circle,
+              che prende come argomenti:
+                                          - l'origine della circonferenza cui appartiene l'arco -> vertice del prallelogramma relativo all'angolo;
+                                          - il raggio della circonferenza;
+                                          - gli angoli θ₁ e θ₂, che definiscono i due punti su cui è definito ogni arco;
+
+              Si è fatto uso della funzione getAngle che prende come argomenti tre punti e ritorna l'ampiezza dell'angolo in radianti.
+              Per evitare problemi di visualizzazione in alcune circostanze sono stati valutati casi limite,
+              calcolando θ₁ e θ₂ come somma di angoli a partire da 0, π/2, π, 3/2*π
+              *)
+
               (* Alpha 1 *)
                 If[First[p4] <= First[p3],
-                  Circle[p4, 0.5,
-                    {
-                      0 + getAngle[p4, p3, {First[p3], Last[p4]}],
-                      0 + getAngle[p4, p3, {First[p3], Last[p4]}] + getAngle[p4, p2, p3] + getAngle[p4, p1, p2]
-                    }
-                  ],
-                  Circle[p4, 0.5,
-                    {
-                      0 + getAngle[p4, p3, {3, Last[p4]}],
-                      0 + getAngle[p4, p3, {3, Last[p4]}] + getAngle[p4, p2, p3] + getAngle[p4, p1, p2]
-                    }
-                  ]
+                  Circle[p4, 0.5, { 0 + getAngle[p4, p3, {First[p3], Last[p4]}], 0 + getAngle[p4, p3, {First[p3], Last[p4]}] + getAngle[p4, p2, p3] + getAngle[p4, p1, p2] }],
+                  Circle[p4, 0.5, { 0 + getAngle[p4, p3, {3, Last[p4]}], 0 + getAngle[p4, p3, {3, Last[p4]}] + getAngle[p4, p2, p3] + getAngle[p4, p1, p2] }]
                 ],
 
               (* Alpha 2 *)
                 If[First[p4] <= First[p3],
-                  Circle[p4, 0.35, {
-                    0 + getAngle[p4, p3, {First[p3], Last[p4]}] + getAngle[p4, p2, p3],
-                    0 + getAngle[p4, p3, {First[p3], Last[p4]}] + getAngle[p4, p2, p3] + getAngle[p4, p1, p2]
-                  }
-                  ],
-                  Circle[p4, 0.35, {
-                    0 + getAngle[p4, p3, {3, Last[p4]}] + getAngle[p4, p2, p3],
-                    0 + getAngle[p4, p3, {3, Last[p4]}] + getAngle[p4, p2, p3] + getAngle[p4, p1, p2]
-                  }
-                  ]
-
+                  Circle[p4, 0.35, { 0 + getAngle[p4, p3, {First[p3], Last[p4]}] + getAngle[p4, p2, p3], 0 + getAngle[p4, p3, {First[p3], Last[p4]}] + getAngle[p4, p2, p3] + getAngle[p4, p1, p2]}],
+                  Circle[p4, 0.35, { 0 + getAngle[p4, p3, {3, Last[p4]}] + getAngle[p4, p2, p3], 0 + getAngle[p4, p3, {3, Last[p4]}] + getAngle[p4, p2, p3] + getAngle[p4, p1, p2] }]
                 ],
 
               (* Gamma 1 *)
                 If[Last[p1] <= Last[p4],
                   If[First[p1] <= First[p2],
-                    Circle[p1, 0.35, {
-                      0 + getAngle[p1, p4, {First[p2], Last[p1]}],
-                      0 + getAngle[p1, p4, {First[p2], Last[p1]}] + getAngle[p1, p4, p3]
-                    }
-                    ],
-                    Circle[p1, 0.35, {
-                      0 + getAngle[p1, p4, {3, Last[p1]}],
-                      0 + getAngle[p1, p4, {3, Last[p1]}] + getAngle[p1, p4, p3]
-                    }
-                    ]
+                    Circle[p1, 0.35, { 0 + getAngle[p1, p4, {First[p2], Last[p1]}], 0 + getAngle[p1, p4, {First[p2], Last[p1]}] + getAngle[p1, p4, p3] }],
+                    Circle[p1, 0.35, { 0 + getAngle[p1, p4, {3, Last[p1]}],0 + getAngle[p1, p4, {3, Last[p1]}] + getAngle[p1, p4, p3] }]
                   ],
                   Circle[p1, 0.35,
-                    {
-                      3 / 2 * Pi + getAngle[p1, p4, {First[p1], -3}],
-                      3 / 2 * Pi + getAngle[p1, p4, {First[p1], -3}] + getAngle[p1, p3, p4]
-                    }
-                  ]
+                    { 3 / 2 * Pi + getAngle[p1, p4, {First[p1], -3}], 3 / 2 * Pi + getAngle[p1, p4, {First[p1], -3}] + getAngle[p1, p3, p4] }]
                 ],
 
               (* Gamma 2 *)
 
                 If[Last[p1] <= Last[p4],
                   If[First[p1] <= First[p2],
-                    Circle[p1, 0.5, {
-                      0 + getAngle[p1, p4, {First[p2], Last[p1]}],
-                      0 + getAngle[p1, p4, {First[p2], Last[p1]}] + getAngle[p1, p4, p2]
-                    }
-                    ],
-                    Circle[p1, 0.5, {
-                      0 + getAngle[p1, p4, {3, Last[p1]}],
-                      0 + getAngle[p1, p4, {3, Last[p1]}] + getAngle[p1, p4, p2]
-                    }
-                    ]
+                    Circle[p1, 0.5, { 0 + getAngle[p1, p4, {First[p2], Last[p1]}], 0 + getAngle[p1, p4, {First[p2], Last[p1]}] + getAngle[p1, p4, p2] }],
+                    Circle[p1, 0.5, { 0 + getAngle[p1, p4, {3, Last[p1]}], 0 + getAngle[p1, p4, {3, Last[p1]}] + getAngle[p1, p4, p2] }]
                   ],
-                  Circle[p1, 0.5,
-                    {
-                      3 / 2 * Pi + getAngle[p1, p4, {First[p1], -3}],
-                      3 / 2 * Pi + getAngle[p1, p4, {First[p1], -3}] + getAngle[p1, p2, p4]
-                    }
-                  ]
+                  Circle[p1, 0.5,{ 3 / 2 * Pi + getAngle[p1, p4, {First[p1], -3}], 3 / 2 * Pi + getAngle[p1, p4, {First[p1], -3}] + getAngle[p1, p2, p4] }]
                 ]
 
               },
@@ -1456,6 +1460,8 @@ puntiInaccessibili[] := DynamicModule[{p1 = {-2, -1}, p2 = {-0.5, 1}, p3 = {2, 1
       }]
     }],
     Text["\t"],
+  (* Descrizione del problema di Snellius con formule per risolvere l'esercizietto
+  e aiuti racchiusi nelle finestre popup innescate dai pulsanti *)
     Column[{
       Row[{
         Style[Text["Determinare la distanza tra due punti B e D entrambi inaccessibili.\nSpostandoci da A a B possiamo considerare ADC ed ABC."], FontFamily -> Roboto, FontSize -> 20]
@@ -1496,6 +1502,7 @@ puntiInaccessibili[] := DynamicModule[{p1 = {-2, -1}, p2 = {-0.5, 1}, p3 = {2, 1
         ],
         Text["\n"]
       }],
+    (* Esercizietto a risposta multipla *)
       Row[{
         Column[{
           Row[{
@@ -1563,8 +1570,6 @@ puntiInaccessibili[] := DynamicModule[{p1 = {-2, -1}, p2 = {-0.5, 1}, p3 = {2, 1
   }]
 ]
 
-
-
 (* ::InheritFromParent:: *)
 (**)
 
@@ -1575,5 +1580,7 @@ puntiInaccessibili[] := DynamicModule[{p1 = {-2, -1}, p2 = {-0.5, 1}, p3 = {2, 1
 
 (* ::InheritFromParent:: *)
 (**)
+
+
 End[]; (* fine sezione privata *)
 EndPackage[]; (* Fine del Package *)
